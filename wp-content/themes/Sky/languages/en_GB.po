@@ -1,0 +1,3440 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sky v2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-08-21 11:57:58+0100\n"
+"Last-Translator: smaids <smaids2007@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: archive.php:28
+#, php-format
+#@ vh
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: archive.php:30
+#, php-format
+#@ vh
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:32
+#, php-format
+#@ vh
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: archive.php:34
+#@ vh
+msgid "Blog Archives"
+msgstr ""
+
+#: archive.php:50
+#@ vh
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr ""
+
+#: comments.php:17
+#: geodir-comments.php:17
+#: geodirectory/gd_place-comments.php:17
+#@ vh
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: geodirectory/gd_place-comments.php:32
+#, php-format
+#@ vh
+msgid "<span>1</span> comment:"
+msgid_plural "<span>%1$s</span> comments:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:51
+#: comments.php:70
+#: geodir-comments.php:51
+#: geodir-comments.php:70
+#: geodirectory/gd_place-comments.php:38
+#: geodirectory/gd_place-comments.php:55
+#@ vh
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:52
+#: comments.php:71
+#: geodir-comments.php:52
+#: geodir-comments.php:71
+#: geodirectory/gd_place-comments.php:39
+#: geodirectory/gd_place-comments.php:56
+#@ vh
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:53
+#: comments.php:72
+#: geodir-comments.php:53
+#: geodir-comments.php:72
+#: geodirectory/gd_place-comments.php:40
+#: geodirectory/gd_place-comments.php:57
+#@ vh
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:81
+#: geodir-comments.php:81
+#: geodirectory/gd_place-comments.php:66
+#@ vh
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:109
+#: geodir-comments.php:109
+#@ vh
+msgid "Add comment"
+msgstr ""
+
+#: comments.php:101
+#: comments.php:110
+#: geodir-comments.php:101
+#: geodir-comments.php:110
+#: geodirectory/gd_place-comments.php:80
+#@ vh
+msgctxt "noun"
+msgid ""
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:44
+#: functions.php:736
+#: functions.php:772
+#: loop.php:61
+#: loop.php:73
+#@ vh
+msgid ", "
+msgstr ""
+
+#: content-single.php:48
+#: loop.php:66
+#: loop.php:82
+#, php-format
+#@ vh
+msgid "<span class=\"%1$s\"></span> %2$s"
+msgstr ""
+
+#: content-single.php:76
+#: content-single.php:144
+#: functions.php:743
+#: functions.php:779
+#: loop-standard.php:50
+#: loop-standard.php:97
+#@ vh
+msgid "Author:"
+msgstr ""
+
+#: content-single.php:99
+#@ vh
+msgid "More by this author"
+msgstr ""
+
+#: content-single.php:126
+#: functions.php:664
+#: vc_templates/post_block/_item.php:45
+#@ vh
+msgid "Read more"
+msgstr ""
+
+#: content-single.php:127
+#@ vh
+msgid "Pages:"
+msgstr ""
+
+#: footer.php:54
+#@ vh
+msgid "To Top"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:105
+#@ vh
+msgid "(Invalid)"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:110
+#@ vh
+msgid "(Pending)"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:134
+#@ default
+msgid "Move up"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:147
+#@ default
+msgid "Move down"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:149
+#: functions/admin/menu-custom-field.php:151
+#@ default
+#@ vh
+msgid "Edit Menu Item"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:160
+#@ vh
+msgid "URL"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:167
+#@ vh
+msgid "Navigation Label"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:173
+#@ vh
+msgid "Title Attribute"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:180
+#@ vh
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:185
+#@ vh
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:191
+#@ vh
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:197
+#@ vh
+msgid "Description"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:199
+#@ vh
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:207
+#@ vh
+msgid "Menu icon"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:214
+#@ vh
+msgid "Original: "
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:227
+#: functions/admin/slt-file-select.php:80
+#@ vh
+msgid "Remove"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:228
+#: geodirectory/popup-forms.php:70
+#: geodirectory/popup-forms.php:117
+#@ vh
+msgid "Cancel"
+msgstr ""
+
+#: functions/admin/menu-custom-field.php:354
+#@ vh
+msgid "Back"
+msgstr ""
+
+#: functions/admin/metaboxes/contact_map.php:8
+#@ vh
+msgid "Google Map"
+msgstr ""
+
+#: functions/admin/metaboxes/contact_map.php:15
+#@ vh
+msgid "Address"
+msgstr ""
+
+#: functions/admin/metaboxes/contact_map.php:20
+#@ vh
+msgid "Phone"
+msgstr ""
+
+#: functions/admin/metaboxes/contact_map.php:25
+#: functions.php:1939
+#: geodirectory/popup-forms.php:25
+#: geodirectory/popup-forms.php:43
+#: geodirectory/popup-forms.php:95
+#: header.php:180
+#@ vh
+msgid "Email"
+msgstr ""
+
+#: functions/admin/metaboxes/contact_map.php:30
+#@ vh
+msgid "Latitude"
+msgstr ""
+
+#: functions/admin/metaboxes/contact_map.php:35
+#@ vh
+msgid "Longitude"
+msgstr ""
+
+#: functions/admin/metaboxes/donations.php:8
+#@ vh
+msgid "Donations"
+msgstr ""
+
+#: functions/admin/metaboxes/donations.php:15
+#@ vh
+msgid "How many donations are needed?"
+msgstr ""
+
+#: functions/admin/metaboxes/donations.php:20
+#@ vh
+msgid "Donation so far"
+msgstr ""
+
+#: functions/admin/metaboxes/donations.php:25
+#@ vh
+msgid "Fundrisers"
+msgstr ""
+
+#: functions/admin/metaboxes/donations.php:30
+#@ vh
+msgid "PayPal email"
+msgstr ""
+
+#: functions/admin/metaboxes/layouts.php:8
+#@ vh
+msgid "Layouts"
+msgstr ""
+
+#: functions/admin/metaboxes/layouts.php:15
+#@ vh
+msgid "Layout type"
+msgstr ""
+
+#: functions/admin/metaboxes/templates/contact_map.php:24
+#: functions/widgets/googlemap.php:103
+#@ vh
+msgid "Address:"
+msgstr ""
+
+#: functions/admin/metaboxes/templates/contact_map.php:27
+#@ vh
+msgid "Phone:"
+msgstr ""
+
+#: functions/admin/metaboxes/templates/contact_map.php:30
+#@ vh
+msgid "Email:"
+msgstr ""
+
+#: functions/admin/metaboxes/templates/contact_map.php:33
+#: functions/widgets/googlemap.php:109
+#@ vh
+msgid "Latitude:"
+msgstr ""
+
+#: functions/admin/metaboxes/templates/contact_map.php:36
+#: functions/widgets/googlemap.php:114
+#@ vh
+msgid "Longitude:"
+msgstr ""
+
+#: functions/admin/sidebars/multiple_sidebars.php:486
+#@ vh
+msgid "Footer Area One"
+msgstr ""
+
+#: functions/admin/sidebars/multiple_sidebars.php:496
+#@ vh
+msgid "Footer Area Two"
+msgstr ""
+
+#: functions/admin/sidebars/multiple_sidebars.php:506
+#@ vh
+msgid "Footer Area Three"
+msgstr ""
+
+#: functions/admin/sidebars/multiple_sidebars.php:516
+#@ vh
+msgid "Footer Area Four"
+msgstr ""
+
+#: functions/admin/slt-file-select.php:36
+#@ default
+msgid "Hi there! I'm just a plugin, not much I can do when called directly."
+msgstr ""
+
+#: functions/admin/slt-file-select.php:48
+#@ master
+msgid "Select"
+msgstr ""
+
+#: functions/global/wp_pagenavi/wp-pagenavi.php:173
+#: functions/global/wp_pagenavi/wp-pagenavi.php:176
+#@ wp-pagenavi
+msgid "&laquo;"
+msgstr ""
+
+#: functions/global/wp_pagenavi/wp-pagenavi.php:174
+#: functions/global/wp_pagenavi/wp-pagenavi.php:175
+#@ wp-pagenavi
+msgid "&raquo;"
+msgstr ""
+
+#: functions/global/wp_pagenavi/wp-pagenavi.php:177
+#: functions/global/wp_pagenavi/wp-pagenavi.php:178
+#@ wp-pagenavi
+msgid "..."
+msgstr ""
+
+#: functions/installer/importer/parsers.php:48
+#: functions/installer/importer/parsers.php:80
+#: functions/installer/importer/parsers.php:88
+#@ wordpress-importer
+msgid "There was an error when reading this WXR file"
+msgstr ""
+
+#: functions/installer/importer/parsers.php:49
+#@ wordpress-importer
+msgid "Details are shown above. The importer will now try again with a different parser..."
+msgstr ""
+
+#: functions/installer/importer/parsers.php:92
+#: functions/installer/importer/parsers.php:97
+#: functions/installer/importer/parsers.php:287
+#: functions/installer/importer/parsers.php:476
+#@ wordpress-importer
+msgid "This does not appear to be a WXR file, missing/invalid WXR version number"
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:27
+#@ widget-importer-exporter
+msgid "Import file could not be found. Please try again."
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:41
+#@ widget-importer-exporter
+msgid "Import data could not be read. Please try a different file."
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:79
+#@ widget-importer-exporter
+msgid "Sidebar does not exist in theme (using Inactive)"
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:101
+#@ widget-importer-exporter
+msgid "Site does not support widget"
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:121
+#@ widget-importer-exporter
+msgid "Widget already exists"
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:170
+#@ widget-importer-exporter
+msgid "Imported"
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:173
+#@ widget-importer-exporter
+msgid "Imported to Inactive"
+msgstr ""
+
+#: functions/installer/importer/widgets-importer.php:180
+#@ widget-importer-exporter
+msgid "No Title"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:134
+#: functions/installer/importer/wordpress-importer.php:143
+#: functions/installer/importer/wordpress-importer.php:194
+#: functions/installer/importer/wordpress-importer.php:198
+#: functions/installer/importer/wordpress-importer.php:207
+#@ wordpress-importer
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:135
+#@ wordpress-importer
+msgid "The file does not exist, please try again."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:178
+#@ wordpress-importer
+msgid "All done."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:178
+#@ wordpress-importer
+msgid "Have fun!"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:179
+#@ wordpress-importer
+msgid "Remember to update the passwords and roles of imported users."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:199
+#, php-format
+#@ wordpress-importer
+msgid "The export file could not be found at <code>%s</code>. It is likely that this was caused by a permissions problem."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:215
+#, php-format
+#@ wordpress-importer
+msgid "This WXR file (version %s) may not be supported by this version of the importer. Please consider updating."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:240
+#, php-format
+#@ wordpress-importer
+msgid "Failed to import author %s. Their posts will be attributed to the current user."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:266
+#@ wordpress-importer
+msgid "Assign Authors"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:267
+#@ wordpress-importer
+msgid "To make it easier for you to edit and save the imported content, you may want to reassign the author of the imported item to an existing user of this site. For example, you may want to import all the entries as <code>admin</code>s entries."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:269
+#, php-format
+#@ wordpress-importer
+msgid "If a new user is created by WordPress, a new password will be randomly generated and the new user&#8217;s role will be set as %s. Manually changing the new user&#8217;s details will be necessary."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:279
+#@ wordpress-importer
+msgid "Import Attachments"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:282
+#@ wordpress-importer
+msgid "Download and import file attachments"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:286
+#: functions/widgets/contactform.php:53
+#@ wordpress-importer
+#@ vh
+msgid "Submit"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:299
+#@ wordpress-importer
+msgid "Import author:"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:310
+#@ wordpress-importer
+msgid "or create new user with login name:"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:313
+#@ wordpress-importer
+msgid "as a new user:"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:321
+#@ wordpress-importer
+msgid "assign posts to an existing user:"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:323
+#@ wordpress-importer
+msgid "or assign posts to an existing user:"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:324
+#@ wordpress-importer
+msgid "- Select -"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:374
+#, php-format
+#@ wordpress-importer
+msgid "Failed to create new user for %s. Their posts will be attributed to the current user."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:425
+#, php-format
+#@ wordpress-importer
+msgid "Failed to import category %s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:465
+#, php-format
+#@ wordpress-importer
+msgid "Failed to import post tag %s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:511
+#: functions/installer/importer/wordpress-importer.php:655
+#, php-format
+#@ wordpress-importer
+msgid "Failed to import %s %s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:540
+#, php-format
+#@ wordpress-importer
+msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:562
+#, php-format
+#@ wordpress-importer
+msgid "%s &#8220;%s&#8221; already exists."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:621
+#, php-format
+#@ wordpress-importer
+msgid "Failed to import %s &#8220;%s&#8221;"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:786
+#@ wordpress-importer
+msgid "Menu item skipped due to missing menu slug"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:793
+#, php-format
+#@ wordpress-importer
+msgid "Menu item skipped due to invalid menu slug: %s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:856
+#@ wordpress-importer
+msgid "Fetching attachments is not enabled"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:869
+#@ wordpress-importer
+msgid "Invalid file type"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:913
+#@ wordpress-importer
+msgid "Remote server did not respond"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:919
+#, php-format
+#@ wordpress-importer
+msgid "Remote server returned error response %1$d %2$s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:926
+#@ wordpress-importer
+msgid "Remote file is incorrect size"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:931
+#@ wordpress-importer
+msgid "Zero size file downloaded"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:937
+#, php-format
+#@ wordpress-importer
+msgid "Remote file is too large, limit is %s"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:1035
+#@ wordpress-importer
+msgid "Import WordPress"
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:1042
+#, php-format
+#@ wordpress-importer
+msgid "A new version of this importer is available. Please update to version %s to ensure compatibility with newer export files."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:1057
+#@ wordpress-importer
+msgid "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import the posts, pages, comments, custom fields, categories, and tags into this site."
+msgstr ""
+
+#: functions/installer/importer/wordpress-importer.php:1058
+#@ wordpress-importer
+msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:305
+#: functions.php:2481
+#@ tgmpa
+#@ vh
+msgid "Install Required Plugins"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:306
+#: functions.php:2482
+#@ tgmpa
+#@ vh
+msgid "Install Plugins"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:307
+#: functions.php:2483
+#, php-format
+#@ tgmpa
+#@ vh
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: functions.php:2487
+#, php-format
+#@ vh
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:340
+#: functions.php:2488
+#, php-format
+#@ vh
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:345
+#: functions.php:2489
+#, php-format
+#@ vh
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:2490
+#, php-format
+#@ vh
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:325
+#: functions.php:2491
+#, php-format
+#@ vh
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:2492
+#, php-format
+#@ vh
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:355
+#: functions.php:2493
+#@ vh
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#. gettext fix: duplicate plural forms found, that may be ambiguous! Please check the code!
+#: functions/tgm-activation/class-tgm-plugin-activation.php:360
+#@ vh
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugin"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:365
+#@ vh
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:370
+#: functions.php:2495
+#@ tgmpa
+#@ vh
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:371
+#@ tgmpa
+msgid "Return to the dashboard"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:372
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3123
+#: functions.php:2496
+#@ tgmpa
+#@ vh
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:376
+#, php-format
+#@ tgmpa
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:377
+#@ tgmpa
+msgid "Dismiss this notice"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2272
+#@ tgmpa
+msgid "Pre-Packaged"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2264
+#@ tgmpa
+msgid "WordPress Repository"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2244
+#@ tgmpa
+msgid "Required"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2247
+#@ tgmpa
+msgid "Recommended"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2291
+#@ tgmpa
+msgid "Not Installed"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2295
+#@ tgmpa
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2297
+#@ tgmpa
+msgid "Active"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2715
+#@ tgmpa
+msgid "Install"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2724
+#@ tgmpa
+msgid "Activate"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2539
+#@ tgmpa
+msgid "Plugin"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2540
+#@ tgmpa
+msgid "Source"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2541
+#@ tgmpa
+msgid "Type"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2546
+#@ tgmpa
+msgid "Status"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2721
+#@ tgmpa
+msgid "Update"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2794
+#@ tgmpa
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2925
+#@ tgmpa
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#. gettext fix: identical singular and plural forms found, that may be ambiguous! Please check the code!
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2943
+#: functions/tgm-activation/class-tgm-plugin-activation.php:373
+#@ tgmpa
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3122
+#@ tgmpa
+msgid "Plugin activation failed."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3470
+#@ tgmpa
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3465
+#, php-format
+#@ tgmpa
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3471
+#, php-format
+#@ tgmpa
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3471
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3478
+#@ tgmpa
+msgid "Show Details"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3471
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3478
+#@ tgmpa
+msgid "Hide Details"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3472
+#@ tgmpa
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3473
+#, php-format
+#@ tgmpa
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3477
+#@ tgmpa
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3466
+#, php-format
+#@ tgmpa
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3478
+#, php-format
+#@ tgmpa
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3479
+#@ tgmpa
+msgid "All installations have been completed."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3480
+#, php-format
+#@ tgmpa
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:32
+#@ vh
+msgid "Row style"
+msgstr ""
+
+#: functions/visual_composer_extended.php:36
+#@ vh
+msgid "Default"
+msgstr ""
+
+#: functions/visual_composer_extended.php:37
+#@ vh
+msgid "Full Width - White"
+msgstr ""
+
+#: functions/visual_composer_extended.php:44
+#@ vh
+msgid "Gap"
+msgstr ""
+
+#: functions/visual_composer_extended.php:53
+#@ vh
+msgid "Gap height"
+msgstr ""
+
+#: functions/visual_composer_extended.php:57
+#@ vh
+msgid "In pixels"
+msgstr ""
+
+#: functions/visual_composer_extended.php:63
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Red"
+msgstr ""
+
+#: functions/visual_composer_extended.php:64
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Blue"
+msgstr ""
+
+#: functions/visual_composer_extended.php:65
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Yellow"
+msgstr ""
+
+#: functions/visual_composer_extended.php:66
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Green"
+msgstr ""
+
+#: functions/visual_composer_extended.php:71
+#@ vh
+msgid "Pricing Table"
+msgstr ""
+
+#: functions/visual_composer_extended.php:79
+#: functions/visual_composer_extended.php:202
+#@ vh
+msgid "Color"
+msgstr ""
+
+#: functions/visual_composer_extended.php:82
+#@ vh
+msgid "Pricing block color."
+msgstr ""
+
+#: functions/visual_composer_extended.php:86
+#: functions/visual_composer_extended.php:420
+#: functions/visual_composer_extended.php:750
+#: functions/visual_composer_extended.php:784
+#: geodirectory/get_markers.php:105
+#@ vh
+msgid "Title"
+msgstr ""
+
+#: functions/visual_composer_extended.php:89
+#@ vh
+msgid "Please add offer title."
+msgstr ""
+
+#: functions/visual_composer_extended.php:93
+#@ vh
+msgid "Description text 1"
+msgstr ""
+
+#: functions/visual_composer_extended.php:96
+#@ vh
+msgid "Please add first part of your offer text."
+msgstr ""
+
+#: functions/visual_composer_extended.php:100
+#@ vh
+msgid "Description text 2"
+msgstr ""
+
+#: functions/visual_composer_extended.php:103
+#@ vh
+msgid "Please add second part of your offer text."
+msgstr ""
+
+#: functions/visual_composer_extended.php:107
+#: geodirectory/listing-listview.php:57
+#: listing-listview.php:33
+#@ vh
+msgid "Price"
+msgstr ""
+
+#: functions/visual_composer_extended.php:110
+#@ vh
+msgid "Please add offer price."
+msgstr ""
+
+#: functions/visual_composer_extended.php:117
+#@ vh
+msgid "Please add offer button link."
+msgstr ""
+
+#: functions/visual_composer_extended.php:121
+#: functions/visual_composer_extended.php:223
+#@ vh
+msgid "Extra class name"
+msgstr ""
+
+#: functions/visual_composer_extended.php:124
+#@ vh
+msgid "If you wish to style particular content element differently, then use this field to add a class name."
+msgstr ""
+
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Transparent"
+msgstr ""
+
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Light Blue"
+msgstr ""
+
+#: functions/visual_composer_extended.php:131
+#@ vh
+msgid "Inverse"
+msgstr ""
+
+#: functions/visual_composer_extended.php:134
+#@ vh
+msgid "None"
+msgstr ""
+
+#: functions/visual_composer_extended.php:135
+#@ vh
+msgid "Address book icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:136
+#@ vh
+msgid "Alarm clock icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:137
+#@ vh
+msgid "Anchor icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:138
+#@ vh
+msgid "Application Image icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:139
+#@ vh
+msgid "Arrow icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:140
+#@ vh
+msgid "Asterisk icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:141
+#@ vh
+msgid "Hammer icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:142
+#@ vh
+msgid "Balloon icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:143
+#@ vh
+msgid "Balloon Buzz icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:144
+#@ vh
+msgid "Balloon Facebook icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:145
+#@ vh
+msgid "Balloon Twitter icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:146
+#@ vh
+msgid "Battery icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:147
+#@ vh
+msgid "Binocular icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:148
+#@ vh
+msgid "Document Excel icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:149
+#@ vh
+msgid "Document Image icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:150
+#@ vh
+msgid "Document Music icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:151
+#@ vh
+msgid "Document Office icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:152
+#@ vh
+msgid "Document PDF icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:153
+#@ vh
+msgid "Document Powerpoint icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:154
+#@ vh
+msgid "Document Word icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:155
+#@ vh
+msgid "Bookmark icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:156
+#@ vh
+msgid "Camcorder icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:157
+#@ vh
+msgid "Camera icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:158
+#@ vh
+msgid "Chart icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:159
+#@ vh
+msgid "Chart pie icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:160
+#@ vh
+msgid "Clock icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:161
+#@ vh
+msgid "Fire icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:162
+#@ vh
+msgid "Heart icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:163
+#@ vh
+msgid "Mail icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:164
+#@ vh
+msgid "Play icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:165
+#@ vh
+msgid "Shield icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:166
+#@ vh
+msgid "Video icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:169
+#@ vh
+msgid "Same window"
+msgstr ""
+
+#: functions/visual_composer_extended.php:169
+#@ vh
+msgid "New window"
+msgstr ""
+
+#: functions/visual_composer_extended.php:170
+#@ vh
+msgid "Regular size"
+msgstr ""
+
+#: functions/visual_composer_extended.php:170
+#@ vh
+msgid "Large"
+msgstr ""
+
+#: functions/visual_composer_extended.php:170
+#@ vh
+msgid "Small"
+msgstr ""
+
+#: functions/visual_composer_extended.php:170
+#@ vh
+msgid "Mini"
+msgstr ""
+
+#: functions/visual_composer_extended.php:173
+#@ vh
+msgid "Button"
+msgstr ""
+
+#: functions/visual_composer_extended.php:176
+#@ vh
+msgid "Content"
+msgstr ""
+
+#: functions/visual_composer_extended.php:180
+#: functions/visual_composer_extended.php:184
+#@ vh
+msgid "Text on the button"
+msgstr ""
+
+#: functions/visual_composer_extended.php:185
+#@ vh
+msgid "Text on the button."
+msgstr ""
+
+#: functions/visual_composer_extended.php:189
+#@ vh
+msgid "URL (Link)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:191
+#@ vh
+msgid "Button link."
+msgstr ""
+
+#: functions/visual_composer_extended.php:195
+#@ vh
+msgid "Target"
+msgstr ""
+
+#: functions/visual_composer_extended.php:205
+#@ vh
+msgid "Button color."
+msgstr ""
+
+#: functions/visual_composer_extended.php:209
+#@ vh
+msgid "Icon"
+msgstr ""
+
+#: functions/visual_composer_extended.php:212
+#@ vh
+msgid "Button icon."
+msgstr ""
+
+#: functions/visual_composer_extended.php:216
+#@ vh
+msgid "Size"
+msgstr ""
+
+#: functions/visual_composer_extended.php:219
+#@ vh
+msgid "Button size."
+msgstr ""
+
+#: functions/visual_composer_extended.php:225
+#@ vh
+msgid "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+msgstr ""
+
+#: functions/visual_composer_extended.php:252
+#@ vh
+msgid "Featured properties"
+msgstr ""
+
+#: functions/visual_composer_extended.php:423
+#@ vh
+msgid "Title for this module."
+msgstr ""
+
+#: functions/visual_composer_extended.php:274
+#: functions/visual_composer_extended.php:315
+#@ vh
+msgid "Tags"
+msgstr ""
+
+#: functions/visual_composer_extended.php:277
+#: functions/visual_composer_extended.php:318
+#@ vh
+msgid "Module will display listings with these tags."
+msgstr ""
+
+#: functions/visual_composer_extended.php:281
+#: functions/visual_composer_extended.php:329
+#: functions/visual_composer_extended.php:362
+#: functions/visual_composer_extended.php:402
+#: functions/visual_composer_extended.php:434
+#@ vh
+msgid "Limit"
+msgstr ""
+
+#: functions/visual_composer_extended.php:284
+#: functions/visual_composer_extended.php:332
+#@ vh
+msgid "How much listings to display."
+msgstr ""
+
+#: functions/visual_composer_extended.php:293
+#@ vh
+msgid "Popular destinations"
+msgstr ""
+
+#: functions/visual_composer_extended.php:322
+#@ vh
+msgid "Countries"
+msgstr ""
+
+#: functions/visual_composer_extended.php:340
+#@ vh
+msgid "Recent activities"
+msgstr ""
+
+#: functions/visual_composer_extended.php:365
+#: functions/visual_composer_extended.php:405
+#: functions/visual_composer_extended.php:437
+#@ vh
+msgid "Limit of the entries that are going to be shown."
+msgstr ""
+
+#: functions/visual_composer_extended.php:373
+#@ vh
+msgid "Blog carousel"
+msgstr ""
+
+#: functions/visual_composer_extended.php:395
+#: functions/visual_composer_extended.php:427
+#: functions/visual_composer_extended.php:519
+#@ vh
+msgid "Categories"
+msgstr ""
+
+#: functions/visual_composer_extended.php:398
+#: functions/visual_composer_extended.php:430
+#@ vh
+msgid "From which category to display entries."
+msgstr ""
+
+#: functions/visual_composer_extended.php:412
+#@ vh
+msgid "Blog posts"
+msgstr ""
+
+#: functions/visual_composer_extended.php:444
+#@ vh
+msgid "Social links"
+msgstr ""
+
+#: functions/visual_composer_extended.php:452
+#@ vh
+msgid "Facebook text"
+msgstr ""
+
+#: functions/visual_composer_extended.php:455
+#@ vh
+msgid "Your facebook link text."
+msgstr ""
+
+#: functions/visual_composer_extended.php:459
+#@ vh
+msgid "Facebook link"
+msgstr ""
+
+#: functions/visual_composer_extended.php:462
+#@ vh
+msgid "Your facebook link."
+msgstr ""
+
+#: functions/visual_composer_extended.php:466
+#@ vh
+msgid "Twitter text"
+msgstr ""
+
+#: functions/visual_composer_extended.php:469
+#@ vh
+msgid "Your twitter link text."
+msgstr ""
+
+#: functions/visual_composer_extended.php:473
+#@ vh
+msgid "Twitter"
+msgstr ""
+
+#: functions/visual_composer_extended.php:476
+#@ vh
+msgid "Your twitter link."
+msgstr ""
+
+#: functions/visual_composer_extended.php:480
+#@ vh
+msgid "Youtube text"
+msgstr ""
+
+#: functions/visual_composer_extended.php:483
+#@ vh
+msgid "Your youtube link text."
+msgstr ""
+
+#: functions/visual_composer_extended.php:487
+#@ vh
+msgid "Youtube"
+msgstr ""
+
+#: functions/visual_composer_extended.php:490
+#@ vh
+msgid "Your youtube link."
+msgstr ""
+
+#: functions/visual_composer_extended.php:497
+#@ vh
+msgid "Listing categories"
+msgstr ""
+
+#: functions/visual_composer_extended.php:267
+#: functions/visual_composer_extended.php:308
+#: functions/visual_composer_extended.php:355
+#: functions/visual_composer_extended.php:388
+#: functions/visual_composer_extended.php:512
+#@ vh
+msgid "Secondary title"
+msgstr ""
+
+#: functions/visual_composer_extended.php:515
+#@ vh
+msgid "Secondary module title."
+msgstr ""
+
+#: functions/visual_composer_extended.php:522
+#@ vh
+msgid "Category parents of which you want to display your categories."
+msgstr ""
+
+#: functions/widgets/advertisement.php:13
+#@ vh
+msgid "Displays advertisement"
+msgstr ""
+
+#: functions/widgets/advertisement.php:43
+#: functions/widgets/advertisement.php:44
+#@ vh
+msgid "Advertisement"
+msgstr ""
+
+#: functions/widgets/advertisement.php:73
+#: functions/widgets/contactform.php:75
+#: functions/widgets/googlemap.php:98
+#: functions/widgets/recent-posts-plus.php:380
+#: functions/widgets/social_links.php:114
+#@ vh
+msgid "Title:"
+msgstr ""
+
+#: functions/widgets/advertisement.php:77
+#@ vh
+msgid "How many ads to display?"
+msgstr ""
+
+#: functions/widgets/advertisement.php:93
+#@ vh
+msgid "Image URL:"
+msgstr ""
+
+#: functions/widgets/advertisement.php:97
+#@ vh
+msgid "Link:"
+msgstr ""
+
+#: functions/widgets/advertisement.php:101
+#@ vh
+msgid "Example: <code>http://www.example.com</code>"
+msgstr ""
+
+#: functions/widgets/contactform.php:10
+#@ vh
+msgid "Displays a contact form."
+msgstr ""
+
+#: functions/widgets/contactform.php:21
+#@ vh
+msgid "Email Us"
+msgstr ""
+
+#: functions/widgets/contactform.php:36
+#@ vh
+msgid "Your message was successfully sent. <strong>Thank You!</strong>"
+msgstr ""
+
+#: functions/widgets/contactform.php:39
+#@ vh
+msgid "An error occurred. Try again later."
+msgstr ""
+
+#: functions/widgets/contactform.php:45
+#@ vh
+msgid "Name (required)"
+msgstr ""
+
+#: functions/widgets/contactform.php:48
+#@ vh
+msgid "Email (required)"
+msgstr ""
+
+#: functions/widgets/contactform.php:79
+#@ vh
+msgid "Send emails to:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:37
+#@ vh
+msgid "Flickr Images"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:149
+#@ vh
+msgid "Fast Flickr Title:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:150
+#@ vh
+msgid "Flickr RSS URL or Screen name:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:151
+#@ vh
+msgid "Thumbnail, square or medium?"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:160
+#@ vh
+msgid "Before item:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:161
+#@ vh
+msgid "After item:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:162
+#@ vh
+msgid "Before widget:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:163
+#@ vh
+msgid "After widget:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:164
+#@ vh
+msgid "How many items?"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:165
+#@ vh
+msgid "More link anchor text:"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:166
+#@ vh
+msgid "Filter by tags (comma seperated):"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:167
+#@ vh
+msgid "Target: _blank"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:168
+#@ vh
+msgid "Display titles"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:169
+#@ vh
+msgid "Use Thickbox"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:170
+#@ vh
+msgid "Random pick"
+msgstr ""
+
+#: functions/widgets/fast-flickr-widget.php:171
+#@ vh
+msgid "Use random tag (needs random pick enable)"
+msgstr ""
+
+#: functions/widgets/googlemap.php:11
+#@ vh
+msgid "Displays a google map."
+msgstr ""
+
+#: functions/widgets/googlemap.php:105
+#@ vh
+msgid "Choose an address or latitute and logtitude"
+msgstr ""
+
+#: functions/widgets/googlemap.php:119
+#@ vh
+msgid "Zoom level:"
+msgstr ""
+
+#: functions/widgets/googlemap.php:128
+#@ vh
+msgid "Content for the marker:"
+msgstr ""
+
+#: functions/widgets/googlemap.php:134
+#@ vh
+msgid "Auto popup the info?"
+msgstr ""
+
+#: functions/widgets/googlemap.php:138
+#@ vh
+msgid "Height:"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:77
+#@ vh
+msgid "The most recent posts on your site. Includes advanced options."
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:384
+#@ vh
+msgid "Number of posts to show:"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:391
+#@ vh
+msgid "Include post thumbnail"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:395
+#@ vh
+msgid "Include post excerpt"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:400
+#@ vh
+msgid "Show expert options"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:406
+#@ vh
+msgid "Limit post title:"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:414
+#@ vh
+msgid "Limit post excerpt:"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:422
+#@ vh
+msgid "Limit ellipsis:"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:427
+#@ vh
+msgid "Post date format:"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:433
+#@ vh
+msgid "Thumbnail size (WxH):"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:440
+#@ vh
+msgid "WP_Query Options"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:445
+#@ vh
+msgid "Widget Output Template"
+msgstr ""
+
+#: functions/widgets/social_links.php:11
+#@ vh
+msgid "Link to your RSS feed and social media accounts."
+msgstr ""
+
+#: functions/widgets/social_links.php:18
+#@ vh
+msgid "Social Media"
+msgstr ""
+
+#: functions/widgets/social_links.php:118
+#@ vh
+msgid "RSS URL: (leave empty for default feed)"
+msgstr ""
+
+#: functions/widgets/social_links.php:122
+#@ vh
+msgid "Facebook URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:126
+#@ vh
+msgid "Twitter URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:130
+#@ vh
+msgid "Flickr URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:134
+#@ vh
+msgid "Youtube URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:138
+#@ vh
+msgid "LinkedIn URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:142
+#@ vh
+msgid "FourSquare URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:146
+#@ vh
+msgid "Delicious URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:150
+#@ vh
+msgid "Digg URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:154
+#@ vh
+msgid "Skype URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:158
+#@ vh
+msgid "Tumblr URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:162
+#@ vh
+msgid "Vimeo URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:166
+#@ vh
+msgid "Instagram URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:170
+#@ vh
+msgid "Pintrest URL:"
+msgstr ""
+
+#: functions/widgets/social_links.php:174
+#@ vh
+msgid "Google+ URL:"
+msgstr ""
+
+#: functions.php:114
+#@ vh
+msgid "Normal"
+msgstr ""
+
+#: functions.php:348
+#@ vh
+msgid "Sending user info, please wait..."
+msgstr ""
+
+#: functions.php:349
+#: header.php:183
+#@ vh
+msgid "A password will be emailed to you for future use"
+msgstr ""
+
+#: functions.php:460
+#@ vh
+msgid "Invalid username"
+msgstr ""
+
+#: functions.php:462
+#@ vh
+msgid "Invalid password"
+msgstr ""
+
+#: functions.php:464
+#@ vh
+msgid "Enter password"
+msgstr ""
+
+#: functions.php:466
+#@ vh
+msgid "Enter username"
+msgstr ""
+
+#: functions.php:471
+#@ vh
+msgid "Login successful, redirecting..."
+msgstr ""
+
+#: functions.php:493
+#@ vh
+msgid "Enter your username"
+msgstr ""
+
+#: functions.php:495
+#@ vh
+msgid "Username already exists."
+msgstr ""
+
+#: functions.php:497
+#@ vh
+msgid "Email already exists."
+msgstr ""
+
+#: functions.php:499
+#@ vh
+msgid "Enter email."
+msgstr ""
+
+#: functions.php:501
+#@ vh
+msgid "Enter username."
+msgstr ""
+
+#: functions.php:505
+#@ vh
+msgid "An email with your password was sent."
+msgstr ""
+
+#: functions.php:727
+#: functions.php:756
+#: functions.php:1990
+#: functions.php:2075
+#: loop-standard.php:26
+#: loop-standard.php:61
+#@ vh
+msgid "ago"
+msgstr ""
+
+#: functions.php:729
+#: functions.php:752
+#: loop-standard.php:30
+#: loop-standard.php:32
+#: vc_templates/post_block/_item.php:29
+#@ vh
+msgid "Read article"
+msgstr ""
+
+#: functions.php:1206
+#: functions.php:1208
+#@ vh
+msgid " listings"
+msgstr ""
+
+#: header.php:537
+#@ vh
+msgid "per night"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "1 Adult"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "2 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "3 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "4 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "5 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "6 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "7 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "8 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "9 Adults"
+msgstr ""
+
+#: functions.php:1287
+#@ vh
+msgid "10 Adults"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "No Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "1 Child"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "2 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "3 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "4 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "5 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "6 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "7 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "8 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "9 Children"
+msgstr ""
+
+#: functions.php:1288
+#@ vh
+msgid "10 Children"
+msgstr ""
+
+#: functions.php:1371
+#@ vh
+msgid "Sorry, no matches were found."
+msgstr ""
+
+#: functions.php:1488
+#@ vh
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:1724
+#, php-format
+#@ vh
+msgid "<span>Posted: </span><a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\">%4$s</a><span class=\"by-author\"> by <a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span>"
+msgstr ""
+
+#: functions.php:1730
+#, php-format
+#@ vh
+msgid "View all posts by %s"
+msgstr ""
+
+#: functions.php:1776
+#@ vh
+msgid "Please fill all fields!"
+msgstr ""
+
+#: functions.php:1935
+#@ vh
+msgid "Name"
+msgstr ""
+
+#: functions.php:1943
+#@ vh
+msgid "Website"
+msgstr ""
+
+#: functions.php:1969
+#: functions.php:2049
+#@ vh
+msgid "Pingback:"
+msgstr ""
+
+#: functions.php:2013
+#: functions.php:2123
+#: geodirectory/preview-buttons.php:78
+#@ vh
+msgid "Edit"
+msgstr ""
+
+#: functions.php:2022
+#: functions.php:2172
+#@ vh
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: buddypress/activity/comment.php:37
+#: functions.php:2014
+#: functions.php:2124
+#@ vh
+msgid "Reply"
+msgstr ""
+
+#: functions.php:2186
+#@ vh
+msgid "Home"
+msgstr ""
+
+#: functions.php:2272
+#@ vh
+msgid "Page"
+msgstr ""
+
+#: functions.php:2303
+#@ vh
+msgid "Color Scheme"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:308
+#: functions.php:2484
+#@ tgmpa
+#@ vh
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:310
+#: functions.php:2485
+#, php-format
+#@ vh
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:315
+#: functions.php:2486
+#, php-format
+#@ vh
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:2494
+#@ vh
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:2497
+#, php-format
+#@ vh
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: geodirectory/listing-detail.php:55
+#@ vh
+msgid "Listing by:"
+msgstr ""
+
+#: geodirectory/listing-detail.php:112
+#: geodirectory/listing-detail.php:232
+#: geodirectory/popup-forms.php:69
+#: geodirectory/popup-forms.php:116
+#: header.php:519
+#@ vh
+msgid "Send message"
+msgstr ""
+
+#: geodirectory/listing-listview.php:24
+#: listing-listview.php:16
+#@ vh
+msgid "When"
+msgstr ""
+
+#: geodirectory/listing-listview.php:38
+#: listing-listview.php:23
+#@ vh
+msgid "guests"
+msgstr ""
+
+#: geodirectory/listing-listview.php:58
+#: listing-listview.php:34
+#@ vh
+msgid "Per night"
+msgstr ""
+
+#: geodirectory/listing-listview.php:71
+#: listing-listview.php:45
+#@ vh
+msgid "Guests"
+msgstr ""
+
+#: geodirectory/listing-listview.php:84
+#: header.php:730
+#: listing-listview.php:56
+#@ vh
+msgid "Bedrooms"
+msgstr ""
+
+#: geodirectory/listing-listview.php:97
+#: listing-listview.php:67
+#@ vh
+msgid "Beds"
+msgstr ""
+
+#: geodirectory/listing-listview.php:133
+#: listing-listview.php:96
+#@ vh
+msgid "properties"
+msgstr ""
+
+#: geodirectory/listing-listview.php:135
+#: geodirectory/listing-listview.php:147
+#: listing-listview.php:98
+#@ vh
+msgid "Sort by"
+msgstr ""
+
+#: geodirectory/listing-listview.php:136
+#: geodirectory/listing-listview.php:138
+#: listing-listview.php:99
+#: listing-listview.php:101
+#@ vh
+msgid "Best price"
+msgstr ""
+
+#: geodirectory/listing-listview.php:139
+#: listing-listview.php:102
+#@ vh
+msgid "Rating"
+msgstr ""
+
+#: geodirectory/popup-forms.php:16
+#@ vh
+msgid "Friend Name"
+msgstr ""
+
+#: geodirectory/popup-forms.php:34
+#: geodirectory/popup-forms.php:86
+#@ vh
+msgid "Your Name"
+msgstr ""
+
+#: geodirectory/popup-forms.php:52
+#@ vh
+msgid "Subject"
+msgstr ""
+
+#: geodirectory/geodir-author.php:59
+#: geodirectory/popup-forms.php:52
+#@ vh
+msgid "About"
+msgstr ""
+
+#: geodirectory/popup-forms.php:61
+#@ vh
+msgid "Comments"
+msgstr ""
+
+#: geodirectory/popup-forms.php:81
+#@ vh
+msgid "Send message to"
+msgstr ""
+
+#: geodirectory/popup-forms.php:104
+#@ vh
+msgid "Contact info"
+msgstr ""
+
+#: geodirectory/popup-forms.php:111
+#@ vh
+msgid "Message"
+msgstr ""
+
+#: geodirectory/preview-buttons.php:26
+#, php-format
+#@ vh
+msgid "This is a preview of your listing and its not published yet. If there is something wrong then \"Edit\" or if you want to add your listing then click on \"Publish\". Your %s listing will be published for %s days"
+msgstr ""
+
+#: geodirectory/preview-buttons.php:27
+#@ vh
+msgid "This is a preview of your listing and its not updated yet. If there is something wrong then \"Edit\" or if you want to update listing then click on \"Update now\""
+msgstr ""
+
+#: functions.php:917
+#: functions.php:1089
+#: functions.php:1114
+#: functions.php:1117
+#@ vh
+msgid "Location:"
+msgstr ""
+
+#: functions.php:1090
+#: header.php:509
+#@ vh
+msgid "When:"
+msgstr ""
+
+#: functions.php:1097
+#: header.php:510
+#@ vh
+msgid "People:"
+msgstr ""
+
+#: functions.php:916
+#: functions.php:1106
+#@ vh
+msgid "Keyword:"
+msgstr ""
+
+#: functions.php:1107
+#@ vh
+msgid "Category:"
+msgstr ""
+
+#: header.php:137
+#: header.php:139
+#@ vh
+msgid "Add property"
+msgstr ""
+
+#: header.php:162
+#@ vh
+msgid "Join SkyDirectory!"
+msgstr ""
+
+#: header.php:164
+#: header.php:174
+#@ vh
+msgid "Sign In"
+msgstr ""
+
+#: header.php:166
+#@ vh
+msgid "Username"
+msgstr ""
+
+#: header.php:167
+#@ vh
+msgid "Password"
+msgstr ""
+
+#: header.php:170
+#@ vh
+msgid "Remember me"
+msgstr ""
+
+#: header.php:172
+#@ vh
+msgid "Forgot password?"
+msgstr ""
+
+#: header.php:178
+#: header.php:185
+#@ vh
+msgid "Register"
+msgstr ""
+
+#: header.php:181
+#@ vh
+msgid "Full name"
+msgstr ""
+
+#: header.php:378
+#: header.php:446
+#@ vh
+msgid "View video"
+msgstr ""
+
+#: header.php:381
+#: header.php:449
+#@ vh
+msgid "Maximize gallery"
+msgstr ""
+
+#: header.php:486
+#@ vh
+msgid "of"
+msgstr ""
+
+#: header.php:521
+#@ vh
+msgid "Book now!"
+msgstr ""
+
+#: header.php:538
+#@ vh
+msgid "for selected dates"
+msgstr ""
+
+#: functions.php:1118
+#@ vh
+msgid "Type:"
+msgstr ""
+
+#: functions.php:1125
+#@ vh
+msgid "Contract:"
+msgstr ""
+
+#: header.php:684
+#@ vh
+msgid "Rent Price"
+msgstr ""
+
+#: header.php:685
+#@ vh
+msgid "Per month"
+msgstr ""
+
+#: header.php:696
+#@ vh
+msgid "Area"
+msgstr ""
+
+#: header.php:697
+#@ vh
+msgid "Square meters"
+msgstr ""
+
+#: header.php:708
+#@ vh
+msgid "Rooms"
+msgstr ""
+
+#: header.php:719
+#@ vh
+msgid "Bathrooms"
+msgstr ""
+
+#: index.php:57
+#@ vh
+msgid "Nothing Found!"
+msgstr ""
+
+#: index.php:64
+#@ vh
+msgid "Sorry, nothing found!"
+msgstr ""
+
+#: loop-standard.php:69
+#@ vh
+msgid "No excerpt for this posting."
+msgstr ""
+
+#: geodirectory/gd_place-comments.php:77
+#@ vh
+msgid "Add comment:"
+msgstr ""
+
+#: search.php:23
+#, php-format
+#@ vh
+msgid "Search Results for: %s"
+msgstr ""
+
+#: search.php:25
+#@ vh
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:52
+#@ vh
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: searchform.php:9
+#: searchform.php:32
+#@ vh
+msgid "Search"
+msgstr ""
+
+#: vc_templates/post_block/_item.php:45
+#: vc_templates/vc_posts_slider.php:151
+#, php-format
+#@ vh
+msgid "Permalink to %s"
+msgstr ""
+
+#: vc_templates/vc_gallery.php:124
+#@ vh
+msgid "more photos"
+msgstr ""
+
+#: vc_templates/vc_posts_grid.php:128
+#@ vh
+msgid "All"
+msgstr ""
+
+#: vc_templates/vc_posts_grid.php:159
+#: vc_templates/vc_posts_slider.php:191
+#@ vh
+msgid "Nothing found."
+msgstr ""
+
+#: comments.php:84
+#: geodir-comments.php:84
+#@ vh
+msgid "Have you been here?"
+msgstr ""
+
+#: comments.php:98
+#: geodir-comments.php:98
+#@ vh
+msgid "Leave a review on"
+msgstr ""
+
+#: comments.php:84
+#: comments.php:100
+#: geodir-comments.php:84
+#: geodir-comments.php:100
+#@ vh
+msgid "Add review"
+msgstr ""
+
+#: comments.php:107
+#: geodir-comments.php:107
+#@ vh
+msgid "Add a comment"
+msgstr ""
+
+#: functions/visual_composer_extended.php:48
+#: functions/visual_composer_extended.php:75
+#: functions/visual_composer_extended.php:256
+#: functions/visual_composer_extended.php:297
+#: functions/visual_composer_extended.php:344
+#: functions/visual_composer_extended.php:377
+#: functions/visual_composer_extended.php:416
+#: functions/visual_composer_extended.php:448
+#: functions/visual_composer_extended.php:501
+#@ vh
+msgid "by Sky"
+msgstr ""
+
+#: functions/visual_composer_extended.php:260
+#: functions/visual_composer_extended.php:301
+#: functions/visual_composer_extended.php:348
+#: functions/visual_composer_extended.php:381
+#: functions/visual_composer_extended.php:505
+#@ vh
+msgid "Primary title"
+msgstr ""
+
+#: functions/visual_composer_extended.php:263
+#: functions/visual_composer_extended.php:304
+#: functions/visual_composer_extended.php:351
+#: functions/visual_composer_extended.php:384
+#@ vh
+msgid "Primary title for this module."
+msgstr ""
+
+#: functions/visual_composer_extended.php:270
+#: functions/visual_composer_extended.php:311
+#: functions/visual_composer_extended.php:358
+#: functions/visual_composer_extended.php:391
+#@ vh
+msgid "Secondary title for this module."
+msgstr ""
+
+#: functions/visual_composer_extended.php:325
+#@ vh
+msgid "Module will display these country pictures. Example - Italy:Rome,Spain:Barcelona,France:Paris"
+msgstr ""
+
+#: functions/visual_composer_extended.php:508
+#@ vh
+msgid "Primary module title."
+msgstr ""
+
+#: functions/widgets/advertisement.php:15
+#@ vh
+msgid "Sky - Advertisement"
+msgstr ""
+
+#: functions/widgets/contactform.php:12
+#@ vh
+msgid "Sky - Contact Form"
+msgstr ""
+
+#: functions/widgets/googlemap.php:13
+#@ vh
+msgid "Sky - Google map"
+msgstr ""
+
+#: functions/widgets/recent-posts-plus.php:79
+#@ vh
+msgid "Sky - Recent Posts Plus"
+msgstr ""
+
+#: functions/widgets/social_links.php:13
+#@ vh
+msgid "Sky - Social Network links"
+msgstr ""
+
+#: functions.php:124
+#@ vh
+msgid "Listings"
+msgstr ""
+
+#: functions.php:1125
+#: functions.php:1319
+#@ vh
+msgid "For Sale"
+msgstr "something"
+
+#: functions.php:1323
+#@ vh
+msgid "For Rent"
+msgstr ""
+
+#: functions.php:1969
+#: functions.php:2049
+#@ vh
+msgid "(Edit)"
+msgstr ""
+
+#: functions.php:2017
+#: functions.php:2127
+#@ vh
+msgid "replies"
+msgstr ""
+
+#: geodirectory/gd_place-comments.php:79
+#@ vh
+msgid "Add commentz"
+msgstr ""
+
+#: single.php:72
+#@ vh
+msgid "Previous blog entry"
+msgstr ""
+
+#: single.php:84
+#@ vh
+msgid "Next blog entry"
+msgstr ""
+
+#: comments.php:40
+#: geodir-comments.php:40
+#, php-format
+#@ vh
+msgid "<span class=\"post_comment_title\">One review</span> %2$s"
+msgid_plural "<span class=\"post_comment_title\">%1$s reviews</span> %2$s"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:44
+#: geodir-comments.php:44
+#, php-format
+#@ vh
+msgid "<span class=\"post_comment_title\">%1$s comment</span>"
+msgid_plural "<span class=\"post_comment_title\">%1$s comments</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: geodirectory/geodir-author.php:68
+#@ vh
+msgid "Contact"
+msgstr ""
+
+#: geodirectory/geodir-author.php:69
+#@ vh
+msgid "via social networks"
+msgstr ""
+
+#: geodirectory/listing-detail.php:269
+#@ vh
+msgid "Share:"
+msgstr ""
+
+#: header.php:599
+#@ vh
+msgid "listings"
+msgstr ""
+
+#. translators: 1: user profile link, 2: user name, 3: activity permalink, 4: activity timestamp
+#: buddypress/activity/comment.php:27
+#, php-format
+#@ vh
+msgid "<a href=\"%1$s\">%2$s</a> replied <a href=\"%3$s\" class=\"activity-time-since\"><span class=\"time-since\">%4$s</span></a>"
+msgstr ""
+
+#: buddypress/activity/comment.php:43
+#@ vh
+msgid "Delete"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:320
+#, php-format
+#@ vh
+msgid "Sorry, but you do not have the correct permissions to install the %1$s plugin."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %1$s plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:330
+#, php-format
+#@ vh
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:335
+#, php-format
+#@ vh
+msgid "Sorry, but you do not have the correct permissions to update the %1$s plugin."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %1$s plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:350
+#, php-format
+#@ vh
+msgid "Sorry, but you do not have the correct permissions to activate the %1$s plugin."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %1$s plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:374
+#, php-format
+#@ tgmpa
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:375
+#, php-format
+#@ tgmpa
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:378
+#@ tgmpa
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:496
+#@ tgmpa
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:497
+#@ tgmpa
+msgid "Update Required"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:614
+#@ tgmpa
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:822
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3541
+#@ tgmpa
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:937
+#@ tgmpa
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:937
+#: functions/tgm-activation/class-tgm-plugin-activation.php:941
+#@ tgmpa
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:941
+#@ tgmpa
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:1132
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2939
+#@ tgmpa
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:1958
+#, php-format
+#@ tgmpa
+msgctxt "%s = version number"
+msgid "TGMPA v%s"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2268
+#@ tgmpa
+msgid "External Source"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2303
+#@ tgmpa
+msgid "Required Update not Available"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2306
+#@ tgmpa
+msgid "Requires Update"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2309
+#@ tgmpa
+msgid "Update recommended"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2317
+#, php-format
+#@ tgmpa
+msgctxt "%1$s = install status, %2$s = update status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2366
+#, php-format
+#@ tgmpa
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2370
+#, php-format
+#@ tgmpa
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2374
+#, php-format
+#@ tgmpa
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2378
+#, php-format
+#@ tgmpa
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2471
+#@ tgmpa
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2479
+#@ tgmpa
+msgid "Installed version:"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2487
+#@ tgmpa
+msgid "Minimum required version:"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2499
+#@ tgmpa
+msgid "Available version:"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2523
+#, php-format
+#@ tgmpa
+msgid "No plugins to install, update or activate. <a href=\"%1$s\">Return to the Dashboard</a>"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2545
+#@ tgmpa
+msgid "Version"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2599
+#, php-format
+#@ tgmpa
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2605
+#, php-format
+#@ tgmpa
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Update %2$s"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2611
+#, php-format
+#@ tgmpa
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Activate %2$s"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2682
+#@ tgmpa
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2756
+#@ tgmpa
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2758
+#@ tgmpa
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2796
+#@ tgmpa
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:2900
+#@ tgmpa
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: functions/tgm-activation/class-tgm-plugin-activation.php:3461
+#, php-format
+#@ tgmpa
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:234
+#: functions/visual_composer_extended.php:666
+#: functions/visual_composer_extended.php:802
+#@ vh
+msgid "Post type"
+msgstr ""
+
+#: functions/visual_composer_extended.php:237
+#@ vh
+msgid "From which post type to query the posts? Default gd_place"
+msgstr ""
+
+#: functions/visual_composer_extended.php:241
+#@ vh
+msgid "Post taxonomy"
+msgstr ""
+
+#: functions/visual_composer_extended.php:244
+#@ vh
+msgid "From which custom post taxonomy to query the posts? Default gd_placecategory"
+msgstr ""
+
+#: functions/visual_composer_extended.php:531
+#@ vh
+msgid "GD Homepage map"
+msgstr ""
+
+#: functions/visual_composer_extended.php:535
+#: functions/visual_composer_extended.php:595
+#: functions/visual_composer_extended.php:662
+#: functions/visual_composer_extended.php:764
+#: functions/visual_composer_extended.php:773
+#: functions/visual_composer_extended.php:798
+#: functions/visual_composer_extended.php:900
+#: functions/visual_composer_extended.php:918
+#@ vh
+msgid "by GeoDirectory"
+msgstr ""
+
+#: functions/visual_composer_extended.php:539
+#: functions/visual_composer_extended.php:599
+#@ vh
+msgid "Width"
+msgstr ""
+
+#: functions/visual_composer_extended.php:542
+#: functions/visual_composer_extended.php:602
+#@ vh
+msgid "A number of pixels or percent (default = 960px)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:546
+#: functions/visual_composer_extended.php:606
+#@ vh
+msgid "Height"
+msgstr ""
+
+#: functions/visual_composer_extended.php:549
+#: functions/visual_composer_extended.php:609
+#@ vh
+msgid "A number of pixels or percent (default = 425px)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:553
+#: functions/visual_composer_extended.php:613
+#@ vh
+msgid "Maptype"
+msgstr ""
+
+#: functions/visual_composer_extended.php:556
+#: functions/visual_composer_extended.php:616
+#@ vh
+msgid "One of HYBRID, SATELLITE or ROADMAP (default = ROADMAP) – not case sensitive"
+msgstr ""
+
+#: functions/visual_composer_extended.php:560
+#: functions/visual_composer_extended.php:620
+#@ vh
+msgid "Zoom"
+msgstr ""
+
+#: functions/visual_composer_extended.php:563
+#: functions/visual_composer_extended.php:623
+#@ vh
+msgid "A number between 1 (narrowest) or 19 (widest) (default = 13)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:567
+#: functions/visual_composer_extended.php:627
+#@ vh
+msgid "Autozoom"
+msgstr ""
+
+#: functions/visual_composer_extended.php:570
+#: functions/visual_composer_extended.php:577
+#: functions/visual_composer_extended.php:584
+#: functions/visual_composer_extended.php:630
+#: functions/visual_composer_extended.php:637
+#: functions/visual_composer_extended.php:644
+#: functions/visual_composer_extended.php:651
+#: functions/visual_composer_extended.php:690
+#: functions/visual_composer_extended.php:697
+#: functions/visual_composer_extended.php:704
+#: functions/visual_composer_extended.php:746
+#: functions/visual_composer_extended.php:833
+#: functions/visual_composer_extended.php:847
+#: functions/visual_composer_extended.php:868
+#: functions/visual_composer_extended.php:875
+#: functions/visual_composer_extended.php:882
+#: functions/visual_composer_extended.php:889
+#: functions/visual_composer_extended.php:946
+#@ vh
+msgid "True or False (default = false)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:574
+#: functions/visual_composer_extended.php:634
+#@ vh
+msgid "Child_collapse"
+msgstr ""
+
+#: functions/visual_composer_extended.php:581
+#: functions/visual_composer_extended.php:641
+#@ vh
+msgid "Scrollwheel"
+msgstr ""
+
+#: functions/visual_composer_extended.php:591
+#@ vh
+msgid "GD Listing map"
+msgstr ""
+
+#: functions/visual_composer_extended.php:648
+#@ vh
+msgid "Sticky"
+msgstr ""
+
+#: functions/visual_composer_extended.php:658
+#@ vh
+msgid "GD Listing slider"
+msgstr ""
+
+#: functions/visual_composer_extended.php:669
+#: functions/visual_composer_extended.php:805
+#@ vh
+msgid "The slug for the post_type (default = gd_place)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:673
+#: functions/visual_composer_extended.php:809
+#@ vh
+msgid "Category"
+msgstr ""
+
+#: functions/visual_composer_extended.php:676
+#: functions/visual_composer_extended.php:812
+#@ vh
+msgid "ID number of the category to show (default = 0 for all)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:680
+#: functions/visual_composer_extended.php:816
+#: functions/visual_composer_extended.php:922
+#@ vh
+msgid "Post number"
+msgstr ""
+
+#: functions/visual_composer_extended.php:683
+#: functions/visual_composer_extended.php:819
+#: functions/visual_composer_extended.php:907
+#: functions/visual_composer_extended.php:925
+#@ vh
+msgid "Number of posts to show (default = 5)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:687
+#@ vh
+msgid "Slideshow"
+msgstr ""
+
+#: functions/visual_composer_extended.php:694
+#@ vh
+msgid "Animation loop"
+msgstr ""
+
+#: functions/visual_composer_extended.php:701
+#@ vh
+msgid "Direction nav"
+msgstr ""
+
+#: functions/visual_composer_extended.php:708
+#@ vh
+msgid "Slideshow speed"
+msgstr ""
+
+#: functions/visual_composer_extended.php:711
+#@ vh
+msgid "A positive number of milliseconds (default = 5000)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:715
+#@ vh
+msgid "Animation speed"
+msgstr ""
+
+#: functions/visual_composer_extended.php:718
+#@ vh
+msgid "A positive number of milliseconds (default = 600)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:722
+#@ vh
+msgid "Animation"
+msgstr ""
+
+#: functions/visual_composer_extended.php:725
+#@ vh
+msgid "Either slide or fade (default = slide)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:729
+#@ vh
+msgid "Order by"
+msgstr ""
+
+#: functions/visual_composer_extended.php:732
+#: functions/visual_composer_extended.php:840
+#: functions/visual_composer_extended.php:960
+#@ vh
+msgid "One of az, latest, featured, high_review, high_rating, random (default = latest)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:736
+#@ vh
+msgid "Show title"
+msgstr ""
+
+#: functions/visual_composer_extended.php:739
+#@ vh
+msgid "True or False (default = false)(this is the post title over image)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:743
+#: functions/visual_composer_extended.php:865
+#@ vh
+msgid "Show featured only"
+msgstr ""
+
+#: functions/visual_composer_extended.php:753
+#@ vh
+msgid "the title for the title of the slider"
+msgstr ""
+
+#: functions/visual_composer_extended.php:760
+#@ vh
+msgid "GD Login box"
+msgstr ""
+
+#: functions/visual_composer_extended.php:769
+#@ vh
+msgid "GD Post category"
+msgstr ""
+
+#: functions/visual_composer_extended.php:777
+#@ vh
+msgid "Category limit"
+msgstr ""
+
+#: functions/visual_composer_extended.php:780
+#@ vh
+msgid "Number of categories to show (default = 15)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:787
+#@ vh
+msgid "(default = ‘Popular Categories’)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:794
+#@ vh
+msgid "GD Post view"
+msgstr ""
+
+#: functions/visual_composer_extended.php:823
+#: functions/visual_composer_extended.php:936
+#@ vh
+msgid "Layout"
+msgstr ""
+
+#: functions/visual_composer_extended.php:826
+#: functions/visual_composer_extended.php:939
+#@ vh
+msgid "Number of columns to show (default = 2)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:830
+#: functions/visual_composer_extended.php:943
+#@ vh
+msgid "Add location filter"
+msgstr ""
+
+#: functions/visual_composer_extended.php:837
+#: functions/visual_composer_extended.php:957
+#@ vh
+msgid "List sort"
+msgstr ""
+
+#: functions/visual_composer_extended.php:844
+#@ vh
+msgid "Use viewing post type"
+msgstr ""
+
+#: functions/visual_composer_extended.php:851
+#: functions/visual_composer_extended.php:964
+#@ vh
+msgid "Character count"
+msgstr ""
+
+#: functions/visual_composer_extended.php:854
+#: functions/visual_composer_extended.php:967
+#@ vh
+msgid "Number of characters to show from the Excerpt (Min/default = 20)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:858
+#: functions/visual_composer_extended.php:950
+#@ vh
+msgid "Listing width"
+msgstr ""
+
+#: functions/visual_composer_extended.php:861
+#: functions/visual_composer_extended.php:953
+#@ vh
+msgid "A percent between 20 and 100 (default = ‘’)"
+msgstr ""
+
+#: functions/visual_composer_extended.php:872
+#@ vh
+msgid "Show special only"
+msgstr ""
+
+#: functions/visual_composer_extended.php:879
+#@ vh
+msgid "With pics only"
+msgstr ""
+
+#: functions/visual_composer_extended.php:886
+#@ vh
+msgid "With videos only"
+msgstr ""
+
+#: functions/visual_composer_extended.php:896
+#@ vh
+msgid "GD Recent reviews"
+msgstr ""
+
+#: functions/visual_composer_extended.php:904
+#@ vh
+msgid "Count"
+msgstr ""
+
+#: functions/visual_composer_extended.php:914
+#@ vh
+msgid "GD Related listings"
+msgstr ""
+
+#: functions/visual_composer_extended.php:929
+#@ vh
+msgid "Relate to"
+msgstr ""
+
+#: functions/visual_composer_extended.php:932
+#@ vh
+msgid "Either category or tags (default=category)"
+msgstr ""
+
+#: functions.php:391
+#@ vh
+msgid "Preview"
+msgstr ""
+
+#: functions.php:392
+#@ vh
+msgid "Once you publish your listing, markers will be visible here."
+msgstr ""
+
+#: functions.php:2152
+#@ vh
+msgid "No Photo"
+msgstr ""
+
+#: functions.php:2154
+#, php-format
+#@ vh
+msgid "%d Photo"
+msgstr ""
+
+#: functions.php:2156
+#, php-format
+#@ vh
+msgid "%d Photos"
+msgstr ""
+
+#: functions.php:2166
+#@ vh
+msgid "More"
+msgstr ""
+
+#: geodirectory/listing-detail.php:201
+#@ vh
+msgid "Event dates"
+msgstr ""
+
+#: geodirectory/listing-detail.php:209
+#@ vh
+msgid "Event times"
+msgstr ""
+
+#: geodirectory/listing-listview.php:30
+#: listing-listview.php:20
+#@ vh
+msgid "Add filters"
+msgstr ""
+
+#: geodirectory/listing-listview.php:145
+#@ vh
+msgid "events"
+msgstr ""
+
+#: geodirectory/listing-listview.php:148
+#: geodirectory/listing-listview.php:150
+#@ vh
+msgid "All events"
+msgstr ""
+
+#: geodirectory/listing-listview.php:151
+#@ vh
+msgid "Today"
+msgstr ""
+
+#: geodirectory/listing-listview.php:152
+#@ vh
+msgid "Upcoming"
+msgstr ""
+
+#: geodirectory/listing-listview.php:153
+#@ vh
+msgid "Past"
+msgstr ""
+

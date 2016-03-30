@@ -1,0 +1,181 @@
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.profile-editor td {
+	padding: 10px;
+}
+
+.profile-editor th {
+	padding: 10px 0;
+}
+
+.profile-editor.values {
+	width: 30%;
+	float: left;
+	clear: none;
+}
+
+.profile-editor.rules {
+	width: 40%;
+	float: left;
+	clear: none;
+}
+
+.wp-core-ui .button-primary.delete {
+	background: #cd0000;
+	border-color: #c40000;
+}
+
+.profile-editor.added thead {
+	background-color: #fff;
+}
+
+.profile-editor.added tbody > tr:nth-child(odd) {
+	background-color: #f9f9f9;
+}
+
+.profile-editor.added tbody > tr:nth-child(even) {
+	background-color: #fff;
+}
+
+.profile-editor.values #pe-name-section,
+.profile-editor.values #pe-label-section,
+.profile-editor.values #pe-placeholder-section,
+.profile-editor.values #pe-value-section,
+.profile-editor.values #pe-description-section,
+.profile-editor.rules #pe-empty-section,
+.profile-editor.rules #pe-syntax-section,
+.profile-editor.rules #pe-min-section,
+.profile-editor.rules #pe-max-section,
+.profile-editor.rules #pe-max-size-section,
+.profile-editor.rules #pe-extensions-section,
+.profile-editor.rules #pe-registration-section {
+	display: none;
+}
+
+.profile-editor .pe-order input {
+	width: 40px;
+	text-align: center;
+}
+
+.profile-editor.added td .pe-input-label {
+	min-width: 180px;
+	display: block;
+	float: left;
+	text-align: right;
+	padding-right: 20px;
+	min-height: 26px;
+	line-height: 26px;
+	margin-top: 2px;
+}
+
+.profile-editor.added td .pe-checkbox-label {
+	min-width: 180px;
+	display: block;
+	float: left;
+	text-align: right;
+	padding-right: 20px;
+	height: 16px;
+	line-height: 16px;
+	margin-top: 3px;
+}
+
+.pe-table-gap:before,
+.pe-table-gap:after {
+	margin-bottom: 1px;
+}
+
+.profile-editor.added {
+	border: 1px solid #e5e5e5;
+}
+
+.profile-editor.added th {
+	font-size: 14px;
+	color: #333;
+	font-weight: 400;
+	border-bottom: 1px solid #e1e1e1;
+	padding: 7px 7px 8px 10px;
+}
+
+.profile-editor.added td {
+	padding: 8px 10px;
+}
+
+.profile-editor.added .button-primary {
+	width: 100%;
+}
+
+/* Admin */
+
+.pe-uploaded-file .pe-close-icon {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	top: 0;
+	left: 0;
+}
+
+.pe-close-icon {
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 15px;
+	right: 5px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.pe-close-icon:before,
+.pe-close-icon:after {
+	content: '';
+	width: 24px;
+	height: 3px;
+	background: #000;
+	display: block;
+	transform: rotate(45deg);
+	top: 8px;
+	left: -2px;
+	position: relative;
+	border-radius: 100%;
+
+	-webkit-transition: all 0.2s ease-in-out 0s;
+	-moz-transition: all 0.2s ease-in-out 0s;
+	-o-transition: all 0.2s ease-in-out 0s;
+	-ms-transition: all 0.2s ease-in-out 0s;
+	transition: all 0.2s ease-in-out 0s;
+}
+
+.pe-close-icon:after {
+	transform: rotate(-45deg);
+	top: 6px;
+}
+
+.hidden {
+	display: none !important;
+}
+
+#login_page_url,
+#register_page_url,
+#redirect_url {
+	min-width: 380px;
+}
+
+.form-table.profile-editor.values input,
+.form-table.profile-editor.rules input[type=text] {
+	min-width: 235px;
+}
+
+.pe-uploaded-image,
+.pe-uploaded-file {
+	position: relative;
+	padding: 10px 0;
+	display: inline-block;
+}

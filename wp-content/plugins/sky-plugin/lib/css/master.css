@@ -1,0 +1,15 @@
+
+.ac-device {
+	background: url(../images/phone.png) no-repeat;
+	width: 294px;
+	height: 618px;
+	margin: 0 auto;
+	position: relative;
+	background-size: 294px 618px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}

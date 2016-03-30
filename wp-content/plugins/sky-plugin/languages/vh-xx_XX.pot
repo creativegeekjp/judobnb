@@ -1,0 +1,778 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sky Functionality v2.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-08-21 11:58:55+0100\n"
+"Last-Translator: Cohhe <support@cohhe.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Language: \n"
+"X-Poedit-Country: \n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: lib/functions/general.php:52
+#@ default
+msgid "Links"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:57
+#, php-format
+#@ vh
+msgid "about %d seconds ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:58
+#@ vh
+msgid "about a minute ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:59
+#, php-format
+#@ vh
+msgid "about %d minutes ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:60
+#@ vh
+msgid "about an hour ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:61
+#, php-format
+#@ vh
+msgid "about %d hours ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:62
+#@ vh
+msgid "about a day ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:63
+#, php-format
+#@ vh
+msgid "about %d days ago"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:12
+#@ vh
+msgid "Displays a twitter feed"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:19
+#@ vh
+msgid "Recent Tweets"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:92
+#: lib/widgets/widget-other-listings.php:137
+#: lib/widgets/widget-similar-listings.php:170
+#: lib/widgets/widget-useful-links.php:152
+#@ vh
+msgid "Title:"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:96
+#@ vh
+msgid "Usernames (separate with comas):"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:100
+#@ vh
+msgid "height and width of avatar if displayed (54px max)(optional)"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:104
+#@ vh
+msgid "How many tweets to display?"
+msgstr ""
+
+#: lib/functions/geodirectory.php:191
+#@ vh
+msgid "Property details"
+msgstr ""
+
+#: lib/functions/geodirectory.php:320
+#@ vh
+msgid "Images"
+msgstr ""
+
+#: lib/functions/geodirectory.php:328
+#@ vh
+msgid "Drop images here to upload or"
+msgstr ""
+
+#: lib/functions/geodirectory.php:328
+#@ vh
+msgid "Select files"
+msgstr ""
+
+#: lib/functions/geodirectory.php:329
+#: lib/functions/geodirectory.php:1542
+#@ vh
+msgid "Select Files"
+msgstr ""
+
+#: lib/functions/geodirectory.php:341
+#@ vh
+msgid "Please drag &amp; drop the images to rearrange the order"
+msgstr ""
+
+#: lib/functions/geodirectory.php:347
+#@ vh
+msgid "Select package & Add"
+msgstr ""
+
+#: lib/functions/geodirectory.php:358
+#@ vh
+msgid "Type 64 into this box"
+msgstr ""
+
+#: lib/functions/geodirectory.php:366
+#@ vh
+msgid "Review & Add"
+msgstr ""
+
+#: lib/functions/geodirectory.php:367
+#@ vh
+msgid "Note: You will be able to see a preview in the next page"
+msgstr ""
+
+#: lib/functions/geodirectory.php:604
+#: lib/functions/geodirectory.php:2687
+#: lib/functions/shortcodes.php:268
+#: lib/functions/shortcodes.php:503
+#@ vh
+msgid "View"
+msgstr ""
+
+#: lib/functions/geodirectory.php:964
+#@ vh
+msgid "Property location"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1019
+#@ vh
+msgid "Default"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1020
+#@ vh
+msgid "Satellite"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1021
+#@ vh
+msgid "Hybrid"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1023
+#@ vh
+msgid "Default Map"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1024
+#@ vh
+msgid "Satellite Map"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1025
+#@ vh
+msgid "Hybrid Map"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1187
+#@ vh
+msgid "Choose"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1229
+#: lib/functions/geodirectory.php:3248
+#@ vh
+msgid "Select"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1444
+#@ vh
+msgid "Only select"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1444
+#@ vh
+msgid " categories for this package."
+msgstr ""
+
+#: lib/functions/geodirectory.php:1463
+#@ vh
+msgid "Select Category"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1596
+#, php-format
+#@ vh
+msgid "Add listing in %s category"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1604
+#, php-format
+#@ vh
+msgid "Set %s as default category"
+msgstr ""
+
+#: lib/functions/geodirectory.php:1612
+#@ vh
+msgid "Add listing in category"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2123
+#@ vh
+msgid "Click on a star to add rating"
+msgstr ""
+
+#: lib/functions/shortcodes.php:206
+#@ vh
+msgid "for sale"
+msgstr ""
+
+#: lib/functions/shortcodes.php:207
+#: lib/functions/shortcodes.php:470
+#@ vh
+msgid "sale price"
+msgstr ""
+
+#: lib/functions/shortcodes.php:209
+#@ vh
+msgid "rent per month"
+msgstr ""
+
+#: lib/functions/geodirectory.php:738
+#: lib/functions/shortcodes.php:376
+#: lib/functions/shortcodes.php:402
+#: lib/functions/shortcodes.php:405
+#@ vh
+msgid "For Sale"
+msgstr ""
+
+#: lib/functions/shortcodes.php:379
+#@ vh
+msgid "For Rent"
+msgstr ""
+
+#: lib/functions/shortcodes.php:467
+#: lib/functions/shortcodes.php:470
+#: lib/functions/shortcodes.php:473
+#@ vh
+msgid "from"
+msgstr ""
+
+#: lib/functions/shortcodes.php:467
+#@ vh
+msgid "per month"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2150
+#: lib/functions/geodirectory.php:2152
+#: lib/functions/geodirectory.php:2377
+#: lib/functions/geodirectory.php:2386
+#: lib/functions/geodirectory.php:2395
+#: lib/functions/geodirectory.php:2404
+#: lib/functions/shortcodes.php:473
+#@ vh
+msgid "per night"
+msgstr ""
+
+#: lib/functions/shortcodes.php:478
+#@ default
+msgid "View properties"
+msgstr ""
+
+#: lib/functions/shortcodes.php:615
+#: lib/widgets/widget-recent-activity.php:55
+#@ vh
+msgid "star. Very bad!"
+msgstr ""
+
+#: lib/functions/shortcodes.php:617
+#: lib/widgets/widget-recent-activity.php:57
+#@ vh
+msgid "stars. Bad!"
+msgstr ""
+
+#: lib/functions/shortcodes.php:619
+#: lib/widgets/widget-recent-activity.php:59
+#@ vh
+msgid "stars. Good!"
+msgstr ""
+
+#: lib/functions/shortcodes.php:621
+#: lib/widgets/widget-recent-activity.php:61
+#@ vh
+msgid "stars. Very good!"
+msgstr ""
+
+#: lib/functions/shortcodes.php:623
+#: lib/widgets/widget-recent-activity.php:63
+#@ vh
+msgid "stars. Excellent!"
+msgstr ""
+
+#: lib/functions/shortcodes.php:636
+#: lib/widgets/widget-recent-activity.php:82
+#@ vh
+msgid "rated"
+msgstr ""
+
+#: lib/functions/shortcodes.php:676
+#: lib/widgets/widget-recent-activity.php:116
+#@ vh
+msgid "commented on"
+msgstr ""
+
+#: lib/functions/shortcodes.php:706
+#@ vh
+msgid "added new listing"
+msgstr ""
+
+#: lib/functions/shortcodes.php:827
+#: lib/functions/shortcodes.php:856
+#@ vh
+msgid "ago"
+msgstr ""
+
+#: lib/functions/shortcodes.php:829
+#: lib/functions/shortcodes.php:852
+#@ vh
+msgid "Read article"
+msgstr ""
+
+#: lib/functions/shortcodes.php:836
+#: lib/functions/shortcodes.php:872
+#@ vh
+msgid ", "
+msgstr ""
+
+#: lib/functions/shortcodes.php:843
+#: lib/functions/shortcodes.php:879
+#@ vh
+msgid "Author:"
+msgstr ""
+
+#: lib/functions/shortcodes.php:59
+#: lib/functions/shortcodes.php:1022
+#@ vh
+msgid "listings"
+msgstr ""
+
+#: lib/widgets/twitter/twitter.php:14
+#@ vh
+msgid "Sky - Twitter"
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:11
+#@ vh
+msgid "Sky - Contact us"
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:14
+#@ vh
+msgid "Just a simple widget that displays your contact information."
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:103
+#@ vh
+msgid "Phone:"
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:108
+#@ vh
+msgid "Email:"
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:113
+#@ vh
+msgid "Facebook link:"
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:118
+#@ vh
+msgid "Twitter link:"
+msgstr ""
+
+#: lib/widgets/widget-other-listings.php:11
+#@ vh
+msgid "Sky - Other listings"
+msgstr ""
+
+#: lib/widgets/widget-other-listings.php:14
+#@ vh
+msgid "Just a simple widget that displays other listings."
+msgstr ""
+
+#: lib/widgets/widget-other-listings.php:55
+#@ vh
+msgid "by"
+msgstr ""
+
+#: lib/widgets/widget-other-listings.php:102
+#@ vh
+msgid "This user hasn't added other listings."
+msgstr ""
+
+#: lib/widgets/widget-recent-activity.php:11
+#@ vh
+msgid "Sky - Recent activity"
+msgstr ""
+
+#: lib/widgets/widget-recent-activity.php:14
+#@ vh
+msgid "Just a simple widget that displays recent activity for opened listing."
+msgstr ""
+
+#: lib/widgets/widget-recent-activity.php:135
+#@ vh
+msgid "There hasn't been any activity in this listing."
+msgstr ""
+
+#: lib/widgets/widget-recent-activity.php:171
+#@ vh
+msgid "Main title:"
+msgstr ""
+
+#: lib/widgets/widget-recent-activity.php:176
+#@ vh
+msgid "Secondary title:"
+msgstr ""
+
+#: lib/widgets/widget-recent-activity.php:181
+#@ vh
+msgid "Whats the limit?:"
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:11
+#@ vh
+msgid "Sky - Similar listings"
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:14
+#@ vh
+msgid "Just a simple widget that displays similar listings."
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:125
+#@ vh
+msgid "View all"
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:129
+#@ vh
+msgid "No listings to display."
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:175
+#@ vh
+msgid "Search listings by price range?:"
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:180
+#@ vh
+msgid "Whats the pricing range?:"
+msgstr ""
+
+#: lib/widgets/widget-similar-listings.php:185
+#@ vh
+msgid "Search listings by location?:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:11
+#@ vh
+msgid "Sky - Useful links"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:14
+#@ vh
+msgid "Just a simple widget that displays useful links."
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:157
+#@ vh
+msgid "Link 1 title:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:162
+#@ vh
+msgid "Link 1:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:167
+#@ vh
+msgid "Link 2 title:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:172
+#@ vh
+msgid "Link 2:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:177
+#@ vh
+msgid "Link 3 title:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:182
+#@ vh
+msgid "Link 3:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:187
+#@ vh
+msgid "Link 4 title:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:192
+#@ vh
+msgid "Link 4:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:197
+#@ vh
+msgid "Link 5 title:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:202
+#@ vh
+msgid "Link 5:"
+msgstr ""
+
+#: lib/widgets/widget-useful-links.php:207
+#@ vh
+msgid "Is this widget half width?:"
+msgstr ""
+
+#: plugin.php:78
+#@ default
+msgid "Save Changes"
+msgstr ""
+
+#: lib/functions/geodirectory.php:587
+#: lib/functions/geodirectory.php:2277
+#: lib/functions/geodirectory.php:2663
+#: lib/widgets/widget-other-listings.php:72
+#: lib/widgets/widget-similar-listings.php:97
+#@ vh
+msgid "Featured"
+msgstr ""
+
+#: lib/functions/geodirectory.php:686
+#: lib/functions/geodirectory.php:719
+#@ vh
+msgid "Keyword:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:687
+#: lib/functions/geodirectory.php:702
+#: lib/functions/geodirectory.php:727
+#: lib/functions/geodirectory.php:730
+#@ vh
+msgid "Location:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:703
+#@ vh
+msgid "When:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:710
+#@ vh
+msgid "People:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:720
+#@ vh
+msgid "Category:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:731
+#@ vh
+msgid "Type:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:738
+#@ vh
+msgid "Contract:"
+msgstr ""
+
+#: lib/functions/geodirectory.php:759
+#@ vh
+msgid "Rent Price"
+msgstr ""
+
+#: lib/functions/geodirectory.php:760
+#@ vh
+msgid "Per month"
+msgstr ""
+
+#: lib/functions/geodirectory.php:771
+#@ vh
+msgid "Area"
+msgstr ""
+
+#: lib/functions/geodirectory.php:772
+#@ vh
+msgid "Square meters"
+msgstr ""
+
+#: lib/functions/geodirectory.php:783
+#@ vh
+msgid "Rooms"
+msgstr ""
+
+#: lib/functions/geodirectory.php:794
+#@ vh
+msgid "Bathrooms"
+msgstr ""
+
+#: lib/functions/geodirectory.php:805
+#@ vh
+msgid "Bedrooms"
+msgstr ""
+
+#: lib/functions/geodirectory.php:838
+#@ vh
+msgid "More options"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2150
+#@ vh
+msgid "propertie, from"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2152
+#: lib/functions/geodirectory.php:2377
+#: lib/functions/geodirectory.php:2386
+#: lib/functions/geodirectory.php:2395
+#: lib/functions/geodirectory.php:2404
+#@ vh
+msgid "properties, from"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2156
+#@ vh
+msgid "propertie"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2158
+#@ vh
+msgid "events"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2170
+#: lib/functions/geodirectory.php:2211
+#@ vh
+msgid "Sorry, no matches were found."
+msgstr ""
+
+#: lib/functions/geodirectory.php:2332
+#@ vh
+msgid "Today"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2332
+#@ vh
+msgid "Tomorrow"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2332
+#@ vh
+msgid "This weekend"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2332
+#@ vh
+msgid "Next week"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2379
+#: lib/functions/geodirectory.php:2388
+#: lib/functions/geodirectory.php:2397
+#: lib/functions/geodirectory.php:2406
+#@ vh
+msgid "No properties listed"
+msgstr ""
+
+#: lib/functions/geodirectory.php:2751
+#@ vh
+msgid "No listings found which match your selection."
+msgstr ""
+
+#: lib/functions/geodirectory.php:3116
+#@ vh
+msgid "No Photo"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3118
+#, php-format
+#@ vh
+msgid "%d Photo"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3120
+#, php-format
+#@ vh
+msgid "%d Photos"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3459
+#@ vh
+msgid "Please enter Cardholder name"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3463
+#@ vh
+msgid "Please select card type"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3467
+#@ vh
+msgid "Please enter card number"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3471
+#@ vh
+msgid "Please enter expire date"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3625
+#@ vh
+msgid "Verified by owner"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3733
+#@ vh
+msgid "Featured image"
+msgstr ""
+
+#: lib/functions/geodirectory.php:3782
+#@ vh
+msgid "None"
+msgstr ""
+
+#: lib/functions/shortcodes.php:60
+#@ vh
+msgid "created by"
+msgstr ""
+
+#: lib/widgets/widget-contact-us.php:36
+#@ vh
+msgid "Call us"
+msgstr ""
+

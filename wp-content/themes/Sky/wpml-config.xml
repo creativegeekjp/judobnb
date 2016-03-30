@@ -1,0 +1,133 @@
+<wpml-config>
+    <custom-fields>
+        <custom-field action="translate">vh_android_market_link</custom-field>
+        <custom-field action="translate">geolocated</custom-field>
+        <custom-field action="copy">geolocation_city</custom-field>
+        <custom-field action="copy">geolocation_country_long</custom-field>
+        <custom-field action="copy">geolocation_country_short</custom-field>
+        <custom-field action="copy">geolocation_formatted_address</custom-field>
+        <custom-field action="copy">geolocation_lat</custom-field>
+        <custom-field action="copy">geolocation_long</custom-field>
+        <custom-field action="copy">geolocation_postcode</custom-field>
+        <custom-field action="translate">geolocation_state_long</custom-field>
+        <custom-field action="copy">geolocation_state_short</custom-field>
+        <custom-field action="copy">geolocation_street</custom-field>
+        <custom-field action="ignore">layouts</custom-field>
+        <custom-field action="copy">sbg_selected_sidebar</custom-field>
+        <custom-field action="copy">sbg_selected_sidebar_replacement</custom-field>
+        <custom-field action="copy">total_sales</custom-field>
+        <custom-field action="copy">vc_teaser</custom-field>
+        <custom-field action="copy">vhaccommodationexcerpt</custom-field>
+        <custom-field action="ignore">vh_external_link</custom-field>
+        <custom-field action="translate">_additional_settings</custom-field>
+        <custom-field action="ignore">_application</custom-field>
+        <custom-field action="translate">_backorders</custom-field>
+        <custom-field action="translate">_candidate_education</custom-field>
+        <custom-field action="ignore">_candidate_email</custom-field>
+        <custom-field action="translate">_candidate_experience</custom-field>
+        <custom-field action="ignore">_candidate_location</custom-field>
+        <custom-field action="ignore">_candidate_photo</custom-field>
+        <custom-field action="translate">_candidate_title</custom-field>
+        <custom-field action="ignore">_company_logo</custom-field>
+        <custom-field action="copy">_company_name</custom-field>
+        <custom-field action="translate">_company_tagline</custom-field>
+        <custom-field action="ignore">_company_twitter</custom-field>
+        <custom-field action="ignore">_company_website</custom-field>
+        <custom-field action="ignore">_downloadable</custom-field>
+        <custom-field action="translate">_featured</custom-field>
+        <custom-field action="copy">_filled</custom-field>
+        <custom-field action="ignore">_form</custom-field>
+        <custom-field action="ignore">_height</custom-field>
+        <custom-field action="ignore">_icl_lang_duplicate_of</custom-field>
+        <custom-field action="translate">_job_duration</custom-field>
+        <custom-field action="copy">_job_expires</custom-field>
+        <custom-field action="copy">_job_listing_duration</custom-field>
+        <custom-field action="copy">_job_listing_featured</custom-field>
+        <custom-field action="copy">_job_listing_limit</custom-field>
+        <custom-field action="copy">_job_location</custom-field>
+        <custom-field action="ignore">_length</custom-field>
+        <custom-field action="ignore">_links</custom-field>
+        <custom-field action="ignore">_locale</custom-field>
+        <custom-field action="ignore">_mail</custom-field>
+        <custom-field action="ignore">_mail_2</custom-field>
+        <custom-field action="ignore">_manage_stock</custom-field>
+        <custom-field action="ignore">_menu_item_classes</custom-field>
+        <custom-field action="ignore">_menu_item_custom</custom-field>
+        <custom-field action="ignore">_menu_item_menu_item_parent</custom-field>
+        <custom-field action="ignore">_menu_item_object</custom-field>
+        <custom-field action="ignore">_menu_item_object_id</custom-field>
+        <custom-field action="ignore">_menu_item_target</custom-field>
+        <custom-field action="ignore">_menu_item_type</custom-field>
+        <custom-field action="ignore">_menu_item_url</custom-field>
+        <custom-field action="ignore">_menu_item_xfn</custom-field>
+        <custom-field action="translate">_messages</custom-field>
+        <custom-field action="ignore">_oembed_29634221708855e3e2f00eeb36663077</custom-field>
+        <custom-field action="ignore">_price</custom-field>
+        <custom-field action="translate">_product_attributes</custom-field>
+        <custom-field action="ignore">_product_image_gallery</custom-field>
+        <custom-field action="copy">_purchase_note</custom-field>
+        <custom-field action="ignore">_regular_price</custom-field>
+        <custom-field action="copy">_resume_name_prefix</custom-field>
+        <custom-field action="ignore">_sale_price</custom-field>
+        <custom-field action="copy">_sale_price_dates_from</custom-field>
+        <custom-field action="copy">_sale_price_dates_to</custom-field>
+        <custom-field action="ignore">_sku</custom-field>
+        <custom-field action="ignore">_sold_individually</custom-field>
+        <custom-field action="ignore">_stock</custom-field>
+        <custom-field action="ignore">_stock_status</custom-field>
+        <custom-field action="ignore">_virtual</custom-field>
+        <custom-field action="ignore">_visibility</custom-field>
+        <custom-field action="ignore">_weight</custom-field>
+        <custom-field action="ignore">_width</custom-field>
+        <custom-field action="ignore">_wpb_vc_js_interface_version</custom-field>
+        <custom-field action="ignore">_wpb_vc_js_status</custom-field>
+        <custom-field action="ignore">_wp_attachment_context</custom-field>
+        <custom-field action="ignore">_wp_attachment_image_alt</custom-field>
+        <custom-field action="ignore">_wp_attachment_is_custom_background</custom-field>
+        <custom-field action="ignore">_wp_old_slug</custom-field>
+    </custom-fields>
+    <custom-types>
+        <custom-type translate="1">gd_place</custom-type>
+    </custom-types>
+    <taxonomies>
+        <taxonomy translate="1">gd_place_tags</taxonomy>
+        <taxonomy translate="1">gd_placecategory</taxonomy>
+    </taxonomies>
+    <language-switcher-settings>
+        <key name="icl_lang_sel_config">
+            <key name="font-current-normal">#444444</key>
+            <key name="font-current-hover">#000000</key>
+            <key name="background-current-normal">#ffffff</key>
+            <key name="background-current-hover">#eeeeee</key>
+            <key name="font-other-normal">#444444</key>
+            <key name="font-other-hover">#000000</key>
+            <key name="background-other-normal">#ffffff</key>
+            <key name="background-other-hover">#eeeeee</key>
+            <key name="border">#cdcdcd</key>
+        </key>
+        <key name="icl_lang_sel_footer_config">
+            <key name="font-current-normal">#444444</key>
+            <key name="font-current-hover">#000000</key>
+            <key name="background-current-normal">#ffffff</key>
+            <key name="background-current-hover">#eeeeee</key>
+            <key name="font-other-normal">#444444</key>
+            <key name="font-other-hover">#000000</key>
+            <key name="background-other-normal">#ffffff</key>
+            <key name="background-other-hover">#eeeeee</key>
+            <key name="border">#cdcdcd</key>
+        </key>    
+        <key name="icl_language_switcher_sidebar">0</key>  
+        <key name="icl_widget_title_show">0</key>
+        <key name="icl_lang_sel_type">dropdown</key>
+        <key name="icl_lso_link_empty">0</key>
+        <key name="icl_lso_flags">0</key>
+        <key name="icl_lso_native_lang">1</key>
+        <key name="icl_lso_display_lang">1</key>
+        <key name="icl_lang_sel_footer">0</key>
+        <key name="icl_post_availability">0</key>
+        <key name="icl_post_availability_position">below</key>
+        <key name="icl_post_availability_text">This post is also available in: %s</key>    
+    </language-switcher-settings>    
+</wpml-config>
+
+

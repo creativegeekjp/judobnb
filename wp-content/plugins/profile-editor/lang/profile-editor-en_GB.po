@@ -1,0 +1,872 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Profile editor v1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-04-30 15:16:04+0000\n"
+"Last-Translator: smaids <smaids2007@gmail.com1>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#. translators: plugin header field 'Name'
+#: includes/class-profile-editor-settings.php:80
+#: includes/class-profile-editor-settings.php:1972
+#: profile-editor.php:0
+#@ profile-editor
+msgid "Profile editor"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:109
+#: includes/class-profile-editor-settings.php:121
+#@ profile-editor
+msgid "Settings"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:122
+#@ profile-editor
+msgid "These are your standard settings."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:126
+#@ profile-editor
+msgid "Login page URL"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:127
+#@ profile-editor
+msgid "URL to a page where you placed the login form shortcode - [profile_editor_login]."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:130
+#: includes/class-profile-editor-settings.php:138
+#: includes/class-profile-editor-settings.php:146
+#@ profile-editor
+msgid "http://example.com"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:134
+#@ profile-editor
+msgid "Register page URL"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:135
+#@ profile-editor
+msgid "URL to a page where you placed the register form shortcode - [profile_editor_register]."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:142
+#@ profile-editor
+msgid "Login redirect URL"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:143
+#@ profile-editor
+msgid "URL to a page where you want to redirect users after login. Blank - homepage"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:150
+#@ profile-editor
+msgid "Not logged in text"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:151
+#@ profile-editor
+msgid "This text will be displayed to users when they're not logged in."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:154
+#, php-format
+#@ profile-editor
+msgid "You need to <a href=\"%LOGIN_URL%\">login</a> to access this page."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:158
+#@ profile-editor
+msgid "Confirmation email template"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:159
+#@ profile-editor
+msgid "If you want to customize the email sent after registration, you can do that here.<br> Available tags: "
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:167
+#@ profile-editor
+msgid "Email template."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:171
+#@ profile-editor
+msgid "Profile editor shortcode style"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:172
+#@ profile-editor
+msgid "Choose what kind of style will be applied."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:181
+#@ profile-editor
+msgid "Fields"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:182
+#@ profile-editor
+msgid "This section if for adding new user fields and editing existing ones."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:240
+#@ profile-editor
+msgid "Please check your username"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:242
+#@ profile-editor
+msgid "Please check your password"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:244
+#@ profile-editor
+msgid "Please enter password"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:246
+#@ profile-editor
+msgid "Please enter username"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:271
+#: includes/class-profile-editor-settings.php:423
+#@ default
+msgid "ERROR: "
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:278
+#: includes/class-profile-editor-settings.php:441
+#: includes/class-profile-editor-settings.php:758
+#@ profile-editor
+msgid "User"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:278
+#@ profile-editor
+msgid "login"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:280
+#: includes/class-profile-editor-settings.php:281
+#: includes/class-profile-editor-settings.php:313
+#: includes/class-profile-editor-settings.php:443
+#: includes/class-profile-editor-settings.php:444
+#: includes/class-profile-editor-settings.php:460
+#: includes/class-profile-editor-settings.php:761
+#: includes/class-profile-editor-settings.php:824
+#@ profile-editor
+msgid "Username"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:284
+#: includes/class-profile-editor-settings.php:285
+#: includes/class-profile-editor-settings.php:314
+#@ profile-editor
+msgid "Password"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:292
+#: includes/class-profile-editor-settings.php:316
+#@ profile-editor
+msgid "Remember me"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:296
+#: includes/class-profile-editor-settings.php:317
+#@ profile-editor
+msgid "Forgot password?"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:298
+#: includes/class-profile-editor-settings.php:319
+#@ profile-editor
+msgid "Not a member?"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:307
+#: includes/class-profile-editor-settings.php:325
+#@ profile-editor
+msgid "Sign In"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:330
+#: includes/class-profile-editor-settings.php:470
+#@ profile-editor
+msgid "Logged in as"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:330
+#: includes/class-profile-editor-settings.php:470
+#@ profile-editor
+msgid "not you?"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:330
+#: includes/class-profile-editor-settings.php:470
+#@ profile-editor
+msgid "Log out"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:350
+#@ profile-editor
+msgid "Enter your username."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:352
+#@ profile-editor
+msgid "Username already exists."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:354
+#@ profile-editor
+msgid "Email already exists."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:356
+#@ profile-editor
+msgid "Enter email."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:358
+#@ profile-editor
+msgid "Enter username."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:363
+#: includes/class-profile-editor-settings.php:441
+#@ profile-editor
+msgid "registration"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:393
+#@ profile-editor
+msgid "Your password has been emailed to "
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:395
+#@ profile-editor
+msgid "You are registered but something went wrong while sending an email to "
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:405
+#@ profile-editor
+msgid "Enter a valid email address."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:425
+#@ default
+msgid "Success: "
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:447
+#: includes/class-profile-editor-settings.php:448
+#: includes/class-profile-editor-settings.php:461
+#: includes/class-profile-editor-settings.php:788
+#@ profile-editor
+msgid "Email"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:449
+#: includes/class-profile-editor-settings.php:462
+#@ profile-editor
+msgid "A password will be emailed to you for future use."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:490
+#: includes/class-profile-editor-settings.php:958
+#@ profile-editor
+msgid "Extra"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:490
+#: includes/class-profile-editor-settings.php:958
+#@ profile-editor
+msgid "fields"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:585
+#: includes/class-profile-editor-settings.php:1099
+#: includes/class-profile-editor-settings.php:1168
+#@ profile-editor
+msgid "No file selected"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:590
+#: includes/class-profile-editor-settings.php:628
+#: includes/class-profile-editor-settings.php:1106
+#: includes/class-profile-editor-settings.php:1175
+#@ profile-editor
+msgid "Choose file"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:721
+#: includes/class-profile-editor-settings.php:727
+#@ profile-editor
+msgid "Register"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:758
+#: includes/class-profile-editor-settings.php:786
+#@ profile-editor
+msgid "info"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:763
+#: includes/class-profile-editor-settings.php:827
+#@ profile-editor
+msgid "Usernames cannot be changed."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:766
+#@ profile-editor
+msgid "Display name"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:773
+#@ profile-editor
+msgid "First name"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:777
+#@ profile-editor
+msgid "Last name"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:786
+#@ profile-editor
+msgid "Contact"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:792
+#@ profile-editor
+msgid "Website"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:799
+#@ profile-editor
+msgid "About"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:799
+#@ profile-editor
+msgid "yourself"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:801
+#@ profile-editor
+msgid "Biographical info"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:806
+#@ profile-editor
+msgid "New password"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:810
+#@ profile-editor
+msgid "Repeat new password"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:821
+#@ profile-editor
+msgid "Name"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:890
+#@ profile-editor
+msgid "Password needs to be atleast 8 symbols long."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1163
+#@ profile-editor
+msgid "Download your attached file."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1297
+#: includes/class-profile-editor-settings.php:1310
+#@ profile-editor
+msgid "Save changes"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1676
+#@ profile-editor
+msgid "Add extra user fields."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1677
+#@ profile-editor
+msgid "This section if for adding new user fields."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1700
+#@ default
+msgid "Field values"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1703
+#: includes/class-profile-editor-settings.php:1914
+#@ profile-editor
+msgid "Your field type"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1706
+#@ profile-editor
+msgid "empty"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1707
+#@ profile-editor
+msgid "text"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1708
+#@ profile-editor
+msgid "textarea"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1709
+#@ profile-editor
+msgid "checkbox"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1710
+#@ profile-editor
+msgid "radio"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1711
+#@ profile-editor
+msgid "picture"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1712
+#@ profile-editor
+msgid "password"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1713
+#@ profile-editor
+msgid "file"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1714
+#@ profile-editor
+msgid "dropdown"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1715
+#@ profile-editor
+msgid "hidden"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1716
+#@ profile-editor
+msgid "WYSIWYG"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1721
+#: includes/class-profile-editor-settings.php:1917
+#@ profile-editor
+msgid "Your field name"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1727
+#: includes/class-profile-editor-settings.php:1920
+#@ profile-editor
+msgid "Your field label"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1733
+#: includes/class-profile-editor-settings.php:1925
+#@ profile-editor
+msgid "Your field placeholder"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1739
+#: includes/class-profile-editor-settings.php:1930
+#@ profile-editor
+msgid "Your field default value"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1745
+#: includes/class-profile-editor-settings.php:1933
+#@ profile-editor
+msgid "Your field description"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1758
+#@ default
+msgid "Field rules"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1761
+#: includes/class-profile-editor-settings.php:1843
+#@ profile-editor
+msgid "This field can't be empty"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1767
+#: includes/class-profile-editor-settings.php:1850
+#@ profile-editor
+msgid "Check email/URL syntax"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1773
+#: includes/class-profile-editor-settings.php:1853
+#@ profile-editor
+msgid "Min length"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1779
+#: includes/class-profile-editor-settings.php:1857
+#@ profile-editor
+msgid "Max length"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1785
+#: includes/class-profile-editor-settings.php:1861
+#@ profile-editor
+msgid "Max size"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1791
+#: includes/class-profile-editor-settings.php:1865
+#@ profile-editor
+msgid "Allowed extensions"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1797
+#: includes/class-profile-editor-settings.php:1873
+#@ profile-editor
+msgid "Show at registration"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1809
+#@ profile-editor
+msgid "Add field"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1889
+#@ profile-editor
+msgid "Existing extra user fields."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1890
+#@ profile-editor
+msgid "This section if for editing existing extra user fields."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1891
+#@ profile-editor
+msgid "Note: When updating order, if order is set to number that already is set to another field, that other fields order number will change to -1."
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1911
+#@ profile-editor
+msgid "Order"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1945
+#@ profile-editor
+msgid "Update"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1946
+#@ profile-editor
+msgid "Delete"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:1946
+#@ profile-editor
+msgid "Are you sure you want to delete field ID:"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:2054
+#@ profile-editor
+msgid "Save Settings"
+msgstr ""
+
+#: includes/class-profile-editor-settings.php:2088
+#: includes/class-profile-editor-settings.php:2097
+#: includes/class-profile-editor.php:243
+#: includes/class-profile-editor.php:252
+#@ default
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: includes/lib/class-profile-editor-admin-api.php:159
+#@ profile-editor
+msgid "Upload an image"
+msgstr ""
+
+#: includes/lib/class-profile-editor-admin-api.php:159
+#@ profile-editor
+msgid "Use image"
+msgstr ""
+
+#: includes/lib/class-profile-editor-admin-api.php:159
+#@ profile-editor
+msgid "Upload new image"
+msgstr ""
+
+#: includes/lib/class-profile-editor-admin-api.php:160
+#@ profile-editor
+msgid "Remove image"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:68
+#: includes/lib/class-profile-editor-taxonomy.php:70
+#, php-format
+#@ profile-editor
+msgid "Add New %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:69
+#: includes/lib/class-profile-editor-taxonomy.php:67
+#, php-format
+#@ profile-editor
+msgid "Edit %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:70
+#, php-format
+#@ profile-editor
+msgid "New %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:71
+#: includes/lib/class-profile-editor-taxonomy.php:66
+#, php-format
+#@ profile-editor
+msgid "All %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:72
+#: includes/lib/class-profile-editor-taxonomy.php:68
+#, php-format
+#@ profile-editor
+msgid "View %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:73
+#: includes/lib/class-profile-editor-taxonomy.php:74
+#, php-format
+#@ profile-editor
+msgid "Search %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:74
+#, php-format
+#@ profile-editor
+msgid "No %s Found"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:75
+#, php-format
+#@ profile-editor
+msgid "No %s Found In Trash"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:76
+#: includes/lib/class-profile-editor-taxonomy.php:72
+#, php-format
+#@ default
+#@ profile-editor
+msgid "Parent %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:113
+#, php-format
+#@ profile-editor
+msgid "%1$s updated. %2$sView %3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:114
+#@ profile-editor
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:115
+#@ profile-editor
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:116
+#, php-format
+#@ profile-editor
+msgid "%1$s updated."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:117
+#, php-format
+#@ profile-editor
+msgid "%1$s restored to revision from %2$s."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:118
+#, php-format
+#@ profile-editor
+msgid "%1$s published. %2$sView %3$s%4s."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:119
+#, php-format
+#@ profile-editor
+msgid "%1$s saved."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:120
+#, php-format
+#@ profile-editor
+msgid "%1$s submitted. %2$sPreview post%3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:121
+#, php-format
+#@ profile-editor
+msgid "%1$s scheduled for: %2$s. %3$sPreview %4$s%5$s."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:121
+#@ profile-editor
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:122
+#, php-format
+#@ profile-editor
+msgid "%1$s draft updated. %2$sPreview %3$s%4$s."
+msgstr ""
+
+#: includes/lib/class-profile-editor-post-type.php:137
+#, php-format
+#@ profile-editor
+msgid "%1$s %2$s updated."
+msgid_plural "%1$s %3$s updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-profile-editor-post-type.php:138
+#, php-format
+#@ profile-editor
+msgid "%1$s %2$s not updated, somebody is editing it."
+msgid_plural "%1$s %3$s not updated, somebody is editing them."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-profile-editor-post-type.php:139
+#, php-format
+#@ profile-editor
+msgid "%1$s %2$s permanently deleted."
+msgid_plural "%1$s %3$s permanently deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-profile-editor-post-type.php:140
+#, php-format
+#@ profile-editor
+msgid "%1$s %2$s moved to the Trash."
+msgid_plural "%1$s %3$s moved to the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-profile-editor-post-type.php:141
+#, php-format
+#@ profile-editor
+msgid "%1$s %2$s restored from the Trash."
+msgid_plural "%1$s %3$s restored from the Trash."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:69
+#, php-format
+#@ profile-editor
+msgid "Update %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:71
+#, php-format
+#@ profile-editor
+msgid "New %s Name"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:73
+#, php-format
+#@ profile-editor
+msgid "Parent %s:"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:75
+#, php-format
+#@ profile-editor
+msgid "Popular %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:76
+#, php-format
+#@ profile-editor
+msgid "Separate %s with commas"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:77
+#, php-format
+#@ profile-editor
+msgid "Add or remove %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:78
+#, php-format
+#@ profile-editor
+msgid "Choose from the most used %s"
+msgstr ""
+
+#: includes/lib/class-profile-editor-taxonomy.php:79
+#, php-format
+#@ profile-editor
+msgid "No %s found"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#. translators: plugin header field 'AuthorURI'
+#: profile-editor.php:0
+#@ profile-editor
+msgid "http://www.cohhe.com/"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: profile-editor.php:0
+#@ profile-editor
+msgid "This is a simple but well executed user profile editing plugin, that is going to help your way to the top."
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: profile-editor.php:0
+#@ profile-editor
+msgid "Cohhe"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: profile-editor.php:0
+#@ profile-editor
+msgid "1.0"
+msgstr ""
+
