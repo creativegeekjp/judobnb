@@ -14627,3 +14627,13 @@ body .ui-menu .ui-menu-item a {
 	max-width: 130%;
 	width: 130%;
 }
+
+/*Overrides*/
+body {
+	color: #333;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", Verdana, "MS Pゴシック","Osaka",sans-serif !important;
+}
+
+.login-forgot-password {
+	padding: 13px 0px 22px 20px;
+}

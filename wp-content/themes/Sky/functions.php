@@ -1225,7 +1225,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 	}
 
 	if ( $image_id == '' ) {
-		$output = '<style type="text/css" media="all">#main_header_image { background: url(' . get_template_directory_uri() . '/images/temporary.jpg); height: 747px; background-size: cover !important; background-position: 100% !important; }</style>';
+		$output = '<style type="text/css" media="all">#main_header_image { background: url(' . get_template_directory_uri() . '/images/judo-japan.jpg); height: 747px; background-size: cover !important; background-position: 100% !important; }</style>';
 	} else {
 		echo get_header_video();
 		$bg_url = wp_get_attachment_image_src($image_id, 'main-header-image');
@@ -2949,10 +2949,6 @@ add_role(
 		'create_posts' => true, // Allows user to create new posts
 		'manage_categories' => true, // Allows user to manage post categories
 		'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
-		'edit_themes' => false, // false denies this capability. User can’t edit your theme
-		'install_plugins' => false, // User cant add new plugins
-		'update_plugin' => false, // User can’t update any plugins
-		'update_core' => false, // user cant perform core updates
 	)
 );
 

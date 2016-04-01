@@ -164,7 +164,7 @@
 							<div class="header-login-form">
 								<a href="javascript:void(0)" class="header-login-button icon-user"></a>
 								<div class="header-login-main">
-									<span class="form-title"><span class="icon-user"></span><?php _e("Join SkyDirectory!", "vh"); ?></span>
+									<span class="form-title"><span class="icon-user"></span><?php _e("Join Judobnb!", "vh"); ?></span>
 									<div class="login-form">
 										<span class="login-form-title"><?php _e("Sign In", "vh"); ?></span>
 										<form id="login" action="login" method="post">
