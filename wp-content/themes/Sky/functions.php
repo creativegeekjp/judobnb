@@ -2541,7 +2541,7 @@ function vh_register_required_plugins() {
 			'slug'     				=> 'easyreservations', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/functions/tgm-activation/plugins/easyreservations.zip', // The plugin source
 			'required' 				=> false, // If false, the plugin is only 'recommended' instead of required
-			'version' 				=> '3.5', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+			'version' 				=> '3.5.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
 			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
 			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
@@ -2937,3 +2937,29 @@ function vh_filter_reservations( $content ) {
     return $content;
 }
 add_filter( 'the_content', 'vh_filter_reservations' );
+
+add_role(
+	'host',
+	'Host' ,
+	array(
+		'read' => true, // true allows this capability
+		'edit_posts' => true, // Allows user to edit their own posts
+		'edit_pages' => true, // Allows user to edit pages
+		'edit_others_posts' => true, // Allows user to edit others posts not just their own
+		'create_posts' => true, // Allows user to create new posts
+		'manage_categories' => true, // Allows user to manage post categories
+		'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
+		'edit_themes' => false, // false denies this capability. User can’t edit your theme
+		'install_plugins' => false, // User cant add new plugins
+		'update_plugin' => false, // User can’t update any plugins
+		'update_core' => false, // user cant perform core updates
+	)
+);
+
+add_role(
+	'guest',
+	'Guest' ,
+	array(
+		'read' => true, // true allows this capability
+	)
+);
