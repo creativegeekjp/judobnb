@@ -1,4 +1,6 @@
 <IfModule mod_rewrite.c>
+RewriteLog "/workspace/www/judobnb.rewrite.log"
+RewriteLogLevel 9
 RewriteEngine On
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
@@ -6,3 +8,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
 </IfModule>
+

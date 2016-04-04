@@ -14635,5 +14635,56 @@ body {
 }
 
 .login-forgot-password {
-	padding: 13px 0px 22px 20px;
+	padding: 13px 0px 13px 20px;
+	border: 0;
+}
+
+.wrapper .header {
+	background: #fff;
+}
+
+.header-button {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 22px;
+    color: #666666;
+    position: relative;
+    z-index: 20;
+    box-sizing: border-box;
+    max-height: 66px;
+}
+
+.header-button a {
+	text-decoration: none;
+	padding: 18px 0px 21px 20px;
+	display: block;
+}
+
+a.subscribe-btn {
+	border: none;
+	background: -webkit-linear-gradient(#329932, #048104);
+	background: -o-linear-gradient(#329932, #048104);
+	background: -moz-linear-gradient(#329932, #048104);
+	background: linear-gradient(#329932, #048104);
+	display: block;
+	width: 100%;
+	font-size: 18px !important;
+	color: #fff;
+	font-weight: 300;
+	padding: 26px 0;
+	z-index: 20;
+	position: relative;
+	color: #fff !important;
+	text-align: center;
+	text-decoration: none;
+}
+
+a.subscribe-btn:hover {
+	background: -webkit-linear-gradient(#1f5c1f, #1f5c1f);
+	background: -o-linear-gradient(#1f5c1f, #1f5c1f);
+	background: -moz-linear-gradient(#1f5c1f, #1f5c1f);
+	background: linear-gradient(#1f5c1f, #1f5c1f);
+}
+
+.login-forgot-password {
+	max-height: 50px;
 }

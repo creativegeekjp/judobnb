@@ -2942,13 +2942,11 @@ add_role(
 	'host',
 	'Host' ,
 	array(
-		'read' => true, // true allows this capability
-		'edit_posts' => true, // Allows user to edit their own posts
-		'edit_pages' => true, // Allows user to edit pages
-		'edit_others_posts' => true, // Allows user to edit others posts not just their own
-		'create_posts' => true, // Allows user to create new posts
-		'manage_categories' => true, // Allows user to manage post categories
-		'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
+		'read' => true,
+        'edit_posts' => false,
+        'delete_posts' => false,
+        'publish_posts' => false,
+        'upload_files' => true,
 	)
 );
 
@@ -2959,3 +2957,4 @@ add_role(
 		'read' => true, // true allows this capability
 	)
 );
+
