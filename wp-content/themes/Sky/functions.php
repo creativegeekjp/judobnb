@@ -1225,7 +1225,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 	}
 
 	if ( $image_id == '' ) {
-		$output = '<style type="text/css" media="all">#main_header_image { background: url(' . get_template_directory_uri() . '/images/temporary.jpg); height: 747px; background-size: cover !important; background-position: 100% !important; }</style>';
+		$output = '<style type="text/css" media="all">#main_header_image { background: url(' . get_template_directory_uri() . '/images/judo-japan.jpg); height: 747px; background-size: cover !important; background-position: 100% !important; }</style>';
 	} else {
 		echo get_header_video();
 		$bg_url = wp_get_attachment_image_src($image_id, 'main-header-image');
@@ -2937,3 +2937,23 @@ function vh_filter_reservations( $content ) {
     return $content;
 }
 add_filter( 'the_content', 'vh_filter_reservations' );
+
+add_role(
+	'host',
+	'Host' ,
+	array(
+		'read' => true,
+        'edit_posts' => false,
+        'delete_posts' => false,
+        'publish_posts' => false,
+        'upload_files' => true,
+	)
+);
+
+add_role(
+	'guest',
+	'Guest' ,
+	array(
+		'read' => true, // true allows this capability
+	)
+);
