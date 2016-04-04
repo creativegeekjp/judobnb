@@ -1,7 +1,5 @@
 <IfModule mod_rewrite.c>
-RewriteLog "/workspace/www/judobnb.rewrite.log"
-RewriteLogLevel 9
-RewriteEngine On
+RewriteEngine On 
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
