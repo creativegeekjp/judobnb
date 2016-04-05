@@ -1225,7 +1225,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 	}
 
 	if ( $image_id == '' ) {
-		$output = '<style type="text/css" media="all">#main_header_image { background: url(' . get_template_directory_uri() . '/images/judo-japan.jpg); height: 747px; background-size: cover !important; background-position: 100% !important; }</style>';
+		$output = '<style type="text/css" media="all">#main_header_image { background: url(' . get_template_directory_uri() . '/images/bg.jpeg); height: 747px; background-size: cover !important; background-position: 100% !important; }</style>';
 	} else {
 		echo get_header_video();
 		$bg_url = wp_get_attachment_image_src($image_id, 'main-header-image');

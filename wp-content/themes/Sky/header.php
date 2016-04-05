@@ -100,11 +100,16 @@
 					if ((bool)$website_logo_retina_ready != false) {
 						$logo_size = getimagesize($logo);
 					}
+					
+					if ( is_front_page() ) {
+						$logo = str_replace( '.png', '_white.png', $logo );
+					}
 				?>
+				
 				<header class="header vc_row-fluid vc_col-sm-12">
 					<div class="top-header vc_col-sm-12">
 						<div class="logo shadows vc_col-sm-3">
-							<a href="<?php echo home_url(); ?>"><img src="<?php echo $logo; ?>"<?php echo $logo_size_html ; ?> alt="<?php bloginfo('name'); ?>" /></a>
+							<a href="<?php echo home_url(); ?>"><img src="<?php echo site_url().$logo; ?>"<?php echo $logo_size_html ; ?> alt="<?php bloginfo('name'); ?>" /></a>
 						</div>
 						<div class="menu-btn icon-menu-1"></div>
 						<?php if ( !is_front_page() && !isset($_GET['pay_action']) ) { ?>
