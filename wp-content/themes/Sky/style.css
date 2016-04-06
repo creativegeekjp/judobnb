@@ -14726,7 +14726,7 @@ a.subscribe-btn:hover {
 	position: absolute;
 	width: 100%;
 	top: 80px;
-	height: 300px;
+	height: 537px;
 }
 
 #welcome {
@@ -14848,6 +14848,10 @@ body.home .wrapper .top-header .logo a {
 	padding: 0;
 }
 
+body.home .wrapper .top-header .logo a:hover {
+	background: transparent;
+}
+
 
 #header-current-location {
 	display: none;
@@ -14882,7 +14886,7 @@ body.home .wrapper .header .top-header {
 }
 
 body.home.admin-bar #ui-datepicker-div {
-	top: 775px !important;
+	top: 755px !important;
 }
 
 
@@ -14912,4 +14916,34 @@ body.home .header_search .search .gray-form .sb-icon-search {
 body.home .popular-destinations-main .main-module-title {
 	width: 100%;
 	text-align: center;
+}
+
+.top-menu-container .header-menu li.fa:before {
+	position: absolute;
+	color: #fff;
+}
+
+/*Footer*/
+.footer-links .widget_nav_menu .menu {
+	list-style-type: none;
+}
+
+.footer-links .widget_nav_menu li {
+	padding: 0;
+}
+
+.footer-links .widget_nav_menu a {
+	font-size: 16px;
+	line-height: 27px;
+	color: #09c;
+	font-weight: 300;
+}
+
+.footer-links .widget_nav_menu a:hover {
+	color: #333;
+}
+
+.footer-links .widget_nav_menu h4 {
+	font-size: 24px;
+	color: #333;
 }
