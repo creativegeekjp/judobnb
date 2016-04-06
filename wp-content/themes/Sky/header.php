@@ -118,9 +118,9 @@
 						$logo_size = getimagesize($logo);
 					}
 					
-					if ( is_front_page() ) {
-						$logo = str_replace( '.png', '_white.png', $logo );
-					}
+					// if ( is_front_page() ) {
+					// 	$logo = str_replace( '.png', '_white.png', $logo );
+					// }
 				?>
 				
 				<header class="header vc_row-fluid vc_col-sm-12">
@@ -535,7 +535,8 @@
 							<?php } ?>
 						</div>
 					<?php } ?>
-					<?php if ( ( !is_page_template('template-frontpage.php') && !in_array($post_type, $geodir_post_types) && !isset($_REQUEST["preview"]) && !isset($_GET["geodir_search"]) && !isset($_GET["gd_placecategory"]) && !isset($_GET["geodir_dashbord"]) ) && ( function_exists('geodir_is_page') && !geodir_is_page('location') ) ) { ?>
+					<?php if ( ( !is_page_template('template-frontpage.php') && !in_array($post_type, $geodir_post_types) && !isset($_REQUEST["preview"]) //&& !isset($_GET["geodir_search"])
+							&& !isset($_GET["gd_placecategory"]) && !isset($_GET["geodir_dashbord"]) ) && ( function_exists('geodir_is_page') && !geodir_is_page('location') ) ) { ?>
 						<div class="header-background-img"><img src="<?php echo $header_bg; ?>" alt="Header bg" /></div>
 					<?php } ?>
 					<?php if ( isset($_GET["geodir_dashbord"]) && !is_404() ) { ?>

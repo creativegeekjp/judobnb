@@ -129,6 +129,16 @@ function vh_register_widgets () {
 		'before_title'  => '<h4>',
 		'after_title'   => '</h4>'
 	) );
+	
+	register_sidebar( array(
+		'name'          => __( 'Footer Full Width', 'vh' ),
+		'id'            => 'sidebar-7',
+		'class'         => 'normal',
+		'before_widget' => '<div class="widget">',
+		'after_widget'  => '<div class="clearfix"></div></div>',
+		'before_title'  => '<h4>',
+		'after_title'   => '</h4>'
+	) );
 }
 add_action( 'widgets_init', 'vh_register_widgets' );
 
@@ -2967,3 +2977,129 @@ add_role(
 		'read' => true, // true allows this capability
 	)
 );
+
+
+class Easy_Social_Media extends WP_Widget {
+
+	/**
+	 * Sets up the widgets name etc
+	 */
+	public function __construct() {
+		parent::__construct(
+			'easy_social_media',
+			__('Easy Social Media', 'social_media'),
+			array( 'description' => __( 'An easy social media display. This widget requires FontAwesome.', 'social_media' ), ) // Args
+		);
+	}
+
+	/**
+	 * Outputs the content of the widget
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		$sm_tt = $instance['title'];
+		$sm_fb = $instance['fb'];
+		$sm_gp = $instance['gp'];
+		$sm_tw = $instance['tw'];
+		$sm_li = $instance['li'];
+		$sm_pt = $instance['pt'];
+		$sm_yt = $instance['yt'];
+		$sm_ig = $instance['ig'];
+
+		$output = '<h4>' . $sm_tt . '</h4>';
+		$output .= '
+			<ul class="inline-list social">';
+				if ($sm_fb != '' ) : $output .= '<li><a class="fb" href="'.$sm_fb.'" target="_blank"><i class="fa fa-facebook"></i></a></li>'; endif;
+				if ($sm_gp != '' ) : $output .= '<li><a class="gp" href="'.$sm_gp.'" target="_blank"><i class="fa fa-google-plus"></i></a></li>'; endif;
+				if ($sm_tw != '' ) : $output .= '<li><a class="tw" href="'.$sm_tw.'" target="_blank"><i class="fa fa-twitter"></i></a></li>'; endif;
+				if ($sm_li != '' ) : $output .= '<li><a class="li" href="'.$sm_li.'" target="_blank"><i class="fa fa-linkedin"></i></a></li>'; endif;
+				if ($sm_pt != '' ) : $output .= '<li><a class="pt" href="'.$sm_pt.'" target="_blank"><i class="fa fa-pinterest"></i></a></li>'; endif;
+				if ($sm_yt != '' ) : $output .= '<li><a class="yt" href="'.$sm_yt.'" target="_blank"><i class="fa fa-youtube-play"></i></a></li>'; endif;
+				if ($sm_ig != '' ) : $output .= '<li><a class="ig" href="'.$sm_yt.'" target="_blank"><i class="fa fa-instagram"></i></a></li>'; endif;
+		$output .= '</ul>';
+
+		echo $args['before_widget'];
+		echo __( $output, 'social_media' );
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Ouputs the options form on admin
+	 *
+	 * @param array $instance The widget options
+	 */
+	public function form( $instance ) {
+		$sm_tt = (isset( $instance[ 'title' ] ))? $instance[ 'title' ]:__( 'Social Media', 'social_media' );
+		$sm_fb = (isset( $instance[ 'fb' ] ))? $instance[ 'fb' ]:__( 'https://www.facebook.com', 'social_media' );
+		$sm_gp = (isset( $instance[ 'gp' ] ))? $instance[ 'gp' ]:__( 'https://plus.google.com/', 'social_media' );
+		$sm_tw = (isset( $instance[ 'tw' ] ))? $instance[ 'tw' ]:__( 'https://twitter.com', 'social_media' );
+		$sm_li = (isset( $instance[ 'li' ] ))? $instance[ 'li' ]:__( 'https://www.linkedin.com', 'social_media' );
+		$sm_pt = (isset( $instance[ 'pt' ] ))? $instance[ 'pt' ]:__( 'https://www.pinterest.com/', 'social_media' );
+		$sm_yt = (isset( $instance[ 'yt' ] ))? $instance[ 'yt' ]:__( 'http://www.youtube.com', 'social_media' );
+		$sm_ig = (isset( $instance[ 'ig' ] ))? $instance[ 'ig' ]:__( 'https://www.instagram.com', 'social_media' );
+	?>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'wp_widget_plugin'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $sm_tt ); ?>" />
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'fb' ); ?>"><?php _e( 'Facebook:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'fb' ); ?>" name="<?php echo $this->get_field_name( 'fb' ); ?>" type="text" value="<?php echo esc_attr( $sm_fb ); ?>">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'gp' ); ?>"><?php _e( 'Google+:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'gp' ); ?>" name="<?php echo $this->get_field_name( 'gp' ); ?>" type="text" value="<?php echo esc_attr( $sm_gp ); ?>">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'tw' ); ?>"><?php _e( 'Twitter:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'tw' ); ?>" name="<?php echo $this->get_field_name( 'tw' ); ?>" type="text" value="<?php echo esc_attr( $sm_tw ); ?>">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'li' ); ?>"><?php _e( 'LinkedIn:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'li' ); ?>" name="<?php echo $this->get_field_name( 'li' ); ?>" type="text" value="<?php echo esc_attr( $sm_li ); ?>">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'pt' ); ?>"><?php _e( 'Pinterest:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'pt' ); ?>" name="<?php echo $this->get_field_name( 'pt' ); ?>" type="text" value="<?php echo esc_attr( $sm_pt ); ?>">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'yt' ); ?>"><?php _e( 'YouTube:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'yt' ); ?>" name="<?php echo $this->get_field_name( 'yt' ); ?>" type="text" value="<?php echo esc_attr( $sm_yt ); ?>">
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'ig' ); ?>"><?php _e( 'Instagram:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'ig' ); ?>" name="<?php echo $this->get_field_name( 'ig' ); ?>" type="text" value="<?php echo esc_attr( $sm_ig ); ?>">
+		</p>
+	<?php
+	}
+
+	/**
+	 * Processing widget options on save $
+	 *
+	 * @param array $new_instance The new options
+	 * @param array $old_instance The previous options
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags($new_instance['title']) : '';
+		$instance['fb'] = ( ! empty( $new_instance['fb'] ) ) ? strip_tags( $new_instance['fb'] ) : '';
+		$instance['gp'] = ( ! empty( $new_instance['gp'] ) ) ? strip_tags( $new_instance['gp'] ) : '';
+		$instance['tw'] = ( ! empty( $new_instance['tw'] ) ) ? strip_tags( $new_instance['tw'] ) : '';
+		$instance['li'] = ( ! empty( $new_instance['li'] ) ) ? strip_tags( $new_instance['li'] ) : '';
+		$instance['pt'] = ( ! empty( $new_instance['pt'] ) ) ? strip_tags( $new_instance['pt'] ) : '';
+		$instance['yt'] = ( ! empty( $new_instance['yt'] ) ) ? strip_tags( $new_instance['yt'] ) : '';
+		$instance['ig'] = ( ! empty( $new_instance['ig'] ) ) ? strip_tags( $new_instance['ig'] ) : '';
+		
+		return $instance;
+	}
+}
+add_action('widgets_init',create_function('', 'return register_widget("Easy_Social_Media");'));
