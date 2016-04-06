@@ -78,7 +78,19 @@ $table_prefix  = 'jd_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
+
+define( 'FS_METHOD', 'ftpext' );
+define( 'FTP_BASE', '/workspace/www/' );
+define( 'FTP_CONTENT_DIR', '/workspace/www/wp-content/' );
+define( 'FTP_PLUGIN_DIR ', '/workspace/www/wp-content/plugins/' );
+define( 'FTP_PUBKEY', '/home/root/.ssh/id_rsa.pub' );
+define( 'FTP_PRIKEY', '/home/root/.ssh/id_rsa' );
+define( 'FTP_USER', 'root' );
+define( 'FTP_PASS', 'cgeek' );
+define( 'FTP_HOST', '192.168.1.2:23662' );
+define( 'FTP_SSL', false );
+
 
 /* That's all, stop editing! Happy blogging. */
 
@@ -88,16 +100,3 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-
-// WordPress Upgrade Constants
-define( 'FS_METHOD', 'ftpext' );
-define( 'FTP_BASE', '/path/to/wordpress/' );
-define( 'FTP_CONTENT_DIR', '/path/to/wordpress/wp-content/' );
-define( 'FTP_PLUGIN_DIR ', '/path/to/wordpress/wp-content/plugins/' );
-define( 'FTP_PUBKEY', '/home/username/.ssh/id_rsa.pub' );
-define( 'FTP_PRIKEY', '/home/username/.ssh/id_rsa' );
-define( 'FTP_USER', 'username' );
-define( 'FTP_PASS', 'password' );
-define( 'FTP_HOST', 'ftp.example.org' );
-define( 'FTP_SSL', false );

@@ -1559,6 +1559,16 @@ function register_vh_menus () {
 	);
 }
 add_action('init', 'register_vh_menus');
+function my_wp_nav_menu_args( $args = '' ) {
+
+if( is_user_logged_in() ) { 
+	$args['menu'] = 'logged-in';
+} else { 
+	$args['menu'] = 'logged-out';
+} 
+	return $args;
+}
+add_filter( 'wp_nav_menu_args', 'my_wp_nav_menu_args' );
 
 // Adds classes to the array of body classes.
 function vh_body_classes($classes) {

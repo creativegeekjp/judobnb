@@ -137,18 +137,7 @@
 							</div>
 						</div>
 						<?php } ?>
-						<?php if ( get_option('vh_header_add_property') == false || get_option('vh_header_add_property') == 'true' ) { ?>
-							<?php if ( is_user_logged_in() ) { ?>
-								<a href="<?php echo get_permalink(get_option('geodir_add_listing_page')); ?>" class="header-add-property wpb_button wpb_btn-primary wpb_regularsize"><?php _e('Add property', 'vh'); ?></a>
-							<?php } else { 
-								if ( function_exists('geodir_login_url') ) {
-									$gd_login_url = geodir_login_url();
-								} else {
-									$gd_login_url = get_site_url().'?geodir_signup=true';
-								} ?>
-								<a href="<?php echo $gd_login_url; ?>" class="header-add-property wpb_button wpb_btn-primary wpb_regularsize"><?php _e('Add property', 'vh'); ?></a>
-							<?php } ?>
-						<?php } ?>
+						
 						<div class="top-menu-container <?php if ( get_option('vh_header_add_property') == 'false' ) echo 'button_disabled'; ?>">
 							<?php
 								wp_nav_menu(
@@ -164,65 +153,6 @@
 								);
 							?>
 						</div>
-						<?php if ( get_option('vh_header_login') == false || get_option('vh_header_login') == 'true' ) { ?>
-							<?php if ( !is_user_logged_in() ) { ?>
-							<div class="header-login-form">
-								<a href="javascript:void(0)" class="header-login-button icon-user"></a>
-								<div class="header-login-main">
-									<span class="form-title"><span class="icon-user"></span><?php _e("Join Judobnb!", "vh"); ?></span>
-									<div class="login-form">
-										<span class="login-form-title"><?php _e("Sign In", "vh"); ?></span>
-										<form id="login" action="login" method="post">
-											<div class="header-form-input"><span class="input-error username-error icon-attention-1"></span><input class="loginusername" type="text" id="username" name="login" placeholder="<?php _e( 'Username', 'vh' ); ?>" required></div>
-											<div class="header-form-input"><span class="input-error password-error icon-attention-1"></span><input class="loginpassword" type="password" id="password" name="password" placeholder="<?php _e( 'Password', 'vh' ); ?>" required></div>
-											<div class="login-forgot-password">
-												<span class="rememberme_checkbox"></span>
-												<a id="rememberme_check" href="javascript:void(0)"><?php _e( 'Remember me', 'vh' ); ?></a>
-												<input type="hidden" id="rememberme" name="rememberme" value="0">
-												<a href="<?php echo wp_lostpassword_url(); ?>"><?php _e( 'Forgot password?', 'vh' ); ?></a>
-											</div>
-											<div class="header-form-input submit"><?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?><input class="grey-button" type="submit" name="commit" value="<?php _e( 'Sign In', 'vh' ); ?>"></div>
-										</form>
-									</div>
-									<div class="register-form">
-										<span class="register-form-title"><?php _e("Register as:", "vh"); ?></span>
-										<!--<form id="register" action="login" method="post">-->
-										<!--	<div class="header-form-input"><span class="input-error email-error icon-attention-1"></span><input class="loginusername" type="text" id="user_email" name="login" placeholder="<?php _e( 'Email', 'vh' ); ?>" required></div>-->
-										<!--	<div class="header-form-input"><span class="input-error fullname-error icon-attention-1"></span><input class="loginpassword" type="text" id="fullname" name="password" placeholder="<?php _e( 'Full name', 'vh' ); ?>" required></div>-->
-										<!--	<div class="login-forgot-password">-->
-										<!--		<span class="status"><?php _e( 'A password will be emailed to you for future use', 'vh' ); ?></span>-->
-										<!--	</div>-->
-										<!--	<div class="header-form-input submit"><?php wp_nonce_field( 'ajax-register-nonce', 'regsecurity' ); ?><input class="grey-button" type="submit" name="commit" value="<?php _e( 'Register', 'vh' ); ?>"></div>-->
-										<!--</form>-->
-										<div class="header-button">
-											<a href="<?php echo get_permalink( get_page_by_path( 'Host Registration' ) ); ?>">Host</a>
-										</div>
-										<div class="header-button">
-											<a href="<?php echo get_permalink( get_page_by_path( 'Guest Registration' ) ); ?>"><i class="guest-icon"></i> Guest</a>
-										</div>
-										<div class="login-forgot-password">
-											<span class="status"><?php _e( 'Or subscribe to our website', 'vh' ); ?></span>
-										</div>
-										<div class="header-form-input submit">
-											<a class="subscribe-btn" href="<?php site_url(); ?>/wp-login.php?action=register">Subscribe Now!</a>
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							<?php } else { ?>
-							<div class="header-login-form">
-								<?php
-									if ( get_option('permalink_structure') ) {
-										$dash_symbol = '?';
-									} else {
-										$dash_symbol = '&';
-									}
-								?>
-								<a href="<?php echo get_author_posts_url( get_current_user_id() ).$dash_symbol.'geodir_dashbord=true&stype=gd_place';?>" class="header-login-button icon-cog-alt dashboard"></a>
-							</div>
-							<?php } ?>
-						<?php } ?>
 						<div class="clearfix"></div>
 					</div>
 					<?php 
@@ -689,6 +619,14 @@
 							?>
 						</div>
 						<div id="main_header_image"></div>
+						<div class="welcome-container">
+							<div id="welcome">
+								<div class="va-middle">
+									<h3 class="head">Welcome Home</h3>
+									<p>Rent unique places to stay from local hosts in 190+ countries.</p>
+								</div>
+							</div>
+						</div>
 						<div class="header-search-form">
 							<div class="header-form-container">
 								<?php

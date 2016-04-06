@@ -1,4 +1,4 @@
-/*
+
 Theme Name: Sky
 Theme URI: http://www.cohhe.com/demo/sky
 Author: Cohhe
@@ -9645,11 +9645,11 @@ body.geodir-main-search .stick_trigger_container {
 	max-width: 50%;
 }
 
-body.page-template-template-frontpage .stick_trigger_container {
+body.home .stick_trigger_container {
 	position: relative;
 }
 
-body.page-template-template-frontpage .stick_trigger_container:before {
+body.home .stick_trigger_container:before {
 	content: '';
 	width: 100%;
 	height: 100%;
@@ -9659,7 +9659,7 @@ body.page-template-template-frontpage .stick_trigger_container:before {
 	display: block;
 }
 
-body.page-template-template-frontpage .stick_trigger_container.loading_off:before {
+body.home .stick_trigger_container.loading_off:before {
 	display: none;
 }
 
@@ -10019,7 +10019,7 @@ body.header_search_map .header-search-container:before {
 	outline: none;
 }
 
-body.page-template-template-frontpage-php .wrapper .main .page-wrapper {
+body.home-php .wrapper .main .page-wrapper {
 	margin-top: 45px;
 }
 
@@ -10696,8 +10696,7 @@ body .wrapper .header .top-header {
 	margin: 0 auto;
 	float: none;
 	/*max-width: 1200px;*/
-	/*height: 70px;*/
-	height: 60px;
+	height: 70px;
 	position: relative;
 	padding: 0 15px;
 	z-index: 1;
@@ -10716,7 +10715,7 @@ body .wrapper .header .top-header {
 body .wrapper .top-header .logo {
 	padding: 0;
 	/*max-width: 295px;*/
-	max-width: 150px;
+	max-width: 207px;
 	float: left;
 	position: relative;
 	width: 25%;
@@ -14700,89 +14699,217 @@ a.subscribe-btn:hover {
 /*	padding: 11px 15px;*/
 /*}*/
 
+.wrapper .top-menu-container .header-menu > li.current-menu-item > a,
+.wrapper .top-menu-container .header-menu > li.current-menu-ancestor > a,
+.wrapper .top-menu-container .header-menu > li.current-menu-parent > a {
+	padding-top: 16px;
+}
+
+.wrapper .top-menu-container .header-menu > li.current-menu-item > a:hover,
+.wrapper .top-menu-container .header-menu > li.current-menu-ancestor > a:hover,
+.wrapper .top-menu-container .header-menu > li.current-menu-parent > a:hover {
+	padding-top: 20px;
+}
+
 
 
 /* Missing Inline CSS*/
-html .main-inner p, .ac-device .description, .pricing-table .pricing-content .pricing-desc-1, body .vc_progress_bar .vc_single_bar .vc_label, .page-wrapper .member-desc, .page-wrapper .member-position, .page-wrapper .main-inner ul:not(.ui-tabs-nav) li, .page-wrapper .bg-style-2 p, .wrapper a, .header-search-form input[type="text"], .header-input-container .header-input-title, .item-location, .popular-destinations-image .city-country, .blog-image .blog-picture-time, .blog-picture-read, .blog-carousel .blog-inner-container .blog-date, .blog-carousel .blog-inner-container .blog-excerpt, .blog-author .author-text, .listing-category-side .category-parent, .listing-category-side .category-child, .listing-category-image .listing-count, .useful-links-title, .phone-info-container .phone-text, .phone-info-container .phone-number, .single-listing-by-info .author-text, .wrapper p, h2.wpb_gallery_heading, #comments > span, .wrapper .comment-content .description, .wrapper .comment-content p, .reviewer-time, .add-review-container span, .google-map-location, .listing-item-title, .listing-item-location, .page-title .blog-post-date, .comment-form-comment textarea, .prev-post-text, body.single-post #commentform .form-submit #submit, .google-map-image .listing-price, #propertyform input[type=text], .wrapper .geodir_message_error, .wrapper .geodir_message_note, .addlisting-upload-text, .wrapper .addlisting-upload-button, #propertyform #upload-msg, .checkbox_text, .addlisting-submit-title, .addlisting-submit-body, .geodir-filter-when-text, .geodir-filter-when-value, #geodir-filter-list li, .geodir-map-listing-top, .map-listing-title, .map-listing-price, .geodir-filter-inner .filter-left .filter-text, .geodir-filter-inner .filter-left .filter-second-text, .geodir-filter-inner .filter-right > span, body #simplemodal-container .geodir_popup_field input[type=text], body #simplemodal-container .geodir_popup_field textarea, .gdmodal-title, .wpb_button.wpb_btn-small, #commentform .comment_auth_email input[type=text], .ui-dialog.main-dialog .ui-dialog-titlebar span.ui-dialog-title, .next-post-text, .contact-phone-container, .contact-email-container, wpcf7-response-output, .single-listing-item-info, .breadcrumb .current, .header-login-main, .footer-inner, .footer-content, .featured-properties-row, .popular-destinations-main, .search-calendar-container, #ui-datepicker-div, li.geodir-gridview > span, .single-listing-info, .blog-carousel-container, .open-blog-infobox, body.single-post #commentform input[type=text], body.single-post #commentform input[type=email], .header-gallery-counter, #geodir-wrapper, .search-people-container, #header-more-options, .page_info, .wrapper, .wrapper .easyFrontendFormular, .wrapper #easyFrontendFormular .easy-button, .wrapper #easyFormInnerlay input[type="button"], body .simplemodal-data .gmmodal-dialog-lower input, body #simplemodal-container #gd-basic-modal-content4 .button, body.geodir-multi-ratings .gd-rate-category span.lable, body.geodir-multi-ratings .gd-rate-area .gd-ratehead, .ui-menu .ui-menu-item a {  font-family: 'Merriweather'; font-size: 16px; line-height: 27px; color: #333333; font-weight: 300; } .sidebar-inner, .sky-contactform.widget input:not(.btn), .sky-recentpostsplus.widget .news-item p, .wrapper .text.widget p, .sky-fastflickrwidget.widget, .widget li, .wrapper .search.widget .sb-search-input, .widget .content-form .textarea.input-block-level, .text.widget .textwidget, .newsletter-email {  font-family: 'Merriweather'; font-size: 16px; line-height: 27px; color: #333333; font-weight: 300; } .wrapper h1, body .wrapper .page_info .page-title h1 {  font-family: 'Merriweather'; font-size: 40px; line-height: 44px; color: #339933; font-weight: 300; } .page-wrapper h2, h2, .content .entry-title, .teaser_grid_container .post-title {  font-family: 'Merriweather'; font-size: 32px; line-height: 40px; color: #339933; font-weight: 300; } .wrapper h3 {  font-family: 'Merriweather'; font-size: 26px; line-height: 40px; color: #0099cc; font-weight: 300; } .wrapper h4 {  font-family: 'Merriweather'; font-size: 24px; line-height: 40px; color: #000000; font-weight: 300; } .wrapper h5 {  font-family: 'Merriweather'; font-size: 16px; line-height: 40px; color: #000000; font-weight: bold; } .wrapper h6 {  font-family: 'Merriweather'; font-size: 12px; line-height: 40px; color: #000000; font-weight: bold; } .wpb_wrapper a, #author-link a, .sky-usefullinks.widget a {  font-family: 'Merriweather'; font-size: 16px; line-height: 27px; color: #0099cc; font-weight: 300; }@media (min-width: 1200px) {  .wrapper .sidebar-inner .item-title-bg h4, .wrapper .sidebar-inner .widget-title, .wrapper h3.widget-title a {  font-family: 'Merriweather'; font-size: 26px; line-height: 40px; color: #339933; font-weight: 300; } }  body .wrapper .page_info .page-title h1 {  font-family: 'Merriweather'; font-size: 40px; line-height: 44px; color: #339933; font-weight: 300; }
+/*html .main-inner p, .ac-device .description, .pricing-table .pricing-content .pricing-desc-1, body .vc_progress_bar .vc_single_bar .vc_label, .page-wrapper .member-desc, .page-wrapper .member-position, .page-wrapper .main-inner ul:not(.ui-tabs-nav) li, .page-wrapper .bg-style-2 p, .wrapper a, .header-search-form input[type="text"], .header-input-container .header-input-title, .item-location, .popular-destinations-image .city-country, .blog-image .blog-picture-time, .blog-picture-read, .blog-carousel .blog-inner-container .blog-date, .blog-carousel .blog-inner-container .blog-excerpt, .blog-author .author-text, .listing-category-side .category-parent, .listing-category-side .category-child, .listing-category-image .listing-count, .useful-links-title, .phone-info-container .phone-text, .phone-info-container .phone-number, .single-listing-by-info .author-text, .wrapper p, h2.wpb_gallery_heading, #comments > span, .wrapper .comment-content .description, .wrapper .comment-content p, .reviewer-time, .add-review-container span, .google-map-location, .listing-item-title, .listing-item-location, .page-title .blog-post-date, .comment-form-comment textarea, .prev-post-text, body.single-post #commentform .form-submit #submit, .google-map-image .listing-price, #propertyform input[type=text], .wrapper .geodir_message_error, .wrapper .geodir_message_note, .addlisting-upload-text, .wrapper .addlisting-upload-button, #propertyform #upload-msg, .checkbox_text, .addlisting-submit-title, .addlisting-submit-body, .geodir-filter-when-text, .geodir-filter-when-value, #geodir-filter-list li, .geodir-map-listing-top, .map-listing-title, .map-listing-price, .geodir-filter-inner .filter-left .filter-text, .geodir-filter-inner .filter-left .filter-second-text, .geodir-filter-inner .filter-right > span, body #simplemodal-container .geodir_popup_field input[type=text], body #simplemodal-container .geodir_popup_field textarea, .gdmodal-title, .wpb_button.wpb_btn-small, #commentform .comment_auth_email input[type=text], .ui-dialog.main-dialog .ui-dialog-titlebar span.ui-dialog-title, .next-post-text, .contact-phone-container, .contact-email-container, wpcf7-response-output, .single-listing-item-info, .breadcrumb .current, .header-login-main, .footer-inner, .footer-content, .featured-properties-row, .popular-destinations-main, .search-calendar-container, #ui-datepicker-div, li.geodir-gridview > span, .single-listing-info, .blog-carousel-container, .open-blog-infobox, body.single-post #commentform input[type=text], body.single-post #commentform input[type=email], .header-gallery-counter, #geodir-wrapper, .search-people-container, #header-more-options, .page_info, .wrapper, .wrapper .easyFrontendFormular, .wrapper #easyFrontendFormular .easy-button, .wrapper #easyFormInnerlay input[type="button"], body .simplemodal-data .gmmodal-dialog-lower input, body #simplemodal-container #gd-basic-modal-content4 .button, body.geodir-multi-ratings .gd-rate-category span.lable, body.geodir-multi-ratings .gd-rate-area .gd-ratehead, .ui-menu .ui-menu-item a {  font-family: 'Merriweather'; font-size: 16px; line-height: 27px; color: #333333; font-weight: 300; } .sidebar-inner, .sky-contactform.widget input:not(.btn), .sky-recentpostsplus.widget .news-item p, .wrapper .text.widget p, .sky-fastflickrwidget.widget, .widget li, .wrapper .search.widget .sb-search-input, .widget .content-form .textarea.input-block-level, .text.widget .textwidget, .newsletter-email {  font-family: 'Merriweather'; font-size: 16px; line-height: 27px; color: #333333; font-weight: 300; } .wrapper h1, body .wrapper .page_info .page-title h1 {  font-family: 'Merriweather'; font-size: 40px; line-height: 44px; color: #339933; font-weight: 300; } .page-wrapper h2, h2, .content .entry-title, .teaser_grid_container .post-title {  font-family: 'Merriweather'; font-size: 32px; line-height: 40px; color: #339933; font-weight: 300; } .wrapper h3 {  font-family: 'Merriweather'; font-size: 26px; line-height: 40px; color: #0099cc; font-weight: 300; } .wrapper h4 {  font-family: 'Merriweather'; font-size: 24px; line-height: 40px; color: #000000; font-weight: 300; } .wrapper h5 {  font-family: 'Merriweather'; font-size: 16px; line-height: 40px; color: #000000; font-weight: bold; } .wrapper h6 {  font-family: 'Merriweather'; font-size: 12px; line-height: 40px; color: #000000; font-weight: bold; } .wpb_wrapper a, #author-link a, .sky-usefullinks.widget a {  font-family: 'Merriweather'; font-size: 16px; line-height: 27px; color: #0099cc; font-weight: 300; }@media (min-width: 1200px) {  .wrapper .sidebar-inner .item-title-bg h4, .wrapper .sidebar-inner .widget-title, .wrapper h3.widget-title a {  font-family: 'Merriweather'; font-size: 26px; line-height: 40px; color: #339933; font-weight: 300; } }  body .wrapper .page_info .page-title h1 {  font-family: 'Merriweather'; font-size: 40px; line-height: 44px; color: #339933; font-weight: 300; }*/
 
 
 /*Front Page*/
-.page-template-template-frontpage {
+.home {
 	
 }
 
-body.page-template-template-frontpage .wrapper .header .top-header {
+.welcome-container {
+	position: absolute;
+	width: 100%;
+	top: 80px;
+	height: 300px;
+}
+
+#welcome {
+	position: relative;
+	display: table;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+#welcome .head, #welcome p {
+	color: #fff;
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+#welcome .head {
+	text-transform: uppercase;
+	font-size: 66px;
+	line-height: 70px;
+}
+
+#welcome p {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.va-middle {
+	vertical-align: middle;
+	display: table-cell;
+}
+
+body.home .wrapper .header .top-header {
 	position: absolute;
 }
 
-body.page-template-template-frontpage .header-menu li a {
+body.home .header-menu li a {
 	color: #fff;
-	border: 2px solid transparent;
-	font-size: 16px;
 	padding: 8px 15px;
 }
 
-body.page-template-template-frontpage .header-menu li:hover a,
-body.page-template-template-frontpage .header-menu li a:hover {
-	background: transparent;
+body.home .header-menu li a,
+body.home .header-menu li a:hover {
 	border: 2px solid transparent !important;
 }
 
-body.page-template-template-frontpage .header-menu li a:hover {
-	border-bottom: 2px solid transparent;
+body.home .header-menu li {
+	border: 0;
+	padding: 0 10px;
 }
 
-body.page-template-template-frontpage .header-menu li.btn-border a,
-body.page-template-template-frontpage .header-menu li.btn-border a:hover {
+.top-menu-container .header-menu li a {
+	border: 2px solid transparent;
+	font-size: 16px;
+	padding: 20px 16px;
+}
+
+body .wrapper .top-header .logo a:hover,
+.top-menu-container .header-menu li a:hover {
+	background: #f5f5f5;
+}
+
+.top-menu-container .header-menu li a,
+.top-menu-container .header-menu li:hover:not(.menu-item-has-children) a {
+	border: 0;
+}
+
+
+.top-menu-container .header-menu li {
+	padding: 0;
+	border-left: 1px solid #dce0e0;
+}
+
+
+.top-menu-container .header-menu li.btn-border {
+	border: 0;
+}
+
+body.home .header-menu li:hover a,
+body.home .header-menu li a:hover {
+	background: transparent;
+/*	border: 0 !important;*/
+}
+
+body.home .header-menu li a:hover {
+	/*border-bottom: 2px solid transparent;*/
+}
+
+body.home .header-menu li.btn-border a,
+body.home .header-menu li.btn-border a:hover {
 	border: 2px solid #fff !important;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
 
-body .wrapper .top-header .logo,
-body.page-template-template-frontpage .top-menu-container,
-body.page-template-template-frontpage .wrapper .header-add-property {
+body.home .header-menu li.btn-border a:hover {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+body.home .wrapper .top-header .logo,
+body.home .top-menu-container,
+body.home .wrapper .header-add-property {
 	margin-top: 10px;
 }
 
-
-/*#header-current-location {*/
-/*	display: none;*/
-/*}*/
-
-/*.header-search-form {*/
-/*	bottom: 0;*/
-/*	top: auto;*/
-/*	background: rgba(0,0,0,0.5);*/
-/*	width: 100%;*/
-/*	padding: 10px 0;*/
-/*}*/
-
-/*.header-form-container {*/
-/*	width: 960px;*/
-/*	display: block;*/
-/*	float: none;*/
-/*	margin: 0 auto;*/
-/*	border: 0;*/
-/*}*/
-
-
-
-body.page-template-template-frontpage .wpb_button.wpb_regularsize {
-	line-height: inherit;
-	padding: 17px 24px 16px;
+body .wrapper .top-header .logo {
+	margin: 0;
 }
 
-body.page-template-template-frontpage .wpb_button.wpb_btn-primary:before {
-	border-top: 0;
-	/*top: -4px;*/
+body .wrapper .top-header .logo a {
+	padding: 11px 16px 12px;
+	display: block;
 }
 
-body.page-template-template-frontpage .wpb_button.wpb_btn-primary:hover:before {
-	/*top: 0;*/
+body.home .wrapper .top-header .logo {
+	max-width: 175px;
 }
 
-body.page-template-template-frontpage .header_search .search .gray-form .sb-icon-search {
+body.home .wrapper .top-header .logo a {
+	padding: 0;
+}
+
+
+#header-current-location {
+	display: none;
+}
+
+.header-search-form {
+	bottom: 0;
+	top: auto;
+	background: rgba(0,0,0,0.5);
+	width: 100%;
+	padding: 30px 0;
+}
+
+.header-form-container {
+	width: 760px;
+	display: block;
+	float: none;
+	margin: 0 auto;
+	border: 0;
+}
+
+body.home .wrapper .header .top-header {
+	padding: 0 15px;
+}
+
+body .wrapper .header .top-header {
+	padding-left: 0;
+}
+
+body.home .wrapper .header .top-header {
+	height: 60px;
+}
+
+body.home.admin-bar #ui-datepicker-div {
+	top: 775px !important;
+}
+
+
+body.home .header .wpb_button.wpb_regularsize {
+	padding: 9px 24px 11px;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+body.home .header .wpb_button.wpb_btn-primary:before {
+	max-height: 42px;
+}
+
+body.home .header-login-form {
+	top: 60px;
+}
+
+/*body.home .wpb_button.wpb_btn-primary:hover:before {
+	top: 0;
+}
+
+body.home .header_search .search .gray-form .sb-icon-search {
 	width: 60px;
 	height: 60px;
+}*/
+
+body.home .popular-destinations-main .main-module-title {
+	width: 100%;
+	text-align: center;
 }
