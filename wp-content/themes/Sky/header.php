@@ -15,6 +15,9 @@
 		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>">
 		<title><?php wp_title('&laquo;', true, 'right'); ?></title>
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
 		<?php
 			global $vh_class,$wpdb,$map_canvas_arr;
 			$logo_size_html = '';
@@ -90,6 +93,7 @@
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 	</script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"> </script>
 	<body <?php body_class($vh_class); ?>>
 		<?php if ( $_SERVER['SERVER_NAME'] == 'cohhe.com' ) { ?>
 			<a href="http://themeforest.net/item/sky-wordpress-listings-theme/10061836?ref=Cohhe" target="_blank" id="buy-now-ribbon"></a>

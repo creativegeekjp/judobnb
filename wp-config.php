@@ -82,7 +82,6 @@ define('WP_DEBUG', false);
 
 define( 'FS_METHOD', 'ftpext' );
 define( 'FTP_BASE', '/workspace/www/' );
-define( 'FTP_CONTENT_DIR', '/workspace/www/wp-content/' );
 define( 'FTP_PLUGIN_DIR ', '/workspace/www/wp-content/plugins/' );
 define( 'FTP_PUBKEY', '/home/root/.ssh/id_rsa.pub' );
 define( 'FTP_PRIKEY', '/home/root/.ssh/id_rsa' );
@@ -90,6 +89,8 @@ define( 'FTP_USER', 'root' );
 define( 'FTP_PASS', 'cgeek' );
 define( 'FTP_HOST', '192.168.1.2:23662' );
 define( 'FTP_SSL', false );
+define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
+define( 'WP_DEBUG_DISPLAY', false );
 
 
 /* That's all, stop editing! Happy blogging. */

@@ -30,6 +30,6 @@
 	<form action="<?php echo home_url(); ?>" method="get" class="<?php echo $form_class; ?>">
 		<input type="text" name="s" class="<?php echo $class; ?>" onclick="clearInput(this, 'Search');" value="<?php echo $search_string; ?>" />
 		<input type="submit" name="search" class="btn btn-primary sb-search-submit" value="<?php _e('Search', 'vh'); ?>" />
-		<span class="sb-icon-search icon-search blue-button"></span>
+		<span class="sb-icon-search blue-button"><i class="fa fa-search"></i></span>
 	</form>
 </div><!--end of search-->

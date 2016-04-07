@@ -1569,31 +1569,10 @@ function register_vh_menus () {
 	);
 }
 add_action('init', 'register_vh_menus');
-
-// Check if current user is a host
-function user_is_host( ) {
-
-    $user = wp_get_current_user();
-
-    if ( ! empty( $user ) ) {
-        return in_array('host', (array) $user->roles );
-    }
-}
-
-// Short code for current user name
-add_shortcode( 'current-username' , 'ss_get_current_username' );
-function ss_get_current_username(){
-    $user = wp_get_current_user();
-    return $user->display_name;
-}
-
 function my_wp_nav_menu_args( $args = '' ) {
 	if ( $args['theme_location'] == 'primary-menu' ) {
 		if( is_user_logged_in() ) {
 			$args['menu'] = 'logged-in';
-			if(user_is_host()){
-				$args['menu'] = 'logged-in-host';
-			}
 		} else { 
 			$args['menu'] = 'logged-out';
 		} 

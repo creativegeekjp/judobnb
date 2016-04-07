@@ -10644,7 +10644,6 @@ body #ui-datepicker-div .ui-datepicker-calendar td.highlighted a,
 	border-bottom: 1px solid #f0f0f0;
 	border-top: none;
 }
-
 .wrapper .top-menu-container .header-menu li.menu-item-has-children ul li:last-child a {
 	border: none;
 	border-bottom: 4px solid #a9a9a9;
@@ -14758,6 +14757,42 @@ a.subscribe-btn:hover {
 	display: table-cell;
 }
 
+/*Sub Menu*/
+.top-menu-container .header-menu li.menu-item-has-children ul {
+	top: auto;
+}
+
+.top-menu-container .header-menu li.menu-item-has-children:last-child ul {
+	left: auto;
+	right: 10px;
+	/*display: block;*/
+}
+
+.wrapper .top-menu-container .header-menu li.menu-item-has-children ul li {
+	padding: 0;
+}
+
+.wrapper .top-menu-container .header-menu li.menu-item-has-children ul li:first-child a {
+	-webkit-border-radius: 3px 0 0 0;
+	border-radius: 3px 0 0 0;
+}
+
+.wrapper .top-menu-container .header-menu li.menu-item-has-children ul li:last-child a {
+	-webkit-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+}
+
+.wrapper .top-menu-container .header-menu li.menu-item-has-children a {
+	-webkit-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+}
+
+.wrapper .top-menu-container .header-menu li.menu-item-has-children ul li a {
+	color: #fff;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
 body .wrapper .header .top-header {
 	position: absolute;
 	padding: 0 15px;
@@ -15048,3 +15083,43 @@ body.home .popular-destinations-main .main-module-title {
 /*.logged-in #wpadminbar {*/
 /*	display: block;*/
 /*}*/
+
+
+/*Places*/
+.hentry ul {
+	margin: 0 0 30px 30px;
+}
+
+/*Search Form*/
+.header_search .search .sb-icon-search {
+	color: #fff !important;
+	font-size: 19px;
+}
+
+.header_search .search .sb-icon-search .fa {
+	position: relative;
+	top: -2px;
+}
+
+/*Logged-in Icons*/
+body.logged-in .header-menu li a:after {
+	font-family: FontAwesome;
+	font-size: 21px;
+	line-height: 21px;
+	margin-left: 8px;
+	position: relative;
+	top: 2px;
+}
+
+body.logged-in .trips a:after {
+	content: '\f072';
+}
+
+body.logged-in .help a:after {
+	content: '\f1cd';
+}
+
+body.logged-in .bp-messages-nav a:after {
+	content: '\f27a';
+	top: 0 !important;
+}
