@@ -75,48 +75,29 @@ if($_REQUEST['popuptype'] == 'b_sendtofriend'){ ?>
 }elseif($_REQUEST['popuptype'] == 'b_send_inquiry'){ ?>
 
 	<div id="basic-modal-content2" class="clearfix">
-	 <form method="post" name="agt_mail_agent" id="agt_mail_agent" action="<?php echo get_permalink($post_info->ID); ?>" >
-		<input type="hidden" name="sendact" value="send_inqury" />
-		<input type="hidden" name="pid" value="<?php echo $post_info->ID;?>" />
+<form action="http://192.168.1.2:23662/members/judan/messages/compose/" method="post" id="send_message_form" class="standard-form" enctype="multipart/form-data">
+		<input type="hidden" name="subject" value="send_inqury" />
+	<input type="hidden" name="send-to-input" value="<?php echo $post_info->post_author;?>" />
 		<div class="gdmodal-title"><?php _e("Send message to", "vh"); echo " " . "<span>".get_the_author_meta("display_name", $post_info->post_author)."</span>"; ?></div>
 			<p id="inquiry_send_success" class="sucess_msg" style="display:none;"></p>
-        <?php do_action('geodir_before_inquiry_form_field' , 'inq_name') ;?> 
-        <div class="row  clearfix" >
-			<div class="geodir_popup_field">	
-				<input class="is_required" field_type="text" name="inq_name"  type="text" value="" placeholder="<?php _e('Your Name','vh');?>" />
-				<span class="message_error2" id="span_agt_mail_name"></span>
-				<span class="input-required"></span>
-			</div>
-		</div>
-        <?php do_action('geodir_after_inquiry_form_field' , 'inq_name') ;?> 
-        <?php do_action('geodir_before_inquiry_form_field' , 'inq_email') ;?> 
+	    <?php do_action('geodir_before_inquiry_form_field' , 'inq_name') ;?> 
+	     
+		
+	    <?php do_action('geodir_after_inquiry_form_field' , 'inq_phone') ;?>
+	    <?php do_action('geodir_before_inquiry_form_field' , 'inq_msg') ;?>
 		<div class="row  clearfix" >
-			<div class="geodir_popup_field">
-			<input class="is_required" field_type="email" name="inq_email" type="text" value="" placeholder="<?php _e('Email','vh');?>" />
-			<span class="message_error2" id="span_agt_mail_email"></span>
-			<span class="input-required"></span>
-			</div>
-		</div>
-         <?php do_action('geodir_after_inquiry_form_field' , 'inq_email') ;?> 
-         <?php do_action('geodir_before_inquiry_form_field' , 'inq_phone') ;?>
-		<div class="row  clearfix" >
-			<div class="geodir_popup_field">
-			<input name="inq_phone" id="agt_mail_phone" type="text"  value="" placeholder="<?php _e('Contact info','vh');?>" />
-			</div>
-		</div>
-        <?php do_action('geodir_after_inquiry_form_field' , 'inq_phone') ;?>
-        <?php do_action('geodir_before_inquiry_form_field' , 'inq_msg') ;?>
-		<div class="row  clearfix" >
-			<div class="geodir_popup_field">
-			<textarea class="is_required" field_type="textarea" name="inq_msg" cols="" rows="" placeholder="<?php _e('Message','vh');?>" ></textarea>
-			<span class="message_error2" id="span_agt_mail_msg"></span></div>
-		</div>
-        <?php do_action('geodir_after_inquiry_form_field' , 'inq_msg') ;?>
-        <div class="gmmodal-dialog-lower">
-			<input name="Send" type="submit" value="<?php _e('Send message','vh');?>" class="clearfix wpb_button wpb_btn-primary wpb_btn-small" />
-			<a href="javascript:void(0)" class="gmmodal-close-dialog wpb_button wpb_btn-inverse wpb_btn-small"><?php _e("Cancel", "vh"); ?></a>
-        </div>
-	 </form>
-	</div> <?php
+		<div class="geodir_popup_field">
+		<textarea class="is_required" field_type="textarea" name="content" cols="" rows="" placeholder="<?php _e('Message','vh');?>" ></textarea>
+		<span class="message_error2" id="span_agt_mail_msg"></span></div>
+	</div>
+	<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="" class="">
+    <div class="gmmodal-dialog-lower">
+		<input name="send" type="submit" value="<?php _e('Send message','vh');?>" class="clearfix wpb_button wpb_btn-primary wpb_btn-small" />
+		<a href="javascript:void(0)" class="gmmodal-close-dialog wpb_button wpb_btn-inverse wpb_btn-small"><?php _e("Cancel", "vh"); ?></a>
+    </div>
+	</form>
+	</div> 
+	
+	<?php
 	}
 ?>

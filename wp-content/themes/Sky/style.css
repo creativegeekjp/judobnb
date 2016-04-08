@@ -7417,7 +7417,8 @@ html body #simplemodal-container .geodir_popup_field textarea {
 	font-size: 18px;
 	color: #666;
 	font-weight: 300;
-	max-height: 136px;
+	max-height: 100%;
+	height: 345px;
 	padding: 19px;
 }
 
@@ -14768,8 +14769,19 @@ a.subscribe-btn:hover {
 	/*display: block;*/
 }
 
+.top-menu-container .header-menu li.menu-item-has-children:first-child ul {
+	left: 10px;
+	margin-top: -2px;
+	/*display: block;*/
+}
+
 .wrapper .top-menu-container .header-menu li.menu-item-has-children ul li {
 	padding: 0;
+}
+
+.wrapper .top-menu-container .header-menu li.btn-border.menu-item-has-children a {
+	-webkit-border-radius: 3px !important;
+	border-radius: 3px !important;
 }
 
 .wrapper .top-menu-container .header-menu li.menu-item-has-children ul li:first-child a {
@@ -14826,13 +14838,6 @@ body .wrapper .top-header .logo a:hover,
 	border: 0;
 }
 
-
-.top-menu-container .header-menu li {
-	/*padding: 0;*/
-	/*border-left: 1px solid #dce0e0;*/
-}
-
-
 .top-menu-container .header-menu li.btn-border {
 	border: 0;
 }
@@ -14852,7 +14857,7 @@ body.home .header-menu li a:hover {
 
 body .header-menu li.btn-border a,
 body .header-menu li.btn-border a:hover,
-body .header-menu li.btn-border:hover a{
+body .header-menu li.btn-border:hover a {
 	border: 2px solid #fff !important;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -15072,10 +15077,6 @@ body.home .popular-destinations-main .main-module-title {
 	font-size: 14px;
 }
 
-.header-background-img img {
-	max-height: 70px;
-}
-
 /*#wpadminbar {*/
 /*	display: none;*/
 /*}*/
@@ -15085,15 +15086,37 @@ body.home .popular-destinations-main .main-module-title {
 /*}*/
 
 
-/*Places*/
+/*Places/Geodirectory*/
 .hentry ul {
 	margin: 0 0 30px 30px;
 }
+
+body.geodir-page .header .top-header,
+body.search-results .header .top-header {
+	background: url(images/header_bg.jpg) no-repeat;
+	background-size: 100% 70px;
+	position: relative;
+	height: 70px;
+}
+
+.listing-carousel-container {
+	/*min-height: 541px;*/
+}
+
 
 /*Search Form*/
 .header_search .search .sb-icon-search {
 	color: #fff !important;
 	font-size: 19px;
+}
+
+.header_search .search .sb-icon-search,
+.header_search .search .sb-icon-search:after {
+ 	background: transparent !important;
+ }
+ 
+.header_search .search .sb-icon-search:hover {
+	background: rgba(0, 0, 0, 0.4) !important;
 }
 
 .header_search .search .sb-icon-search .fa {
@@ -15121,5 +15144,36 @@ body.logged-in .help a:after {
 
 body.logged-in .bp-messages-nav a:after {
 	content: '\f27a';
-	top: 0 !important;
+	top: -1px !important;
+}
+
+
+body.page-id-6 .header-background-img {
+	display: none;
+}
+
+/*Featured Bedrooms*/
+.item-info:before {
+	left: 15px;
+}
+
+/*Book Now*/
+.page-id-269 #ui-datepicker-div {
+	background: #fff;
+}
+
+/*.wrapper #easyFormOverlay {*/
+	/*display: none !important;*/
+/*}*/
+
+/*.wrapper #easyFormInnerlay {*/
+/*	background: #fff;*/
+/*}*/
+
+/*.wrapper #easyFormInnerlay.full {*/
+/*	padding: 20px;*/
+/*}*/
+
+.easyloading {
+	background-image: none !important;
 }

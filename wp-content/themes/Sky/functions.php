@@ -2985,9 +2985,9 @@ add_role(
 	'Host' ,
 	array(
 		'read' => true,
-        'edit_posts' => false,
-        'delete_posts' => false,
-        'publish_posts' => false,
+        'edit_posts' => true,
+        'delete_posts' => true,
+        'publish_posts' => true,
         'upload_files' => true,
 	)
 );
@@ -3125,3 +3125,15 @@ class Easy_Social_Media extends WP_Widget {
 	}
 }
 add_action('widgets_init',create_function('', 'return register_widget("Easy_Social_Media");'));
+
+function posts_for_current_author($query) {
+
+	if($query->is_admin) {
+		
+		global $user_ID;
+		if($user_ID != 1)
+			$query->set('author',  $user_ID);
+	}
+	return $query;
+}
+add_filter('pre_get_posts', 'posts_for_current_author');

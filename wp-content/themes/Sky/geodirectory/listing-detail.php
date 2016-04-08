@@ -114,7 +114,7 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 								<?php if ( get_option("vh_theme_version") != "SkyEstate" ) { ?>
 									<input type="hidden" name="geodir_popup_post_id" value="<?php echo $post->ID?>">
 									<div class="geodir_display_popup_forms"></div>
-									<a href="javascript:void(0)" class="wpb_button single-listing-contact-author vh_b_send_inquiry"><?php _e("Send message", "vh"); ?></a>
+									<a href="<?php bp_send_private_message_link(); ?>" class="wpb_button single-listing-contact-author">Send Message</a>
 								<?php } ?>
 								<?php if ( get_option("vh_theme_version") != "SkyDirectory" ) {
 									echo get_geodir_show_listing_fields( $post->ID, 'vacation', 'single', $post_type );

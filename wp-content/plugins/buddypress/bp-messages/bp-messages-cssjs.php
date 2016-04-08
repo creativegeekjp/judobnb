@@ -26,6 +26,10 @@ function messages_add_autocomplete_js() {
 		wp_enqueue_script( 'bp-jquery-autocomplete-fb', "{$url}autocomplete/jquery.autocompletefb{$min}.js", array( 'jquery' ), bp_get_version() );
 		wp_enqueue_script( 'bp-jquery-bgiframe', "{$url}autocomplete/jquery.bgiframe{$min}.js", array( 'jquery' ), bp_get_version() );
 		wp_enqueue_script( 'bp-jquery-dimensions', "{$url}autocomplete/jquery.dimensions{$min}.js", array( 'jquery' ), bp_get_version() );
+		wp_enqueue_script( 'bp-jquery-autocomplete', BP_PLUGIN_URL . "bp-messages/js/autocomplete/jquery.autocomplete{$min}.js", array( 'jquery' ), bp_get_version(), true );
+		wp_enqueue_script( 'bp-jquery-autocomplete-fb', BP_PLUGIN_URL . "bp-messages/js/autocomplete/jquery.autocompletefb{$min}.js", array(), bp_get_version(), true );
+		wp_enqueue_script( 'bp-jquery-bgiframe', BP_PLUGIN_URL . "bp-messages/js/autocomplete/jquery.bgiframe{$min}.js", array(), bp_get_version(), true );
+		wp_enqueue_script( 'bp-jquery-dimensions', BP_PLUGIN_URL . "bp-messages/js/autocomplete/jquery.dimensions{$min}.js", array(), bp_get_version(), true );
 	}
 }
 add_action( 'bp_enqueue_scripts', 'messages_add_autocomplete_js' );
