@@ -1255,7 +1255,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 				jQuery("#main_header_image").slidesjs({
 					play: {
 						effect:"fade",
-						interval: 5000,
+						interval: 10000,
 						auto: true
 					}
 				});
