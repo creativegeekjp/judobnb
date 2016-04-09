@@ -94,6 +94,7 @@
 	   }(document, 'script', 'facebook-jssdk'));
 	</script>
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"> </script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/slidesjs/3.0/jquery.slides.min.js"></script>
 	<body <?php body_class($vh_class); ?>>
 		<?php if ( $_SERVER['SERVER_NAME'] == 'cohhe.com' ) { ?>
 			<a href="http://themeforest.net/item/sky-wordpress-listings-theme/10061836?ref=Cohhe" target="_blank" id="buy-now-ribbon"></a>
@@ -558,7 +559,9 @@
 							}
 							?>
 						</div>
-						<div id="main_header_image" class="author"></div>
+						<div id="main_header_image" class="author">
+						
+						</div>
 						<div class="author-dash-image">
 							<?php
 							$author = get_user_by( 'slug', get_query_var( 'author_name' ) );
@@ -640,7 +643,15 @@
 							}
 							?>
 						</div>
-						<div id="main_header_image"></div>
+						<div id="main_header_image" >
+							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.1.jpeg" />
+							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.2.jpeg" />
+							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.3.jpeg" />
+							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.4.jpeg" />
+							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.5.jpeg" />
+							
+														
+						</div>
 						<div class="welcome-container">
 							<div id="welcome">
 								<div class="va-middle">
