@@ -75,7 +75,7 @@ if($_REQUEST['popuptype'] == 'b_sendtofriend'){ ?>
 }elseif($_REQUEST['popuptype'] == 'b_send_inquiry'){ ?>
 
 	<div id="basic-modal-content2" class="clearfix">
-<form action="http://192.168.1.2:23662/members/judan/messages/compose/" method="post" id="send_message_form" class="standard-form" enctype="multipart/form-data">
+<form action="/members/judan/messages/compose/" method="post" id="send_message_form" class="standard-form" enctype="multipart/form-data">
 		<input type="hidden" name="subject" value="send_inqury" />
 	<input type="hidden" name="send-to-input" value="<?php echo $post_info->post_author;?>" />
 		<div class="gdmodal-title"><?php _e("Send message to", "vh"); echo " " . "<span>".get_the_author_meta("display_name", $post_info->post_author)."</span>"; ?></div>

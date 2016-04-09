@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The base configuration for WordPress
  *
@@ -87,7 +88,7 @@ define( 'FTP_PUBKEY', '/home/root/.ssh/id_rsa.pub' );
 define( 'FTP_PRIKEY', '/home/root/.ssh/id_rsa' );
 define( 'FTP_USER', 'root' );
 define( 'FTP_PASS', 'cgeek' );
-define( 'FTP_HOST', '192.168.1.2:23662' );
+define( 'FTP_HOST', 'judobnb.creativegeek.jp' );
 define( 'FTP_SSL', false );
 define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
 define( 'WP_DEBUG_DISPLAY', false );
