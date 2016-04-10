@@ -1239,6 +1239,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 		#main_header_image {height: 747px; background-size: cover !important; background-position: 100% !important; }
 		.slidesjs-container {z-index: 0;}
 		.slide-item {position: absolute !important; max-height: 3000px !important ; top: -300px !important;}
+		.slide-item-189px {position: absolute !important; max-height: 3000px !important ; top: -189px !important;}
 		</style>
 		
 		
