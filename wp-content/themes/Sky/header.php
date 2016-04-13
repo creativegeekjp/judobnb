@@ -647,7 +647,7 @@
 							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.0.jpeg" />
 							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.1.jpeg" />
 							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.2.jpeg" />
-							<img class="slide-item-189px" src="<?= get_template_directory_uri() ?>/images/No.3.jpeg" />
+							<img class="slide-item slide-item-189px" src="<?= get_template_directory_uri() ?>/images/No.3.jpeg" />
 							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.4.jpeg" />
 							<img class="slide-item" src="<?= get_template_directory_uri() ?>/images/No.5.jpeg" />
 							

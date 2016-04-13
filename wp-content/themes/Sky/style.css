@@ -296,6 +296,14 @@ input[type="submit"] {
 	background-size: cover !important;
 	background-position: 100% !important;
 }
+#main_header_image img {
+	height: auto;
+	width: auto;
+}
+#main_header_image {height: 747px; background-size: cover !important; background-position: 100% !important; }
+		.slidesjs-container {z-index: 0;}
+		.slide-item {position: absolute !important; max-height: 3000px !important ; top: -300px !important;}
+		.slide-item-189px {position: absolute !important; max-height: 3000px !important ; top: -189px !important;}
 
 #main_header_image.author {
 	height: 611px;
@@ -7270,7 +7278,10 @@ body.skyestate .blog-author .author-name a {
 body.skyestate .single-listing-options {
 	display: none;
 }
-
+.header_search .search .gray-form {
+    float: none;
+    display: none;
+}
 body.skyestate .header_search .search .gray-form .sb-icon-search {
 	background: -webkit-linear-gradient(#339933, #007f00);
 	background: -o-linear-gradient(#339933, #007f00);

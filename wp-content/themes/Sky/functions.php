@@ -423,6 +423,7 @@ if (!function_exists('vh_style_method')) {
 		wp_enqueue_style('vh-responsive', get_template_directory_uri() . '/css/responsive.css');
 		wp_enqueue_style('pushy', get_template_directory_uri() . '/css/nav/pushy.css');
 		wp_enqueue_style('component', get_template_directory_uri() . '/css/component.css');
+		wp_enqueue_style('slide', get_template_directory_uri() . '/css/slide.css');
 
 		// Load google fonts
 		if (file_exists(TEMPLATEPATH . '/css/gfonts.css')) {
@@ -1235,17 +1236,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 	}
 
 	if ( $image_id == '' ) {
-		$output = '<style type="text/css" media="all">
-		#main_header_image {height: 747px; background-size: cover !important; background-position: 100% !important; }
-		.slidesjs-container {z-index: 0;}
-		.slide-item {position: absolute !important; max-height: 3000px !important ; top: -300px !important;}
-		.slide-item-189px {position: absolute !important; max-height: 3000px !important ; top: -189px !important;}
-		</style>
-		
-		
-		
-		
-		
+		$output = '
 		
 	
 		<script type="text/javascript">
