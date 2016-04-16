@@ -15188,3 +15188,7 @@ body.page-id-6 .header-background-img {
 .easyloading {
 	background-image: none !important;
 }
+
+#welcome .head small {
+	text-transform: none;
+}

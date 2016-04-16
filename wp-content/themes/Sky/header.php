@@ -656,8 +656,11 @@
 						<div class="welcome-container">
 							<div id="welcome">
 								<div class="va-middle">
-									<h3 class="head">Welcome Home</h3>
-									<p>Rent unique places to stay from local hosts in 190+ countries.</p>
+									<h3 class="head">Welcome to Judobnb</h3>
+									<p>
+										(&beta; Site)<br>
+										Travel for the Judo community!
+									</p>
 								</div>
 							</div>
 						</div>
