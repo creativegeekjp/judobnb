@@ -25,6 +25,8 @@
  *
  * @since 1.0.0
  */
+ 
+ 
 define("GEODIRECTORY_VERSION", "1.5.9");
 
 /*

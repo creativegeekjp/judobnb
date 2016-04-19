@@ -5,6 +5,7 @@
  * @since 1.0.0
  * @package GeoDirectory
  */
+ 
 if (!function_exists('geodir_create_tables')) {
     /**
      * Creates custom db tables for storing GeoDirectory plugin data.
