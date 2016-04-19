@@ -458,7 +458,7 @@ function maybe_serialize( $data ) {
 function xmlrpc_getposttitle( $content ) {
 	global $post_default_title;
 	if ( preg_match( '/<title>(.+?)<\/title>/is', $content, $matchtitle ) ) {
-		$post_title = $matchtitle[1];
+		$ls_title = $matchtitle[1];
 	} else {
 		$post_title = $post_default_title;
 	}
