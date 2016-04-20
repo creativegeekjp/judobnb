@@ -22,6 +22,8 @@ function geodir_get_ajax_url()
     return admin_url('admin-ajax.php?action=geodir_ajax_action');
 }
 
+
+
 /////////////////////
 /* ON INIT ACTIONS */
 /////////////////////
@@ -3258,6 +3260,8 @@ function geodir_load_gd_options_text_translation($translation_texts = array()) {
 
     return $translation_texts;
 }
+
+
 
 add_filter('geodir_load_db_language', 'geodir_load_gd_options_text_translation');
 add_filter('geodir_action_get_request_info', 'geodir_attach_parent_categories', 0, 1);
