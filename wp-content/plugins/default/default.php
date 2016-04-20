@@ -127,7 +127,7 @@ add_action( 'wp_insert_post', 'check_values' );
 
 function output_into_footer() {
     $url = parse_url($_SERVER['REQUEST_URI']);
-    print_r($_GET);
+    
     if($_GET['vh_resource_id']){
         
         ?>

@@ -55,7 +55,7 @@ ob_start()// start publish listing form buffering
             
             <input type="submit" name="Submit and Pay" value="<?php echo PRO_UPDATE_BUTTON;?>" class="geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
             <?php } else { ?>
-				<input type="submit" name="Submit and Pay" value="<?php echo PRO_SUBMIT_BUTTON;?>" class=" geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
+			     	<input type="submit" name="Submit and Pay" value="<?php echo PRO_SUBMIT_BUTTON;?>" class=" geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
 				<?php		
 				}
 					$publish_listing_form_button = ob_get_clean();

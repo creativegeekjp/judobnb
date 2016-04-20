@@ -2652,6 +2652,16 @@ function vh_register_required_plugins() {
 }
 add_action( 'tgmpa_register', 'vh_register_required_plugins' );
 
+// Enable the use of shortcodes within widgets.
+add_filter( 'widget_text', 'do_shortcode' ); 
+
+// Assign the tag for our shortcode and identify the function that will run. 
+add_shortcode( 'template_directory_uri', 'wpse61170_template_directory_uri' );
+
+// Define function 
+function wpse61170_template_directory_uri() {
+    return get_template_directory_uri();
+}
 
 function vh_import_listings() {
 	global $wpdb;
@@ -2676,7 +2686,7 @@ function vh_import_listings() {
 	('gd_place', 'VARCHAR', 'url', 'Facebook', 'You can enter your business or listing facebook url.', 'Facebook', 'geodir_facebook', '', 7, '', 'Facebook', '1', '1', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
 	('gd_place', 'TEXT', 'textarea', 'Video', 'Add video code here, YouTube etc.', 'Video', 'geodir_video', '', 8, '', 'Video', '1', '0', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
 	('gd_place', 'TEXT', 'textarea', 'Special Offers', 'Note: List out any special offers (optional)', 'Special Offers', 'geodir_special_offers', '', 9, '', 'Special Offers', '1', '0', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
-	('gd_place', 'INT', 'text', 'Guest count', '', 'guests', 'geodir_listing_guest_count', '', 10, '', '', '1', '0', '0', '0', '', '1', '1', '0', '0', '1,2', '0', '', '', '<?php echo get_template_directory_uri(); ?>/themes/Sky/images/guest-new.png', '', ''),
+	('gd_place', 'INT', 'text', 'Guest count', '', 'guests', 'geodir_listing_guest_count', '', 10, '', '', '1', '0', '0', '0', '', '1', '1', '0', '0', '1,2', '0', '', '', 'http://cohhe.com/demo/sky/sky-vacation/wp-content/themes/sky-directory/images/guest-new.png', '', ''),
 	('gd_place', 'INT', 'text', 'Bedroom count', '', 'bedrooms', 'geodir_listing_bedroom_count', '', 11, '', '', '1', '0', '0', '0', '', '1', '1', '0', '0', '1,2', '0', '', '', 'http://cohhe.com/demo/sky/sky-vacation/wp-content/themes/sky-directory/images/door-new.png', '', ''),
 	('gd_place', 'INT', 'text', 'Bed count', '', 'beds', 'geodir_listing_bed_count', '', 12, '', '', '1', '0', '0', '0', '', '1', '1', '0', '0', '1,2', '0', '', '', 'http://cohhe.com/demo/sky/sky-vacation/wp-content/themes/sky-directory/images/bed-new.png', '', ''),
 	('gd_place', 'INT', 'text', 'Listing price', '', 'Listing price', 'geodir_listing_price', '', 13, '', '', '1', '0', '0', '0', '', '0', '0', '0', '0', '1,2,', '', '', '', '', '', ''),
