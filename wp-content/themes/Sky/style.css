@@ -15169,13 +15169,22 @@ body.search-results .header .top-header {
 }
 
 /*Logged-in Icons*/
-body.logged-in .header-menu li a:after {
+body.logged-in .header-menu li a:after,
+.pushy a:after {
 	font-family: FontAwesome;
 	font-size: 21px;
 	line-height: 21px;
 	margin-left: 8px;
 	position: relative;
 	top: 2px;
+}
+
+.pushy a:after {
+	float: right;
+}
+
+.pushy a {
+	font-weight: normal;
 }
 
 body.logged-in .trips a:after {
@@ -15194,6 +15203,10 @@ body.logged-in .bp-messages-nav a:after {
 
 body.page-id-6 .header-background-img {
 	display: none;
+}
+
+.item-info .featured-item .listing-featured-image img {
+	margin: 0 auto !important;
 }
 
 /*Featured Bedrooms*/
@@ -15224,4 +15237,29 @@ body.page-id-6 .header-background-img {
 
 #welcome .head small {
 	text-transform: none;
+}
+
+@media screen and (max-width: 767px) {
+	#main_header_bg {
+		height: 100%;
+	}
+	
+	body .wrapper .header .top-header {
+		position: relative;
+		height: 70px;
+	}
+	
+	body.home .wrapper .top-header .logo a,
+	body.home .wrapper .top-header .logo a:hover {
+		background: url(images/logo_v1.png) no-repeat;
+		background-size: 100%;
+	}
+	
+	body.home .wrapper .top-header .logo img {
+		visibility: hidden;
+	}
+	
+	body.admin-bar .pushy {
+		top: 46px;
+	}
 }
