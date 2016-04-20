@@ -44,7 +44,7 @@ ob_start()// start publish listing form buffering
 
         <form action="<?php echo $form_action_url; ?>" name="publish_listing" id="publish_listing" method="post">
             <div class="clearfix">
-                <input type="hidden" name="pid" value="<?php if (isset($post->pid)) {
+                <input type="text" name="pid" value="<?php if (isset($post->pid)) {
                     echo $post->pid;
                 } ?>">
                 <?php

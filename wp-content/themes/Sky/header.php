@@ -644,19 +644,12 @@
 							?>
 						</div>
 						<div id="main_header_image" >
-							<li class="slide-item"><img  src="<?= get_template_directory_uri() ?>/images/No.0.jpeg" /></li>
-							<li class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.1.jpeg" /></li>
-							<li class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.2.jpeg" /></li>
-							<li class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.3.jpeg" /></li>
-							<li class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.4.jpeg" /></li>
-							<li class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.5.jpeg" /></li>
-							
-							
-							
-							
-							
-							
-							
+							<div class="slide-item"><img  src="<?= get_template_directory_uri() ?>/images/No.0.jpeg" /></div>
+							<div class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.1.jpeg" /></div>
+							<div class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.2.jpeg" /></div>
+							<div class="slide-item slide-item-mod"><img src="<?= get_template_directory_uri() ?>/images/No.3.jpeg" /></div>
+							<div class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.4.jpeg" /></div>
+							<div class="slide-item"><img src="<?= get_template_directory_uri() ?>/images/No.5.jpeg" /></div>
 						</div>
 						<div class="welcome-container">
 							<div id="welcome">
