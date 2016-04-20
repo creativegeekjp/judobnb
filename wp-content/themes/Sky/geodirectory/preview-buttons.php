@@ -1,24 +1,57 @@
 <?php
+
+if($_POST)
+{
+	
+	$last_id = geodir_save_listing();
+	
+	if ($last_id) {
+	    //$redirect_to = get_permalink( $last_id );
+	    $redirect_to = geodir_getlink(get_permalink(geodir_success_page_id()), array('pid' => $last_id));
+	   
+	    	
+	} elseif (isset($_REQUEST['pid']) && $_REQUEST['pid'] != '') {
+	    $redirect_to = get_permalink(geodir_add_listing_page_id());
+	    $redirect_to = geodir_getlink($redirect_to, array('pid' => $post->pid), false);
+	     
+	} else {
+		$redirect_to = get_permalink(geodir_add_listing_page_id());
+		
+		$gd_session->un_set('listing');
+
+	}
+    
+    header("Refresh:0; url='. $redirect_to .'");
+    
+}
+
+
+?>
+
+<?php
+  
     global $wpdb,$post;
     
     $post_type = $post->listing_type;
     
-	if(isset($_REQUEST['preview']) && $_REQUEST['preview'] && isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
-		$form_action_url = geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=update&listing_type='.$post_type;
-	}elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']){
-		$form_action_url = geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=publish&listing_type='.$post_type;
-	}
+	//if(isset($_REQUEST['preview']) && $_REQUEST['preview'] && isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
+		//$form_action_url = geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=update&listing_type='.$post_type;
+	//}elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']){
+		//$form_action_url = geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=publish&listing_type='.$post_type;
+	//}
 	
-	$form_action_url = apply_filters('geodir_publish_listing_form_action' , $form_action_url ) ;
+	//$form_action_url = apply_filters('geodir_publish_listing_form_action' , $form_action_url ) ;
 	
-	
+	//$form_action_url = home_url()."/listing-success/";
+   
+                            
 ?>
 <?php do_action('geodir_before_publish_listing_form');
 ob_start()// start publish listing form buffering 
 ?>
 <div class="geodir_preview_section" >
 
-	<form action="<?php echo $form_action_url; ?>" name="publish_listing" id="publish_listing" method="post">
+	<form name="publish_listing" id="publish_listing" method="post">
     	<div class="clearfix">
 		<input type="hidden" name="pid" value="<?php if(isset($post->pid)){  echo $post->pid;}?>">
         <?php do_action('geodir_publish_listing_form_before_msg') ;?>    
@@ -93,4 +126,6 @@ $publish_listing_form = apply_filters('geodir_publish_listing_form',$publish_lis
 echo $publish_listing_form ;
 
 do_action('geodir_after_publish_listing_form') ;
+
+
 ?>

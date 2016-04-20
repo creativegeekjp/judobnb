@@ -118,6 +118,7 @@ function geodir_on_init()
  * @todo check if nonce is required here and if so add one.
  */
 function geodir_ajax_handler() {
+    
     global $wpdb, $gd_session;
 
     if (isset($_REQUEST['gd_listing_view']) && $_REQUEST['gd_listing_view'] != '') {

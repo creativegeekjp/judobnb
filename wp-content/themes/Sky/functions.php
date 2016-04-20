@@ -424,6 +424,7 @@ if (!function_exists('vh_style_method')) {
 		wp_enqueue_style('pushy', get_template_directory_uri() . '/css/nav/pushy.css');
 		wp_enqueue_style('component', get_template_directory_uri() . '/css/component.css');
 		wp_enqueue_style('slide', get_template_directory_uri() . '/css/slide.css');
+		
 
 		// Load google fonts
 		if (file_exists(TEMPLATEPATH . '/css/gfonts.css')) {
@@ -3167,3 +3168,9 @@ function posts_for_current_author($query) {
 	return $query;
 }
 add_filter('pre_get_posts', 'posts_for_current_author');
+
+// Excerpt for pages
+function my_add_excerpts_to_pages() {
+     add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'my_add_excerpts_to_pages' );

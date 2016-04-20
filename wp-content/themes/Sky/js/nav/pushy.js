@@ -74,7 +74,7 @@ jQuery(function() {
 			}
 		});
 
-		jQuery('.page-wrapper, .tp-bgimg.defaultimg, #main_header_image').click(function() {
+		jQuery('.page-wrapper, .tp-bgimg.defaultimg, #main_header_image, #welcome').click(function() {
 			if (!state) {
 				closePushyFallback();
 				state = true;

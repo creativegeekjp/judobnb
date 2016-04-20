@@ -311,32 +311,16 @@ input[type="submit"] {
 	.slidesjs-container {
 		z-index: 0;
 	}
-	.slide-item, .slide-item-189px {
+	div.slide-item, div.slide-item-mod {
 		position: absolute !important; 
 		max-height: 3000px !important;
 	}
-	li.slide-item-mod {
-		top: -189px !important;
+	div.slide-item-mod {
+		top: -205px !important;
 	}
 	.slidesjs-pagination {
 		display: none;
 	}
-	
-@media screen and (max-width: 991px) {
-	.header-search-container img {
-		top: 0 !important;
-	}
-	
-	li.slide-item-mod {
-		top: 0 !important;
-	}
-}
-
-@media screen and (min-width: 992px) and (max-width: 1400px) {
-	li.slide-item-mod {
-		top: -150px !important;
-	}
-}
 
 #main_header_image.author {
 	height: 611px;
@@ -15169,13 +15153,22 @@ body.search-results .header .top-header {
 }
 
 /*Logged-in Icons*/
-body.logged-in .header-menu li a:after {
+body.logged-in .header-menu li a:after,
+.pushy a:after {
 	font-family: FontAwesome;
 	font-size: 21px;
 	line-height: 21px;
 	margin-left: 8px;
 	position: relative;
 	top: 2px;
+}
+
+.pushy a:after {
+	float: right;
+}
+
+.pushy a {
+	font-weight: normal;
 }
 
 body.logged-in .trips a:after {
@@ -15224,4 +15217,87 @@ body.page-id-6 .header-background-img {
 
 #welcome .head small {
 	text-transform: none;
+}
+
+@media screen and (max-width: 767px) {
+	#main_header_bg {
+		height: 100%;
+	}
+	
+	.welcome-container {
+		height: auto;
+		top: 0;
+	}
+	
+	body .wrapper .header .top-header {
+		position: relative;
+		height: 70px;
+	}
+	
+	body .wrapper .header .top-header a {
+		min-width: 165px;
+		min-height: 44px;
+	}
+	
+	body.home .wrapper .header .top-header a,
+	body.home .wrapper .header .top-header a:hover {
+		background: url(images/logo_v1.png) no-repeat center center;
+		background-size: 100%;
+	}
+	
+	body .wrapper .header .top-header a,
+	body .wrapper .header .top-header a:hover {
+		background: url(images/logo-judobnb-v6_white_bg) no-repeat center center;
+		background-size: 100%;
+	}
+	
+	body .wrapper .header .top-header img {
+		visibility: hidden;
+	}
+	
+	#welcome .head {
+		line-height: 1.2;
+		margin: 15px 0;
+	}
+	
+	/*body.home div#ui-datepicker-div,*/
+	/*body.home.admin-bar div#ui-datepicker-div {*/
+	/*	top: 762px !important;*/
+	/*	margin-left: 6px !important;*/
+	/*	padding: 0 !important;*/
+	/*}*/
+	
+	/*body.home div#ui-datepicker-div {*/
+	/*	top: 715px !important;*/
+	/*}*/
+}
+
+@media screen and (max-width: 991px) {
+	.header-search-container img {
+		top: 0 !important;
+	}
+	
+	div.slide-item-mod {
+		top: 0 !important;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	body .wrapper .header .top-header {
+		height: 77px;
+	}
+	
+	body.home .wrapper .top-header .logo {
+		margin: 15px 0 0;
+	}
+	
+	.top-menu-container .header-menu li.menu-item-has-children:last-child ul {
+		right: 0;
+	}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1400px) {
+	div.slide-item {
+		top: -150px !important;
+	}
 }
