@@ -1,57 +1,39 @@
 <?php
 
-if($_POST)
-{
-	
-	$last_id = geodir_save_listing();
-	
-	if ($last_id) {
-	    //$redirect_to = get_permalink( $last_id );
-	    $redirect_to = geodir_getlink(get_permalink(geodir_success_page_id()), array('pid' => $last_id));
-	   
-	    	
-	} elseif (isset($_REQUEST['pid']) && $_REQUEST['pid'] != '') {
-	    $redirect_to = get_permalink(geodir_add_listing_page_id());
-	    $redirect_to = geodir_getlink($redirect_to, array('pid' => $post->pid), false);
-	     
-	} else {
-		$redirect_to = get_permalink(geodir_add_listing_page_id());
-		
-		$gd_session->un_set('listing');
 
-	}
+global $wpdb,$post;
     
-    header("Refresh:0; url='. $redirect_to .'");
-    
-}
+$post_type = $post->listing_type;
+
+	
+$last_id = geodir_save_listing();
+$link = get_permalink( $last_id );
+
+ 
+ $my_post = array(
+ 	'post_title'    => $_REQUEST['post_title'],
+ 	'post_content'  => $_REQUEST['post_desc'],
+ 	'post_status'   => 'publish',
+ 	'post_author'   => 1,
+ 	'post_type' => "easy-rooms"
+ );
+
+ $pids = wp_insert_post( $my_post );
+
+add_post_meta( $pids, 'reservations_groundprice', $_REQUEST['geodir_listing_price'] );
+add_post_meta( $pids, 'roomcount',1); 
+add_post_meta($last_id, 'vh_resource_id', $pids);
 
 
 ?>
 
-<?php
-  
-    global $wpdb,$post;
-    
-    $post_type = $post->listing_type;
-    
-	//if(isset($_REQUEST['preview']) && $_REQUEST['preview'] && isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
-		//$form_action_url = geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=update&listing_type='.$post_type;
-	//}elseif(isset($_REQUEST['preview']) && $_REQUEST['preview']){
-		//$form_action_url = geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=publish&listing_type='.$post_type;
-	//}
-	
-	//$form_action_url = apply_filters('geodir_publish_listing_form_action' , $form_action_url ) ;
-	
-	//$form_action_url = home_url()."/listing-success/";
-   
-                            
-?>
-<?php do_action('geodir_before_publish_listing_form');
+<?php 
+do_action('geodir_before_publish_listing_form');
 ob_start()// start publish listing form buffering 
 ?>
 <div class="geodir_preview_section" >
 
-	<form name="publish_listing" id="publish_listing" method="post">
+	<form action="<?php echo $link; ?>" name="publish_listing" id="publish_listing" method="post">
     	<div class="clearfix">
 		<input type="hidden" name="pid" value="<?php if(isset($post->pid)){  echo $post->pid;}?>">
         <?php do_action('geodir_publish_listing_form_before_msg') ;?>    
@@ -108,7 +90,6 @@ ob_start()// start publish listing form buffering
 					
 					ob_start(); // start go back and edit / cancel buffering		 
             ?>
-            <a href="<?php echo $postlink;?>" class="geodir_goback wpb_button wpb_btn-warning wpb_btn-small" ><?php echo __("Edit", "vh"); ?></a>
            <input type="button" name="Cancel" value="<?php echo (PRO_CANCEL_BUTTON);?>" class="geodir_button geodir_cancle_button wpb_button wpb_btn-inverse wpb_btn-small input_button"  onclick="window.location.href='<?php echo geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=cancel&pid='.$post_id.'&listing_type='.$post_type;?>'" />
         	<?php
             	
