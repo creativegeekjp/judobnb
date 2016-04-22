@@ -1,3 +1,56 @@
+<style type="text/css">
+	.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+</style>
 <?php 
 header("X-XSS-Protection: 0"); // IE requirement
 // call header
@@ -115,17 +168,28 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 									<input type="hidden" name="geodir_popup_post_id" value="<?php echo $post->ID?>">
 									<div class="geodir_display_popup_forms"></div>
 									
-
-									<?php 
-									  
+									 
+										<div id="openModal" class="modalDialog">
+										    <div><a href="#close" title="Close" class="close">X</a>
 										
-									
+										        <h2>Please Login</h2>
+												<p>Username</p><input type="text" name="uname">
+												<p>Password</p><input type="text" name="upass"><br>
+										        
+										        <button type="button" name="submit">Submit</button>
+										    </div>
+										    
+										</div>
+											
+										<?php 
+									  
 										$current_user = wp_get_current_user();
 											
 											if ( 0 == $current_user->ID ) {
-												
+											
 												?>
-											    	<a href="#"  onclick='overlay()' class="wpb_button single-listing-contact-author">Please Login</a>
+											    	<a href="#openModal"  name='basic' class="wpb_button single-listing-contact-author">Please Login</a>
+											    	
 											   <?php
 											   
 											} else {

@@ -134,7 +134,7 @@ function output_into_footer() {
         <script type="text/javascript">
         
         var el = document.getElementById('vh_resource_id');
-        el.value = <?php echo $_GET['vh_resource_id']; ?>;
+        el.value = <?php echo $_GET['vh_resource_id']; ?>
         
         
       

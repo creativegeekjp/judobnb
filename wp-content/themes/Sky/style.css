@@ -15255,6 +15255,7 @@ a.btn-translate {
 	vertical-align: middle;
 }
 
+
 .translate-icon {
 	background: url(img/icon-gtranslate.png) no-repeat center center;
 	background-size: 100%;
@@ -15263,6 +15264,14 @@ a.btn-translate {
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: 4px;
+}
+
+#message-thread a.btn-translate {
+	float: none !important;
+	position: absolute;
+	right: 0;
+	margin: 0;
+	right: 30px;
 }
 
 @media screen and (max-width: 767px) {

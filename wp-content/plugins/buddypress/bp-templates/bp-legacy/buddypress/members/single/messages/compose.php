@@ -51,6 +51,10 @@ $current_user = wp_get_current_user();
 		</li>
 	</ul>
 	
+	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
+			<input type="checkbox" id="send-notice" <?php if( !is_admin() ){ echo ""; } else { echo "disabled=disabled"; } ?> name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
+	<?php endif; ?>
+
 	<label for="subject"><?php _e( 'Subject', 'buddypress' ); ?></label>
 	<input type="text" name="subject" id="subject" value="<?php bp_messages_subject_value(); ?>" />
 
