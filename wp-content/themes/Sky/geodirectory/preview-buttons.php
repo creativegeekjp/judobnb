@@ -70,7 +70,7 @@ ob_start()// start publish listing form buffering
             
             <input type="submit" name="Submit and Pay" value="<?php echo PRO_UPDATE_BUTTON;?>" class="geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
             <?php } else { ?>
-			     	<input type="submit" name="Submit and Pay" value="<?php echo PRO_SUBMIT_BUTTON;?>" class=" geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
+			     	<input type="submit" name="Submit and Pay" value="<?php echo "Publish and View";?>" class=" geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
 				<?php		
 				}
 					$publish_listing_form_button = ob_get_clean();
@@ -90,7 +90,8 @@ ob_start()// start publish listing form buffering
 					
 					ob_start(); // start go back and edit / cancel buffering		 
             ?>
-           <input type="button" name="Cancel" value="<?php echo (PRO_CANCEL_BUTTON);?>" class="geodir_button geodir_cancle_button wpb_button wpb_btn-inverse wpb_btn-small input_button"  onclick="window.location.href='<?php echo geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=cancel&pid='.$post_id.'&listing_type='.$post_type;?>'" />
+           <input type="button" name="Cancel" value="<?php echo (PRO_CANCEL_BUTTON);?>" class="geodir_button geodir_cancle_button wpb_button wpb_btn-inverse wpb_btn-small input_button" 
+           onclick="window.location.href='<?php echo geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=cancel&pid='.$post_id.'&listing_type='.$post_type;?>'" />
         	<?php
             	
 					$publish_listing_form_go_back = ob_get_clean();
