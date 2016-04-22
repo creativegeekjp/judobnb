@@ -1,4 +1,27 @@
 <?php
+$current_user = wp_get_current_user();
+
+if ( 0 == $current_user->ID ) {
+   
+   
+} else {
+
+$current_user = wp_get_current_user();
+    /**
+     * @example Safe usage: $current_user = wp_get_current_user();
+     * if ( !($current_user instanceof WP_User) )
+     *     return;
+     */
+    // echo 'Username: ' . $current_user->user_login . '<br />';
+    // echo 'User email: ' . $current_user->user_email . '<br />';
+    // echo 'User first name: ' . $current_user->user_firstname . '<br />';
+    // echo 'User last name: ' . $current_user->user_lastname . '<br />';
+    // echo 'User display name: ' . $current_user->display_name . '<br />';
+    // echo 'User ID: ' . $current_user->ID . '<br />';
+}
+?>
+
+<?php
 /**
  * BuddyPress - Members Single Messages Compose
  *
@@ -7,6 +30,8 @@
  */
 
 ?>
+
+
 <form action="<?php bp_messages_form_action('compose' ); ?>" method="post" id="send_message_form" class="standard-form" enctype="multipart/form-data">
 
 	<?php
@@ -22,14 +47,10 @@
 	<ul class="first acfb-holder">
 		<li>
 			<?php bp_message_get_recipient_tabs(); ?>
-			<input type="text" name="send-to-input" class="send-to-input" id="send-to-input" />
+			<input type="text" name="send-to-input" class="send-to-input" id="send-to-input" value="<?php echo $current_user->user_login; ?>"/>
 		</li>
 	</ul>
-
-	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
-		<p><label for="send-notice"><input type="checkbox" id="send-notice" name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", 'buddypress' ); ?></label></p>
-	<?php endif; ?>
-
+	
 	<label for="subject"><?php _e( 'Subject', 'buddypress' ); ?></label>
 	<input type="text" name="subject" id="subject" value="<?php bp_messages_subject_value(); ?>" />
 
