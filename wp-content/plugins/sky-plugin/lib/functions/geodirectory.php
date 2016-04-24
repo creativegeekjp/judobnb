@@ -325,7 +325,9 @@ global $cat_display,$post_cat, $current_user;
 							<input type="hidden" name="<?php echo esc_attr($id); ?>image_limit" id="<?php echo esc_attr($id); ?>image_limit" value="<?php echo esc_attr($image_limit); ?>" />
 							<input type="hidden" name="<?php echo esc_attr($id); ?>totImg" id="<?php echo esc_attr($id); ?>totImg" value="<?php echo esc_attr($totImg); ?>" />
 							<div class="plupload-upload-uic hide-if-no-js <?php if ($multiple): ?>plupload-upload-uic-multiple<?php endif; ?>" id="<?php echo esc_attr($id); ?>plupload-upload-ui">
-								<span class="addlisting-upload-text"><?php _e('Drop images here to upload or','vh');?></span> <a href="javascript:void(0)" class="addlisting-upload-button"><?php _e("Select files", "vh"); ?></a><br/>
+								<span class="addlisting-upload-text"><?php _e('Drop images here to upload.','vh');?></span>
+								<!--  <a href="javascript:void(0)" class="addlisting-upload-button"><?php _e("Select files", "vh"); ?></a> -->
+								<br/>
 								<input id="<?php echo esc_attr($id); ?>plupload-browse-button" type="button" value="<?php esc_attr_e('Select Files','vh'); ?>" class="geodir_button"  />
 								<span class="ajaxnonceplu" id="ajaxnonceplu<?php echo esc_attr(wp_create_nonce($id.'pluploadan')); ?>"></span>
 								<?php if ($width && $height): ?>
