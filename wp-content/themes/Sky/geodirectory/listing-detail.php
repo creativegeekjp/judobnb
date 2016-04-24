@@ -171,32 +171,29 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 									 
 										<div id="openModal" class="modalDialog">
 										    <div><a href="#close" title="Close" class="close">X</a>
-										
-										        <h2>Please Login</h2>
-												<p>Username</p><input type="text" name="uname">
-												<p>Password</p><input type="text" name="upass"><br>
-										        
-										        <button type="button" name="submit">Submit</button>
+										      <br>
+										       <?php wp_login_form(); ?>
 										    </div>
 										    
 										</div>
 											
 										<?php 
-									  
+									 
+									   
 										$current_user = wp_get_current_user();
 											
-											if ( 0 == $current_user->ID ) {
-											
+											if ( $current_user->ID == 1 || current_user_can( 'administrator' ) ) {
+												
+											   	?> 
+													<a href="<?php bp_send_private_message_link(); ?>" class="wpb_button single-listing-contact-author">Send Message to Host</a>
+												<?php
+												
+											} else {
+												
 												?>
 											    	<a href="#openModal"  name='basic' class="wpb_button single-listing-contact-author">Please Login</a>
 											    	
 											   <?php
-											   
-											} else {
-												
-												?> 
-													<a href="<?php bp_send_private_message_link(); ?>" class="wpb_button single-listing-contact-author">Send Message to Host</a>
-												<?php
 												
 											}
 									

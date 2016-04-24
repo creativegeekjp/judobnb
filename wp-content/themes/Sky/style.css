@@ -15042,6 +15042,10 @@ body.home .popular-destinations-main .main-module-title {
     padding: 5px;
 }
 
+.social li a .fa {
+	line-height: 42px !important;
+}
+
 .social li a.fb {
   background: #3a5795;
 }
@@ -15221,6 +15225,10 @@ body.page-id-6 .header-background-img {
 
 
 /* Our Community*/
+#our-community {
+	display: none;
+}
+
 .img-community {
 	
 }
@@ -15236,34 +15244,43 @@ body.page-id-6 .header-background-img {
 	/*clear: both;*/
 	float: left;
 	padding-top: 20px;
+	width: 100%;
 }
 
 
 /* Translate button */
-a.btn-translate {
+.btn-translate {
 	float: right !important;
 	color: #339933 !important;
 	font-size: 12px !important;
-	/*position: absolute;*/
-	/*bottom: 0;*/
-	/*right: 0;*/
-	border-right: 1px solid #ddd;
+    position: relative;
+    bottom: 303px;
+    right: 267px;
+	border: 1px solid #ddd;
 	text-decoration: none;
 	line-height: 1.5 !important;
 	padding: 2px 10px;
-	margin-right: 10px;
+	margin-right: 13px;
 	vertical-align: middle;
+	cursor: pointer;
 }
 
+label .btn-translate {
+	margin: 0;
+}
+
+.comment-form-comment + .btn-translate {
+	margin: 10px;
+}
 
 .translate-icon {
-	background: url(img/icon-gtranslate.png) no-repeat center center;
-	background-size: 100%;
-	width: 18px;
-	height: 18px;
-	display: inline-block;
-	vertical-align: middle;
-	margin-right: 4px;
+	/*background: url(img/icon-gtranslate.png) no-repeat center center;*/
+	/*background-size: 100%;*/
+	/*width: 18px;*/
+	/*height: 18px;*/
+	/*display: inline-block;*/
+	/*vertical-align: middle;*/
+	/*margin-right: 4px;*/
 }
 
 #message-thread a.btn-translate {

@@ -6,7 +6,7 @@ if ( 0 == $current_user->ID ) {
    
 } else {
 
-$current_user = wp_get_current_user();
+
     /**
      * @example Safe usage: $current_user = wp_get_current_user();
      * if ( !($current_user instanceof WP_User) )
@@ -52,7 +52,7 @@ $current_user = wp_get_current_user();
 	</ul>
 	
 	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
-			<input type="checkbox" id="send-notice" <?php if( !is_admin() ){ echo ""; } else { echo "disabled=disabled"; } ?> name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
+			<input type="checkbox" id="send-notice" <?php if( $current_user->ID == 1 || current_user_can( 'administrator' ) ){ echo ""; } else { echo "disabled=disabled"; } ?> name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
 	<?php endif; ?>
 
 	<label for="subject"><?php _e( 'Subject', 'buddypress' ); ?></label>

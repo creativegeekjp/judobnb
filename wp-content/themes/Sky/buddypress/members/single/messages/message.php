@@ -39,22 +39,6 @@
 					<?php endif; ?>
 
 					<span class="activity"><?php bp_the_thread_message_time_since(); ?></span>
-					
-					<?php
-				    $lang = get_bloginfo( 'language' );
-					
-					if ( $lang == 'en-US' ) {
-						$transOpt = 'en/ja';
-					} else {
-						$transOpt = 'ja/en';
-					}
-					
-					$message = str_replace( array('<p>','</p>'), array('','%0A%0A') ,bp_get_the_thread_message_content());
-					
-					$gtrans = 'https://translate.google.com/#'.$transOpt.'/'.$message;
-					
-					echo '<a class="btn-translate" href="'.$gtrans.'" target="_blank"><span class="translate-icon"></span> translate</a>';
-				    ?>
 
 					<?php if ( bp_is_active( 'messages', 'star' ) ) : ?>
 						<div class="message-star-actions">

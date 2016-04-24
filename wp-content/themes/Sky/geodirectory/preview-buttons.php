@@ -63,7 +63,7 @@ ob_start()// start publish listing form buffering
 						// echo "test";
 					
 					do_action('geodir_publish_listing_form_after_msg') ;
-						
+						 
 						ob_start(); // start action button buffering
 		?>
               <?php if(isset($_REQUEST['pid']) && $_REQUEST['pid']!='') { ?> 

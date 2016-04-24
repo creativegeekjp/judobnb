@@ -1276,6 +1276,7 @@ function bp_send_private_message_link() {
 	 *
 	 * @return bool|string False on failure, otherwise the URL.
 	 */
+	
 	function bp_get_send_private_message_link() {
 
 		if ( bp_is_my_profile() || ! is_user_logged_in() ) {

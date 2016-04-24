@@ -2238,21 +2238,11 @@ if ( ! function_exists( 'vh_geodir_comment' ) ) {
 					} else {
 						$author_link = '<span class="guest-comment" itemprop="author">'.$comment_data->comment_author.'</span>';
 					}
-					
-					$lang = get_bloginfo( 'language' );
-					
-					if ( $lang == 'en-US' ) {
-						$transOpt = 'en/ja';
-					} else {
-						$transOpt = 'ja/en';
-					}
-					
-					$gtrans = 'https://translate.google.com/#'.$transOpt.'/'.get_comment_text();
 
 					if ( in_array(get_post_type( $comment_data->comment_post_ID ), $geodir_post_types) ) {
 						$comment_like = '';
 						
-						printf( '%1$s<div class="reviewer-rating">%2$s</div>%3$s<span class="reviewer-time">%4$s</span><a class="btn-translate" href="'.$gtrans.'" target="_blank"><span class="translate-icon"></span> translate</a>', $author_link, get_listing_rating_stars( $rating, false ), $comment_like, $comment_time_full );
+						printf( '%1$s<div class="reviewer-rating">%2$s</div>%3$s<span class="reviewer-time">%4$s</span>', $author_link, get_listing_rating_stars( $rating, false ), $comment_like, $comment_time_full );
 						
 						echo '
 						<div itemprop="reviewBody" class="comment-text">
