@@ -168,39 +168,25 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 									<input type="hidden" name="geodir_popup_post_id" value="<?php echo $post->ID?>">
 									<div class="geodir_display_popup_forms"></div>
 									
-									 
-										<div id="openModal" class="modalDialog">
-										    <div><a href="#close" title="Close" class="close">X</a>
-										      <br>
-										       <?php wp_login_form(); ?>
-										    </div>
-										    
-										</div>
-											
 										<?php 
-									 
-									   
-										$current_user = wp_get_current_user();
+										
+											$current_user = wp_get_current_user();
 											
-											if ( $current_user->ID == 1 || current_user_can( 'administrator' ) ) {
-												
-											   	?> 
-													<a href="<?php bp_send_private_message_link(); ?>" class="wpb_button single-listing-contact-author">Send Message to Host</a>
-												<?php
-												
-											} else {
-												
+											if ( !is_user_logged_in() ) // && $current_user->ID == 1 || current_user_can( 'administrator' ) 
+											{
 												?>
-											    	<a href="#openModal"  name='basic' class="wpb_button single-listing-contact-author">Please Login</a>
-											    	
+												<a href="/wp-login.php"  name='basic' class="wpb_button single-listing-contact-author simplemodal-login">Please Login</a>
 											   <?php
-												
+											  
+											} 
+											else 
+											{
+											
+											    ?> 
+													<a href="<?php bp_send_private_message_link('&unames='.get_userdata( get_post_field( 'post_author', $post->ID ) )->user_login); ?>" class="wpb_button single-listing-contact-author">Send Message</a>
+												<?php
 											}
-									
 									?>
-									
-									
-									
 									
 								<?php } ?>
 								<?php if ( get_option("vh_theme_version") != "SkyDirectory" ) {

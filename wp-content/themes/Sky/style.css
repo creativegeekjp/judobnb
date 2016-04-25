@@ -15247,13 +15247,17 @@ body.page-id-6 .header-background-img {
 	width: 100%;
 }
 
+#message_content {
+	
+}
+
 
 /* Translate button */
 .btn-translate {
 	float: right !important;
 	color: #339933 !important;
 	font-size: 12px !important;
-    position: relative;
+    /*position: relative;*/
     bottom: 303px;
     right: 267px;
 	border: 1px solid #ddd;

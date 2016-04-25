@@ -1268,8 +1268,8 @@ function bp_message_get_notices() {
 /**
  * Output the URL for the Private Message link in member profile headers.
  */
-function bp_send_private_message_link() {
-	echo esc_url( bp_get_send_private_message_link() );
+function bp_send_private_message_link($names) {
+	echo esc_url( bp_get_send_private_message_link($names) );
 }
 	/**
 	 * Generate the URL for the Private Message link in member profile headers.
@@ -1277,7 +1277,7 @@ function bp_send_private_message_link() {
 	 * @return bool|string False on failure, otherwise the URL.
 	 */
 	
-	function bp_get_send_private_message_link() {
+	function bp_get_send_private_message_link($names) {
 
 		if ( bp_is_my_profile() || ! is_user_logged_in() ) {
 			return false;
@@ -1290,7 +1290,7 @@ function bp_send_private_message_link() {
 		 *
 		 * @param string $value URL for the Private Message link in member profile headers.
 		 */
-		return apply_filters( 'bp_get_send_private_message_link', wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_displayed_user_id() ) ) );
+		return apply_filters( 'bp_get_send_private_message_link', wp_nonce_url( bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?r=' . bp_core_get_username( bp_displayed_user_id() )).$names  );
 	}
 
 /**

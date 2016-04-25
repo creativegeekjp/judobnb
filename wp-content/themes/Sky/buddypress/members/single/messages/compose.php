@@ -1,20 +1,35 @@
+<?php
+$unames = isset($_GET['unames']) ?  $_GET['unames'] : "" ;
+?>
+
 <form action="<?php bp_messages_form_action('compose'); ?>" method="post" id="send_message_form" class="standard-form" role="main" enctype="multipart/form-data">
 
 	<?php do_action( 'bp_before_messages_compose_content' ); ?>
 
-	<label for="send-to-input"><?php _e("Send To (Username or Friend's Name)", 'buddypress'); ?></label>
+	<label for="send-to-input"><?php _e("Send To", 'buddypress'); ?></label>
 	<ul class="first acfb-holder">
 		<li>
 			<?php bp_message_get_recipient_tabs(); ?>
-			<input type="text" name="send-to-input" class="send-to-input" id="send-to-input" />
+			<input type="text" name="send-to-input" class="send-to-input" <?php if(strlen($unames)>0): ?> readonly <?php endif ?> id="send-to-input" value="<?php echo $unames; ?>" />
 		</li>
 	</ul>
 
 	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
-		<input type="checkbox" id="send-notice" name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
+		<?php 
+			
+			$current_user = wp_get_current_user();
+			
+			if ( is_user_logged_in() && $current_user->ID == 1 || current_user_can( 'administrator' )  ) 
+			{ 
+				?>
+					<input type="checkbox" id="send-notice" name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
+				<?php
+			}
+		?>
+	
 	<?php endif; ?>
 
-	<label for="subject"><?php _e( 'Subject', 'buddypress'); ?></label>
+	<label for="subject"><?php _e( 'Enter subject here', 'buddypress'); ?></label>
 	<input type="text" name="subject" id="subject" value="<?php bp_messages_subject_value(); ?>" />
 
 	<label for="content"><?php _e( 'Message', 'buddypress'); ?> </label>
@@ -38,9 +53,8 @@
 	
 					    
 	<textarea name="content" id="message_content" rows="15" cols="40"><?php bp_messages_content_value(); ?></textarea>
-	
 
-	<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="<?php bp_message_get_recipient_usernames(); ?>" class="<?php bp_message_get_recipient_usernames(); ?>" />
+	<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="<?php bp_message_get_recipient_usernames(); ?>" class="<?php bp_message_get_recipient_usernames() . " $unames" ; ?>" />
 
 	<?php do_action( 'bp_after_messages_compose_content' ); ?>
 

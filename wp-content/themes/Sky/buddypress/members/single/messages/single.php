@@ -118,9 +118,6 @@
                     	</script>
 					    
 					    <div id="translate" class="btn-translate" onClick="translate()">translate</div>
-					    
-					    <!--Remove this later, for testing purpose only-->
-					    <input id="test" name="test" value="">
 
 					</div>
 
