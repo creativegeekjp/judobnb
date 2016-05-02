@@ -102,7 +102,25 @@ function vc_gitem_create_link_real( $atts, $post, $default_class = '', $title = 
 			if ( ! strlen( $title ) ) {
 				$title = the_title( '', '', false );
 			}
-		} elseif ( 'image' === $atts['link'] ) {
+		}elseif ( 'post_link_edit' === $atts['link'] ) {
+			$link = 'a href="' . site_url() .'/add-listing/?listing_type=gd_place&pid='. $post->ID . '" class="' . esc_attr( $link_css_class ) . '"';
+			if ( ! strlen( $title ) ) {
+				$title = the_title( '', '', false );
+			}
+		}elseif ( 'post_link_delete' === $atts['link'] ) {
+		 
+		 $link = 'a href="'.site_url().'/delete-listing-confirmation/?pid_del='.$post->ID.'"  class="' . esc_attr( $link_css_class ) . '"';
+	
+		 //$link = 'a href="' . get_delete_post_link( $id ) . '" onclick="return confirm(\'Are you SURE you want to delete this post?\')" id="alert" class="' . esc_attr( $link_css_class ) . '"';
+		   
+		   echo "</script>";
+			if ( ! strlen( $title ) ) {
+				$title = the_title( '', '', false );
+			}
+		
+		
+		}
+		elseif ( 'image' === $atts['link'] ) {
 			$href_link = vc_gitem_template_attribute_post_image_url( '', array( 'post' => $post, 'data' => '' ) );
 			$link = 'a href="' . $href_link . '" class="' . esc_attr( $link_css_class ) . '"';
 		} elseif ( 'image_lightbox' === $atts['link'] ) {

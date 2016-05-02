@@ -105,11 +105,17 @@ $link_output = '';
 if ( $use_link ) {
 	$link_output = vc_gitem_create_link_real( $atts, $post, 'vc_general vc_btn3 ' . trim( $button_class ), $title );
 }
+
+global $post;
+
 $output = '<div class="'
 	. esc_attr( trim( $css_class ) )
 	. ' vc_btn3-' . esc_attr( $align ) . '">';
 if ( preg_match( '/href=\"[^\"]+/', $link_output ) ) :
+	
 	$output .= '<' . $link_output . ' ' . $inline_css . ' ' . $attributes . '>' . $button_html . '</a>';
+	
+	
 elseif ( 'load-more-grid' === $link ) :
 	$output .= '<a href="javascript:;" class="vc_general vc_btn3 ' . esc_attr( $button_class ) . '" ' . $inline_css . ' ' . $attributes . '>' . $button_html . '</a>';
 else :

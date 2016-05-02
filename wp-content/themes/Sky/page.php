@@ -87,3 +87,4 @@ if ( LAYOUT == 'sidebar-no' ) {
 	<div class="clearfix"></div>
 </div><!--end of page-wrapper-->
 <?php get_footer();
+

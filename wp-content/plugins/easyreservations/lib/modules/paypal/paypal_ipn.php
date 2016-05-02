@@ -21,7 +21,8 @@
 	if(easyreservations_check_curl()){
 		if($paypalOptions['er_pay_ssl'] == 1) $url = "https://www.".$host.".com/cgi-bin/webscr";
 		else $url = "http://www.".$host.".com/cgi-bin/webscr";
-
+		
+		//insert to database
 		$ch = curl_init($url);    // Starts the curl handler
 		curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);

@@ -2121,6 +2121,8 @@ function geodir_action_add_listing_form()
 
         $kw_tags = $post->post_tags;
         $curImages = isset($post->post_images) ? $post->post_images : '';
+
+        
     } elseif (isset($_REQUEST['pid']) && $_REQUEST['pid'] != '') {
         global $post, $post_images;
 
@@ -2137,6 +2139,7 @@ function geodir_action_add_listing_form()
         $desc = $post->post_content;
         $kw_tags = $post->post_tags;
         $kw_tags = implode(",", wp_get_object_terms($post->ID, $listing_type . '_tags', array('fields' => 'names')));
+        
     } else {
         $listing_type = sanitize_text_field($_REQUEST['listing_type']);
     }
@@ -2145,6 +2148,7 @@ function geodir_action_add_listing_form()
         $user_login = true;
     }
     ?>
+  
     <form name="propertyform" id="propertyform" action="<?php echo get_page_link(geodir_preview_page_id());?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="preview" value="<?php echo sanitize_text_field($listing_type);?>"/>
         <input type="hidden" name="listing_type" value="<?php echo sanitize_text_field($listing_type);?>"/>
@@ -2165,6 +2169,7 @@ function geodir_action_add_listing_form()
          */
         do_action('geodir_before_detail_fields');
         ?>
+      
         <h5 id="geodir_fieldset_details" class="geodir-fieldset-row" gd-fieldset="details"><?php echo LISTING_DETAILS_TEXT;?></h5>
         <?php
         /**
@@ -2180,6 +2185,8 @@ function geodir_action_add_listing_form()
             <label><?php echo PLACE_TITLE_TEXT;?><span>*</span> </label>
             <input type="text" field_type="text" name="post_title" id="post_title" class="geodir_textfield"
                    value="<?php echo esc_attr(stripslashes($title)); ?>"/>
+                  
+                   
             <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory');?></span>
         </div>
         <?php
@@ -2246,6 +2253,7 @@ function geodir_action_add_listing_form()
             <?php } ?>
             <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory');?></span>
         </div>
+      
         <?php
         if ($desc_limit === '' || (int)$desc_limit > 0) {
             /**
@@ -2436,8 +2444,7 @@ function geodir_action_add_listing_form()
         <!-- add captcha code -->
 
         <script>
-            <!--<script>-->
-            document.write('<inp' + 'ut type="hidden" id="geodir_sp' + 'amblocker_top_form" name="geodir_sp' + 'amblocker" value="64"/>')
+            document.write('<inp' + 'ut type="hidden" id="geodir_sp' + 'amblocker_top_form" name="geodir_sp' + 'amblocker" value="64"/>');
         </script>
         <noscript>
             <div>
