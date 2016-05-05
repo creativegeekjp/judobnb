@@ -503,6 +503,7 @@ JAVASCRIPT;
                 if(isset($new->taxrate)) $taxrate += $new->taxrate;
                 $i++;
             }
+            $RID = $res->id;//jino
             $price = round($theprice,2);
             $res = $new;
             $resource = $new->resource;
@@ -539,6 +540,11 @@ JAVASCRIPT;
                     $link = $theModusURL.'?business='.htmlentities($gateway_opt['owner']).'&cmd=_xclick&amp;currency_code='.htmlentities($gateway_opt['currency']).'&custom='.$nonce.'&invoice='.$theid.'&amount='.$price.'&item_name='.htmlentities(rawurlencode($theTitle)).'&amp;notify_url='.urlencode(stripslashes(WP_PLUGIN_URL.'/easyreservations/lib/modules/paypal/paypal_ipn.php'));
                     return esc_url_raw($link, 'mailto');
                 } else {
+                    
+        
+                    
+                    $user_ID = get_current_user_id(); 
+                    
                     $return .= 'name="_xclick" action="'.$theModusURL.'" method="post" id="easy_paypal_form">';
                     if(!$button) $return.= '<input type="image" src="'.$gateway_opt['button'].'" border="0" name="submit" alt="Pay with Paypal!">';
                     else $return.= $button;
@@ -553,7 +559,9 @@ JAVASCRIPT;
                         'cancel_return' => $gateway_opt['cancel_url'],
                         'currency_code' => $gateway_opt['currency'],
                         'return' => $theReturnURL,
+                        'item_number' =>  $user_ID,
                         'paymentaction' => 'authorization' //jino
+                       
                     );
                     if(isset($gateway_opt['message']) && !empty($gateway_opt['message'])) $array['rn'] = $gateway_opt['message'];
                     if(isset($gateway_opt['language'])) $array['lc'] = $gateway_opt['language'];

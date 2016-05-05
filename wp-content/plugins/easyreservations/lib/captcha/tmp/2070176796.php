@@ -1,0 +1,1 @@
+<?php $captcha = "EUR8"; ?>
