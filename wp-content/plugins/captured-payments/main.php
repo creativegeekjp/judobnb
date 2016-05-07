@@ -9,16 +9,38 @@ Author URI: Author's Website
 License:GPL2
 */
 
+/*detect host name*/
+if($_SERVER["HTTPS"] == "on")
+{
+    $url = 'https://'.$_SERVER['HTTP_HOST'] ;
+}
+else
+{
+   $url = 'http://'.$_SERVER['HTTP_HOST'] ; 
+}
 
-//ipn paypal access tokens for api request
-$clientId= 'ASiEyKPeqeWsXsTKsnUO336cYcCT-XEnK-TeCLJbE2P56nH31_MS6L-74IqOR7IYX4h0BAN65V4fcuLe';
-$secret = 'EAzy7qHo2Ig-r8mFPeha6XFLLSo1QoutPyOE000vjRgBRU2HI3p_Xk64VpOFak9Ih_rii4URapfxd2cP';  
+/*Instantiate first the needed keys for paypal*/
+global $wpdb;
 
-//pdt identity
-$identity = 'QXLl9lTqZG9UMFUhHI7rQvrAIpOsPVzH0rJU33jDwtqeyDOoAZu6hqU5Oyq';
-$sandbox = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
-
-
+foreach ($wpdb->get_results("SELECT * FROM jd_cg_paypal_keys") as $credentials) {
+    switch ($credentials->name) {
+        case 'clientId':
+           $clientId=$credentials->value;
+            break;
+         case 'secret':
+             $secret=$credentials->value;
+            break;
+         case 'identity':
+             $identity=$credentials->value;
+            break;
+         case 'mode':
+             $sandbox=$credentials->value;
+            break;
+        
+       
+    }
+}
+ 
 function reservation_host()
 {  
     global $title, $wpdb;
@@ -38,8 +60,6 @@ function reservation_host()
                  a.id = b.room_id
             WHERE
                  b.host_id = $user_ID
-            AND
-                 b.approved = 0
             AND
                 a.approve NOT IN('yes','no')
             
@@ -79,7 +99,7 @@ function reservation_host()
         $name = $list->name;
         $email = $list->email;
         $country = $list->country;
-        $approve = $list->approve = "del" ? "Cancelled" : $list->approve ;
+        $approve = $list->approve == "del" ? "Cancelled" : $list->approve ;
         $room = $list->room;
         $roomnumber = $list->roomnumber;
         $number = $list->number;
@@ -139,8 +159,6 @@ function reservation_guest()
             WHERE
                  b.host_id = $user_ID
             AND
-                 b.approved = 0
-            AND
                 a.approve NOT IN('yes','no')
             
             GROUP BY 
@@ -178,7 +196,7 @@ function reservation_guest()
         $name = $list->name;
         $email = $list->email;
         $country = $list->country;
-        $approve = $list->approve = "del" ? "Cancelled" : $list->approve ;
+        $approve = $list->approve == "del" ? "Cancelled" : $list->approve ;
         $room = $list->room;
         $roomnumber = $list->roomnumber;
         $number = $list->number;
@@ -193,7 +211,9 @@ function reservation_guest()
         //get author by roomid for messaging
         $user_info = get_userdata( $authors );
 	    
-	
+	    //create link edit if not cancelled yet
+	    $edit_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>Edit</a>";
+	        
         echo "<tr>
                 <td>".$idr."</td>
                 <td>".$arrival."</td>
@@ -209,13 +229,26 @@ function reservation_guest()
                 <td>".$childs."</td>
                 <td>".$price."</td>
                 <td>".$reservated."</td>
+                 <td>".$edit_check."</td>
                 <td><a href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a></td>
-                <td><a href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
                 <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
               </tr>";
     }
     echo "</tr></table>";
       
+    return;
+}
+
+//ask if guest want to edit if yes then void his previous transaction to paypal
+function reservation_editing_confirmation()
+{
+    $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;//using this id we need to void previous payment and retreive access token from our database 
+    $idr = isset($_GET['idr']) ? $_GET['idr'] : "" ;
+    $room = isset($_GET['resource_id']) ? $_GET['resource_id'] : "" ;
+    
+    echo 'Youre about editing your previous transaction. proceed? <br><br>';
+    echo "<a href='".site_url()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>Yes</a> | <a href='".site_url()."/reservations-for-guests/'>No</a>";
+    
     return;
 }
 
@@ -268,18 +301,6 @@ function hosts_disapproved()
                 	), 
                 	array( '%d' ) 
                 );
-                
-                $wpdb->update( 
-                	'jd_cg_captured_payments', 
-                	array( 
-                		'approved' => '2',	
-                	), 
-                	array( 'tid' => $idt ), 
-                	array( 
-                		'%s',
-                	), 
-                	array( '%d' ) 
-                );
         }
     }
     
@@ -312,9 +333,9 @@ function hosts_approved()
         
         if($list->approve == "del" || $list->approve == "no" ) //cancelled and rejected/disapproved are disallowed
         {
-            $reason = $list->approve = "del" ? "Cancelled" : "Disapproved"; 
+            $reason = $list->approve == "del" ? "Cancelled" : "Disapproved"; 
             
-            echo "Opps Unable to approve this reservation the reaservation was : <b>".$reason."</b> <a href='".site_url()."/list-reservation-host/'> return</a>";
+            echo "Unable to approve this reservation the reaservation was : <b>".$reason."</b> by the guest. <a href='".site_url()."/list-reservation-host/'> return</a>";
         }
         else
         {
@@ -338,18 +359,6 @@ function hosts_approved()
                 	'approve' => 'yes',	
                 	), 
                 	array( 'id' => $idr ), 
-                	array( 
-                		'%s',
-                	), 
-                	array( '%d' ) 
-                );
-                
-                $wpdb->update( 
-                	'jd_cg_captured_payments', 
-                	array( 
-                		'approved' => '1',	
-                	), 
-                	array( 'tid' => $idt ), 
                 	array( 
                 		'%s',
                 	), 
@@ -406,19 +415,6 @@ function cancel_reservations()
                 	), 
                 	array( '%d' ) 
                 );
-                /*
-                $wpdb->update( 
-                	'jd_cg_captured_payments', 
-                	array( 
-                		'approved' => '2',	
-                	), 
-                	array( 'tid' => $idt ), 
-                	array( 
-                		'%s',
-                	), 
-                	array( '%d' ) 
-                );
-                */
         }
     }
 }
@@ -483,6 +479,17 @@ function successreservation_reservations()
     return;
 }
 
+function listings_message_confirmation()
+{
+        $pid = isset($_GET['pid_del'] ) ? $_GET['pid_del'] : "";
+        if($_GET['trashed'] == 1){
+             echo "Listing was successfully deleted.  <a href='" . site_url() . "/manage-listing/'> return </a>";
+        }else{
+            echo "Are you sure you want to delete this listing?<br><br>";
+            	echo "<a href='" . get_delete_post_link( $pid ) . "'>Yes</a> | <a href='" . site_url() . "/manage-listing/'> No </a>";
+        }
+    return;
+}
 function rhost($content)
 {
     add_shortcode(  'rhost' , 'reservation_host' );
@@ -530,7 +537,16 @@ function successreservation($content)
     add_shortcode(  'successreservation' , 'successreservation_reservations' );
     return $content;
 }
-
+function res_editing_confirmation($content)
+{
+    add_shortcode(  'res_editing_confirmation' , 'reservation_editing_confirmation' );
+    return $content;
+}
+function listing_message_confirmation($content)
+{
+    add_shortcode(  'listing_message_confirmation' , 'listings_message_confirmation' );
+    return $content;
+}
 add_action( 'the_content', 'rhost');
 add_action( 'the_content', 'rguest');
 add_action( 'the_content', 'confhostdisapproved');
@@ -540,6 +556,8 @@ add_action( 'the_content', 'host_approved');
 add_action( 'the_content', 'cancel_confirm_reservation');
 add_action( 'the_content', 'cancel_reservation');
 add_action( 'the_content', 'successreservation');
+add_action( 'the_content', 'res_editing_confirmation');
+add_action( 'the_content', 'listing_message_confirmation');
 add_action( 'wp_head' , 'cascade' );
 
 

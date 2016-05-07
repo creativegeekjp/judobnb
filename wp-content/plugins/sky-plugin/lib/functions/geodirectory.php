@@ -3800,9 +3800,12 @@ function get_geodir_show_listing_fields( $post_id, $type, $place='', $post_type=
 			if ( $extra_fields["is_active"] == "1" && ( $extra_fields["show_on_listing"] == "1" && $place == '' ) || ( $extra_fields["show_on_detail"] == "1" && $place == 'single' && $extra_fields["field_icon"] != '' ) ) {
 				$output .= '
 				<div class="featured-' . $extra_fields['htmlvar_name'] . ' ' . $css_class . ' featured-item" style="width: ' . $icon_width . '%">';
-					if (filter_var($extra_fields["field_icon"], FILTER_VALIDATE_URL) !== FALSE) {
-						$output .= '<span class="listing-featured-image"><img src="' . $extra_fields["field_icon"] . '" alt="' . __('Featured image', 'vh') . '" width="40" height="30"><div class="clearfix"></div></span>';
+					if($extra_fields["field_icon"]){//if (filter_var($extra_fields["field_icon"], FILTER_VALIDATE_URL) !== FALSE) {
+					  
+						 $img = $extra_fields["field_icon"];
+						$output .= '<span class="listing-featured-image"><img src="' . $img . '" alt="' . __('Featured image', 'vh') . '" width="40" height="30"><div class="clearfix"></div></span>';
 					} else {
+						
 						$output .= '<span class="featured-icon ' . $extra_fields["field_icon"] . '"></span>';
 					}
 					if ( isset($_REQUEST['preview']) ) {

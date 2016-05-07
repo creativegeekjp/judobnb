@@ -1,4 +1,57 @@
 <?php
+
+/*
+*   jino function void
+*
+*
+*/
+
+ $idr = isset($_GET['idr']) ? $_GET['idr'] : 0 ;
+ $idt = isset($_GET['idt']) ? $_GET['idt'] : 0;
+ $editing_mode = isset($_GET['editing']) ? $_GET['editing'] : 0 ;
+ 
+ /*Get our access tokens*/
+	foreach ($wpdb->get_results("SELECT * FROM jd_cg_paypal_keys") as $credentials) {
+	    switch ($credentials->name) {
+	        case 'clientId':
+	           $clientId=$credentials->value;
+	            break;
+	         case 'secret':
+	             $secret=$credentials->value;
+	            break;
+	         case 'identity':
+	             $identity=$credentials->value;
+	            break;
+	         case 'mode':
+	             $sandbox=$credentials->value;
+	            break;
+	        
+	       
+	    }
+	}
+	
+//void previous transaction to paypal
+if($editing_mode)
+{
+  void_edit($idr,$idt);	
+}
+
+//now lets void previous transaction of customers and update new reservations
+function void_edit($idr,$idt)
+{
+    global $wpdb,$clientId,$secret;
+    
+    $arr = getpaypalamounts($idt);
+    $results = void_payment(create_access_token($clientId,$secret),$arr['txn']);
+    
+    $void_reserve = $wpdb->update('jd_reservations', 
+    	array('approve' => 'no' ),array( 'id' => $idr ), 
+    	array('%s'),array( '%d' ) 
+    );
+}
+/*End function jino */
+
+
 function reservations_form_shortcode($atts){
 	global $post,$easyreservations_script;
 	$finalform = '';
@@ -160,7 +213,55 @@ function reservations_form_shortcode($atts){
 	$roomfield = 0;
 	$tofield = false;
 	$customPrices  = 0;
+    
+    /*jino edited*/
+    global $wpdb;
+    
+    $resource_id = isset($_GET['resource_id']) ? $_GET['resource_id'] : 0;
+    $idr = isset($_GET['idr']) ? $_GET['idr'] : 0 ;
+    $idt = isset($_GET['idt']) ? $_GET['idt'] : 0;
+    
+    foreach ($wpdb->get_results("SELECT * FROM jd_reservations WHERE room='".$resource_id."' AND id = '".$idr."'") as $list) {
+      
+        $arrival_E = $list->arrival;//from
+        $departure_E = $list->departure;//to
+        $name_E = $list->name;
+        $email_E = $list->email;
+        $country_E = $list->country;//AF
+        $number_E = $list->number;//adults
+        $childs_E = $list->childs;
+        $custom = $list->custom;
+     }
+     
+  $custom = unserialize($custom);
 
+   foreach($custom[0] as $key => $value ): //phone
+   	  if($key=='value')
+   	  	$phone_E = $value;
+   endforeach;
+   
+   foreach($custom[1] as $key => $value ): //street
+   	  if($key=='title')
+   	  		$street_E =  $value;
+   	endforeach;
+   	
+   	 foreach($custom[2] as $key => $value ): //postal
+   	  if($key=='value')
+   	  		$postal_E = $value;
+   	endforeach;
+   	
+   	 foreach($custom[3] as $key => $value ): //city
+   	  if($key=='value')
+   	  		$city_E = $value; 
+   	endforeach;
+   	
+   	 foreach($custom[4] as $key => $value ): //message
+   	  if($key=='value')
+   	  	$message_E = $value;
+   	endforeach;
+   	
+   /*end jino edited*/
+    
 	$tags = easyreservations_shortcode_parser($theForm, true);
 	foreach($tags as $fields){
 		$field=shortcode_parse_atts( $fields);
@@ -201,6 +302,14 @@ function reservations_form_shortcode($atts){
 			$start = 1;
 			if(isset($field[1])) $start = $field[1]; 
 			if(isset($field[2])) $end = $field[2]; else $end = 6;
+			
+			        /* 
+					*
+					* edited by jino 
+					* adults Jino
+					*/
+			 $value = isset( $number_E ) ?  $number_E : $value;
+			 
 			$theForm=str_replace('['.$fields.']', '<select id="easy-form-units" name="nights" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start, $end, $value).'</select>', $theForm);
 		} elseif($field[0]=="persons" || $field[0]=="adults"){
 			$start = 1;
@@ -211,8 +320,19 @@ function reservations_form_shortcode($atts){
 			$start = 0;
 			if(isset($field[1])) $start = $field[1]; 
 			if(isset($field[2])) $end = $field[2]; else $end = 6;
-			$theForm=preg_replace('/\['.$fields.'\]/', '<select name="childs" '.$disabled.' style="'.$style.'" title="'.$title.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start,$end,$value).'</select>', $theForm);
+			 
+			 /* 
+					*
+					* edited by jino 
+					* children Jino
+					*/
+			 $value = isset( $childs_E ) ?  $childs_E : $value;//jino
+			 
+			$theForm=preg_replace('/\['.$fields.'\]/', '<select name="childs" '.$disabled.' style="'.$style.'" title="'.$title.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start,$end, $value ).'</select>', $theForm);
 		} elseif($field[0]=="thename"){ //NAME
+		
+		    $value = isset( $name_E ) ?  $name_E : $value;//jino
+		    
 			$theForm=preg_replace('/\['.$fields.'\]/', '<input type="text" id="easy-form-thename" name="thename" '.$disabled.' value="'.$value.'" style="'.$style.'" title="'.$title.'" onchange="'.$validate_action.'">', $theForm);
 		} elseif($field[0]=="error"){
 			if(strlen($error) > 3){
@@ -232,8 +352,23 @@ function reservations_form_shortcode($atts){
 			$theForm=preg_replace('/\['.$fields.'\]/', $resource_block, $theForm);
 			$infobox = $field;
 		} elseif($field[0]=="email"){
+			
+			/* 
+			*
+			* edited by jino 
+			* email Jino
+			*/
+			$value = isset( $email_E ) ?  $email_E : $value;
+			
 			$theForm=preg_replace('/\['.$fields.'\]/', '<input type="text" id="easy-form-email" name="email" '.$disabled.' value="'.$value.'" title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		} elseif($field[0]=="country"){
+			        /* 
+					*
+					* edited by jino 
+					* country Jino
+					*/
+			$value = isset( $country_E  ) ? $country_E : $value;
+			
 			$theForm=str_replace('['.$fields.']', '<select id="easy-form-country" name="country" '.$disabled.' title="'.$title.'" style="'.$style.'">'.easyreservations_country_options($value).'</select>', $theForm);
 		} elseif($field[0]=="show_price"){
 			if(isset($field['before'])) $before = $field['before'];
@@ -273,6 +408,7 @@ function reservations_form_shortcode($atts){
 			$theForm=str_replace('['.$fields.']', '<select name="easyroom" style="'.$style.'" id="form_room" '.$disabled.' onchange="'.$price_action.$validate_action.'">'.easyreservations_resource_options(($value == '') ? $atts['resource'] : $value, 0, $exclude).'</select>', $theForm);
 		} elseif($field[0]=="custom"){
 			if(isset($field['id'])){
+				
 				$custom_fields = get_option('reservations_custom_fields');
 				$form_field = '';
 				if(isset($custom_fields['fields'][$field['id']])){
@@ -295,9 +431,48 @@ function reservations_form_shortcode($atts){
 					$onchange = '';
 				}
 				if($field[1]=="text"){
+					
+				   /* 
+					*
+					* edited by jino 
+					* custom inputs
+					*/
+				  
+				    switch ($field[2]) {
+				    	case 'Phone':
+				    	     $value = isset($phone_E ) ? $phone_E : $value ;
+				    	break;
+				    	
+				        case 'Street':
+				    	     $value = isset($street_E ) ? $street_E : $value ;
+				    	break;
+				    	
+				    	case 'PostCode':
+				    	      $value = isset($postal_E ) ? $postal_E : $value ;
+				    	break;
+				    	
+				    	case 'City':
+				    	      $value = isset($city_E ) ? $city_E : $value ;
+				    	break;
+				    	
+				    
+				    }
+					
 					$theForm=str_replace('['.$fields.']', '<input title="'.$title.'" style="'.$style.'" '.$disabled.' type="text" name="easy-custom-'.$field[2].'" id="easy-custom-'.$req.'-'.$field[2].'" '.$onchange.' value="'.$value.'">', $theForm);
 				} elseif($field[1]=="textarea"){
-					$theForm=str_replace('['.$fields.']', '<textarea title="'.$title.'" style="'.$style.'" '.$disabled.' name="easy-custom-'.$field[2].'" id="easy-custom-'.$req.'-'.$field[2].'" '.$onchange.' value="'.$value.'"></textarea>', $theForm);
+					
+					/* 
+					*
+					* edited by jino 
+					* Message Jino
+					*/
+					 switch ($field[2]) {
+				    	case 'Message':
+				    	     $msg = isset($message_E ) ? $message_E : $msg ;
+				 		break;
+				    }
+				    
+					$theForm=str_replace('['.$fields.']', '<textarea title="'.$title.'" style="'.$style.'" '.$disabled.' name="easy-custom-'.$field[2].'" id="easy-custom-'.$req.'-'.$field[2].'" '.$onchange.' value="'.$value.'">'.$msg.'</textarea>', $theForm);
 				} elseif($field[1]=="check" || $field[1]=="checkbox"){
 					if(isset($field['checked'])) $checked = ' checked="'.$field['checked'].'"'; else $checked = '';
 					if(!empty($disabled)) $theForm=str_replace('['.$fields.']', '<input type="hidden" title="'.$title.'" '.$checked.' style="'.$style.'" name="easy-custom-'.$field[2].'" id="easy-custom-'.$req.'-'.$field[2].'">', $theForm);
@@ -314,6 +489,7 @@ function reservations_form_shortcode($atts){
 						$theForm=str_replace($fields, $custom_radio, $theForm);
 					}
 				} elseif($field[1]=="select"){
+						
 					if(preg_match("/^[0-9]+$/", $valuefield)){
 						$theForm=preg_replace('/\['.$fields.'\]/', '<select title="'.$title.'" style="'.$style.'" '.$disabled.'  name="easy-custom-'.$field[2].'" '.$onchange.' id="easy-custom-'.$req.'-'.$field[2].'">'.easyreservations_num_options(1,$valuefield).'</select>', $theForm);
 					} elseif(preg_match("/^[a-zA-Z0-9_]+$/", $valuefield)){
