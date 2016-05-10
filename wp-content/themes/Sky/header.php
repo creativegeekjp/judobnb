@@ -489,20 +489,41 @@
 										$reservation_url = get_permalink(get_option('vh_book_now'));
 										$reservation_id = get_post_meta(get_the_ID(), 'vh_resource_id');
 										if ( !empty( $reservation_id ) ) {
-											$reservation_url .= '?resource=' . get_post_meta(get_the_ID(), 'vh_resource_id', true);
+										
+													$reservation_url .= '?resource=' . get_post_meta(get_the_ID(), 'vh_resource_id', true);
+											
 										}
+										
+											if(!is_user_logged_in())
+											{
+												
+											}else{
 									?>
-									<form method="post" action="<?php echo $reservation_url; ?>" name="easy_listing_form" id="easy_listing_form">
-										<input id="easy-listing-datepicker-from" type="hidden" name="from" value="" class="hasDatepicker">
-										<input id="easy-listing-datepicker-to" type="hidden" name="to" value="" class="hasDatepicker">
-									</form>
+											<form method="post" action="<?php echo $reservation_url; ?>" name="easy_listing_form" id="easy_listing_form">
+												<input id="easy-listing-datepicker-from" type="hidden" name="from" value="" class="hasDatepicker">
+												<input id="easy-listing-datepicker-to" type="hidden" name="to" value="" class="hasDatepicker">
+											</form>
+									<?php 
+											}
+									?>
 									<?php if ( get_option("vh_theme_version") == "SkyEstate" ) { ?>
 										<input type="hidden" name="geodir_popup_post_id" value="<?php echo $post->ID?>">
 										<div class="geodir_display_popup_forms"></div>
 										<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize vh_b_send_inquiry single-listing-booknow"><?php _e("Send message", "vh"); ?></a>
-									<?php } else { ?>
+									<?php } else { 
+										if(!is_user_logged_in())
+										{
+										?>
+										<a class="wpb_button wpb_btn-primary wpb_regularsize single-listing single-listing-booknow simplemodal-login"><?php _e("Book now!", "vh"); ?></a>
+										<?php
+										}else{
+									?>
 										<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
-									<?php } ?>
+									<?php 
+											
+										}
+										} 
+									?>
 									<?php if ( get_option("vh_theme_version") == "SkyVacation" ) { ?>
 										<div class="single-listing-info">
 											<?php

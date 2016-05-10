@@ -18,13 +18,11 @@ function user_has_role( $role, $user_id = null ) {
 $user = wp_get_current_user();
 
 if(isset($user->data->ID)){
-  if(!in_array('guest',$user->roles)){
-      $user->roles[] = 'guest';
-      echo 'User role added';
+  if(in_array('host',$user->roles)){
+      $user->remove_role('host');
+      echo 'User role removed';
   }
 }
-
-$user->add_role('guest');
 
 if ( wp_get_referer() )
 {
@@ -34,3 +32,6 @@ else
 {
     wp_safe_redirect( get_home_url() );
 }
+
+
+
