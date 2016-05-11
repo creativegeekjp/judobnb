@@ -128,7 +128,7 @@ add_action( 'wp_insert_post', 'check_values' );
 function output_into_footer() {
     $url = parse_url($_SERVER['REQUEST_URI']);
     
-    if($_GET['vh_resource_id']){
+    if(isset($_GET['vh_resource_id'])){
         
         ?>
         <script type="text/javascript">
@@ -154,13 +154,14 @@ add_action('admin_footer','output_into_footer');
 function wp_output_into_footer() {
     $url = parse_url($_SERVER['REQUEST_URI']);
     
-    if($_GET['resource_id']){
+ 
+    if(isset($_GET['resource_id'])){
         
         ?>
         <script type="text/javascript">
         
         var el = document.getElementsByName('easyroom')[0];
-        el.value = <?php echo $_GET['resource_id'] ?>;
+        el.value = <?php echo $_GET['resource_id']; ?>;
         
         el.hidden = true;
         el.previousElementSibling.style ='display: none';
@@ -175,3 +176,5 @@ function wp_output_into_footer() {
 
 }
 add_action('wp_footer','wp_output_into_footer');
+
+  

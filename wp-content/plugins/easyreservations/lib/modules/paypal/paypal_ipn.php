@@ -40,6 +40,28 @@
 			$_POST['owner'] = str_replace( '%40', '@',$_POST['owner'] );
 			$_POST['receiver_email'] = str_replace( '%40', '@',$_POST['receiver_email'] );
 			$_POST['receiver_id'] = str_replace( '%40', '@',$_POST['receiver_id'] );
+			
+		
+				
+			/*jino load wpdb query*/
+			
+			 define( 'BLOCK_LOAD', true );
+			 require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-config.php' );
+			 require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-includes/wp-db.php' );
+			 $wpdb = new wpdb( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
+
+			 $wpdb->insert(
+				 	'captured_payments',
+				 	 array("payer_email" => $_POST['payer_email'] , 
+				 	 	   "txn_id"=>  $_POST['txn_id'],
+				 	 	   "item_name" =>  $_POST['item_name'], 
+				 	 	   "mc_currency" =>  $_POST['mc_currency'],
+				 	 	    "mc_gross" =>  $_POST['mc_gross'] ),
+				 	 array("%s" ,"%s", "%s", "%s", "%s")
+			 );
+			
+			/*end jino load wpdb*/
+						
 			if(($_POST['receiver_email'] == $paypalOptions['owner'] || $_POST['business'] == $paypalOptions['owner'] || $_POST['receiver_id'] == $paypalOptions['owner'] ) && $_POST['mc_currency'] == $paypalOptions['currency'] && $_POST['payment_status'] == 'Completed'){
 				if(easyreservations_verify_nonce($_POST['custom'], 'easy-pay-submit' )){
 					if(strpos($_POST['invoice'], '-') === false){
@@ -55,6 +77,7 @@
 								$array[] = 'resourcenumber';
 							}
 						}
+
 						$res->editReservation($array, false, array('reservations_email_to_admin_paypal', 'reservations_email_to_user_paypal'), array(false, $res->email));
 					} else {
 						$explode = explode('-', $_POST['invoice']);
