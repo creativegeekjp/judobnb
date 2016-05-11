@@ -61,7 +61,7 @@ $unames = isset($_GET['unames']) ?  $_GET['unames'] : "" ;
 	<div class="submit">
 		<input type="submit" value="<?php esc_attr_e( "Send Message", 'buddypress' ); ?>" name="send" id="send" />
 	</div>
-		<div id="translate" class="btn-translate" onClick="composetranslate()">translate</div>
+	
 	<?php wp_nonce_field( 'messages_send_message' ); ?>
 </form>
 

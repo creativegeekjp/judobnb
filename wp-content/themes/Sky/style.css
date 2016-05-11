@@ -14914,15 +14914,16 @@ body .header-menu li a:hover {
 	background: rgba(0, 0, 0, 0.4) !important;
 }
 
-body .wrapper .top-header .logo,
+/*body .wrapper .top-header .logo,*/
+body.home .wrapper .top-header .logo,
 body .top-menu-container,
 body .wrapper .header-add-property {
 	margin-top: 10px;
 }
 
-body .wrapper .top-header .logo {
-	margin: 0;
-}
+/*body.home .wrapper .top-header .logo {*/
+/*	margin: 0;*/
+/*}*/
 
 body .wrapper .top-header .logo a {
 	padding: 11px 16px 12px;

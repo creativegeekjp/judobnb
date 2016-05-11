@@ -190,13 +190,14 @@ function reservations_form_shortcode($atts){
 		} catch(Exception $e){
 			$error.=  '<li><label>'.$e->getMessage().'</label></li>';
 		}
-
+       
 		if(empty($error) && isset($arrival)){ //When Check gives no error Insert into Database and send mail
 			do_action('reservation_successful_guest', $res);
 			$finalform .= '<div class="easy_form_success" id="easy_form_success">';
 			if(!empty($atts['submit'])) $finalform.= '<b class="easy_submit">'.$atts['submit'].'!</b>';
 			if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.$atts['subsubmit'].'</span>';
 			$res->Calculate(true);
+			
 			if($atts['price'] == 1) $finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'.easyreservations_format_money($res->price, 1).'</b></span>';
 			if(function_exists('easyreservation_generate_payment_form') && $atts['payment'] > 0){
 				$finalform .= easyreservation_generate_payment_form($res, $res->price, ($atts['payment'] == 2) ? true : false, (is_numeric($atts['discount']) && $atts['discount'] < 100) ? $atts['discount'] : false);

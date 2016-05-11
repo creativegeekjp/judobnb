@@ -3179,3 +3179,32 @@ function my_add_excerpts_to_pages() {
      add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'init', 'my_add_excerpts_to_pages' );
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        html, body.login {
+        	background: #333;
+        }
+		body.login div#login h1 a {
+			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo_v2_white.png);
+            height: 70px;
+		    width: 260px;
+		    background-size: contain;
+		}
+		body.login div#login form#loginform {
+			padding: 26px 26px 36px;
+		}
+		body.login div#login form#loginform p.forgetmenot {
+			float: none;
+			margin: 15px 0;
+		}
+		body.login div#login form#loginform p.submit input#wp-submit {
+			width: 100%;
+		    text-transform: uppercase;
+		    font-size: 16px;
+		    padding: 8px 16px;
+		    height: auto;
+		}
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );

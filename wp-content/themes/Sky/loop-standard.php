@@ -16,7 +16,10 @@ $img = wp_get_attachment_image_src(get_post_thumbnail_id(), 'popular-destination
 if ( empty($img[0]) ) {
 	$img[0] = get_template_directory_uri() . '/images/default-image.jpg';
 }
+
 ?>
+
+<?php if ( !in_category('help') ) : ?>
 
 	<li class="blog-inner-container">
 			<div  <?php post_class(); ?>>
@@ -106,3 +109,5 @@ if ( empty($img[0]) ) {
 				</div>
 			</div>
 	</li>
+	
+<?php endif; ?>
