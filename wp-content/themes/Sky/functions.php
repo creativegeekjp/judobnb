@@ -2243,12 +2243,29 @@ if ( ! function_exists( 'vh_geodir_comment' ) ) {
 						$comment_like = '';
 						
 						printf( '%1$s<div class="reviewer-rating">%2$s</div>%3$s<span class="reviewer-time">%4$s</span>', $author_link, get_listing_rating_stars( $rating, false ), $comment_like, $comment_time_full );
-						
+						?>
+						<script type="text/javascript">
+
+	function composetranslate() {
+		
+		
+		var text = document.getElementById('message_content');
+		var subject = document.getElementById('subject');
+	//	http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=jsonp1461320276071&_=1461320337152&text=test&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja
+		var translateurl = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?_=1461320337152&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja&text=';
+		
+		jQuery.get(translateurl + encodeURI(text.value),function(data){
+			text.value = eval(data);
+		});
+
+	}
+	</script>
+						<?php
 						echo '
 						<div itemprop="reviewBody" class="comment-text">
 							<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
 					    		<span itemprop="ratingValue" style="display: none">'.$rating.'</span>
-					    	</span>
+					    	</span><div id="translate" class="btn-translate" onClick="composetranslate()">translate</div>
 					    ';
 					} else {
 						printf( '%1$s<span class="reviewer-time">%2$s</span>', $author_link, $comment_time_full );
@@ -3208,3 +3225,14 @@ function my_login_logo() { ?>
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+  return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+  return get_bloginfo( 'name' );
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+

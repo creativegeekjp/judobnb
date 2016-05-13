@@ -122,7 +122,7 @@
 						'title_reply'      => __( 'Leave a review on', 'vh'),
 						'comment_notes_before' => '',
 						'label_submit'    => __( 'Add review', 'vh'),
-						'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . _x( '', 'noun', 'vh' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' . '</textarea></p><div id="translate" class="btn-translate" onClick="commenttranslate(); return false;">translate</div>'));
+						'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . _x( '', 'noun', 'vh' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' . '</textarea></p>'));
 		} else { 
 			comment_form(
 				array('comment_notes_after' => '',

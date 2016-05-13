@@ -42,7 +42,7 @@ class APSL_Lite_Widget extends WP_Widget {
 
         <p>
             <label for="<?php echo $this->get_field_id( 'login_text' ); ?>"><?php _e( 'Login Text: ', 'accesspress-social-login-lite' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'login_text' ); ?>" name="<?php echo $this->get_field_name( 'login_text' ); ?>" type="text" value="<?php echo esc_attr( $login_text ); ?>">
+            <input class="widefat" id="<?php echo $this->get_field_id( 'login_text' ); ?>" name="<?php echo $this->get_field_name( 'login_text' ); ?>" type="text" placeholder="<?php esc_attr_e( 'Social connect', 'accesspress-social-login-lite' ); ?>" value="<?php echo esc_attr( $login_text ); ?>">
         </p>
 
         <?php

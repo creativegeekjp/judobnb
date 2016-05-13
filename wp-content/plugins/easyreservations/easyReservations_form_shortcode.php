@@ -261,6 +261,9 @@ function reservations_form_shortcode($atts){
    	  	$message_E = $value;
    	endforeach;
    	
+
+   	$curr = return_sign_book_now( $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource_id."' AND meta_key='jd_cg_currency'") );
+   	
    /*end jino edited*/
     
 	$tags = easyreservations_shortcode_parser($theForm, true);
@@ -280,18 +283,32 @@ function reservations_form_shortcode($atts){
 		if(isset($field['maxlength'])) $maxlength = $field['maxlength'];
 		else $maxlength='';
 		if($field[0]=="date-from"){
+		    if(isset($_COOKIE['vh_startrange']))
+		    {
+		      $value = $_COOKIE['vh_startrange'];//edited by jino
+		    }
 			if(empty($value)) $value = date(RESERVATIONS_DATE_FORMAT, time()+86400);
 			elseif(preg_match('/\+{1}[0-9]+/i', $value)){
 				$cutplus = str_replace('+', '',$value);
 				$value = date(RESERVATIONS_DATE_FORMAT, time()+($cutplus*86400));
+			
 			}
+		  
+		  
 			$theForm=str_replace('['.$fields.']', '<input id="easy-form-from" type="text" name="from" value="'.$value.'" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		} elseif($field[0]=="date-to"){
 			$tofield = true;
+		    if(isset($_COOKIE['vh_endrange']))
+		    {
+		      $value = $_COOKIE['vh_endrange'];//edited by jino
+		    }
 			if(empty($value)) $value = date(RESERVATIONS_DATE_FORMAT, time()+172800);
 			elseif(preg_match('/\+{1}[0-9]+/i', $value)){
 				$cutplus = str_replace('+', '',$value);
+				//jino 
 				$value = date(RESERVATIONS_DATE_FORMAT, time()+((int) $cutplus*86400));
+				
+			
 			}
 			$theForm=str_replace('['.$fields.']', '<input id="easy-form-to" type="text" name="to" value="'.$value.'" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		} elseif($field[0]=="date-from-hour" || $field[0]=="date-to-hour"){
@@ -376,6 +393,8 @@ function reservations_form_shortcode($atts){
 			else $before ='';
 			if(isset($field['price']) && $field['price'] !== 'res' && $field['price'] !== 'reservation') $after = '<input type="hidden" name="easypriceper" id="easypriceper" value="'.$field['price'].'">';
 			else $after = '';
+			
+			//jino edited price label
 			$theForm=preg_replace('/\['.$fields.'\]/', '<span class="easy-form-price" title="'.$title.'" style="'.$style.'">'.$before.'<span id="showPrice"><b>'.easyreservations_format_money(0,1).'</b></span></span>'.$after, $theForm);
 		} elseif($field[0]=="captcha"){
 			require_once(WP_PLUGIN_DIR.'/easyreservations/lib/captcha/captcha.php');
@@ -586,7 +605,8 @@ function reservations_form_shortcode($atts){
 			$theForm = apply_filters('easy-form-tag', $theForm, $fields, $formid);
 		}
 	}
-
+  
+  
 	if($roomfield == 0 && isset($atts['resource']) && $atts['resource'] > 0) $theForm .= '<input type="hidden" name="easyroom" value="'.$atts['resource'].'">';
 	elseif($roomfield == 0 && isset($_POST['easyroom'])) $theForm .= '<input type="hidden" name="easyroom" value="'.$_POST['easyroom'].'">';
 	//if(!$tofield) $theForm .= '<input type="hidden" name="nights" id="easy-form-units" value="0">';
@@ -705,4 +725,6 @@ function easyreservations_make_datepicker(){
 	}
 	easyreservations_build_datepicker(0, $array);
 }
+
+
 ?>

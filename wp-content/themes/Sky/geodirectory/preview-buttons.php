@@ -1,6 +1,10 @@
 <?php
-
-
+//default jpy if empty
+if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY'])){
+   setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365); // 1 year
+}
+     	
+     	
 global $wpdb,$post;
     
 $post_type = $post->listing_type;
@@ -23,8 +27,7 @@ $link = get_permalink( $last_id );
 add_post_meta( $pids, 'reservations_groundprice', $_REQUEST['geodir_listing_price'] );
 add_post_meta( $pids, 'roomcount',1); 
 add_post_meta($last_id, 'vh_resource_id', $pids);
-
-
+add_post_meta($pids, 'jd_cg_currency', $_COOKIE['C_CURRENCY']);//currency post_meta and gd_place_detail
 ?>
 
 <?php 

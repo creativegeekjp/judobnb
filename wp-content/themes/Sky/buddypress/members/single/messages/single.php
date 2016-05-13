@@ -50,7 +50,7 @@
 			 *
 			 * @since 2.5.0
 			 */
-			do_action( 'bp_after_message_thread_recipients' ); ?>
+		 do_action( 'bp_after_message_thread_recipients' ); ?>
 		</p>
 
 		<?php
@@ -100,25 +100,6 @@
 
 						<strong><?php _e( 'Send a Reply', 'buddypress' ); ?></strong>
 						
-						<script type="text/javascript">
-                    	function translate() {
-                    		var test = document.getElementById('test');
-                    		var text = document.getElementById('message_content');
-                    		var language = 'ja';
-                    		var windowsliveid = 'E8DB680F742769E3F9B95BFDB55798C13FEB0E5C';
-                    		var el = document.createElement("script");
-                    		el.src = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate';
-                    		el.src += '?oncomplete=MicrosoftTranslateComplete';
-                    		el.src += '&appId=' + windowsliveid;
-                    		el.src += '&text=' + escape (text);
-                    		el.src += '&from=en&to=' + language;
-                    		
-                    		test.value = text.value;
-                    	}
-                    	</script>
-					    
-					    <div id="translate" class="btn-translate" onClick="translate()">translate</div>
-
 					</div>
 
 					<?php

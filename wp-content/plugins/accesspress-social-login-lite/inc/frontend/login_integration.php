@@ -7,7 +7,8 @@ $redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : ''
 $encoded_url = urlencode( $redirect_to );
 ?>
 <div class='apsl-login-networks theme-<?php echo $options['apsl_icon_theme']; ?> clearfix'>
-    <span class='apsl-login-new-text'><?php echo $options['apsl_title_text_field']; ?></span>
+   <!-- <span class='apsl-login-new-text'><?php echo $options['apsl_title_text_field']; ?></span>-->
+   <span class='apsl-login-new-text'><?php _e('Social connect:', 'accesspress-social-login-lite' ) ?></span>
     <?php if ( isset( $_REQUEST['error'] ) || isset( $_REQUEST['denied'] ) ) { ?>
         <div class='apsl-error'>
             <?php _e( 'You have Access Denied. Please authorize the app to login.', 'accesspress-social-login-lite' ); ?>

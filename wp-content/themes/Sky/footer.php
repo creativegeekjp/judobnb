@@ -36,6 +36,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		<div class="footer-wrapper">
 			<div class="footer-container vc_row wpb_row vc_row-fluid <?php if ( !is_front_page() ) { echo 'not_front_page';}?>">
 				<!--<a href="<?php echo home_url(); ?>" class="footer-logo-link"><img src="<?php echo esc_attr($footer_logo); ?>"<?php echo $logo_size_html ; ?> class="footer-logo <?php echo $retina_logo_class; ?>" alt="<?php esc_attr(bloginfo('name')); ?>" /></a>-->
+				
 				<div class="footer-content">
 					<?php
 						// How many footer columns to show?
@@ -47,6 +48,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 					<div class="footer-links-container columns_count_<?php echo $footer_columns; ?>">
 						<?php get_sidebar( 'footer' ); ?>
 						<div class="clearfix"></div>
+					
 					</div><!--end of footer-links-container-->
 				</div>
 				<?php if ( (bool)$scroll_to_top != false ) { ?>

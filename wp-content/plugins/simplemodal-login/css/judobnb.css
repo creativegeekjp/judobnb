@@ -1,0 +1,114 @@
+/*
+ * SimpleModal Login - WordPress Modal Ajax Login
+ * Theme: default
+ * Copyright 2014 Studio Fuel (http://www.studiofuel.com)
+ */
+
+#simplemodal-login-overlay {
+    background-color:#333;
+    opacity: 0.8 !important;
+    filter: alpha(opacity=80) !important;
+}
+#simplemodal-login-container {
+    width:320px;
+    padding: 95px 0 0;
+    background: url(../img/logo_v2_white.png) top center no-repeat;
+    background-size: 260px 70px;
+}
+#simplemodal-login-container .message,
+#simplemodal-login-container #login_error {
+    background-color: #ffebe8;
+    border:1px solid #c00;
+    margin-bottom:8px;
+    padding:6px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+#simplemodal-login-container .message {
+    background-color:#ffffe0;
+    border-color:#e6db55;
+}
+#simplemodal-login-container form {
+    background:#fff;
+    border:1px solid #e5e5e5; 
+    font-weight:normal; 
+    margin:0 auto; 
+    padding:26px 26px 36px; 
+    text-align:left; 
+    -moz-box-shadow:rgba(153,153,153,1) 0 4px 18px; 
+    -webkit-box-shadow:rgba(153,153,153,1) 0 4px 18px; 
+    box-shadow:rgba(153,153,153,1) 0 4px 18px;
+}
+#simplemodal-login-container form label {color:#777; font-size:13px;}
+#simplemodal-login-container form p, span.apsl-login-new-text {
+    margin:0;
+    font-family: "Open Sans",sans-serif;
+    line-height: 1.5;
+}
+#simplemodal-login-container form .forgetmenot {
+    font-size:11px;
+    font-weight:normal;
+    float:none;
+    margin: 15px 0;
+}
+#simplemodal-login-container form .submit input {
+    background-color:#0085ba;
+    border:1px solid;
+    border-color: #0073aa #006799 #006799;
+    color:#fff;
+    padding:8px 16px;
+    font-size:16px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    cursor:pointer;
+    text-decoration:none;
+    margin-top:-3px;
+    text-transform: uppercase;
+    width: 48%;
+}
+#simplemodal-login-container form .submit input:hover {
+    background-color:#008ec2;
+    border-color: #006799;
+}
+#simplemodal-login-container form .submit {
+    float:none;
+}
+#simplemodal-login-container form .submit input.simplemodal-close {
+    background-color:#c00;
+    border-color: #C10303 #BA0000 #BA0000;
+}
+#simplemodal-login-container form .submit input.simplemodal-close:hover {
+    background-color:#CC1010;
+    border-color: #BA0000;
+}
+#simplemodal-login-container .title {
+    color:#257ea8;
+    font-size:18px;
+    padding-bottom:12px;
+    display: none;
+}
+#simplemodal-login-container .nav {
+    clear:both;
+    color:#888;
+    padding-top:20px; 
+    text-align:center;
+    font-size: 13px;
+}
+#simplemodal-login-container .nav a {color:#999;}
+#simplemodal-login-container .nav a:hover {color:#777;}
+#simplemodal-login-container .reg_passmail {clear:both; color:#666; font-weight:bold; padding-bottom:16px; text-align:center;}
+#simplemodal-login-container .user_pass,
+#simplemodal-login-container .user_login,
+#simplemodal-login-container .user_email {font-size:24px; width:97%; padding:3px; margin-top:2px; margin-right:6px; margin-bottom:16px; border:1px solid #e5e5e5; background:#fbfbfb;}
+#simplemodal-login-container .rememberme {
+    vertical-align:middle;
+    margin: -4px 4px -1px 0;
+}
+.simplemodal-login-activity {background:url(../img/default/loading.gif) center no-repeat; height:16px; margin-bottom:12px;}
+
+
+span.apsl-login-new-text {
+    margin-bottom: 15px;
+}

@@ -542,8 +542,12 @@ JAVASCRIPT;
                 } else {
                     
         
+                    global $wpdb;
                     
                     $user_ID = get_current_user_id(); 
+                    //currency jino
+                    $res_id = $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource."' AND meta_key='jd_cg_currency'") ;
+                    $curr =  isset($res_id) ? strtoupper($res_id) : $gateway_opt['currency'];
                     
                     $return .= 'name="_xclick" action="'.$theModusURL.'" method="post" id="easy_paypal_form">';
                     if(!$button) $return.= '<input type="image" src="'.$gateway_opt['button'].'" border="0" name="submit" alt="Pay with Paypal!">';
@@ -557,7 +561,7 @@ JAVASCRIPT;
                         'amount' => $price,
                         'business' => $gateway_opt['owner'],
                         'cancel_return' => $gateway_opt['cancel_url'],
-                        'currency_code' => $gateway_opt['currency'],
+                        'currency_code' => $curr,
                         'return' => $theReturnURL,
                         'item_number' =>  $user_ID,
                         'paymentaction' => 'authorization' //jino

@@ -2406,6 +2406,7 @@ jQuery(document).ready(function($) {
 			} else {
 				jQuery.cookie('vh_selected_people', jQuery(this).find("span").html()+"/"+input_value["1"], { path: '/' });
 				jQuery("#header-people, #listing-people").val(jQuery(this).find("span").html()+"/"+input_value["1"]);
+				
 			}
 		} else {
 			if ( input_value["1"] == "" ) {

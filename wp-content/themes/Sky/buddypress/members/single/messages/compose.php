@@ -53,8 +53,8 @@ $unames = isset($_GET['unames']) ?  $_GET['unames'] : "" ;
 	
 					    
 	<textarea name="content" id="message_content" rows="15" cols="40"><?php bp_messages_content_value(); ?></textarea>
-
-	<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="<?php bp_message_get_recipient_usernames(); ?>" class="<?php bp_message_get_recipient_usernames() . " $unames" ; ?>" />
+  
+	<input type="hidden" name="send_to_usernames" id="send-to-usernames" value="<?php bp_message_get_recipient_usernames();  ?>" class="<?php bp_message_get_recipient_usernames() . " $unames" ; ?>" />
 
 	<?php do_action( 'bp_after_messages_compose_content' ); ?>
 

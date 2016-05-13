@@ -64,7 +64,7 @@ class BP_XProfile_Field_Type_Textarea extends BP_XProfile_Field_Type {
 		$richtext_enabled = bp_xprofile_is_richtext_enabled_for_field(); ?>
 
 		<label for="<?php bp_the_profile_field_input_name(); ?>">
-			<?php bp_the_profile_field_name(); ?>
+			//<?php bp_the_profile_field_name(); ?>
 			<?php bp_the_profile_field_required_label(); ?>
 		</label>
 

@@ -153,19 +153,20 @@
 
 				<div class="register-section" id="profile-details-section">
 
-					<h4><?php _e( 'Profile Details', 'buddypress' ); ?></h4>
+					<h4><?php _e( 'Profile Details', 'buddypress' ); ?> </h4>
 
 					<?php /* Use the profile field loop to render input fields for the 'base' profile field group */ ?>
-					<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( array( 'profile_group_id' => 1, 'fetch_field_data' => false ) ) ) : while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
-
+				<?php if ( bp_is_active( 'xprofile' ) ) : if ( bp_has_profile( array( 'profile_group_id' => 1, 'fetch_field_data' => false ) ) ) : while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
 					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
 						<div<?php bp_field_css_class( 'editfield' ); ?>>
 
 							<?php
+							 
 							$field_type = bp_xprofile_create_field_type( bp_get_the_profile_field_type() );
+						
 							$field_type->edit_field_html();
-
+								
 							/**
 							 * Fires before the display of the visibility options for xprofile fields.
 							 *

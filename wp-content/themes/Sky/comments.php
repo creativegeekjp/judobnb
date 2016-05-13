@@ -89,7 +89,6 @@
 		if (empty($required_text)) {
 			$required_text = '';
 		}
-
 		if ( in_array(get_post_type(), $geodir_post_types) ) {
 			comment_form(
 				array('comment_notes_after' => '',

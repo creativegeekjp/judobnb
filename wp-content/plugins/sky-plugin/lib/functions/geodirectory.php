@@ -231,6 +231,7 @@ global $cat_display,$post_cat, $current_user;
 						   <span class="geodir_message_error"><?php echo _e($required_msg, 'vh');?></span>
 						</div>
 						<?php do_action('geodir_after_description_field'); ?>
+						
 						<?php 
 						$kw_tags = esc_attr(stripslashes($kw_tags));
 						$kw_tags_count = TAGKW_TEXT_COUNT;
@@ -1198,6 +1199,12 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		 <div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
+				<!-- text jino edited Listing Price only -->
+				<?php 
+				if($name=='geodir_listing_price')
+				  $site_title= add_listing_price_holder();
+				
+				?>
 			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
 			<span class="geodir_message_note"><?php _e($admin_desc,'vh');?></span>
 			<?php if($is_required) {?>

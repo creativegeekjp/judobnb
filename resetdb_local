@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+echo 'drop database judobnb; create database judobnb;'| mysql -uroot -pcgeek judobnb
+./resetpy_local | mysql -uroot -pcgeek judobnb
+sudo service apache2 restart

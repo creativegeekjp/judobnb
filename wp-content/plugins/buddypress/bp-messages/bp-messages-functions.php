@@ -39,10 +39,10 @@ defined( 'ABSPATH' ) || exit;
  * @return int|bool ID of the message thread on success, false on failure.
  */
 function messages_new_message( $args = '' ) {
-
+	
 	// Parse the default arguments.
 	$r = bp_parse_args( $args, array(
-		'sender_id'  => bp_loggedin_user_id(),
+		'sender_id'  => bp_loggedin_user_id(), 
 		'thread_id'  => false,   // False for a new message, thread id for a reply to a thread.
 		'recipients' => array(), // Can be an array of usernames, user_ids or mixed.
 		'subject'    => false,
@@ -132,7 +132,17 @@ function messages_new_message( $args = '' ) {
 			if ( bp_is_username_compatibility_mode() ) {
 				$recipient_id = bp_core_get_userid( urldecode( $recipient ) );
 			} else {
-				$recipient_id = bp_core_get_userid_from_nicename( $recipient );
+				//jino
+				$current_user = wp_get_current_user();
+    			$user_info = get_userdata($current_user->ID);
+				if($user_info->ID == bp_core_get_userid_from_nicename( $recipient ) )
+				{
+					
+				}
+				else
+				{
+				   $recipient_id = bp_core_get_userid_from_nicename( $recipient );//$user_info->user_nicename
+				}
 			}
 
 			// Check against user ID column if no match and if passed recipient is numeric.
@@ -161,7 +171,7 @@ function messages_new_message( $args = '' ) {
 		$recipient_ids = array_unique( $recipient_ids );
 		if ( empty( $recipient_ids ) ) {
 			if ( 'wp_error' === $r['error_type'] ) {
-				return new WP_Error( 'message_invalid_recipients', __( 'Message could not be sent because you have entered an invalid username. Please try again.', 'buddypress' ) );
+				return new WP_Error( 'message_invalid_recipients', __( 'Message could not be sent please enter valid recipient\'s usernames. Please try again.', 'buddypress' ) );
 			} else {
 				return false;
 			}

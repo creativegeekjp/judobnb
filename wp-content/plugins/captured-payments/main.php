@@ -43,7 +43,10 @@ foreach ($wpdb->get_results("SELECT * FROM jd_cg_paypal_keys") as $credentials) 
  
 function reservation_host()
 {  
-    global $title, $wpdb;
+
+    if (is_user_logged_in())
+    {
+          global $title, $wpdb;
     
     $user_ID = get_current_user_id();
   
@@ -71,8 +74,8 @@ function reservation_host()
     if( $wpdb->num_rows > 0 )
     {
         echo '<form name="post" method="post" id="post">';
-        echo '<table class="gridtable"><th>ID</th><th>ARRIVAL</th><th>DEPARTURE</th><th>USER</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-              <th>ROOM</th><th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+        echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
+              <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
     }
     else
     {
@@ -106,29 +109,33 @@ function reservation_host()
         $childs = $list->childs;
         $price = $list->price;
         $reservated = $list->reservated;
-        
-        
+       
         $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
         $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
         
         //get author by roomid for messaging
         $user_info = get_userdata( $authors );
 	    
+	    
+	     //get original post_id from post_meta
+	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
+	    {
+	        $pid = $pids->post_id;
+	    }
+	    
         echo "<tr>
-                <td>".$idr."</td>
-                <td>".$arrival."</td>
-                <td>".$departure."</td>
-                <td>".$user."</td>
+         <td><a href=".get_permalink($pid).">View</a></td>
+                <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
+                <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                 <td>".$name."</td>
                 <td>".$email."</td>
                 <td>".$country."</td>
                 <td>".$approve."</td>
-                <td>".$room."</td>
                 <td>".$roomnumber."</td>
                 <td>".$number."</td>
                 <td>".$childs."</td>
                 <td>".$price."</td>
-                <td>".$reservated."</td>
+                <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                 <td><a href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
                  <td><a href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
                  <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
@@ -137,11 +144,21 @@ function reservation_host()
     echo "</tr></table>";
       
     return;
+       
+    }
+    else
+    {
+        echo 'Access Denied! please login.';
+    }
+    
+  
 }
 
 function reservation_guest()
 {
-    global $title, $wpdb;
+    if (is_user_logged_in())
+    {
+        global $title, $wpdb;
     
     $user_ID = get_current_user_id();
   
@@ -169,8 +186,8 @@ function reservation_guest()
     if( $wpdb->num_rows > 0 )
     {
         echo '<form name="post" method="post" id="post">';
-        echo '<table class="gridtable"><th>ID</th><th>ARRIVAL</th><th>DEPARTURE</th><th>USER</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-              <th>ROOM</th><th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+        echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
+              <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
     }
     else
     {
@@ -213,30 +230,45 @@ function reservation_guest()
 	    
 	    //create link edit if not cancelled yet
 	    $edit_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>Edit</a>";
-	        
+	    
+	    //create link cancel if not cancelled yet
+	    $cancel_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a>";
+	    
+	    //get original post_id from post_meta
+	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
+	    {
+	        $pid = $pids->post_id;
+	    }
+	     
         echo "<tr>
-                <td>".$idr."</td>
-                <td>".$arrival."</td>
-                <td>".$departure."</td>
-                <td>".$user."</td>
+                <td><a href=".get_permalink($pid).">View</a></td>
+                <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
+                <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                 <td>".$name."</td>
                 <td>".$email."</td>
                 <td>".$country."</td>
                 <td>".$approve."</td>
-                <td>".$room."</td>
                 <td>".$roomnumber."</td>
                 <td>".$number."</td>
                 <td>".$childs."</td>
                 <td>".$price."</td>
-                <td>".$reservated."</td>
+                <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                  <td>".$edit_check."</td>
-                <td><a href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a></td>
+                <td>".$cancel_check."</td>
                 <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
               </tr>";
     }
     echo "</tr></table>";
       
     return;
+       
+    } 
+    else
+    {
+        echo 'Access Denied! please login.';
+    }
+    
+   
 }
 
 //ask if guest want to edit if yes then void his previous transaction to paypal
@@ -475,6 +507,8 @@ function successreservation_reservations()
 				 	 	    
 				 	 array("%s" ,"%s", "%s", "%s", "%s", "%s", "%s" )
 			 );
+			 
+    echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guest'>View Reservation</a>";
     
     return;
 }
@@ -721,7 +755,40 @@ function convertCurrency($amount, $from, $to)
 	
 	//echo convertCurrency("100.00", "USD", "JPY");
 }
-
+//book now form
+function return_sign_book_now($currency)
+{
+        if('USD'==$currency)
+     	{
+           $sign = "$";
+     	}else{
+     	   $sign = "¥";
+     	}
+     	
+     	return $sign;
+     	
+}
+//sign at static page
+function check_current_sign()
+{
+	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))
+     	{
+     		 $sign = "¥";
+     	}else{
+     	      $sign = "$";
+     	}
+}
+function add_listing_price_holder()//add listing price place holder geodir_listing_price
+{
+     	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))
+     	{
+     		 $site_title = "Listing Price (JPY)";
+     	}else{
+     	     $site_title = "Listing Price (". $_COOKIE['C_CURRENCY'].")";
+     	}
+     	
+     return $site_title;
+}
 //table css
 function cascade() 
 {

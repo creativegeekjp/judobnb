@@ -303,8 +303,7 @@ endfor; ?>
                                     <div class="apsl-label"><?php _e( 'Text settings', 'accesspress-social-login-lite' ); ?> <span class='apsl_show_hide'><i class="fa fa-caret-down"></i></span> </div>
                                     <div class='apsl_network_settings_wrapper' style='display:none'>
                                         <p class='apsl-title-text-field'>
-                                            <span><?php _e( 'Login text:', 'accesspress-social-login-lite' ); ?></span> <input type='text' name='apsl_title_text_field' id='apsl-title-text' value='<?php
-if( isset( $options['apsl_title_text_field'] ) && $options['apsl_title_text_field'] != '' ) {
+                                            <span><?php _e( 'Login text:', 'accesspress-social-login-lite' ); ?></span> <input type='text' name='apsl_title_text_field' id='apsl-title-text' value='<?php if( isset( $options['apsl_title_text_field'] ) && $options['apsl_title_text_field'] != '' ) {
     echo $options['apsl_title_text_field'];
 }
 ?>' />

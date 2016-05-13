@@ -471,6 +471,8 @@
 							<div class="geodir-top-selection">
 								<div class="geodir-top-main">
 									<?php if ( get_option("vh_theme_version") == "SkyVacation" ) {
+										
+										
 										if ( isset($_COOKIE['vh_startrange']) ) {
 											$star_date = $_COOKIE['vh_startrange'];
 										} else {
@@ -481,13 +483,28 @@
 										} else {
 											$end_date = '';
 										}
+										/*jino adults print the results do not delete
+										$str = $_COOKIE['vh_selected_people'];
+										preg_match_all('!\d+!', $str, $matches);
+										print_r($matches);
+										*/
 										?>
-										<div class="single-listing-options when"><span class="listing-input-title"><?php _e('When:', 'vh'); ?></span><input type="text" id="listing-when"><input id="startrange" type="hidden" value="<?php echo esc_attr($star_date); ?>"><input id="endrange" type="hidden" value="<?php echo esc_attr($end_date); ?>"><?php do_action('vh_action_get_listing_when_options'); ?><div class="clearfix"></div></div>
+										<div class="single-listing-options when">
+											<span class="listing-input-title"><?php _e('When:', 'vh'); ?></span>
+											<input type="text" value="" id="listing-when">
+											<input id="startrange" type="hidden" value="<?php echo esc_attr($star_date) ?>">
+											<input id="endrange" type="hidden" value="<?php echo esc_attr($end_date); ?>">
+											<?php do_action('vh_action_get_listing_when_options'); ?>
+											<div class="clearfix"></div>
+										</div>
 										<div class="single-listing-options people"><span class="listing-input-title"><?php _e('People:', 'vh'); ?></span><input type="text" id="listing-people" readonly><?php vh_get_listing_people_options(); ?><div class="clearfix"></div></div>
 									<?php } ?>
 									<?php
 										$reservation_url = get_permalink(get_option('vh_book_now'));
 										$reservation_id = get_post_meta(get_the_ID(), 'vh_resource_id');
+										
+									
+											 
 										if ( !empty( $reservation_id ) ) {
 										
 													$reservation_url .= '?resource=' . get_post_meta(get_the_ID(), 'vh_resource_id', true);
@@ -498,6 +515,8 @@
 											{
 												
 											}else{
+			
+										
 									?>
 											<form method="post" action="<?php echo $reservation_url; ?>" name="easy_listing_form" id="easy_listing_form">
 												<input id="easy-listing-datepicker-from" type="hidden" name="from" value="" class="hasDatepicker">
