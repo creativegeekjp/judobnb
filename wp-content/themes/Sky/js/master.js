@@ -698,6 +698,7 @@ jQuery(document).ready(function($) {
 					.append("<a>" + item.label + "</a>")
 					.appendTo(ul);
 			};
+		
 		});
 	};
 
@@ -2456,6 +2457,7 @@ jQuery(document).ready(function($) {
 
 
 	jQuery("#header-submit, #header-submit2").live('click', function(e) {
+			
 		var geocoder = new google.maps.Geocoder();
 		var address = jQuery("#header-location, #header-top-location").val();
 		// var when = jQuery("#header-when, #header-top-when").val();
@@ -2465,7 +2467,9 @@ jQuery(document).ready(function($) {
 		var type = jQuery("#header-type, #header-top-type").val();
 		var contract = jQuery("#header-contract, #header-top-contract").val();
 		var post_type = jQuery("#header-post-type").val();
+		
 		if ( jQuery("body").hasClass("skyvacation") && jQuery("#header-people").length ) {
+			
 			var people_array = people.split("/");
 			var adults = people_array["0"].split(" ");
 			var childrens = people_array["1"].split(" ");
@@ -2479,6 +2483,7 @@ jQuery(document).ready(function($) {
 			}
 		} else {
 			var when = jQuery('#startrange').val()+"~"+jQuery('#endrange').val();
+			
 		}
 
 		if ( address != undefined ) {
@@ -2487,6 +2492,7 @@ jQuery(document).ready(function($) {
 		
 		if ( post_type == '' ) {
 			post_type = 'gd_place';
+			
 		};
 
 		if ( address == undefined ) {
@@ -2502,6 +2508,7 @@ jQuery(document).ready(function($) {
 
 			if ( jQuery('.header-input-container.event').length ) {
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+"&sgeo_keyword="+keyword;
+			
 				window.location.href = my_ajax.blog_url+location;
 			} else if ( jQuery('.header-input-container.advanced').length ) {
 				var advanced_location = '';
@@ -2595,14 +2602,27 @@ jQuery(document).ready(function($) {
 
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+advanced_location;
 				window.location.href = my_ajax.blog_url+location;
+				
 			} else if ( jQuery("body").hasClass("skyvacation") ) {
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+"&sgeo_when="+when+"&sgeo_adults="+adults["0"]+"&sgeo_childrens="+childrens["0"];
-				window.location.href = my_ajax.blog_url+location;
+				console.log("location2>>>> "+ document.URL);
+				if(document.URL == "http://judobnb.creativegeek.jp/"){
+					window.location.href = my_ajax.blog_url+location;
+				}else{
+					window.location.href = my_ajax.blog_url+"/ja/"+location;
+					
+				}
+				
+				//The url extension for search +"/ja/"
+			
+				
 			} else if ( jQuery("body").hasClass("skydirectory") ) {
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+"&sgeo_keyword="+keyword+"&sgeo_category="+category;
 				window.location.href = my_ajax.blog_url+location;
+					
 			} else {
 				// More options checkboxes
+					
 				var checkboxes = '';
 				var sliders = '';
 				if ( jQuery('.header-more-right .checkbox').length ) {
@@ -2627,6 +2647,7 @@ jQuery(document).ready(function($) {
 
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+"&sgeo_type="+type+"&sgeo_contract="+contract+checkboxes+sliders;
 				window.location.href = my_ajax.blog_url+location;
+			
 			}
 		}); 
 	});

@@ -94,7 +94,7 @@ define( 'FTP_SSL', false );
 define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
 define( 'WP_DEBUG_DISPLAY', false );
 
-
+ 
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */

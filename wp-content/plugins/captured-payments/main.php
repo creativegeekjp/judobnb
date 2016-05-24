@@ -31,7 +31,7 @@ global $wpdb;
 	             $secret=$credentials->value;
 	            break;
 	         case 'admin_identity':
-	             $identity=$credentials->value;
+	             $admin_identity=$credentials->value;
 	            break;
 	         case 'mode':
 	             $sandbox=$credentials->value;
@@ -42,6 +42,9 @@ global $wpdb;
 	         case 'admin_secret':
 	         	 $adminSecret=$credentials->value;
 	         	 break;
+	         case 'mode':
+	             $sandbox=$credentials->value;
+	             break;
 	        
 	       
 	    }
@@ -131,11 +134,11 @@ function reservation_host()
         $price = $list->price;
         $reservated = $list->reservated;
        
-        $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
-        $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
+        //$get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
+        //$authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
         
         //get author by roomid for messaging
-        $user_info = get_userdata( $authors );
+        //$user_info = get_userdata( $authors );
 	    
 	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
 	     
@@ -409,16 +412,7 @@ function hosts_approved()
             
             echo "Reservation was successfully approved <a href='".site_url()."/list-reservation-host/'>return</a>";
            
-            $wpdb->update( 'jd_reservations', 
-                	array( 
-                	'approve' => 'yes',	
-                	), 
-                	array( 'id' => $idr ), 
-                	array( 
-                		'%s',
-                	), 
-                	array( '%d' ) 
-                );
+            $query=$wpdb->query("UPDATE jd_reservations SET approve='yes' WHERE id=$idr");
         }
     }
     return;
@@ -735,7 +729,7 @@ function void_payment($token,$authorizations)
 //pdt return success
 function get_pdt_response($user,$tx)
 {
-         global $identity,$sandbox;
+         global $admin_identity,$sandbox;
          
          $ch = curl_init(); 
          
@@ -745,7 +739,7 @@ function get_pdt_response($user,$tx)
             (
               'cmd' => '_notify-synch',
               'tx' => $tx,
-              'at' => $identity,
+              'at' => $admin_identity,
             )),
           CURLOPT_RETURNTRANSFER => TRUE,
           CURLOPT_HEADER => FALSE,
@@ -755,9 +749,9 @@ function get_pdt_response($user,$tx)
         
         $response = curl_exec($ch);
         $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
+        //var_dump($response);
         curl_close($ch);
-        var_dump($response);
+        
         
         if($status == 200 AND strpos($response, 'SUCCESS') === 0)
         {
@@ -767,6 +761,14 @@ function get_pdt_response($user,$tx)
            
         }
 }
+############set currency#########333
+// add_action( 'init', 'my_setcookie' );
+
+// function my_setcookie() {
+//     if($_COOKIE['C_CURRENCY']==''){
+//         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+//     }
+// }
 
 function dynamic_convert($postid, $currency_format, $previous_money , $page )
 {
@@ -776,7 +778,7 @@ function dynamic_convert($postid, $currency_format, $previous_money , $page )
    {
         $money = $previous_money;
         $sign = $accnt['sign'];
-        $currency = $accnt['currency'];
+        $currency = $accnt['currency']; 
         $code = $accnt['code'];
         
    }

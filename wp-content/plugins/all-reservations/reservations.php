@@ -19,8 +19,8 @@ global $wpdb;
 	         case 'secret':
 	             $secret=$credentials->value;
 	            break;
-	         case 'identity':
-	             $identity=$credentials->value;
+	         case 'admin_identity':
+	             $admin_identity=$credentials->value;
 	            break;
 	         case 'mode':
 	             $sandbox=$credentials->value;
@@ -152,8 +152,9 @@ function register_reservation_js(){
 
 function get_departures(){
     
+    
     global $wpdb;
-    $today=date('Y-m-d H:i:s');
+    $today=date('Y-m-d');
     $departures=[];
     $reservations = $wpdb->get_results("
     SELECT jd_reservations.*,jd_cg_captured_payments.host_id,jd_cg_captured_payments.tid FROM jd_reservations INNER JOIN jd_cg_captured_payments ON jd_cg_captured_payments.room_id=jd_reservations.id WHERE jd_reservations.approve='yes' AND jd_reservations.paid=0  GROUP BY jd_cg_captured_payments.txn_id;");
@@ -173,8 +174,19 @@ function get_departures(){
     	    $host=$authors;
     	    $tid=$reserve->tid;
     	    $id=$reserve->id;
+    	    date_default_timezone_set("UTC");
     	    
-    	        echo date('Y-m-d H:i:s',strtotime($reserve->departure)) >= $today;
+    	       if(date('Y-m-d',strtotime($reserve->departure)) == $today){
+    	          if(date('g',strtotime($reserve->departure)) < date('g')){
+    	              $min=(int)date('G')- (int)date('G',strtotime($reserve->departure));
+    	              //echo $min;
+    	              echo date('G').'/'.date('G',strtotime($reserve->departure));
+    	              
+    	          }
+    	       }else{
+    	           //echo 'false';
+    	       }
+    	        
         }
     }
     
@@ -368,4 +380,4 @@ function pay($token,$data){
 add_action( 'the_content', 'allreservations');
 add_action( 'the_content', 'confirmPayout');
 add_action( 'wp_ajax_get_departures', 'get_departures' );
-//add_action('wp_print_scripts','register_reservation_js', 1);
+add_action('wp_print_scripts','register_reservation_js', 1);

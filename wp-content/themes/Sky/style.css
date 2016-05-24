@@ -5940,6 +5940,16 @@ body:not(.skydirectory) .geodir_category_list_view li.gridview_onehalf.animation
 	left: 33%;
 	text-decoration: none;
 	z-index: 22;
+	display: none;
+}
+
+.geodir_category_list_view li.gridview_onehalf .geodir-category-listing {
+	overflow: hidden;
+	height: 253px;
+}
+
+.geodir_category_list_view li.gridview_onehalf.animation > a.wpb_button {
+	display: block;
 }
 
 body .wrapper .map-listing-next,
@@ -6244,6 +6254,7 @@ body.search-results .main-content {
 .map-listing-carousel-container {
 	position: relative;
 	overflow: hidden;
+	height: 253px;
 }
 
 .map-listing-carousel {
@@ -8936,12 +8947,19 @@ body.single-post .page-sidebar-right.page-wrapper #author-info {
 	padding: 0;
 	margin-bottom: 30px !important;
 	margin-left: 27px !important;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	float: left;
 	width: 293px;
-	height: 246px;
-	position: relative;
+	/*height: 246px;*/
+	height: 253px;
+	position: relative !important;
 	border: none;
+	top: 0 !important;
+	left: 0 !important;
+}
+
+.geodir_category_list_view li {
+	border: 0 none;
 }
 
 body.skydirectory .geodir_category_list_view li.gridview_onehalf {
@@ -9690,6 +9708,7 @@ body.geodir-main-search .Navi {
 
 .geodir-map-left {
 	float: left;
+	position: relative;
 }
 
 body.geodir-main-search .stick_trigger_container {

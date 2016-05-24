@@ -9,7 +9,7 @@ function check_departure(){
 
 jQuery(function($) {
     
-/*    check_departure();
+    check_departure();
     
     function check_departure(){
         setInterval(function(){ 
@@ -31,7 +31,7 @@ jQuery(function($) {
                 }
             });
             
-        }, 10000);
-    }*/
+        }, 3000);
+    }
     
 });

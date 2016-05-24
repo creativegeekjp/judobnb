@@ -45,7 +45,7 @@
 			/*jino load wpdb query*/
 			 
 			 
-			 define( 'BLOCK_LOAD', true );
+			/* define( 'BLOCK_LOAD', true );
 			 require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-config.php' );
 			 require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-includes/wp-db.php' );
 			 $wpdb = new wpdb( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
@@ -65,7 +65,7 @@
 				 	 	    
 				 	 array("%s" ,"%s", "%s", "%s", "%s", "%s", "%s" )
 			 );
-			
+			*/
 			
 			/*end jino load wpdb*/
 						

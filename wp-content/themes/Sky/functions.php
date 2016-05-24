@@ -2246,7 +2246,7 @@ if ( ! function_exists( 'vh_geodir_comment' ) ) {
 						
 						printf( '%1$s<div class="reviewer-rating">%2$s</div>%3$s<span class="reviewer-time">%4$s</span>', $author_link, get_listing_rating_stars( $rating, false ), $comment_like, $comment_time_full );
 						echo '
-						<div itemprop="reviewBody" class="comment-text">
+						<div itemprop="reviewBody">
 							<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
 					    		<span itemprop="ratingValue" style="display: none">'.$rating.'</span>';
 					} else {
@@ -2254,9 +2254,11 @@ if ( ! function_exists( 'vh_geodir_comment' ) ) {
 					}
 					
 					?>
-					<?php
+					<div class="comment-text">
+					<?php comment_text(); ?>
+					</div>
 					
-					comment_text();
+					<?php
 
 					//echo '<div class="clearfix"></div>';
 
@@ -3224,3 +3226,5 @@ function wp_sitemap_page_list(){
     ".wp_list_pages('title_li=&echo=0')."";
 }
 add_shortcode('sitemap', 'wp_sitemap_page_list');
+
+
