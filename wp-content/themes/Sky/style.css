@@ -1,4 +1,4 @@
-
+/*
 Theme Name: Sky
 Theme URI: http://www.cohhe.com/demo/sky
 Author: Cohhe
@@ -1396,8 +1396,11 @@ body.skyestate .single-listing-by-info .author-name a {
 iframe.twitter-share-button {
 	top: 8px;
 	position: relative !important;
+	width: 100px !important;
 }
-
+.twitter-share-button {
+    width: 79px !important;
+}
 .wrapper .single-listing-mail,
 .wrapper .single-listing-share {
 	color: #b8b8b8;
@@ -1406,6 +1409,11 @@ iframe.twitter-share-button {
 	top: 4px;
 	padding-right: 37px;
 	text-decoration: none;
+}
+.wrapper .single-listing-mail.icon-mail-alt{
+	left: 290px;
+	top: -24px;
+	padding-right: 0 ;
 }
 
 .wrapper .single-listing-share {
@@ -1420,6 +1428,7 @@ iframe.twitter-share-button {
 .fb_iframe_widget,
 .fb_iframe_widget iframe {
 	width: 92px;
+	top: 4px;
 }
 
 .single-listing-by-container {
@@ -2283,8 +2292,20 @@ body #comments span {
 }
 
 .single-listing-main-content {
-	padding-top: 21px;
+	padding-top: 40px;
 	padding-right: 35px;
+	position: relative;
+}
+
+.single-listing-main-content #translate {
+	position: absolute;
+	bottom: auto;
+	top: 0px;
+	width: auto;
+	float: none;
+	left: auto;
+	right: 35px;
+	margin: 5px 0 0;
 }
 
 body.skydirectory .single-listing-main-content {
@@ -4735,7 +4756,8 @@ body .ui-dialog-titlebar button.ui-state-hover {
 	display: none;
 }
 
-.review-container {
+.review-container,
+.apsl-login-networks {
 	background-color: #fff;
 	padding: 26px 10px 18px 19px;
 	position: relative;
@@ -4859,7 +4881,8 @@ body #commentform .comment_auth_email input[type=text] {
 	font-size: 18px;
 	color: #666;
 	font-weight: 300;
-	padding: 38px 19px 32px 19px;
+	/*padding: 38px 19px 32px 19px;*/
+	padding: 18px 19px 12px 19px;
 	height: 69px;
 	border: none;
 	border-bottom: 1px solid #e1e1e1;
@@ -14926,7 +14949,7 @@ body .wrapper .header-add-property {
 /*}*/
 
 body .wrapper .top-header .logo a {
-	padding: 11px 16px 12px;
+	padding: 11px 16px;
 	display: block;
 }
 
@@ -15341,6 +15364,9 @@ body.page-id-6 .header-background-img {
 
 
 /* Translate button */
+.comment-content .btn-translate {
+	margin: 0;
+}
 .btn-translate {
 	float: right !important;
 	color: #339933 !important;

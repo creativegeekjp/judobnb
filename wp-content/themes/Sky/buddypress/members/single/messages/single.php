@@ -21,6 +21,10 @@
 	<?php if ( bp_thread_has_messages() ) : ?>
 
 		<h3 id="message-subject"><?php bp_the_thread_subject(); ?></h3>
+		
+		<div id="translate" class="btn-translate" onclick="translate()" style="float: left !important;">translate</div>
+		
+		<div class="clear"></div>
 
 		<p id="message-recipients">
 			<span class="highlight">

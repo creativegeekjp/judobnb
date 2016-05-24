@@ -81,5 +81,45 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		?>
 		</div>
 		<?php wp_footer(); ?>
+		<?php if ( is_singular( 'gd_place' ) || bp_is_messages_conversation() ) : ?>
+		<script type="text/javascript">
+		<?php if ( is_singular( 'gd_place' ) ) :
+			$v = '.comment-content .comment-text';
+			$c = '.single-listing-main-content .content';
+		elseif ( bp_is_messages_conversation() ) :
+			$v = '.message-box .message-content';
+		else :
+			$v = '.main-content .main-inner';
+		endif; ?>
+		
+		var target = jQuery('<?php echo $v; ?> p'),
+			target2 = jQuery('<?php echo $c; ?> p'),
+			translateurl = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?_=1461320337152&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja&text=';
+		
+		function translate() {
+			
+		  target.each(function() {
+		    var targetTxt = jQuery(this);
+		    jQuery.get(translateurl + encodeURI(targetTxt.text()),function(data){
+		      t = eval(data);
+		      targetTxt.html(t);
+		      console.log(jQuery('.btn-translate').attr('id'));
+		    });
+		  });
+		}
+		
+		function translateContent() {
+		  target2.each(function() {
+		    var targetTxt = jQuery(this);
+		    jQuery.get(translateurl + encodeURI(targetTxt.text()),function(data){
+		      t = eval(data);
+		      targetTxt.html(t);
+		    });
+		  });
+		}
+		
+		</script>
+		
+		<?php endif; ?>
 	</body>
 </html>
