@@ -6,6 +6,8 @@
 *
 */
 
+ 
+  
  $idr = isset($_GET['idr']) ? $_GET['idr'] : 0 ;
  $idt = isset($_GET['idt']) ? $_GET['idt'] : 0;
  $editing_mode = isset($_GET['editing']) ? $_GET['editing'] : 0 ;
@@ -25,6 +27,7 @@
 	         case 'mode':
 	             $sandbox=$credentials->value;
 	            break;
+	         
 	        
 	       
 	    }
@@ -48,7 +51,7 @@ function void_edit($idr,$idt)
     	array('approve' => 'no' ),array( 'id' => $idr ), 
     	array('%s'),array( '%d' ) 
     );
-}
+} 
 /*End function jino */
 
 
@@ -173,6 +176,8 @@ function reservations_form_shortcode($atts){
 		$error = $custom[2];
 
 		$res = new Reservation(false, $array, false);
+
+	    $pr = 	$res->price;
 		try {
 			$res->fake = false;
 			$res->admin = false;
@@ -198,7 +203,7 @@ function reservations_form_shortcode($atts){
 			if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.$atts['subsubmit'].'</span>';
 			$res->Calculate(true);
 			
-			if($atts['price'] == 1) $finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'.easyreservations_format_money($res->price, 1).'</b></span>';
+			if($atts['price'] == 1) $finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'.$res->price.'</b></span>';
 			if(function_exists('easyreservation_generate_payment_form') && $atts['payment'] > 0){
 				$finalform .= easyreservation_generate_payment_form($res, $res->price, ($atts['payment'] == 2) ? true : false, (is_numeric($atts['discount']) && $atts['discount'] < 100) ? $atts['discount'] : false);
 			}
@@ -261,9 +266,17 @@ function reservations_form_shortcode($atts){
    	  	$message_E = $value;
    	endforeach;
    	
+     //jino adult and children
+	preg_match_all('!\d+!', $_COOKIE['vh_selected_people'] , $matches);
+    foreach ($matches as $value) :
+        $adultss = isset($value[0]) ? $value[0] : "";
+        $childrenss = isset($value[1]) ? $value[1] : "";
+    endforeach;
 
-   	$curr = return_sign_book_now( $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource_id."' AND meta_key='jd_cg_currency'") );
-   	
+   	//$curr = return_sign_book_now( $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource_id."' AND meta_key='jd_cg_currency'") );
+  		//$reservations_ =get_option("reservations_currency");
+    
+		//echo RESERVATIONS_CURRENCY;
    /*end jino edited*/
     
 	$tags = easyreservations_shortcode_parser($theForm, true);
@@ -283,9 +296,13 @@ function reservations_form_shortcode($atts){
 		if(isset($field['maxlength'])) $maxlength = $field['maxlength'];
 		else $maxlength='';
 		if($field[0]=="date-from"){
-		    if(isset($_COOKIE['vh_startrange']))
+		    if(isset($_COOKIE['vh_startrange']) && !isset($_GET['editing']))
 		    {
-		      $value = $_COOKIE['vh_startrange'];//edited by jino
+		      $value = date(RESERVATIONS_DATE_FORMAT, strtotime($_COOKIE['vh_startrange']));//edited by jino
+		    }
+		    else if(isset($_GET['editing']))
+		    {
+		      $value = date(RESERVATIONS_DATE_FORMAT,strtotime($arrival_E));//jino
 		    }
 			if(empty($value)) $value = date(RESERVATIONS_DATE_FORMAT, time()+86400);
 			elseif(preg_match('/\+{1}[0-9]+/i', $value)){
@@ -298,9 +315,11 @@ function reservations_form_shortcode($atts){
 			$theForm=str_replace('['.$fields.']', '<input id="easy-form-from" type="text" name="from" value="'.$value.'" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		} elseif($field[0]=="date-to"){
 			$tofield = true;
-		    if(isset($_COOKIE['vh_endrange']))
+		    if(isset($_COOKIE['vh_endrange']) && !isset($_GET['editing']) )
 		    {
-		      $value = $_COOKIE['vh_endrange'];//edited by jino
+		      $value = date(RESERVATIONS_DATE_FORMAT, strtotime($_COOKIE['vh_endrange']));//edited by jino
+		    }else if(isset($_GET['editing'])){
+		    	$value = date(RESERVATIONS_DATE_FORMAT, strtotime($departure_E)); //jino
 		    }
 			if(empty($value)) $value = date(RESERVATIONS_DATE_FORMAT, time()+172800);
 			elseif(preg_match('/\+{1}[0-9]+/i', $value)){
@@ -320,17 +339,19 @@ function reservations_form_shortcode($atts){
 			$start = 1;
 			if(isset($field[1])) $start = $field[1]; 
 			if(isset($field[2])) $end = $field[2]; else $end = 6;
-			
-			        /* 
+			//here
+		    
+			$theForm=str_replace('['.$fields.']', '<select id="easy-form-units" name="nights" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start, $end, $value).'</select>', $theForm);
+		} elseif($field[0]=="persons" || $field[0]=="adults"){
+			$start = 1;
+			       /* 
 					*
 					* edited by jino 
 					* adults Jino
 					*/
-			 $value = isset( $number_E ) ?  $number_E : $value;
-			 
-			$theForm=str_replace('['.$fields.']', '<select id="easy-form-units" name="nights" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start, $end, $value).'</select>', $theForm);
-		} elseif($field[0]=="persons" || $field[0]=="adults"){
-			$start = 1;
+			 $value = isset( $number_E ) ?  $number_E : $adultss;
+			//$value = isset( $adultss ) ?  $adultss : $value;//adults jino
+			
 			if(isset($field[1])) $start = $field[1]; 
 			if(isset($field[2])) $end = $field[2]; else $end = 6;
 			$theForm=preg_replace('/\['.$fields.'\]/', '<select id="easy-form-persons" name="persons" '.$disabled.' style="'.$style.'" title="'.$title.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start,$end,$value).'</select>', $theForm);
@@ -338,14 +359,14 @@ function reservations_form_shortcode($atts){
 			$start = 0;
 			if(isset($field[1])) $start = $field[1]; 
 			if(isset($field[2])) $end = $field[2]; else $end = 6;
-			 
-			 /* 
+			       /* 
 					*
 					* edited by jino 
 					* children Jino
 					*/
-			 $value = isset( $childs_E ) ?  $childs_E : $value;//jino
-			 
+			 $value = isset( $childs_E ) ?  $childs_E : $childrenss;//jino
+			 //$value = isset( $childrenss ) ?  $childrenss : $value; //childrens jino
+			 	
 			$theForm=preg_replace('/\['.$fields.'\]/', '<select name="childs" '.$disabled.' style="'.$style.'" title="'.$title.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start,$end, $value ).'</select>', $theForm);
 		} elseif($field[0]=="thename"){ //NAME
 		
@@ -391,7 +412,7 @@ function reservations_form_shortcode($atts){
 		} elseif($field[0]=="show_price"){
 			if(isset($field['before'])) $before = $field['before'];
 			else $before ='';
-			if(isset($field['price']) && $field['price'] !== 'res' && $field['price'] !== 'reservation') $after = '<input type="hidden" name="easypriceper" id="easypriceper" value="'.$field['price'].'">';
+			if(isset($field['price']) && $field['price'] !== 'res' && $field['price'] !== 'reservation') $after = '<input type="text" name="easypriceper" id="easypriceper" value="'.$field['price'].'">';
 			else $after = '';
 			
 			//jino edited price label
@@ -628,7 +649,13 @@ function reservations_form_shortcode($atts){
 	$popuptemplate.= '<th></th></tr></thead><tbody id="easy_overlay_tbody"></tbody></table>';
 	$popuptemplate.= '<input onclick="easyAddAnother();" type="button" value="'.__('Add another reservation', 'easyReservations').'">';
 	$popuptemplate.= '<input class="easy_overlay_submit"  type="button" onclick="easyFormSubmit(1);" value="'.__('Submit all reservations', 'easyReservations').'">';
-
+	
+	###jino price pass to form.js ####
+    $price = get_post_meta($_GET['resource_id'], 'reservations_groundprice', true);
+	$values =  dynamic_convert($_GET['resource_id'],$_COOKIE['C_CURRENCY'],$price);
+    $atts['symbol'] = $values['sign'];
+    ###jino##
+    
 	$easyreservations_script.= str_replace(array("\n","\r"), '', trim('var easyReservationAtts = '.json_encode($atts).';var easyInnerlayTemplate = "'.addslashes($popuptemplate).'";'));;
 	if(!empty($atts['datefield'])) define('EASYDATEFIELD', $atts['datefield']);
 	add_action('wp_print_footer_scripts', 'easyreservations_make_datepicker');
@@ -725,6 +752,7 @@ function easyreservations_make_datepicker(){
 	}
 	easyreservations_build_datepicker(0, $array);
 }
+
 
 
 ?>

@@ -378,6 +378,7 @@ if (!function_exists('vh_scripts_method')) {
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'blog_url' => get_site_url(),
 			'currency_symbol' => get_option('vh_currency_symbol'),
+			'curr_sign' => preview_symbol(), #########jino slider symbol
 			'def_country' => get_option('vh_default_country'),
 			'def_city' => get_option('vh_default_city'),
 			'geo_advanced_search' => $geo_advanced_search,
@@ -416,6 +417,7 @@ add_action( 'admin_enqueue_scripts', 'vh_admin_enqueue' );
 // Public CSS files
 if (!function_exists('vh_style_method')) {
 	function vh_style_method() {
+		wp_enqueue_style('fontawesome-css','//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
 		wp_enqueue_style('master-css', get_template_directory_uri() . '/style.css');
 		wp_enqueue_style('vh-normalize', get_template_directory_uri() . '/css/normalize.css');
 		wp_enqueue_style('js_composer_front');
@@ -2243,30 +2245,10 @@ if ( ! function_exists( 'vh_geodir_comment' ) ) {
 						$comment_like = '';
 						
 						printf( '%1$s<div class="reviewer-rating">%2$s</div>%3$s<span class="reviewer-time">%4$s</span>', $author_link, get_listing_rating_stars( $rating, false ), $comment_like, $comment_time_full );
-						?>
-						<script type="text/javascript">
-
-	function composetranslate() {
-		
-		
-		var text = document.getElementById('message_content');
-		var subject = document.getElementById('subject');
-	//	http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=jsonp1461320276071&_=1461320337152&text=test&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja
-		var translateurl = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?_=1461320337152&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja&text=';
-		
-		jQuery.get(translateurl + encodeURI(text.value),function(data){
-			text.value = eval(data);
-		});
-
-	}
-	</script>
-						<?php
 						echo '
 						<div itemprop="reviewBody" class="comment-text">
 							<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-					    		<span itemprop="ratingValue" style="display: none">'.$rating.'</span>
-					    	</span><div id="translate" class="btn-translate" onClick="composetranslate()">translate</div>
-					    ';
+					    		<span itemprop="ratingValue" style="display: none">'.$rating.'</span>';
 					} else {
 						printf( '%1$s<span class="reviewer-time">%2$s</span>', $author_link, $comment_time_full );
 					}
@@ -3236,3 +3218,9 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+function wp_sitemap_page_list(){
+    return "
+
+    ".wp_list_pages('title_li=&echo=0')."";
+}
+add_shortcode('sitemap', 'wp_sitemap_page_list');

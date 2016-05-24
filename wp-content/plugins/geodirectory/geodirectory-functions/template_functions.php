@@ -483,7 +483,7 @@ function geodir_display_message_not_found_on_listing($template_listview = 'listi
     if ($favorite) {
 		$message = __('No favorite listings found which match your selection.', 'geodirectory');
 	} else {
-		$message = __('No listings found which match your selection.', 'geodirectory');
+		$message =  __('No listings found which match your selection.', 'geodirectory');
 	}
 	
 	/**
@@ -495,7 +495,8 @@ function geodir_display_message_not_found_on_listing($template_listview = 'listi
 	 */
 	$message = apply_filters('geodir_message_listing_not_found', $message, $template_listview, $favorite);
 	
-	echo '<li class="no-listing">' . $message . '</li>';
+	echo '<li class="no-listing">' . $message .  '</li>';
+	
 }
 
 /**

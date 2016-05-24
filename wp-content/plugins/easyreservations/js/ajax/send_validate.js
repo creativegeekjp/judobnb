@@ -56,6 +56,7 @@ function easyreservations_send_validate(y,form){
 				if(response != '' && response != null && response != 1){
 					errornr++;
 					if(mode == 'send' && response.length > 0) jQuery("#easy-show-error-div").removeClass('hide-it');
+					if(mode == 'send' && response.length > 0) jQuery(window).scrollTop(0);//jordan book scroll to top
 					var warningli = '';
           document.getElementById('easy-show-error').innerHTML = '';
 					for(var i = 0; i < response.length; i++){
@@ -95,7 +96,7 @@ function easyreservations_send_validate(y,form){
 						jQuery("label[class=easy-show-error]").fadeIn("slow");
 					}
 				} else {
-	        //jQuery(".easyFrontendFormular .easy-button").removeClass('deactive1').removeAttr('disabled');
+	            //jQuery(".easyFrontendFormular .easy-button").removeClass('deactive1').removeAttr('disabled');
 				}
 				errors_state = false;
 				if(errornr == 0 && mode == 'send'){

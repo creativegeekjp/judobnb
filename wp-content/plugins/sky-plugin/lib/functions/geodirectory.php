@@ -177,6 +177,9 @@ global $cat_display,$post_cat, $current_user;
 	</div><!--end of sidebars-->
 	<?php } ?>
 <div class="geodirectory-add-property-container <?php echo LAYOUT.' '.$span_size; ?>">
+	
+	
+	
 	<form name="propertyform" id="propertyform" action="<?php echo get_page_link(get_option('geodir_preview_page'));?>" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="preview" value="<?php echo esc_attr($listing_type);?>" />
 					<input type="hidden" name="listing_type" value="<?php echo esc_attr($listing_type);?>" />
@@ -577,7 +580,12 @@ if (!function_exists('vh_geodir_get_infowindow_html')) {
 						
 						?>
 				<?php if ( get_option("vh_theme_version") != "SkyDirectory" && get_post_type($ID) != 'gd_event' ) { ?>
-					<div class="map-listing-price"><?php echo get_option('vh_currency_symbol').vh_get_listing_price( $ID, get_post_type( $ID ) ); ?></div>
+				<?php 
+				#################Jino edit price inside map################## 
+					$values =  dynamic_convert(get_post_meta($ID, 'vh_resource_id', true), $_COOKIE['C_CURRENCY'],vh_get_listing_price( $ID, get_post_type( $ID ) ));
+					//get_option('vh_currency_symbol').vh_get_listing_price( $ID, get_post_type( $ID ) );
+				?>
+					<div class="map-listing-price"><?php echo $values['sign'].''.$values['money']; ?></div>
 				<?php }
 
 				$is_featured = geodir_get_post_meta($ID,'is_featured',true);
@@ -905,10 +913,11 @@ function vh_get_header_form() {
 		}
 
 		$form_output .= '
-		<a href="javascript:void(0)" class="wpb_button wpb_btn-warning icon-search" id="header-submit"></a>';
+		<a href="javascript:void(0)" class="wpb_button wpb_btn-warning icon-search" id="header-submit"> </a>';
 
 		
 		if ( get_option("vh_theme_version") == "SkyEstate" ) {
+			
 			$form_output .= '
 			<div class="clearfix"></div>
 			<div id="header-more-options">
@@ -2852,7 +2861,10 @@ function get_geodir_search_markers( $return_data = null ) {
 			$output .= '
 			<li id="post-'.$geodir_listing->post_id.'" class="clearfix geodir-gridview gridview_onehalf gd-post-gd_place">';
 				if ( get_option("vh_theme_version") != "SkyDirectory" && $post_type != 'gd_event' ) {
-					$output .= '<div class="map-listing-price">'.get_option('vh_currency_symbol').vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ).'</div>';
+					################################Jino edit price outside map left side#################################
+					//$output .= '<div class="map-listing-price">'.get_option('vh_currency_symbol').vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ).'</div>';
+					$values =  dynamic_convert(get_post_meta($geodir_listing->post_id, 'vh_resource_id', true), $_COOKIE['C_CURRENCY'],vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ));
+					$output .= '<div class="map-listing-price">'.$values['sign'].''.$values['money'].'</div>';
 				} elseif ( get_option("vh_theme_version") != "SkyDirectory" && $post_type == 'gd_event' ) {
 					$output .= '<div class="map-listing-price">'.get_geodir_event_date( $geodir_listing->post_id ).'</div>';
 				}
@@ -2973,7 +2985,7 @@ function get_geodir_search_markers( $return_data = null ) {
 	} else {
 		$output .= '
 		<li id="post-none" class="clearfix geodir-gridview gridview_onehalf gd-post-gd_place" style="width: 90%; text-align: center;">
-			<span>'.__("No listings found which match your selection.", "vh").'</span>
+			<span>'.__("No listings found which match your selection.", "geodirectory").'</span>
 		</li>';
 	}
 

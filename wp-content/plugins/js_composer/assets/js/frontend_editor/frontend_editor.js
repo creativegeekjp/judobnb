@@ -612,7 +612,7 @@ _.extend( vc, {
 			}
 		},
 		setSortable: function () {
-			vc.frame_window.vc_iframe.setSortable( vc.app );
+		//	vc.frame_window.vc_iframe.setSortable( vc.app );
 		},
 		render: function () {
 			if ( false !== vc_user_access().getState( 'post_settings' ) ) {
@@ -631,7 +631,7 @@ _.extend( vc, {
 			return this;
 		},
 		noContent: function ( no ) {
-			vc.frame_window.vc_iframe.showNoContent( no );
+//			vc.frame_window.vc_iframe.showNoContent( no );
 		},
 		addElement: function ( e ) {
 			e && e.preventDefault && e.preventDefault();

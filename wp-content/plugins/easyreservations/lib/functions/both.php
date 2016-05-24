@@ -131,7 +131,7 @@
 			$amount = substr($amount, 1);
 			$add = '-';
 		} else $add = '';
-
+  	    
 		if($currency_settings['decimal'] == 1) $dig = 2;
 		else $dig = 0;
 		
@@ -141,9 +141,12 @@
 			if($currency_settings['whitespace'] == 1) $white = ' ';
 			else $white = '';
 
-			if($currency_settings['place'] == 0) $money = $money.$white.'&'.$currency_settings['sign'].';';
-			else $money = '&'.$currency_settings['sign'].';'.$white.$money;
+			if($currency_settings['place'] == 0) 
+				$money = $money.$white.'&'.$currency_settings['sign'].';';
+			else 
+				$money = '&'.$currency_settings['sign'].';'.$white.$money;
 		}
+	  
 		return $money;
 	}
 

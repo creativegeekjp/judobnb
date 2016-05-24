@@ -22,35 +22,55 @@ else
 /*Instantiate first the needed keys for paypal*/
 global $wpdb;
 
-foreach ($wpdb->get_results("SELECT * FROM jd_cg_paypal_keys") as $credentials) {
-    switch ($credentials->name) {
-        case 'clientId':
-           $clientId=$credentials->value;
-            break;
-         case 'secret':
-             $secret=$credentials->value;
-            break;
-         case 'identity':
-             $identity=$credentials->value;
-            break;
-         case 'mode':
-             $sandbox=$credentials->value;
-            break;
-        
-       
-    }
+	foreach ($wpdb->get_results("SELECT * FROM jd_cg_paypal_keys") as $credentials) {
+	    switch ($credentials->name) {
+	        case 'clientId':
+	           $clientId=$credentials->value;
+	            break;
+	         case 'secret':
+	             $secret=$credentials->value;
+	            break;
+	         case 'admin_identity':
+	             $identity=$credentials->value;
+	            break;
+	         case 'mode':
+	             $sandbox=$credentials->value;
+	            break;
+	         case 'admin_clientID':
+	         	 $adminClientID=$credentials->value;
+	         	 break;
+	         case 'admin_secret':
+	         	 $adminSecret=$credentials->value;
+	         	 break;
+	        
+	       
+	    }
+	}
+function check_prev()
+{
+	$user = wp_get_current_user();
+
+	if(isset($user->data->ID)){
+	  if(in_array('host',$user->roles)){
+	     return true;
+	  }else{
+	  		return false;
+	  }
+
+	}
+
 }
  
 function reservation_host()
 {  
 
-    if (is_user_logged_in())
+    if (is_user_logged_in() && check_prev() )
     {
           global $title, $wpdb;
     
     $user_ID = get_current_user_id();
   
-    $lists =$wpdb->get_results("
+    /*$lists =$wpdb->get_results("
             SELECT *
             
             FROM
@@ -64,16 +84,17 @@ function reservation_host()
             WHERE
                  b.host_id = $user_ID
             AND
-                a.approve NOT IN('yes','no')
+                a.approve IN('','del')
             
             GROUP BY 
             
                 b.txn_id;
-    ");
+    ");*/
+    
+    $lists=$wpdb->get_results("select a.*,b.*,d.post_author FROM jd_reservations a INNER JOIN jd_cg_captured_payments b ON a.id=b.room_id INNER JOIN jd_postmeta c ON c.meta_value=a.room INNER JOIN jd_posts d ON d.ID=c.post_id WHERE d.post_author=$user_ID AND a.approve IN('','del') GROUP BY b.txn_id");
     
     if( $wpdb->num_rows > 0 )
     {
-        echo '<form name="post" method="post" id="post">';
         echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
               <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
     }
@@ -116,13 +137,14 @@ function reservation_host()
         //get author by roomid for messaging
         $user_info = get_userdata( $authors );
 	    
-	    
+	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
+	     
 	     //get original post_id from post_meta
 	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
 	    {
 	        $pid = $pids->post_id;
 	    }
-	    
+	   
         echo "<tr>
          <td><a href=".get_permalink($pid).">View</a></td>
                 <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
@@ -134,7 +156,7 @@ function reservation_host()
                 <td>".$roomnumber."</td>
                 <td>".$number."</td>
                 <td>".$childs."</td>
-                <td>".$price."</td>
+                <td>".$curr['symbol'].''.$curr['converted']."</td>
                 <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                 <td><a href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
                  <td><a href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
@@ -156,7 +178,7 @@ function reservation_host()
 
 function reservation_guest()
 {
-    if (is_user_logged_in())
+    if ( is_user_logged_in() && !check_prev() )
     {
         global $title, $wpdb;
     
@@ -176,7 +198,7 @@ function reservation_guest()
             WHERE
                  b.host_id = $user_ID
             AND
-                a.approve NOT IN('yes','no')
+                a.approve IN('','del')
             
             GROUP BY 
             
@@ -240,6 +262,8 @@ function reservation_guest()
 	        $pid = $pids->post_id;
 	    }
 	     
+	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
+	     
         echo "<tr>
                 <td><a href=".get_permalink($pid).">View</a></td>
                 <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
@@ -251,7 +275,7 @@ function reservation_guest()
                 <td>".$roomnumber."</td>
                 <td>".$number."</td>
                 <td>".$childs."</td>
-                <td>".$price."</td>
+                <td>".$curr['symbol'].''.$curr['converted']."</td>
                 <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                  <td>".$edit_check."</td>
                 <td>".$cancel_check."</td>
@@ -304,9 +328,7 @@ function hosts_disapproved()
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     
     
-    $lists =$wpdb->get_results("
-        SELECT * FROM jd_reservations WHERE id = $idr
-    ");
+    $lists =$wpdb->get_results("SELECT * FROM jd_reservations WHERE id = $idr");
 
     foreach ($lists as $list) {
         
@@ -319,8 +341,8 @@ function hosts_disapproved()
             echo "Reservation was disapproved <a href='".site_url()."/list-reservation-host/'>return</a>";
             
             $arr = getpaypalamounts($idt);
-            global $clientId,$secret;
-            $results = void_payment(create_access_token($clientId,$secret),$arr['txn']);
+            global $clientId,$secret,$adminClientID,$adminSecret;
+            $results = void_payment(create_access_token($adminClientID,$adminSecret),$arr['txn']);
             
                 $wpdb->update( 
                 	'jd_reservations', 
@@ -374,9 +396,10 @@ function hosts_approved()
             //process reservations and paypal
             $arr = getpaypalamounts($idt);
 
-            global $clientId,$secret,$txn;
+            global $clientId,$secret,$adminClientID,$adminSecret,$txn;
             
-            $results = update_captures(create_access_token($clientId,$secret),$arr['txn'],'{
+            
+            $results = update_captures(create_access_token(),$arr['txn'],'{
                 "amount": {
                   "currency": "'.$arr['currency'].'",
                   "total": "'.$arr['total'].'"
@@ -412,15 +435,13 @@ function cancels_confirm_reservations()
 }
 function cancel_reservations()
 {
-    global $wpdb;
+    global $wpdb,$adminClientID,$adminSecret;
     
     $idr = isset($_GET['idr']) ? $_GET['idr'] : "" ;
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     
     
-    $lists =$wpdb->get_results("
-        SELECT * FROM jd_reservations WHERE id = $idr
-    ");
+    $lists =$wpdb->get_results("SELECT * FROM jd_reservations WHERE id = $idr");
 
     foreach ($lists as $list) {
         
@@ -434,7 +455,7 @@ function cancel_reservations()
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret;
-            $results = void_payment(create_access_token($clientId,$secret),$arr['txn']);
+            $results = void_payment(create_access_token($adminClientID,$adminSecret),$arr['txn']);
             
                 $wpdb->update( 
                 	'jd_reservations', 
@@ -508,7 +529,7 @@ function successreservation_reservations()
 				 	 array("%s" ,"%s", "%s", "%s", "%s", "%s", "%s" )
 			 );
 			 
-    echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guest'>View Reservation</a>";
+    echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guests'>View Reservation</a>";
     
     return;
 }
@@ -617,7 +638,7 @@ function getpaypalamounts($idt)
 //generate acces tokens for paypal transactions
 function create_access_token()
 {
-    global $clientId,$secret;
+    global $adminClientID,$adminSecret;
     
     $ch = curl_init();                                                        
 	curl_setopt($ch, CURLOPT_URL, "https://api.sandbox.paypal.com/v1/oauth2/token");
@@ -625,7 +646,7 @@ function create_access_token()
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-	curl_setopt($ch, CURLOPT_USERPWD, $clientId.":".$secret);
+	curl_setopt($ch, CURLOPT_USERPWD, $adminClientID.":".$adminSecret);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials");
 
 	$result = curl_exec($ch);
@@ -736,6 +757,7 @@ function get_pdt_response($user,$tx)
         $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         
         curl_close($ch);
+        var_dump($response);
         
         if($status == 200 AND strpos($response, 'SUCCESS') === 0)
         {
@@ -746,41 +768,117 @@ function get_pdt_response($user,$tx)
         }
 }
 
+function dynamic_convert($postid, $currency_format, $previous_money , $page )
+{
+   $accnt = getoriginalcurrency($postid,$page); 
+   
+   if($currency_format == $accnt['currency'] )
+   {
+        $money = $previous_money;
+        $sign = $accnt['sign'];
+        $currency = $accnt['currency'];
+        $code = $accnt['code'];
+        
+   }
+   else if($_COOKIE['C_CURRENCY']=='')
+   {
+        $money = $previous_money;
+        $sign = $accnt['sign'];
+        $currency = $accnt['currency'];
+        $code = $accnt['code'];
+        
+   }else{
+        switch ($currency_format) {
+            
+            case 'USD':
+                $money = convertCurrency($previous_money, 'JPY' , "USD");
+                $sign = '$';
+                $code = '#36';
+                $currency = 'USD';
+                break;
+            
+           case 'JPY':
+                $money = convertCurrency($previous_money, 'USD' , "JPY");
+                $sign = '¥';
+                $code = '#165';
+                $currency = 'JPY';
+                break;
+           
+        }
+   }        
+        
+    return array('sign' => $sign, 
+                'money' => $money, 
+                'currency' => $currency, 
+                'code' => $code 
+            );
+}
+function getoriginalcurrency($pids,$page)
+{
+    global $wpdb;
+  
+            foreach($wpdb->get_results(" SELECT post_id FROM jd_postmeta WHERE meta_key ='vh_resource_id' AND meta_value = $pids") as $ls):
+                $get_pids = $ls->post_id;
+            endforeach;
+ 
+    foreach($wpdb->get_results(" SELECT meta_value FROM jd_postmeta WHERE meta_key ='jd_cg_currency' AND post_id = $get_pids") as $currencies)
+    {
+        $currency =  $currencies->meta_value;
+    }
+    foreach($wpdb->get_results(" SELECT meta_value FROM jd_postmeta WHERE meta_key ='jd_cg_sign' AND post_id = $get_pids") as $signs)
+    {
+        $sign = $signs->meta_value;
+    }
+    foreach($wpdb->get_results(" SELECT meta_value FROM jd_postmeta WHERE meta_key ='jd_cg_code' AND post_id = $get_pids") as $codes)
+    {
+        $code = $codes->meta_value;
+    }
+    return array('sign' => $sign, 'currency' => $currency, 'code' => $code );
+}
+
+//no post id dependent convert by selected currency
+function independent_convert($currency_format,$previous_money)
+{
+   if($currency_format=='')
+   {
+        $formats = $previous_money;
+        $sign = '¥';
+        
+   }else{
+        switch ($currency_format) {
+            
+            case 'USD':
+                $formats = convertCurrency($previous_money, "JPY" ,  strtoupper($currency_format)  );
+                $sign = '$';
+                break;
+            
+           case 'JPY':
+                $formats = convertCurrency($previous_money, "USD",  strtoupper($currency_format) );
+              $sign = '¥';
+                break;
+           
+        }
+   }        
+        
+    return array('sign' => $sign, 'money' => $formats );
+}
+
 function convertCurrency($amount, $from, $to)
 {
 	$data = file_get_contents("https://www.google.com/finance/converter?a=$amount&from=$from&to=$to");
 	preg_match("/<span class=bld>(.*)<\/span>/",$data, $converted);
 	$converted = preg_replace("/[^0-9.]/", "", $converted[1]);
-	return number_format($converted,4);
-	
-	//echo convertCurrency("100.00", "USD", "JPY");
+	return number_format($converted,0, '', '');
 }
-//book now form
-function return_sign_book_now($currency)
+
+function signage($currency_format)
 {
-        if('USD'==$currency)
-     	{
-           $sign = "$";
-     	}else{
-     	   $sign = "¥";
-     	}
-     	
-     	return $sign;
-     	
+    return array_search( $currency_format,array('#36'=>'USD', '#165' => 'JPY') ); //decimal value
 }
-//sign at static page
-function check_current_sign()
-{
-	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))
-     	{
-     		 $sign = "¥";
-     	}else{
-     	      $sign = "$";
-     	}
-}
+
 function add_listing_price_holder()//add listing price place holder geodir_listing_price
 {
-     	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))
+     	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))//default jpy if empty
      	{
      		 $site_title = "Listing Price (JPY)";
      	}else{
@@ -789,6 +887,65 @@ function add_listing_price_holder()//add listing price place holder geodir_listi
      	
      return $site_title;
 }
+//converted ko
+function exchangerate($amount, $from, $to)
+{
+	
+    switch ($from) {
+        case "JPY":
+            $from_f = "JPY";
+			$sign_f = "#165";
+			$symbol = '¥';
+            break;
+        case "USD":
+             $from_f = "USD";
+			 $sign_f = "#36";
+			 $symbol = '$';
+            break;
+    }
+
+    switch ($to) {
+        case "JPY":
+            $to_t = "JPY";
+			$sign_t = "#165";
+			$symbol = '¥';
+            break;
+        case "USD":
+            $to_t  = "USD";
+			$sign_t = "#36";
+			$symbol = '$';
+            break;
+    }
+
+  	$data = file_get_contents("https://www.google.com/finance/converter?a=$amount&from=$from&to=$to");
+	preg_match("/<span class=bld>(.*)<\/span>/",$data, $converted);
+	$converted = preg_replace("/[^0-9.]/", "", $converted[1]);
+	
+	return array(
+				'converted' => number_format($converted, 0, '.', ''),
+				 'currency' => $to_t,
+				 'sign' => $sign_t,
+				 'symbol' => $symbol
+				);
+}
+//places preview
+function preview_symbol()//add listing price preview
+{
+      switch ($_COOKIE['C_CURRENCY']) {
+        case "JPY":
+			$symbol = '¥';
+            break;
+        case "USD":
+			$symbol = '$';
+            break;
+        default:
+            $symbol = '¥';
+            break;
+    }
+     	
+     return $symbol;
+}
+
 //table css
 function cascade() 
 {

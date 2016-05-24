@@ -209,7 +209,7 @@ function geodir_draw_map($map_args = array())
                                      style=" height:<?php echo $geodir_map_options['height'];?>;width:<?php echo $map_width;?>;"></div>
                                 <!--<div id="home_map_counter"></div>        -->
                                 <div id="<?php echo $map_canvas_name;?>_map_nofound"
-                                     class="advmap_nofound"><?php echo MAP_NO_RESULTS; ?></div>
+                                     class="advmap_nofound"><?php echo _e(MAP_NO_RESULTS, 'geodirectory'); ?></div>
                             </div>
                             <!-- new map end -->
                         </div>

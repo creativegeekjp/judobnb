@@ -36,11 +36,11 @@ if ( $footer_columns == 4 ) {
 	<?php if ( is_active_sidebar( 'sidebar-1' ) && $footer_columns >= 1 ) { ?>
 	<div id="first" class="widget-area footer-links <?php echo $class; if ( $footer_columns == 1 ) echo 'last'; ?>" role="complementary">
 		<?php dynamic_sidebar( 'sidebar-1' ); ?>
-		<h5 style="color:red">Currencies</h5><br>
-		<select id='lang_sel_click' onchange="javascript:location.href = this.value;" style="border:0px grey; background-color:white; font-family: helvetica; font-size: 12px; color: grey; width:150px;">
-		    <option value="" >Select Currency</option>
-		    <option value="/todollar.php" <?php if($_COOKIE['C_CURRENCY']=='USD') echo 'selected=selected'; ?> >USD</option>
-		    <option value="/toyen.php" <?php if($_COOKIE['C_CURRENCY']=='JPY') echo 'selected=selected'; ?> >JPY</option>
+		<h5 style="color:red"><?php _e('Currencies','widgets'); ?></h5><br>
+		<select id='lang_sel_click' onchange="javascript:location.href = this.value;" style="border:0px grey; background-color:white; font-family: helvetica; font-size: 12px; color: black; width:150px;">
+			<option <?php echo"selected=selected";?> ><?php echo $_COOKIE['C_CURRENCY'];?></option>
+		    <option value="/toyen.php" <?php if($_COOKIE['C_CURRENCY']=='JPY')  ?> >JPY</option>
+		    <option value="/todollar.php" <?php if($_COOKIE['C_CURRENCY']=='USD')  ?> >USD</option>
 		</select>
 		<?php 	//shailan_dropdown_menu(); ?>
 	</div><!-- #first .widget-area -->

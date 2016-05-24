@@ -129,11 +129,11 @@ function easyreservations_send_calendar_callback(){
 				if($atts['price'] > 0 && is_numeric($atts['price'])){
 					$res->Calculate();
 					if($atts['price'] == 1 || $atts['price'] == 2){ $explode = explode('.', $res->price); $res->price = $explode[0]; }
-					if($atts['price'] == 1) $formated_price = $res->price.'&'.RESERVATIONS_CURRENCY.';';
+					if($atts['price'] == 1) $formated_price = $res->price;
 					elseif($atts['price'] == 2) $formated_price = $res->price;
-					elseif($atts['price'] == 3) $formated_price = easyreservations_format_money($res->price, 1);
-					elseif($atts['price'] == 4) $formated_price = easyreservations_format_money($res->price);
-					elseif($atts['price'] == 5) $formated_price = '&'.RESERVATIONS_CURRENCY.';'.' '.$res->price;
+					elseif($atts['price'] == 3) $formated_price = $res->price;
+					elseif($atts['price'] == 4) $formated_price = $res->price;
+					elseif($atts['price'] == 5) $formated_price = $res->price;
 					$final_price = '<span class="calendar-cell-price">'.$formated_price.'</b>';
 				} else $final_price = '';
 
@@ -365,10 +365,21 @@ function easyreservations_send_form_callback(){
 					if(isset($arrival)){
 						$finalform.= '<div class="easy_form_success" id="easy_form_success">';
 						if(!empty($atts['submit'])) $finalform.= '<b class="easy_submit">'.$atts['submit'].'!</b>';
-						if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.$atts['subsubmit'].'</span>';
-						if($atts['price'] == 1) $finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'.easyreservations_format_money($prices, 1).'</b></span>';
+						if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.$atts['subsubmit'].'</span>'; 
+						######################################################
+						### edit jino 
+						##  book now paypal confirm top label
+						##
+						######################################################
+						$values =  dynamic_convert($room,$_COOKIE['C_CURRENCY'],$prices);
+						$money = number_format($values['money'], 0, '.', '').''.$values['sign'];
+						
+						if($atts['price'] == 1) //$finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'.easyreservations_format_money($prices, 1).'</b></span>';
+						$finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'. $money.'</b></span>';
 						if(function_exists('easyreservation_generate_payment_form') && $atts['payment'] > 0){
-							$finalform .= easyreservation_generate_payment_form($payment, $prices, ($atts['payment'] == 2) ? true : false, (is_numeric($atts['discount']) && $atts['discount'] < 100) ? $atts['discount'] : false);
+							//$finalform .= easyreservation_generate_payment_form($payment, $prices, ($atts['payment'] == 2) ? true : false, (is_numeric($atts['discount']) && $atts['discount'] < 100) ? $atts['discount'] : false);
+							//jino 1.) pass to paypal.php 
+							$finalform .= easyreservation_generate_payment_form($payment,$values['money'], ($atts['payment'] == 2) ? true : false, (is_numeric($atts['discount']) && $atts['discount'] < 100) ? $atts['discount'] : false);
 						}
 						$finalform.='</div>';
 						$script = get_option('easyreservations_successful_script');
@@ -547,7 +558,16 @@ function easyreservations_send_price_callback(){
 				$res->price = round($res->price/($res->adults+$res->childs)/$res->times,2);
 			}
 		}
-		echo json_encode(array(easyreservations_format_money($res->price,1), round($res->price,2)));
+		###########################################################
+		# jino edit 
+		# first parameter is "book now Reserve now!"
+		# second parameter is "Reservation successfully verified" after calculation
+		###########################################################
+		//echo json_encode(array(easyreservations_format_money($res->price,1), round($res->price,2)));
+		$values =  dynamic_convert($room,$_COOKIE['C_CURRENCY'],$res->price);
+		$money = number_format($values['money'],0,'','').''.$values['sign'];
+		echo json_encode(array($money,$money));
+	   
 	} catch(Exception $e){
 		echo 'Error:'. $e->getMessage();
 	}

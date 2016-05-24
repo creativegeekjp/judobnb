@@ -196,14 +196,14 @@
 
 								</div>
 							<?php else : ?>
-								<p class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
+							<!--	<p class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
 									<?php
 									printf(
 										__( 'This field can be seen by: %s', 'buddypress' ),
 										'<span class="current-visibility-level">' . bp_get_the_profile_field_visibility_level_label() . '</span>'
 									);
 									?>
-								</p>
+								</p>-->
 							<?php endif ?>
 
 							<?php

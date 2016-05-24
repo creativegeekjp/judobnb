@@ -199,6 +199,8 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 							</div>
 							<?php } ?>
 							<div class="single-listing-main-content">
+								<div id="translate" class="btn-translate" onclick="translateContent()">translate</div>
+								
 								<?php
 								if ($preview) {
 									echo "<p>".$_REQUEST["post_desc"]."</p>";
@@ -246,9 +248,9 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 
 									// template specific, this can add the sidebar top section and breadcrums
 									do_action('geodir_detail_before_main_content');
-								} else {
-									the_content();
-
+								} else {?>
+									<div class="content"><?php the_content(); ?></div>
+								<?php
 									if ( function_exists('geodir_post_custom_fields') ) {
 										$geodir_fields = geodir_post_custom_fields('','all', $post_type);
 									} else {

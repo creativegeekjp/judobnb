@@ -239,7 +239,12 @@ function vh_featured_properties($atts, $content = null, $code) {
 				}
 			}
 			if ( ( get_option("vh_theme_version") == "SkyVacation" || get_option("vh_theme_version") == "SkyEstate" ) && !empty($listing_value->geodir_listing_price) ) {
-				$output .= '<span class="listing-price">' . get_option('vh_currency_symbol') . $listing_value->geodir_listing_price . '</span>';
+				####jino first featured image
+				####$output .= '<span class="listing-price">' . get_option('vh_currency_symbol') . $listing_value->geodir_listing_price .'</span>';
+				####get_post_meta(get_the_ID(), 'vh_resource_id', true)
+				$values =  dynamic_convert(get_post_meta($listing_value->post_id, 'vh_resource_id', true), $_COOKIE['C_CURRENCY'],$listing_value->geodir_listing_price);
+			    $output .= '<span class="listing-price">' .$values['sign'].''.$values['money'] .'</span>';
+			
 			}
 			if ( $count == 1 || $count == 2 || $count == 3 ) {
 				if ( function_exists('geodir_get_images') ) {
@@ -432,6 +437,8 @@ function vh_popular_destinations($atts, $content = null, $code) {
 
 							$country_display = $split_country['0'];
 							$city_display = $split_country['1'];
+							
+							
 						}
 					}
 				} elseif ( $count == 5 && $country_count > 1 ) {
@@ -513,7 +520,10 @@ function vh_popular_destinations($atts, $content = null, $code) {
 							$output .= '<span class="city-sale-price">' . __('from', 'vh') . ' ' . get_option('vh_currency_symbol') . $country_sale_price . ' ' . __('sale price', 'vh') . '</span>';
 						}
 					} else {
-						$output .= '<span class="city-price">' . __('from', 'vh') . ' ' . get_option('vh_currency_symbol') . $country_price . ' ' . __('per night', 'vh') . '</span>';
+						//jino second edit
+						//$output .= '<span class="city-price">' . __('from', 'vh') . ' ' . get_option('vh_currency_symbol') . $country_price . ' ' . __('per night', 'vh') . '</span>';
+						$values  = independent_convert($_COOKIE['C_CURRENCY'],$country_price);
+						$output .= '<span class="city-price">' . __('from', 'vh') . ' ' .$values['sign'] . $values['money'] . ' ' . __('per night', 'vh') . '</span>';
 					}
 				}
 				$output .= '<span class="city-country">' . $city_display . '</span>';

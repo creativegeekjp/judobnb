@@ -401,13 +401,14 @@ ID: [ID]<br>Name: [thename] <br>Email: [email] <br>From: [arrival] <br>To: [depa
 
     add_action('er_set_email_save', 'easyreservations_paypal_mail_settings_save');
 }
-
+    ####jino 2.) create reservation success link
     function easyreservation_generate_payment_form($res, $price, $submit = false, $discount = false){
         $options = '';
         $deposit = easyreservation_deposit_function($price, $discount);
 
         $gateways = easyreservations_get_payment_gateways();
         foreach($gateways as $key => $gateway){
+             ######jino 3.) create button
             $payment_form = easyreservations_generate_paypal_button($res, $price,false, false, $discount, $key);
             if(!empty($payment_form)) $options[$key] = $payment_form;
         }
@@ -468,7 +469,7 @@ JAVASCRIPT;
         $return = $buttons.$creditcard ;
         return $return;
     }
-
+    #####jino 4.) last is submit the price
     function easyreservations_generate_paypal_button($res = false, $theprice = 0,  $link = false, $button = false, $discount = false, $type = 'paypal'){
         $paypalOptions = get_option('reservations_paypal_options');
         $array = false;
@@ -503,7 +504,7 @@ JAVASCRIPT;
                 if(isset($new->taxrate)) $taxrate += $new->taxrate;
                 $i++;
             }
-            $RID = $res->id;//jino
+            $RID = $res->id;######jino
             $price = round($theprice,2);
             $res = $new;
             $resource = $new->resource;
@@ -541,13 +542,13 @@ JAVASCRIPT;
                     return esc_url_raw($link, 'mailto');
                 } else {
                     
-        
+                    ###############jino
                     global $wpdb;
                     
-                    $user_ID = get_current_user_id(); 
-                    //currency jino
-                    $res_id = $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource."' AND meta_key='jd_cg_currency'") ;
-                    $curr =  isset($res_id) ? strtoupper($res_id) : $gateway_opt['currency'];
+                    $user_IDs = get_current_user_id(); 
+                    
+                    $values =  dynamic_convert($resource,$_COOKIE['C_CURRENCY'],$price);
+                    $currency = $values['currency'];
                     
                     $return .= 'name="_xclick" action="'.$theModusURL.'" method="post" id="easy_paypal_form">';
                     if(!$button) $return.= '<input type="image" src="'.$gateway_opt['button'].'" border="0" name="submit" alt="Pay with Paypal!">';
@@ -558,12 +559,12 @@ JAVASCRIPT;
                         'notify_url' => WP_PLUGIN_URL.'/easyreservations/lib/modules/paypal/paypal_ipn.php',
                         'invoice' => $theid,
                         'item_name' => $theTitle,
-                        'amount' => $price,
+                        'amount' =>  $price,
                         'business' => $gateway_opt['owner'],
                         'cancel_return' => $gateway_opt['cancel_url'],
-                        'currency_code' => $curr,
+                        'currency_code' => $currency,
                         'return' => $theReturnURL,
-                        'item_number' =>  $user_ID,
+                        'item_number' =>  $user_IDs,
                         'paymentaction' => 'authorization' //jino
                        
                     );
@@ -730,20 +731,23 @@ JAVASCRIPT;
                         $array = $deposit['percamt'];
                     } else $array = explode(',', $deposit['percamt']);
                     $perc_options = '';
+                    ######jino###########
                     foreach($array as $explode){
                         if(!empty($explode)){
                             if($new){
                                 if(substr($explode,-1) == '%'){
                                     $explode = substr($explode, 0, -1);
                                     $value = $explode.'%';
-                                    $content = $explode.'% - '.easyreservations_format_money($price/100*$explode, 1);
+                                    //$content = $explode.'% - '.easyreservations_format_money($price/100*$explode);
+                                     $content = $explode.'% - '.( $price /100*$explode);
                                 } else {
                                     $value = $explode;
                                     $content = easyreservations_format_money($explode, 1);
                                 }
                             } else{
                                 $value = $explode.'%';
-                                $content = $explode.'% - '.easyreservations_format_money($price/100*$explode, 1);
+                                //$content = $explode.'% - '.easyreservations_format_money($price/100*$explode, 1);
+                                $content = $explode.'% - '.( $price /100*$explode);
                             }
                             $perc_options .= '<option value="'.$value.'">'.$content.'</option>';
                         }
@@ -754,13 +758,17 @@ JAVASCRIPT;
                     }
                 }
             }
+           
             if($deposit['own'] == 1){
                 $last = 'own';
                 $deposit_html .= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_own" value="own" onchange="changePayPalAmount(\'own\')"> '.__('Pay a deposit of', 'easyReservations').' <input type="text" id="easy_deposit_own" style="width:100px;text-align:right" onchange="changePayPalAmount(\'own\')"></span>';
             }
             if($deposit['full'] == 1){
                 $last = 'full';
-                $deposit_html.= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_full" value="full" checked="checked"  onchange="changePayPalAmount(\'full\')"> '.__('Pay the full price of', 'easyReservations').' '.easyreservations_format_money($price, 1).'</span>';
+                ###jino edit
+                ##$values = independent_convert($_COOKIE['C_CURRENCY'],$price);
+                ##$deposit_html.= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_full" value="full" checked="checked"  onchange="changePayPalAmount(\'full\')"> '.__('Pay the full price of', 'easyReservations').' '.easyreservations_format_money($price, 1).'</span>';
+                $deposit_html.= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_full" value="full" checked="checked"  onchange="changePayPalAmount(\'full\')"> '.__('Pay the full price of', 'easyReservations').' '.$price.'</span>';
             }
 
             $deposit_html .= '<script type="text/javascript">var easyStartPrice = '.$price.';';
@@ -870,12 +878,5 @@ JAVASCRIPT;
         }
     }
     
-    
-    //jinowilbertolacson-facilitator-1@gmail.com $2,462,168.86
-//jino2016-01@gmail.com 4,999,989.68 
-    
-    
-    
-    
-    
+
 ?>

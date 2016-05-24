@@ -483,11 +483,8 @@
 										} else {
 											$end_date = '';
 										}
-										/*jino adults print the results do not delete
-										$str = $_COOKIE['vh_selected_people'];
-										preg_match_all('!\d+!', $str, $matches);
-										print_r($matches);
-										*/
+									   
+									
 										?>
 										<div class="single-listing-options when">
 											<span class="listing-input-title"><?php _e('When:', 'vh'); ?></span>
@@ -555,10 +552,21 @@
 											}
 											if ( isset($_REQUEST["preview"]) ) {
 												$listing_price = $_REQUEST["geodir_listing_price"];
+												//$sign = get_option('vh_currency_symbol');
+												####jino edit
+												$sign = preview_symbol();
+											}else{
+												
+												
+												$values = dynamic_convert( get_post_meta(get_the_ID(), 'vh_resource_id', true),$_COOKIE['C_CURRENCY'],$listing_price,'');//jino
+												$listing_price = $values['money'];
+												$sign = $values['sign'];
+												
 											}
+											
 											?>
-											<span class="single-listing-text small"><?php echo get_option('vh_currency_symbol'); ?><span class="per-night" itemprop="priceRange"><?php echo $listing_price; ?> </span><?php _e("per night", "vh"); ?></span>
-											<span class="single-listing-text"><?php echo get_option('vh_currency_symbol'); ?><span class="for-selected">0</span> <?php _e("for selected dates", "vh"); ?></span>
+											<span class="single-listing-text small"><?php echo $sign; ?><span class="per-night" itemprop="priceRange"><?php echo $listing_price; ?> </span><?php _e("per night", "vh"); ?></span>
+											<span class="single-listing-text"><?php  echo $sign; ?><span class="for-selected">0</span> <?php _e("for selected dates", "vh"); ?></span>
 										</div>
 									<?php } else { ?>
 										<div class="single-listing-info">
@@ -717,6 +725,7 @@
 								<?php vh_get_header_search_field(); ?>
 
 								<a href="javascript:void(0)" class="wpb_button wpb_btn-warning icon-search" id="header-submit"></a>
+								
 								<?php if ( get_option("vh_theme_version") == "SkyEstate" ) { ?>
 									<div class="clearfix"></div>
 									<div id="header-more-options">

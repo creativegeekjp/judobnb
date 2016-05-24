@@ -153,8 +153,8 @@ function easyInnerlay(content,add){
             if(datas['childs']) reservations+='+'+datas['childs'];
             reservations+='</td>';
           }
-          allprice += parseFloat(theprices[i]);
-          reservations+='<td>'+easy_money_format(parseFloat(theprices[i]))+'</td>';
+          allprice += theprices[i];
+          reservations+='<td>'+theprices[i]+''+easyReservationAtts['symbol']+'</td>';//price jino edit
           if(i == thedatas.length-1){
             var onclickc = 'easyOverlayDimm(1);';
             var onclicke = 'easyOverlayDimm(1);';
@@ -168,7 +168,7 @@ function easyInnerlay(content,add){
       }
 			reservations+='<tr><td></td><td></td>';
 			if(easyReservationAtts['pers'] && easyReservationAtts['pers'] == 1) reservations+= '<td></td>';
-			reservations+='<td style="text-align:right">'+easy_money_format(allprice)+'</td><td></td></tr>';
+			reservations+='<td style="text-align:right">'+allprice+''+easyReservationAtts['symbol']+'</td><td></td></tr>'; //overall price jino edit
 			thedatas = undefined;
 			if(add){
 				easyReservationDatas.splice(-1,1);
@@ -408,7 +408,6 @@ function easy_money_format(amount){
 		return money+white+'&'+currency_settings['sign']+';';
 	} else return '&'+currency_settings['sign']+';'+white+money;
 }
-
 function easy_number_format(number, decimals, dec_point, thousands_sep){
 	number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
 	var n = !isFinite(+number) ? 0 : +number,

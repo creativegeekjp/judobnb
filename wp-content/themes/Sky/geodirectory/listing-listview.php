@@ -390,12 +390,12 @@ if ( isset($_GET['stype']) ) {
 				values: [ min_price, max_price ],
 				create: function( event, ui ) {
 					var current_values = jQuery(this).slider("values");
-					jQuery(this).parent().find(".range-slider-min").html(my_ajax.currency_symbol + current_values[ 0 ]);
-					jQuery(this).parent().find(".range-slider-max").html(my_ajax.currency_symbol + current_values[ 1 ]);
+					jQuery(this).parent().find(".range-slider-min").html(my_ajax.curr_sign + current_values[ 0 ]);///////jino
+					jQuery(this).parent().find(".range-slider-max").html(my_ajax.curr_sign + current_values[ 1 ]);/////jino
 				},
 				slide: function( event, ui ) {
-					jQuery(this).parent().find(".range-slider-min").html(my_ajax.currency_symbol + ui.values[ 0 ]);
-					jQuery(this).parent().find(".range-slider-max").html(my_ajax.currency_symbol + ui.values[ 1 ]);
+					jQuery(this).parent().find(".range-slider-min").html(my_ajax.curr_sign + ui.values[ 0 ]);/////jino
+					jQuery(this).parent().find(".range-slider-max").html(my_ajax.curr_sign + ui.values[ 1 ]);/////jino
 				},
 				start: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").addClass("ui-active");
@@ -403,7 +403,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = my_ajax.currency_symbol + ui.values[ 0 ] + "-" + my_ajax.currency_symbol + ui.values[ 1 ] + " per night";
+					var tag = '' + ui.values[ 0 ] + "-" + '' + ui.values[ 1 ] + " per night";/////jino
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
 							jQuery(this).remove();

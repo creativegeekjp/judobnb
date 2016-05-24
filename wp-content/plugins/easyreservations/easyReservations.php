@@ -497,7 +497,7 @@ if(!function_exists("strptime")){
 			return $this->format('U');
 		}
 	}
-
+	
 	add_filter('upgrader_pre_install', 'easyreservations_backup', 10, 2);
 	add_filter('upgrader_post_install', 'easyreservations_recover', 10, 2);
 	$reservations_settings = get_option("reservations_settings");

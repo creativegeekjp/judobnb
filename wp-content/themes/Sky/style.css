@@ -7735,6 +7735,7 @@ body #simplemodal-container a.modalCloseImg:before {
 	background: rgba(51, 153, 51,0.9);
 	z-index: 20;
 	line-height: 24px;
+	display: none;
 }
 
 .popular-destinations-image .city-rent-price,
