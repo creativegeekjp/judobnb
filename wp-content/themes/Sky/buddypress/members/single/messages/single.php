@@ -22,7 +22,7 @@
 
 		<h3 id="message-subject"><?php bp_the_thread_subject(); ?></h3>
 		
-		<div id="translate" class="btn-translate" onclick="translate()" style="float: left !important;">translate</div>
+		<div id="translate" class="btn-translate" onclick="translateTxt()" style="float: left !important;">translate</div>
 		
 		<div class="clear"></div>
 

@@ -37,7 +37,7 @@
 	?>
 
 	<?php if ( have_comments() ) : ?>
-	<div class="btn-translate" onClick="translate()">translate</div>
+	<div class="btn-translate" onClick="translateTxt()">translate</div>
 			<?php
 
 				if ( in_array(get_post_type(), $geodir_post_types) ) {
@@ -92,22 +92,6 @@
 	<?php if ( in_array(get_post_type(), $geodir_post_types) ) { ?>
 		<div class="add-review-container"><span><?php _e("Have you been here?", "vh"); ?></span><a href="#" class="wpb_button wpb_btn-primary wpb_btn-small"><?php _e('Add review', 'vh'); ?></a><input id="listing-name" type="hidden" value="<?php echo get_the_title(); ?>"></div>
 	<?php } ?> 
-	
-	
-	<script type="text/javascript">
-
-	function commenttranslate() {
-		
-		var text = document.getElementById('comment');
-	//	http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=jsonp1461320276071&_=1461320337152&text=test&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja
-		var translateurl = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?_=1461320337152&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja&text=';
-		translateurl += encodeURI(text.value);
-		jQuery.get(translateurl,function(data){
-			text.value = eval(data);
-		});
-		
-	}
-	</script>
 	
 	<div class="content-form white-form">
 		<?php
