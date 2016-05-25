@@ -88,11 +88,14 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 			$c = '.single-listing-main-content .content';
 		else :
 			$v = '.message-box .message-content';
-		endif; ?>
+		endif;
+		
+		$to = ICL_LANGUAGE_CODE;
+		?>
 		
 		var target = jQuery('<?php echo $v; ?> p'),
 			<?php if ( is_singular( 'gd_place' ) ) : ?>target2 = jQuery('<?php echo $c; ?> p'),<?php endif; ?>
-			translateurl = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?_=1461320337152&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&from=en&to=ja&text=';
+			translateurl = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?_=1461320337152&appId=E8DB680F742769E3F9B95BFDB55798C13FEB0E5C&to=<?php echo $to; ?>&text=';
 		
 		function translateTxt() {
 		  target.each(function() {
