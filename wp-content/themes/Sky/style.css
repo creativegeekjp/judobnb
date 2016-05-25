@@ -9251,7 +9251,7 @@ body.skydirectory .geodir-map-listing-top {
 .search-results .vh_wrapper .wrapper,
 .search-results .vh_wrapper .main,
 body.geodir-main-search #geodir-wrapper,
-#geodir-wrapper-content,
+.search-results #geodir-wrapper-content,
 #geodir-main-content {
 	position: absolute;
 	width: 100%;
