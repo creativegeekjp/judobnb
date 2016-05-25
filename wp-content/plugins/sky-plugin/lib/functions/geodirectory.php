@@ -2336,9 +2336,9 @@ function vh_get_location_search_terms() {
 			$terms_arr["value"] = $value->Country;
 			if ( get_option("vh_theme_version") != "SkyDirectory" && $post_type != 'gd_event' ) {
 				if ( $value->CountryNum == 1 ) {
-					$terms_arr["label"] = $value->Country." <span class=\"label-right\">".$value->CountryNum." ".__("propertie, from", "vh")." ".get_option('vh_currency_symbol').$value->Price." ".__("per night", "vh")."</span><span class=\"listing-bar\" style=\"width:".($value->Price/$value->TotalPrice*100)."%\"></span>";
+					$terms_arr["label"] = $value->Country." <span class=\"label-right\">".$value->CountryNum." ".__("propertie, from", "vh")." ".get_option('vh_currency_symbol').$value->Price." "._e("per night", "vh")."</span><span class=\"listing-bar\" style=\"width:".($value->Price/$value->TotalPrice*100)."%\"></span>";
 				} else {
-					$terms_arr["label"] = $value->Country." <span class=\"label-right\">".$value->CountryNum." ".__("properties, from", "vh")." ".get_option('vh_currency_symbol').$value->Price." ".__("per night", "vh")."</span><span class=\"listing-bar\" style=\"width:".($value->Price/$value->TotalPrice*100)."%\"></span>";
+					$terms_arr["label"] = $value->Country." <span class=\"label-right\">".$value->CountryNum." ".__("properties, from", "vh")." ".get_option('vh_currency_symbol').$value->Price." "._e("per night", "vh")."</span><span class=\"listing-bar\" style=\"width:".($value->Price/$value->TotalPrice*100)."%\"></span>";
 				}
 			} else {
 				if ( $post_type != 'gd_event' ) {
@@ -2452,7 +2452,13 @@ function get_gmap_listings() {
 				} else {
 					$listing_price = 0;
 				}
-				$output .= '<span class="listing-price'.$version_class.'">' . get_option('vh_currency_symbol') . $listing_price . '</span>';
+				###########jino edit##############
+				$values = dynamic_convert( get_post_meta( $similar_listings->post_id , 'vh_resource_id', true),$_COOKIE['C_CURRENCY'],$listing_price,'');
+				$listing_prices = $values['money'];
+				$sign = $values['sign'];
+												
+				//$output .= '<span class="listing-price'.$version_class.'">' . get_option('vh_currency_symbol') . $listing_price . '</span>';
+					$output .= '<span class="listing-price'.$version_class.'">' . 	$sign . $listing_prices . '</span>';
 			} elseif ( get_option("vh_theme_version") != "SkyDirectory" && get_post_type( $similar_listings->post_id ) == 'gd_event' ) {
 				$output .= '<span class="listing-price'.$version_class.'">' . get_geodir_event_date( $similar_listings->post_id ) . '</span>';
 			}
@@ -2558,7 +2564,7 @@ function vh_get_listing_when_options() {
 					echo "
 					<span class=\"calendar-item\">" . $value . "</span>";
 					if ( $queryresults["0"]->CountryNum != '0' ) {
-						echo "<span class=\"calendar-item-text\">".$queryresults["0"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["0"]->Price . " " . __("per night", "vh") . "</span>";
+						echo "<span class=\"calendar-item-text\">".$queryresults["0"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["0"]->Price . " " . _e("per night", "vh") . "</span>";
 					} else {
 						echo "<span class=\"calendar-item-text\">".__("No properties listed", "vh")."</span>";
 					}
@@ -2567,7 +2573,7 @@ function vh_get_listing_when_options() {
 					echo "
 					<span class=\"calendar-item\">" . $value . "</span>";
 					if ( $queryresults["1"]->CountryNum != '0' ) {
-						echo "<span class=\"calendar-item-text\">".$queryresults["1"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["1"]->Price . " " . __("per night", "vh") . "</span>";
+						echo "<span class=\"calendar-item-text\">".$queryresults["1"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["1"]->Price . " " . _e("per night", "vh") . "</span>";
 					} else {
 						echo "<span class=\"calendar-item-text\">".__("No properties listed", "vh")."</span>";
 					}
@@ -2576,7 +2582,7 @@ function vh_get_listing_when_options() {
 					echo "
 					<span class=\"calendar-item\">" . $value . "</span>";
 					if ( $queryresults["2"]->CountryNum != '0' ) {
-						echo "<span class=\"calendar-item-text\">".$queryresults["2"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["2"]->Price . " " . __("per night", "vh") . "</span>";
+						echo "<span class=\"calendar-item-text\">".$queryresults["2"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["2"]->Price . " " . _e("per night", "vh") . "</span>";
 					} else {
 						echo "<span class=\"calendar-item-text\">".__("No properties listed", "vh")."</span>";
 					}
@@ -2585,7 +2591,7 @@ function vh_get_listing_when_options() {
 					echo "
 					<span class=\"calendar-item\">" . $value . "</span>";
 					if ( $queryresults["3"]->CountryNum != '0' ) {
-						echo "<span class=\"calendar-item-text\">".$queryresults["3"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["3"]->Price . " " . __("per night", "vh") . "</span>";
+						echo "<span class=\"calendar-item-text\">".$queryresults["3"]->CountryNum." " . __("properties, from", "vh") . " " . get_option('vh_currency_symbol') . $queryresults["3"]->Price . " " . _e("per night", "vh") . "</span>";
 					} else {
 						echo "<span class=\"calendar-item-text\">".__("No properties listed", "vh")."</span>";
 					}

@@ -155,7 +155,8 @@ function get_departures(){
     
     global $wpdb;
     $today=date('Y-m-d');
-    $departures=[];
+    $payReserve=new stdClass();
+    $to_be_paid=[];
     $reservations = $wpdb->get_results("
     SELECT jd_reservations.*,jd_cg_captured_payments.host_id,jd_cg_captured_payments.tid FROM jd_reservations INNER JOIN jd_cg_captured_payments ON jd_cg_captured_payments.room_id=jd_reservations.id WHERE jd_reservations.approve='yes' AND jd_reservations.paid=0  GROUP BY jd_cg_captured_payments.txn_id;");
 
@@ -174,27 +175,54 @@ function get_departures(){
     	    $host=$authors;
     	    $tid=$reserve->tid;
     	    $id=$reserve->id;
-    	    date_default_timezone_set("UTC");
+    	    date_default_timezone_set("Asia/Manila");
     	    
-    	       if(date('Y-m-d',strtotime($reserve->departure)) == $today){
-    	          if(date('g',strtotime($reserve->departure)) < date('g')){
-    	              $min=(int)date('G')- (int)date('G',strtotime($reserve->departure));
-    	              //echo $min;
-    	              echo date('G').'/'.date('G',strtotime($reserve->departure));
+    	    
+    	      
+    	              $time=new DateTime($reserve->departure);
+    	              $time->add(new DateInterval("PT24H"));
+    	              $endTime=$time->getTimestamp();
+    	              $diff=time()-$endTime;
     	              
-    	          }
-    	       }else{
-    	           //echo 'false';
-    	       }
+    	              if($diff > 0 && $diff < 3601){
+    	                 
+    	                 $arr=getamounts($tid);
+    	                 
+    	                
+        
+                        $data=array(
+                            "USER"          => "daryljoycepalis-facilitator_api1.ymail.com",
+                            "PWD"           => "ZGRMZGJE33BTU8RF",
+                            "SIGNATURE"     => "AFcWxV21C7fd0v3bYYYRCpSSRl31AlMbxUVuS39eWS2Q.dHO7D6oXab7",
+                            "METHOD"        => "MassPay",
+                            "VERSION"       => "99",
+                            "RECEIVERTYPE"  =>"EMailAddress",
+                            "CURRENCYCODE"  =>$arr['currency'],
+                            "L_EMAIL0"      =>"daryljoycepalis-facilitator-1@ymail.com",
+                            "L_AMT0"        =>'30.00'
+                            );
+                        
+                          $result=call_pay_api($data);
+    	              
+    	                   if(isset($result) && $result=='ACK=Success'){
+                    
+                                 $query=$wpdb->query("UPDATE jd_reservations SET paid=1 WHERE id=$id");
+                                
+                            };
+                         
+    	                  echo $result;
+    	              }else{
+    	                  echo 'failed';
+    	              }
     	        
         }
+       
+       
     }
-    
-    wp_die();
     
 }
 
-function confirm_payout($host,$tid,$res_id){
+function confirm_payout(){
     global $wpdb,$clientId,$secret;
     
     if(isset($_GET['status']) && $_GET['status']=='payout'){
@@ -202,7 +230,7 @@ function confirm_payout($host,$tid,$res_id){
         $res_id = isset($_GET['id']) ? $_GET['id'] : "" ;
         $tid = isset($_GET['tid']) ? $_GET['tid'] : "" ;
     
-    }
+    
         $hostname=$wpdb->get_results("SELECT user_login FROM jd_users WHERE id=$host LIMIT 1");
         $hostname=$hostname[0]->user_login;
         
@@ -237,7 +265,7 @@ function confirm_payout($host,$tid,$res_id){
                 
                
         
-       
+    }
 
     
 }
@@ -248,18 +276,10 @@ function call_pay_api($data){
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        /*curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-        			'X-PAYPAL-SECURITY-USERID : daryljoycepalis-facilitator_api1.ymail.com',
-                    'X-PAYPAL-SECURITY-PASSWORD : ZGRMZGJE33BTU8RF',
-                    'X-PAYPAL-SECURITY-SIGNATURE : AFcWxV21C7fd0v3bYYYRCpSSRl31AlMbxUVuS39eWS2Q.dHO7D6oXab7',
-                    'X-PAYPAL-APPLICATION-ID :APP-80W284485P519543T',
-                    'X-PAYPAL-REQUEST-DATA-FORMAT : JSON',
-                    'X-PAYPAL-RESPONSE-DATA-FORMAT : JSON'
-        			));*/
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data)); 
         
         
-        #curl_setopt($curl, CURLOPT_VERBOSE, TRUE);
+       
         $response = curl_exec( $curl );
         
         $res=explode('&',$response);
@@ -331,6 +351,12 @@ function allreservations($content)
     return $content;
 }
 
+function departures($content)
+{
+    add_shortcode(  'departures' , 'get_departures' );
+    return $content;
+}
+
 function confirmPayout($content){
     
     add_shortcode('confirmPayout','confirm_payout');
@@ -379,5 +405,4 @@ function pay($token,$data){
 
 add_action( 'the_content', 'allreservations');
 add_action( 'the_content', 'confirmPayout');
-add_action( 'wp_ajax_get_departures', 'get_departures' );
-add_action('wp_print_scripts','register_reservation_js', 1);
+//add_action( 'the_content', 'departures');

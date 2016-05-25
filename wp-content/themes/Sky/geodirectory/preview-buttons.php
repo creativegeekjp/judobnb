@@ -1,6 +1,7 @@
 <?php
+
 if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY'])){
-   $curr = 'JPY';
+  $curr = 'JPY';
 }else{
 	 $curr = $_COOKIE['C_CURRENCY'];
 }
@@ -26,24 +27,32 @@ $post_type = $post->listing_type;
 $last_id = geodir_save_listing();
 $link = get_permalink( $last_id );
 
- 
- $my_post = array(
- 	'post_title'    => $_REQUEST['post_title'],
- 	'post_content'  => $_REQUEST['post_desc'],
- 	'post_status'   => 'publish',
- 	'post_author'   => 1,
- 	'post_type' => "easy-rooms"
- );
+if($_REQUEST['pid']=='')
+{
+	
+	$pids = wp_insert_post( array(
+	 	'post_title'    => $_REQUEST['post_title'],
+	 	'post_content'  => $_REQUEST['post_desc'],
+	 	'post_status'   => 'publish',
+	 	'post_author'   => 1,
+	 	'post_type' => "easy-rooms"
+	 ) );
 
- $pids = wp_insert_post( $my_post );
-
-add_post_meta( $pids, 'reservations_groundprice', $_REQUEST['geodir_listing_price'] );
-add_post_meta( $pids, 'roomcount',1); 
-add_post_meta($last_id, 'vh_resource_id', $pids);
-
-add_post_meta($last_id, 'jd_cg_currency', $currency);
-add_post_meta($last_id, 'jd_cg_sign', $sign);
-add_post_meta($last_id, 'jd_cg_code', $code);
+	add_post_meta( $pids, 'reservations_groundprice', $_REQUEST['geodir_listing_price'] );
+    add_post_meta( $pids, 'roomcount',1); 
+    add_post_meta($last_id, 'vh_resource_id', $pids);
+    add_post_meta($last_id, 'jd_cg_currency', $currency);
+    add_post_meta($last_id, 'jd_cg_sign', $sign);
+    add_post_meta($last_id, 'jd_cg_code', $code);
+}else{
+	
+ 	 update_post_meta( get_post_meta($_REQUEST['pid'], 'vh_resource_id', true), 'reservations_groundprice', $_REQUEST['geodir_listing_price'] );
+     update_post_meta( get_post_meta($_REQUEST['pid'], 'vh_resource_id', true), 'roomcount',1); 
+     update_post_meta($_REQUEST['pid'], 'vh_resource_id', get_post_meta($_REQUEST['pid'], 'vh_resource_id', true));
+     update_post_meta($_REQUEST['pid'], 'jd_cg_currency', $currency);
+     update_post_meta($_REQUEST['pid'], 'jd_cg_sign', $sign);
+     update_post_meta($_REQUEST['pid'], 'jd_cg_code', $code);
+}
 
 ?>
 

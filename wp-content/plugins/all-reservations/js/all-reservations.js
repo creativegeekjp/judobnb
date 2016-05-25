@@ -7,16 +7,12 @@ function check_departure(){
 }
 */
 
-jQuery(function($) {
+/*jQuery(function($) {
     
     check_departure();
     
     function check_departure(){
-        setInterval(function(){ 
-            var today=new Date();
-            
-            
-            
+       
             $.ajax({
                 type:'GET',
                 data:{
@@ -26,12 +22,15 @@ jQuery(function($) {
                 success:function(response){
                     console.log(response);
                 },
+                error:function(){
+                      
+                },
                 complete:function(){
                     
                 }
             });
             
-        }, 3000);
+       
     }
     
-});
+});*/

@@ -558,6 +558,7 @@
 											}else{
 												
 												
+												
 												$values = dynamic_convert( get_post_meta(get_the_ID(), 'vh_resource_id', true),$_COOKIE['C_CURRENCY'],$listing_price,'');//jino
 												$listing_price = $values['money'];
 												$sign = $values['sign'];

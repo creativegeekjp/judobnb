@@ -2605,16 +2605,17 @@ jQuery(document).ready(function($) {
 				
 			} else if ( jQuery("body").hasClass("skyvacation") ) {
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+"&sgeo_when="+when+"&sgeo_adults="+adults["0"]+"&sgeo_childrens="+childrens["0"];
-				console.log("location2>>>> "+ document.URL);
-				if(document.URL == "http://judobnb.creativegeek.jp/"){
+				
+				//Codes to add url extension for search +"/ja/ in ?geodir_search="
+				var docURL = document.URL;
+				if(docURL.indexOf("ja") == -1){
+					//string not found
 					window.location.href = my_ajax.blog_url+location;
 				}else{
+					//string found
 					window.location.href = my_ajax.blog_url+"/ja/"+location;
 					
 				}
-				
-				//The url extension for search +"/ja/"
-			
 				
 			} else if ( jQuery("body").hasClass("skydirectory") ) {
 				var location = "?geodir_search=1&stype="+post_type+"&s=+&snear="+address+"&sgeo_lat="+latitude+"&sgeo_lon="+longitude+"&sgeo_keyword="+keyword+"&sgeo_category="+category;

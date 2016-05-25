@@ -82,7 +82,25 @@
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'vh' ); ?></p>
 	<?php endif; ?>
 	<?php if ( in_array(get_post_type(), $geodir_post_types) ) { ?>
-		<div class="add-review-container"><span><?php _e("Have you been here?", "vh"); ?></span><a href="#" class="wpb_button wpb_btn-primary wpb_btn-small"><?php _e('Add review', 'vh'); ?></a><input id="listing-name" type="hidden" value="<?php echo get_the_title(); ?>"></div>
+		<div class="add-review-container"><span><?php _e("Have you been here?", "vh"); ?></span>
+		<?php 
+		#######jino#########
+		if(!is_user_logged_in())
+		{
+			?>
+			<b href="#" class="wpb_button wpb_btn-primary wpb_btn-small simplemodal-login"><?php _e('Add review', 'vh'); ?></b>
+			<input id="listing-name" type="hidden" value="<?php echo get_the_title(); ?>">
+			<?php
+		}
+		else
+		{
+			?>
+			<a href="#" class="wpb_button wpb_btn-primary wpb_btn-small"><?php _e('Add review', 'vh'); ?></a>
+			<input id="listing-name" type="hidden" value="<?php echo get_the_title(); ?>">
+			<?php
+		}
+		?>
+		</div>
 	<?php } ?> 
 
 	<div class="content-form white-form">

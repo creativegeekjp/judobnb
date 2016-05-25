@@ -762,13 +762,13 @@ function get_pdt_response($user,$tx)
         }
 }
 ############set currency#########333
-// add_action( 'init', 'my_setcookie' );
+add_action( 'init', 'my_setcookie' );
 
-// function my_setcookie() {
-//     if($_COOKIE['C_CURRENCY']==''){
-//         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
-//     }
-// }
+function my_setcookie() {
+    if($_COOKIE['C_CURRENCY']==''){
+        setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+    }
+}
 
 function dynamic_convert($postid, $currency_format, $previous_money , $page )
 {
