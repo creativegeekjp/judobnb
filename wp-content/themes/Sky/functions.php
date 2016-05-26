@@ -1224,7 +1224,7 @@ function get_header_bg_image( $user_country = 'Default', $die = true, $return = 
 	if ( !empty($_POST['country']) ) {
 		$curr_country = sanitize_text_field($_POST['country']);
 	} else {
-		$curr_country = $user_country;
+		$curr_country = ''; //$user_country; 
 	}
 	$countries = get_option('vh_countries_options');
 	$info = trim($countries['pu_textbox'],',');

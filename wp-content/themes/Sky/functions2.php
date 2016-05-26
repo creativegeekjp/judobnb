@@ -1000,7 +1000,7 @@ function vh_get_header_search_field() {
 				case 'text':
 					$form_output .= '
 					<div class="header-input-container advanced" style="width: '.$field_width.'px;">
-						<span class="header-input-title">'.$advanced_value->front_search_title.'</span>
+						<span class="header-input-title"><?php _e('.$advanced_value->front_search_title.','Wordpress'); ?></span>
 						<input type="'.$advanced_value->field_site_type.'" name="'.$advanced_value->site_htmlvar_name.'">
 						<div class="clearfix"></div>
 					</div>';

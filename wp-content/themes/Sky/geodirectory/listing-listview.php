@@ -254,6 +254,7 @@ if ( isset($_GET['stype']) ) {
 			var listing_price_val = listing_guests_val = listing_bedrooms_val = listing_beds_val = '';
 
 			jQuery("#geodir-filter-list li").each(function() {
+				console.log(">>>>>>>jquery"+  jQuery(this).find(".tagit-label"));
 				if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
 					listing_price_val = jQuery(this).find(".tagit-label").html();
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
@@ -262,7 +263,7 @@ if ( isset($_GET['stype']) ) {
 					listing_bedrooms_val = jQuery(this).find(".tagit-label").html();
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
 					listing_beds_val = jQuery(this).find(".tagit-label").html();
-				}
+				} 
 			});
 
 			<?php
@@ -437,7 +438,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + "guests";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " guests";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 							jQuery(this).remove();

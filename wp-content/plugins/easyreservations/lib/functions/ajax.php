@@ -564,9 +564,9 @@ function easyreservations_send_price_callback(){
 		# second parameter is "Reservation successfully verified" after calculation
 		###########################################################
 		
-		global $wpdb;
+	
 		//echo json_encode(array(easyreservations_format_money($res->price,1), round($res->price,2)));
-		$values =  dynamic_convert($room,$_COOKIE['C_CURRENCY'],$res->price);
+		$values =  dynamic_convert($room,$_COOKIE['C_CURRENCY'],$res->price, '');
 		$money = number_format($values['money'],0,'','').''.$values['sign'];
 		echo json_encode(array($money,$money));
 	   

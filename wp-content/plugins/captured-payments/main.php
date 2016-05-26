@@ -10,7 +10,7 @@ License:GPL2
 */
 
 /*detect host name*/
-if($_SERVER["HTTPS"] == "on")
+if(isset( $_SERVER["HTTPS"] ) && strtolower( $_SERVER["HTTPS"] ) == "on" )
 {
     $url = 'https://'.$_SERVER['HTTP_HOST'] ;
 }
@@ -54,10 +54,10 @@ function check_prev()
 	$user = wp_get_current_user();
 
 	if(isset($user->data->ID)){
-	  if(in_array('host',$user->roles)){
-	     return true;
+	  if(!in_array('host',$user->roles)){
+	     return true; //guest
 	  }else{
-	  		return false;
+	  	  return false; //host
 	  }
 
 	}
@@ -66,234 +66,250 @@ function check_prev()
  
 function reservation_host()
 {  
-
-    if (is_user_logged_in() && check_prev() )
+    if ( check_prev() )
     {
-          global $title, $wpdb;
-    
-    $user_ID = get_current_user_id();
-  
-    /*$lists =$wpdb->get_results("
-            SELECT *
-            
-            FROM
-                jd_reservations a
-            
-            LEFT JOIN
-            
-                 jd_cg_captured_payments b
-            ON 
-                 a.id = b.room_id
-            WHERE
-                 b.host_id = $user_ID
-            AND
-                a.approve IN('','del')
-            
-            GROUP BY 
-            
-                b.txn_id;
-    ");*/
-    
-    $lists=$wpdb->get_results("select a.*,b.*,d.post_author FROM jd_reservations a INNER JOIN jd_cg_captured_payments b ON a.id=b.room_id INNER JOIN jd_postmeta c ON c.meta_value=a.room INNER JOIN jd_posts d ON d.ID=c.post_id WHERE d.post_author=$user_ID AND a.approve IN('','del') GROUP BY b.txn_id");
-    
-    if( $wpdb->num_rows > 0 )
-    {
-        echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-              <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+        echo "<a href='".site_url()."/reservations-for-guests/'>View Guest Reservations</a>";
     }
     else
     {
-        echo 'No Reservations found.';
+            if (is_user_logged_in()  )
+            {
+                  global $title, $wpdb;
+            
+            $user_ID = get_current_user_id();
+          
+            /*$lists =$wpdb->get_results("
+                    SELECT *
+                    
+                    FROM
+                        jd_reservations a
+                    
+                    LEFT JOIN
+                    
+                         jd_cg_captured_payments b
+                    ON 
+                         a.id = b.room_id
+                    WHERE
+                         b.host_id = $user_ID
+                    AND
+                        a.approve IN('','del')
+                    
+                    GROUP BY 
+                    
+                        b.txn_id;
+            ");*/
+            
+            $lists=$wpdb->get_results("select a.*,b.*,d.post_author FROM jd_reservations a INNER JOIN jd_cg_captured_payments b ON a.id=b.room_id INNER JOIN jd_postmeta c ON c.meta_value=a.room INNER JOIN jd_posts d ON d.ID=c.post_id WHERE d.post_author=$user_ID AND a.approve IN('','del') GROUP BY b.txn_id");
+            
+            if( $wpdb->num_rows > 0 )
+            {
+                echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
+                      <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+            }
+            else
+            {
+                echo 'No Reservations found.';
+            }
+            
+                
+            foreach ($lists as $list) {
+                
+                //jd_cg_captured_payments
+                $idt = $list->tid;
+                $txn_id = $list->txn_id;
+                $payer_email = $list->payer_email;
+                $item_name = $list->item_name;
+                $mc_currency = $list->mc_currency;
+                $mc_gross = $list->mc_gross;
+                $approved = $list->approved;
+                
+                //jd_reservations
+                $idr = $list->id;
+                $arrival = $list->arrival;
+                $departure = $list->departure;
+                $user = $list->user;
+                $name = $list->name;
+                $email = $list->email;
+                $country = $list->country;
+                $approve = $list->approve == "del" ? "Cancelled" : $list->approve ;
+                $room = $list->room;
+                $roomnumber = $list->roomnumber;
+                $number = $list->number;
+                $childs = $list->childs;
+                $price = $list->price;
+                $reservated = $list->reservated;
+               
+                //$get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
+                //$authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
+                
+                //get author by roomid for messaging
+                //$user_info = get_userdata( $authors );
+        	    
+        	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
+        	     
+        	     //get original post_id from post_meta
+        	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
+        	    {
+        	        $pid = $pids->post_id;
+        	    }
+        	   
+                echo "<tr>
+                 <td><a href=".get_permalink($pid).">View</a></td>
+                        <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
+                        <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
+                        <td>".$name."</td>
+                        <td>".$email."</td>
+                        <td>".$country."</td>
+                        <td>".$approve."</td>
+                        <td>".$roomnumber."</td>
+                        <td>".$number."</td>
+                        <td>".$childs."</td>
+                        <td>".$curr['symbol'].''.$curr['converted']."</td>
+                        <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
+                        <td><a href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
+                         <td><a href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
+                         <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
+                      </tr>";
+            }
+            echo "</tr></table>";
+              
+            return;
+               
+            }
+            else
+            {
+                echo "Please login<a href='#' class='simplemodal-login'> here</a>";
+            }
+    
     }
     
-        
-    foreach ($lists as $list) {
-        
-        //jd_cg_captured_payments
-        $idt = $list->tid;
-        $txn_id = $list->txn_id;
-        $payer_email = $list->payer_email;
-        $item_name = $list->item_name;
-        $mc_currency = $list->mc_currency;
-        $mc_gross = $list->mc_gross;
-        $approved = $list->approved;
-        
-        //jd_reservations
-        $idr = $list->id;
-        $arrival = $list->arrival;
-        $departure = $list->departure;
-        $user = $list->user;
-        $name = $list->name;
-        $email = $list->email;
-        $country = $list->country;
-        $approve = $list->approve == "del" ? "Cancelled" : $list->approve ;
-        $room = $list->room;
-        $roomnumber = $list->roomnumber;
-        $number = $list->number;
-        $childs = $list->childs;
-        $price = $list->price;
-        $reservated = $list->reservated;
-       
-        //$get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
-        //$authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
-        
-        //get author by roomid for messaging
-        //$user_info = get_userdata( $authors );
-	    
-	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
-	     
-	     //get original post_id from post_meta
-	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
-	    {
-	        $pid = $pids->post_id;
-	    }
-	   
-        echo "<tr>
-         <td><a href=".get_permalink($pid).">View</a></td>
-                <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
-                <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
-                <td>".$name."</td>
-                <td>".$email."</td>
-                <td>".$country."</td>
-                <td>".$approve."</td>
-                <td>".$roomnumber."</td>
-                <td>".$number."</td>
-                <td>".$childs."</td>
-                <td>".$curr['symbol'].''.$curr['converted']."</td>
-                <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
-                <td><a href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
-                 <td><a href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
-                 <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
-              </tr>";
-    }
-    echo "</tr></table>";
-      
-    return;
-       
-    }
-    else
-    {
-        echo 'Access Denied! please login.';
-    }
-    
+   
   
 }
 
 function reservation_guest()
 {
-    if ( is_user_logged_in() && !check_prev() )
+     
+    if ( check_prev() )
     {
-        global $title, $wpdb;
-    
-    $user_ID = get_current_user_id();
-  
-    $lists =$wpdb->get_results("
-            SELECT *
-            
-            FROM
-                jd_reservations a
-            
-            LEFT JOIN
-            
-                 jd_cg_captured_payments b
-            ON 
-                 a.id = b.room_id
-            WHERE
-                 b.host_id = $user_ID
-            AND
-                a.approve IN('','del')
-            
-            GROUP BY 
-            
-                b.txn_id;
-    ");
-    
-    if( $wpdb->num_rows > 0 )
-    {
-        echo '<form name="post" method="post" id="post">';
-        echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-              <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+        echo "<a href='".site_url()."/list-reservation-host/'>View Host Reservations</a>";
     }
     else
     {
-        echo 'No Reservations found.';
-    }
-    
-    foreach ($lists as $list) {
-        
-        //jd_cg_captured_payments
-        $idt = $list->tid;
-        $txn_id = $list->txn_id;
-        $payer_email = $list->payer_email;
-        $item_name = $list->item_name;
-        $mc_currency = $list->mc_currency;
-        $mc_gross = $list->mc_gross;
-        $approved = $list->approved;
-        
-        //jd_reservations
-        $idr = $list->id;
-        $arrival = $list->arrival;
-        $departure = $list->departure;
-        $user = $list->user;
-        $name = $list->name;
-        $email = $list->email;
-        $country = $list->country;
-        $approve = $list->approve == "del" ? "Cancelled" : $list->approve ;
-        $room = $list->room;
-        $roomnumber = $list->roomnumber;
-        $number = $list->number;
-        $childs = $list->childs;
-        $price = $list->price;
-        $reservated = $list->reservated;
-        
-        
-        $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
-        $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
-        
-        //get author by roomid for messaging
-        $user_info = get_userdata( $authors );
-	    
-	    //create link edit if not cancelled yet
-	    $edit_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>Edit</a>";
-	    
-	    //create link cancel if not cancelled yet
-	    $cancel_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a>";
-	    
-	    //get original post_id from post_meta
-	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
-	    {
-	        $pid = $pids->post_id;
-	    }
-	     
-	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
-	     
-        echo "<tr>
-                <td><a href=".get_permalink($pid).">View</a></td>
-                <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
-                <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
-                <td>".$name."</td>
-                <td>".$email."</td>
-                <td>".$country."</td>
-                <td>".$approve."</td>
-                <td>".$roomnumber."</td>
-                <td>".$number."</td>
-                <td>".$childs."</td>
-                <td>".$curr['symbol'].''.$curr['converted']."</td>
-                <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
-                 <td>".$edit_check."</td>
-                <td>".$cancel_check."</td>
-                <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
-              </tr>";
-    }
-    echo "</tr></table>";
-      
-    return;
-       
-    } 
-    else
-    {
-        echo 'Access Denied! please login.';
-    }
+            if ( is_user_logged_in()  )
+            {
+                global $title, $wpdb;
+            
+            $user_ID = get_current_user_id();
+          
+            $lists =$wpdb->get_results("
+                    SELECT *
+                    
+                    FROM
+                        jd_reservations a
+                    
+                    LEFT JOIN
+                    
+                         jd_cg_captured_payments b
+                    ON 
+                         a.id = b.room_id
+                    WHERE
+                         b.host_id = $user_ID
+                    AND
+                        a.approve IN('','del')
+                    
+                    GROUP BY 
+                    
+                        b.txn_id;
+            ");
+            
+            if( $wpdb->num_rows > 0 )
+            {
+                echo '<form name="post" method="post" id="post">';
+                echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
+                      <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+            }
+            else
+            {
+                echo 'No Reservations found.';
+            }
+            
+            foreach ($lists as $list) {
+                
+                //jd_cg_captured_payments
+                $idt = $list->tid;
+                $txn_id = $list->txn_id;
+                $payer_email = $list->payer_email;
+                $item_name = $list->item_name;
+                $mc_currency = $list->mc_currency;
+                $mc_gross = $list->mc_gross;
+                $approved = $list->approved;
+                
+                //jd_reservations
+                $idr = $list->id;
+                $arrival = $list->arrival;
+                $departure = $list->departure;
+                $user = $list->user;
+                $name = $list->name;
+                $email = $list->email;
+                $country = $list->country;
+                $approve = $list->approve == "del" ? "Cancelled" : $list->approve ;
+                $room = $list->room;
+                $roomnumber = $list->roomnumber;
+                $number = $list->number;
+                $childs = $list->childs;
+                $price = $list->price;
+                $reservated = $list->reservated;
+                
+                
+                $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
+                $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
+                
+                //get author by roomid for messaging
+                $user_info = get_userdata( $authors );
+        	    
+        	    //create link edit if not cancelled yet
+        	    $edit_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>Edit</a>";
+        	    
+        	    //create link cancel if not cancelled yet
+        	    $cancel_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a>";
+        	    
+        	    //get original post_id from post_meta
+        	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
+        	    {
+        	        $pid = $pids->post_id;
+        	    }
+        	     
+        	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
+        	     
+                echo "<tr>
+                        <td><a href=".get_permalink($pid).">View</a></td>
+                        <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
+                        <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
+                        <td>".$name."</td>
+                        <td>".$email."</td>
+                        <td>".$country."</td>
+                        <td>".$approve."</td>
+                        <td>".$roomnumber."</td>
+                        <td>".$number."</td>
+                        <td>".$childs."</td>
+                        <td>".$curr['symbol'].''.$curr['converted']."</td>
+                        <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
+                         <td>".$edit_check."</td>
+                        <td>".$cancel_check."</td>
+                        <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
+                      </tr>";
+            }
+            echo "</tr></table>";
+              
+            return;
+               
+            }
+            else
+            {
+               echo "Please login<a href='#' class='simplemodal-login'> here</a>";
+            }
+   }
     
    
 }
@@ -772,6 +788,7 @@ function my_setcookie() {
 
 function dynamic_convert($postid, $currency_format, $previous_money , $page )
 {
+   
    $accnt = getoriginalcurrency($postid,$page); 
    
    if($currency_format == $accnt['currency'] )
@@ -817,6 +834,7 @@ function dynamic_convert($postid, $currency_format, $previous_money , $page )
 }
 function getoriginalcurrency($pids,$page)
 {
+
     global $wpdb;
   
             foreach($wpdb->get_results(" SELECT post_id FROM jd_postmeta WHERE meta_key ='vh_resource_id' AND meta_value = $pids") as $ls):

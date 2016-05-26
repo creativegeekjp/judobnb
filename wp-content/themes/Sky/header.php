@@ -558,7 +558,6 @@
 											}else{
 												
 												
-												
 												$values = dynamic_convert( get_post_meta(get_the_ID(), 'vh_resource_id', true),$_COOKIE['C_CURRENCY'],$listing_price,'');//jino
 												$listing_price = $values['money'];
 												$sign = $values['sign'];
@@ -603,7 +602,7 @@
 							} else {
 								$temp_country = get_option('vh_default_country');
 								if ( $temp_country == '' ) {
-									$temp_country = 'France';
+									$temp_country = 'Tokyo';//jino
 								}
 								echo get_header_bg_image($temp_country, false, true);
 							}
@@ -646,7 +645,7 @@
 								} else {
 									$temp_country = get_option('vh_default_country');
 									if ( $temp_country == '' ) {
-										$temp_country = 'France';
+										$temp_country = 'Tokyo';//jino
 									}
 									echo get_header_bg_image($temp_country, false, true);
 								}
@@ -704,10 +703,10 @@
 						<div class="welcome-container">
 							<div id="welcome">
 								<div class="va-middle">
-									<h3 class="head">Welcome to Judobnb</h3>
+									<h3 class="head"> <?php _e('Welcome to Judobnb','Wordpress'); ?> </h3>
 									<p>
-										(&beta; Site)<br>
-										Travel for the Judo community!
+										(&beta; <?php _e('Site','Wordpress'); ?> )<br>
+										<?php _e('Travel for the Judo community!','Wordpress'); ?>
 									</p>
 								</div>
 							</div>
