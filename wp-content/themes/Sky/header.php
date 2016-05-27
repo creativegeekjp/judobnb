@@ -858,7 +858,7 @@
 				<div id="vh_loading_effect"></div>
 				<div class="clearfix"></div>
 				<?php
-					wp_reset_postdata();
+					wp_reset_postdata();#
 					$layout_type = get_post_meta(get_the_id(), 'layouts', true);
 
 					if ( is_archive() || is_search() || is_404() || ( $post_type == 'tribe_events' && !is_single() ) ) {
