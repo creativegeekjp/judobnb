@@ -528,7 +528,7 @@ function vh_popular_destinations($atts, $content = null, $code) {
 				}
 				$output .= '<span class="city-country">' . $city_display . '</span>';
 				$output .= '<span class="city-country country">' . $country_display . '</span>';
-				$output .= '<a href="javascript:void(0)" class="city-text">' . __('View properties') . '</a>';
+				$output .= '<a href="javascript:void(0)" class="city-text">' . __('View Listings') . '</a>';
 				$output .= '</div>';
 				$output .= '</div>';
 				$count++;
@@ -871,9 +871,9 @@ function vh_blog_carousel($atts, $content = null, $code) {
 		});
 	</script>';
 
-	$secondary_title = '<span>' . $blog_carousel_stitle . '</span>';
+	$secondary_title = '<span>' . __($blog_carousel_stitle, 'vh') . '</span>';
 
-	$output .= '<h1 class="main-module-title">' . $blog_carousel_ptitle . $secondary_title . '</h1>';
+	$output .= '<h1 class="main-module-title">' . __($blog_carousel_ptitle, 'vh') . __($secondary_title, 'vh') . '</h1>';
    
 	$output .= '<div class="blog-carousel-controls">
 		<a href="javascript:void(0)" class="blog-next icon-angle-right"></a>

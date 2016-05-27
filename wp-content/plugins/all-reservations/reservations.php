@@ -245,8 +245,7 @@ function get_departures(){
              
              if($v['res_id'] != 0)
                 echo '<span id="curl_responses">reservation:'.$v['res_id'].'='.$v['result'].'</span>';
-            else
-                echo '<span id="curl_responses">reservation:'.$v['result'].'</span>';
+            
             }
                 
            

@@ -5,8 +5,6 @@ Plugin URI: Plugins Url
 Description: Approved/Void/Cancel paypal payments 
 Version: 1.0
 Author: Jino Lacson
-Author URI: Author's Website
-License:GPL2
 */
 
 /*detect host name*/
@@ -538,9 +536,12 @@ function successreservation_reservations()
 				 	 	    
 				 	 array("%s" ,"%s", "%s", "%s", "%s", "%s", "%s" )
 			 );
-			 
-    echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guests'>View Reservation</a>";
-    
+		 
+   if ( check_prev() ){
+        echo "Your reservation was successfully reserved.<a href='".site_url()."/list-reservation-host/'>View Reservations</a>";
+    }else{
+        echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guests'>View Reservations</a>";
+    }
     return;
 }
 

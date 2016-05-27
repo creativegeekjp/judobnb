@@ -26,7 +26,6 @@ do_action( 'bp_before_member_settings_template' ); ?>
 	<div id="pass-strength-result"></div>
 	<label for="pass2" class="bp-screen-reader-text"><?php _e( 'Repeat New Password', 'buddypress' ); ?></label>
 	<input type="password" name="pass2" id="pass2" size="16" value="" class="settings-input small password-entry-confirm" <?php bp_form_field_attributes( 'password' ); ?>/> &nbsp;<?php _e( 'Repeat New Password', 'buddypress' ); ?>
-
 	<?php
 
 	/**
