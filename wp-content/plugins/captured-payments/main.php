@@ -170,9 +170,6 @@ function reservation_host()
                       </tr>";
             }
             echo "</tr></table>";
-              
-            return;
-               
             }
             else
             {
@@ -181,14 +178,13 @@ function reservation_host()
     
     }
     
-   
+     return;
   
 }
 
 function reservation_guest()
 {
-     
-    if ( check_prev() )
+    if ( !check_prev() )
     {
         echo "<a href='".site_url()."/list-reservation-host/'>View Host Reservations</a>";
     }
@@ -299,16 +295,13 @@ function reservation_guest()
                       </tr>";
             }
             echo "</tr></table>";
-              
-            return;
-               
             }
             else
             {
                echo "Please login<a href='#' class='simplemodal-login'> here</a>";
             }
    }
-    
+      return;
    
 }
 
@@ -537,7 +530,7 @@ function successreservation_reservations()
 				 	 array("%s" ,"%s", "%s", "%s", "%s", "%s", "%s" )
 			 );
 		 
-   if ( check_prev() ){
+   if ( !check_prev() ){
         echo "Your reservation was successfully reserved.<a href='".site_url()."/list-reservation-host/'>View Reservations</a>";
     }else{
         echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guests'>View Reservations</a>";
