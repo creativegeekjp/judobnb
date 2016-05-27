@@ -10388,7 +10388,8 @@ body.category-field-focused .ui-menu .ui-menu-item a {
 }
 
 body.home #ui-datepicker-div {
-	top: 472px !important;
+	/*top: 472px !important;*/
+	margin-top: 8px;
 }
 
 body.home.admin-bar #ui-datepicker-div {
