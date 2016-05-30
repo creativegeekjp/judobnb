@@ -1,0 +1,1288 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GeoDirectory Location Manager 1.4.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-13 19:07+0100\n"
+"PO-Revision-Date: 2016-05-13 19:07+0100\n"
+"Last-Translator: \n"
+"Language-Team: GeoDirectory <info@wpgeodirectory.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n:1,2;_n_noop:1,2;"
+"_nx:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: gd_update.php:155
+msgid ""
+"GeoDirectory: Please make sure your licence keys are active GD>Auto Updates."
+msgstr ""
+
+#: gd_update.php:190
+msgid "Auto Updates / Licensing"
+msgstr ""
+
+#: gd_update.php:236
+msgid ""
+"Enter your GeoDirectory licence keys here to allow you to update plugins "
+"from dashboard"
+msgstr ""
+
+#: gd_update.php:266 gd_update.php:330
+msgid "Deactivate Licence"
+msgstr ""
+
+#: gd_update.php:269
+msgid "Activate Licence"
+msgstr ""
+
+#: gd_update.php:337
+msgid "You can not use your membership licence here, use the item licence."
+msgstr ""
+
+#: gd_update.php:339
+msgid "Licence not activated! Please renew or seek support."
+msgstr ""
+
+#: gd_update.php:348 language.php:117
+msgid "Are you sure?"
+msgstr ""
+
+#: gd_update.php:383
+msgid "Licence not deactivated! Please seek support."
+msgstr ""
+
+#: gd_update.php:904
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+
+#: gd_update.php:911
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+
+#: gd_update.php:1045
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: gd_update.php:1045
+msgid "Error"
+msgstr ""
+
+#: geodir_add_location.php:87 geodir_location_hooks_actions.php:2604
+msgid "Choose a country."
+msgstr ""
+
+#: geodir_add_location.php:106
+msgid "Neighbourhood Latitude"
+msgstr ""
+
+#: geodir_add_location.php:124
+msgid "Neighbourhood Longitude"
+msgstr ""
+
+#: geodir_add_location.php:156
+msgid "Action For Listing"
+msgstr ""
+
+#: geodir_add_location.php:160
+msgid ""
+"Post will be updated if both city and map marker position has been changed."
+msgstr ""
+
+#: geodir_location_functions.php:615 geodir_location_functions.php:3118
+#: geodir_location_functions.php:3376
+msgid "Select Country"
+msgstr ""
+
+#: geodir_location_functions.php:1120
+msgid "Select Neighbourhood"
+msgstr ""
+
+#: geodir_location_functions.php:1597 geodir_location_functions.php:1616
+msgid "No location deleted."
+msgstr ""
+
+#: geodir_location_functions.php:1600
+#, php-format
+msgid "%d locations deleted successfully."
+msgstr ""
+
+#: geodir_location_functions.php:1600
+msgid "Location deleted successfully"
+msgstr ""
+
+#: geodir_location_functions.php:1740 geodir_location_hooks_actions.php:390
+msgid "Location Settings"
+msgstr ""
+
+#: geodir_location_functions.php:1742
+msgid "Home URL Settings"
+msgstr ""
+
+#: geodir_location_functions.php:1745
+msgid "Home page should go to"
+msgstr ""
+
+#: geodir_location_functions.php:1746
+msgid "Site root (ex: mysite.com/)"
+msgstr ""
+
+#: geodir_location_functions.php:1754
+msgid "Current location page"
+msgstr ""
+
+#: geodir_location_functions.php:1755
+msgid "Current location page (ex: mysite.com/location/glasgow/)"
+msgstr ""
+
+#: geodir_location_functions.php:1766
+msgid "Main Navigation Settings"
+msgstr ""
+
+#: geodir_location_functions.php:1769
+msgid "Show location switcher in menu"
+msgstr ""
+
+#: geodir_location_functions.php:1770
+msgid ""
+"Show change location navigation in main menu? (untick to disable) If you "
+"disable this option, none of the change location link will appear in main "
+"navigation."
+msgstr ""
+
+#: geodir_location_functions.php:1780
+msgid "List drilled-down Regions, Cities."
+msgstr ""
+
+#: geodir_location_functions.php:1790
+msgid "List all Countries, Regions, Cities."
+msgstr ""
+
+#: geodir_location_functions.php:1801 geodir_location_setting.php:13
+msgid "Geo Directory Location Settings"
+msgstr ""
+
+#: geodir_location_functions.php:1804
+msgid "Home Page Results"
+msgstr ""
+
+#: geodir_location_functions.php:1805
+msgid ""
+"Show default location results on home page (First time only, if geodirectory "
+"home page is your site home page and user comes to home page)."
+msgstr ""
+
+#: geodir_location_functions.php:1815
+msgid ""
+"Show everywhere location results on home page (First time only, if "
+"geodirectory home page is your site home page and user comes to home page)."
+msgstr ""
+
+#: geodir_location_functions.php:1829 geodir_location_functions.php:3120
+#: geodir_location_functions.php:3378 geodir_location_functions.php:5020
+#: geodir_location_hooks_actions.php:157 geodir_location_seo.php:35
+#: geodir_location_seo.php:58 geodir_location_template_tags.php:439
+#: geodir_location_template_tags.php:742 language.php:20
+msgid "Country"
+msgstr ""
+
+#: geodir_location_functions.php:1830
+msgid ""
+"Enable default country (country drop-down will not appear on add listing and "
+"location switcher)."
+msgstr ""
+
+#: geodir_location_functions.php:1840
+msgid "Enable Multi Countries"
+msgstr ""
+
+#: geodir_location_functions.php:1850
+msgid "Enable Selected Countries"
+msgstr ""
+
+#: geodir_location_functions.php:1861
+msgid ""
+"Only select countries will appear in country drop-down on add listing page "
+"and location switcher. Make sure to have default country in your selected "
+"countries list for proper site functioning."
+msgstr ""
+
+#: geodir_location_functions.php:1867
+msgid "Select Countries"
+msgstr ""
+
+#: geodir_location_functions.php:1874
+msgid "Add everywhere option in location switcher country drop-down."
+msgstr ""
+
+#: geodir_location_functions.php:1882
+msgid "Hide country part of url for LISTING, CPT and LOCATION pages?"
+msgstr ""
+
+#: geodir_location_functions.php:1896 geodir_location_functions.php:3374
+#: geodir_location_functions.php:5047 geodir_location_hooks_actions.php:155
+#: geodir_location_seo.php:32 geodir_location_seo.php:56
+#: geodir_location_template_tags.php:473 geodir_location_template_tags.php:746
+#: language.php:18
+msgid "Region"
+msgstr ""
+
+#: geodir_location_functions.php:1897
+msgid ""
+"Enable default region (region drop-down will not appear on add listing and "
+"location switcher)."
+msgstr ""
+
+#: geodir_location_functions.php:1907
+msgid "Enable Multi Regions"
+msgstr ""
+
+#: geodir_location_functions.php:1917
+msgid "Enable Selected Regions"
+msgstr ""
+
+#: geodir_location_functions.php:1927
+msgid ""
+"Only select regions will appear in region drop-down on add listing page and "
+"location switcher. Make sure to have default region in your selected regions "
+"list for proper site functioning"
+msgstr ""
+
+#: geodir_location_functions.php:1933
+msgid "Select Regions"
+msgstr ""
+
+#: geodir_location_functions.php:1940
+msgid "Add everywhere option in location switcher region drop-down."
+msgstr ""
+
+#: geodir_location_functions.php:1948
+msgid "Hide region part of url for LISTING, CPT and LOCATION pages?"
+msgstr ""
+
+#: geodir_location_functions.php:1962 geodir_location_functions.php:5071
+#: geodir_location_hooks_actions.php:153 geodir_location_seo.php:29
+#: geodir_location_template_tags.php:507 geodir_location_template_tags.php:750
+#: language.php:16
+msgid "City"
+msgstr ""
+
+#: geodir_location_functions.php:1963
+msgid ""
+"Enable default city (City drop-down will not appear on add listing and "
+"location switcher)."
+msgstr ""
+
+#: geodir_location_functions.php:1973
+msgid "Enable Multicity"
+msgstr ""
+
+#: geodir_location_functions.php:1983
+msgid "Enable Selected City"
+msgstr ""
+
+#: geodir_location_functions.php:1993
+msgid ""
+"Only select cities will appear in city drop-down on add listing page and "
+"location switcher. Make sure to have default city in your selected cities "
+"list for proper site functioning"
+msgstr ""
+
+#: geodir_location_functions.php:1999
+msgid "Select Cities"
+msgstr ""
+
+#: geodir_location_functions.php:2006
+msgid "Add everywhere option in location switcher city drop-down."
+msgstr ""
+
+#: geodir_location_functions.php:2019
+msgid "Wish to enable neighbourhoods ?"
+msgstr ""
+
+#: geodir_location_functions.php:2020 geodir_location_setting.php:43
+msgid "Select the option if you wish to enable neighbourhood options."
+msgstr ""
+
+#: geodir_location_functions.php:2029
+msgid "Add listing form settings"
+msgstr ""
+
+#: geodir_location_functions.php:2032
+msgid "Disable Google address autocomplete?"
+msgstr ""
+
+#: geodir_location_functions.php:2033
+msgid ""
+"This will stop the address sugestions when typing in address box on add "
+"listing page."
+msgstr ""
+
+#: geodir_location_functions.php:2040
+msgid "Show all locations in dropdown?"
+msgstr ""
+
+#: geodir_location_functions.php:2041
+msgid ""
+"This is usefull if you have a small directory but can break your site if you "
+"have many locations"
+msgstr ""
+
+#: geodir_location_functions.php:2048
+msgid "Disable set address on map from changing address fields"
+msgstr ""
+
+#: geodir_location_functions.php:2049 geodir_location_functions.php:2057
+msgid ""
+"This is usefull if you have a small directory and you have custom locations "
+"or your locations are not known by the Google API and they break the "
+"address. (highly recommended not to enable this)"
+msgstr ""
+
+#: geodir_location_functions.php:2056
+msgid "Disable move map pin from changing address fields"
+msgstr ""
+
+#: geodir_location_functions.php:2066
+msgid "Yoast SEO XML Sitemaps Settings"
+msgstr ""
+
+#: geodir_location_functions.php:2068
+msgid "Exclude location pages in xml sitemap"
+msgstr ""
+
+#: geodir_location_functions.php:2069
+msgid ""
+"Please check the box if you do NOT want to include location pages in your "
+"xml sitemap"
+msgstr ""
+
+#: geodir_location_functions.php:2075
+msgid "Exclude categories location pages in xml sitemap"
+msgstr ""
+
+#: geodir_location_functions.php:2076
+msgid ""
+"Please check the box if you do NOT want to include categories location pages "
+"in your xml sitemap"
+msgstr ""
+
+#: geodir_location_functions.php:2082
+msgid "Exclude tags location pages in xml sitemap"
+msgstr ""
+
+#: geodir_location_functions.php:2083
+msgid ""
+"Please check the box if you do NOT want to include tags location pages in "
+"your xml sitemap"
+msgstr ""
+
+#: geodir_location_functions.php:2277
+msgid "Display City :"
+msgstr ""
+
+#: geodir_location_functions.php:2280
+msgid "Select if you want to show city field in address section."
+msgstr ""
+
+#: geodir_location_functions.php:2285
+msgid "City label :"
+msgstr ""
+
+#: geodir_location_functions.php:2288
+msgid "Enter city field label in address section."
+msgstr ""
+
+#: geodir_location_functions.php:2294
+msgid "Display Region :"
+msgstr ""
+
+#: geodir_location_functions.php:2297
+msgid "Select if you want to show region field in address section."
+msgstr ""
+
+#: geodir_location_functions.php:2302
+msgid "Region label :"
+msgstr ""
+
+#: geodir_location_functions.php:2305
+msgid "Enter region field label in address section."
+msgstr ""
+
+#: geodir_location_functions.php:2311
+msgid "Display Country :"
+msgstr ""
+
+#: geodir_location_functions.php:2314
+msgid "Select if you want to show country field in address section."
+msgstr ""
+
+#: geodir_location_functions.php:2319
+msgid "Country label :"
+msgstr ""
+
+#: geodir_location_functions.php:2322
+msgid "Enter country field label in address section."
+msgstr ""
+
+#: geodir_location_functions.php:3003 geodir_location_functions.php:3340
+msgid "Filter"
+msgstr ""
+
+#: geodir_location_functions.php:3030
+#, php-format
+msgid "1 item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: geodir_location_functions.php:3049
+msgid "Go to the first page"
+msgstr ""
+
+#: geodir_location_functions.php:3056
+msgid "Go to the previous page"
+msgstr ""
+
+#: geodir_location_functions.php:3068
+msgid "Go to the next page"
+msgstr ""
+
+#: geodir_location_functions.php:3075
+msgid "Go to the last page"
+msgstr ""
+
+#: geodir_location_functions.php:3127 geodir_location_functions.php:3374
+msgid "City or Region"
+msgstr ""
+
+#: geodir_location_functions.php:3127 geodir_location_functions.php:3385
+msgid "Reset"
+msgstr ""
+
+#: geodir_location_functions.php:3364
+msgid "Countries SEO"
+msgstr ""
+
+#: geodir_location_functions.php:3365
+msgid "Regions SEO"
+msgstr ""
+
+#: geodir_location_functions.php:3366
+msgid "Cities SEO"
+msgstr ""
+
+#: geodir_location_functions.php:3495
+msgid "Location SEO updated successfully."
+msgstr ""
+
+#: geodir_location_functions.php:3516
+msgid "Location SEO image removed successfully."
+msgstr ""
+
+#: geodir_location_functions.php:5192
+msgid "Toggle panel - GD Locations: Import CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5193
+msgid "GD Locations: Import CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5200
+msgid "Update item if item with location_id/city_slug already exists."
+msgstr ""
+
+#: geodir_location_functions.php:5201
+msgid "Ignore item if item with location_id/city_slug already exists."
+msgstr ""
+
+#: geodir_location_functions.php:5205 geodir_location_functions.php:5302
+msgid "Download Sample CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5233 geodir_location_functions.php:5330
+msgid "Import Data Status :"
+msgstr ""
+
+#: geodir_location_functions.php:5243 geodir_location_functions.php:5340
+msgid "Continue Import Data"
+msgstr ""
+
+#: geodir_location_functions.php:5244 geodir_location_functions.php:5341
+msgid "Terminate Import Data"
+msgstr ""
+
+#: geodir_location_functions.php:5246 geodir_location_functions.php:5343
+msgid "Wait, processing import data..."
+msgstr ""
+
+#: geodir_location_functions.php:5260
+msgid "Toggle panel - GD Locations: Export CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5261
+msgid "GD Locations: Export CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5266 geodir_location_functions.php:5363
+msgid "Max entries per csv file:"
+msgstr ""
+
+#: geodir_location_functions.php:5267 geodir_location_functions.php:5364
+msgid ""
+"Please select the maximum number of entries per csv file (defaults to 5000, "
+"you might want to lower this to prevent memory issues on some installs)"
+msgstr ""
+
+#: geodir_location_functions.php:5270 geodir_location_functions.php:5367
+msgid "Progress:"
+msgstr ""
+
+#: geodir_location_functions.php:5271 geodir_location_functions.php:5368
+msgid "Elapsed Time:"
+msgstr ""
+
+#: geodir_location_functions.php:5275 geodir_location_functions.php:5372
+msgid "Export CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5289
+msgid "Toggle panel - GD Neighbourhoods: Import CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5290
+msgid "GD Neighbourhoods: Import CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5297
+msgid ""
+"Update item if item with neighbourhood_id/neighbourhood_slug already exists."
+msgstr ""
+
+#: geodir_location_functions.php:5298
+msgid ""
+"Ignore item if item with neighbourhood_id/neighbourhood_slug already exists."
+msgstr ""
+
+#: geodir_location_functions.php:5357
+msgid "Toggle panel - GD Neighbourhoods: Export CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5358
+msgid "GD Neighbourhoods: Export CSV"
+msgstr ""
+
+#: geodir_location_functions.php:5410 geodir_location_functions.php:5436
+#: geodir_location_functions.php:5512 geodir_location_functions.php:5538
+msgid "Exporting..."
+msgstr ""
+
+#: geodir_location_functions.php:5432 geodir_location_functions.php:5534
+msgid "Complete!"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:21 geodir_location_hooks_actions.php:2759
+#: geodir_location_template_tags.php:542 geodir_location_template_tags.php:753
+#: language.php:90
+msgid "Neighbourhood"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:22
+msgid "Locations"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:23
+msgid "Location SEO"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:268
+msgid "Warning!!"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:269
+msgid ""
+"You are about to delete a Geodirectory Adon which has important option and "
+"custom data associated to it."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:269
+msgid ""
+"Deleting this and activating another version, will be treated as a new "
+"installation of plugin, so all the data will be lost."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:269
+msgid ""
+"If you have any problem in upgrading the plugin please contact Geodirectory"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:269
+msgid "support"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:281
+msgid "Delete plugin files only"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:293
+msgid "Delete both plugin files and data"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:387
+msgid "MultiLocations"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:394
+msgid "Manage Location"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:398
+msgid "SEO Settings"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:402
+msgid "Add/Edit Location"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:407
+msgid "Translate Countries"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:576
+msgid "Please enter listing url prefix"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:577
+msgid "Invalid character in listing url prefix"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:578
+msgid "Please enter location url prefix"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:579
+msgid "Invalid character in location url prefix"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:580
+msgid "Please enter location and category url separator"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:581
+msgid "Invalid character in location and category url separator"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:582
+msgid "Please enter listing detail url separator"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:583
+msgid "Invalid character in listing detail url separator"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:585 geodir_location_hooks_actions.php:587
+msgid "Please wait..."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:586
+msgid "Sorry, nothing found!"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:588
+msgid "We are searching for"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:591
+msgid "Search City"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:592
+msgid "Search Region"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:593
+msgid "Search Country"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:594
+msgid "Search location"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:596
+msgid "Unable to find your location."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:597
+msgid "Permission denied in finding your location."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:598
+msgid "Your location is currently unknown."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:599
+msgid "Attempt to find location took too long."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:600
+msgid "Browser unable to find your location."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:601
+msgid "Near:"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:602
+msgid "Me"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:603
+msgid "User defined"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:604 geodir_location_list.php:57
+msgid ""
+"Deleting location will also DELETE any LISTINGS in this location. Are you "
+"sure want to DELETE this location?"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:605
+msgid "Please select at least one location."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:697 geodir_location_widgets.php:573
+msgid "Enable Location Filter:"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:698
+msgid "Enable location filter on related post."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:1989
+msgid "No Results"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2136
+msgid "Select"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2139
+#: geodir_location_hooks_actions.php:3942 geodir_location_template_tags.php:791
+msgid "Everywhere"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2270
+#: geodir_location_hooks_actions.php:2961
+msgid "Select Region"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2272
+#: geodir_location_hooks_actions.php:2715
+#: geodir_location_hooks_actions.php:2967
+msgid "Select City"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2614
+#: geodir_location_hooks_actions.php:2766
+msgid "Click on above field and type to filter list"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2636
+#: geodir_location_hooks_actions.php:2698 geodir_location_template_tags.php:760
+msgid "Please wait..&hellip;"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2653
+msgid "Select State"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2675
+msgid "Click on above field and type to filter list or add a new region"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:2737
+msgid "Click on above field and type to filter list or add a new city"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3062
+#: geodir_location_hooks_actions.php:3075
+#, php-format
+msgid "Please choose any address of the (%s) country only."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3073
+#, php-format
+msgid "Please choose any address of the (%s) countries only."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3079
+msgid "No countries available."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3113
+#: geodir_location_hooks_actions.php:3129
+#, php-format
+msgid "Please choose any address of the (%s) region only."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3127
+#, php-format
+msgid "Please choose any address of the (%s) regions only."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3147
+#: geodir_location_hooks_actions.php:3159
+#, php-format
+msgid "Please choose any address of the (%s) city only."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3157
+#, php-format
+msgid "Please choose any address of the (%s) cities only."
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3683
+msgid "Category Top Description"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3685
+msgid "%location% tag available here"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3689
+msgid "Category + Location Top Description"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3689
+msgid "(Leave blank to display default description of category for location)"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:3697
+#, php-format
+msgid "Category description for location %s"
+msgstr ""
+
+#: geodir_location_hooks_actions.php:4049
+msgid "Next"
+msgstr ""
+
+#: geodir_location_list.php:89
+msgid "Delete Selected"
+msgstr ""
+
+#: geodir_location_manager.php:146
+msgid ""
+"<span style=\"color:#FF0000\">There was an issue determining where "
+"GeoDirectory Plugin is installed and activated. Please install or activate "
+"GeoDirectory Plugin.</span>"
+msgstr ""
+
+#: geodir_location_seo.php:28
+msgid "Cities"
+msgstr ""
+
+#: geodir_location_seo.php:31
+msgid "Regions"
+msgstr ""
+
+#: geodir_location_seo.php:34
+msgid "Countries"
+msgstr ""
+
+#: geodir_location_seo.php:42
+msgid "Geo Directory Manage SEO"
+msgstr ""
+
+#: geodir_location_seo.php:53 language.php:80
+msgid "Location"
+msgstr ""
+
+#: geodir_location_seo.php:60
+msgid "Meta Description"
+msgstr ""
+
+#: geodir_location_seo.php:61 geodir_location_widgets.php:693
+msgid "Location Description"
+msgstr ""
+
+#: geodir_location_seo.php:62
+msgid "Image/Tagline"
+msgstr ""
+
+#: geodir_location_seo.php:96
+msgid "Enter Image Tagline"
+msgstr ""
+
+#: geodir_location_seo.php:146 geodir_location_template_tags.php:23
+msgid "Save changes"
+msgstr ""
+
+#: geodir_location_shortcodes.php:26 geodir_location_widgets.php:761
+msgid "Near Me"
+msgstr ""
+
+#: geodir_location_template_tags.php:57
+msgid "Home"
+msgstr ""
+
+#: geodir_location_template_tags.php:375
+msgid "Click to change location"
+msgstr ""
+
+#: geodir_location_template_tags.php:580
+msgid "Click on a link to filter results or on arrow to drilldown."
+msgstr ""
+
+#: geodir_location_translate.php:46
+msgid ""
+"INSTRUCTIONS: Translate the countries you want to via .po file and then "
+"upload the .mo file to your server, then tick the countries you translated "
+"and click the Update button."
+msgstr ""
+
+#: geodir_location_widgets.php:47
+msgid "GD > Popular Locations"
+msgstr ""
+
+#: geodir_location_widgets.php:50
+msgid "GD > Popular Location"
+msgstr ""
+
+#: geodir_location_widgets.php:70
+msgid "Popular Locations"
+msgstr ""
+
+#: geodir_location_widgets.php:141 geodir_location_widgets.php:251
+#: geodir_location_widgets.php:479 geodir_location_widgets.php:725
+msgid "Title:"
+msgstr ""
+
+#: geodir_location_widgets.php:167 geodir_location_widgets.php:170
+msgid "GD > Location Neighbourhood"
+msgstr ""
+
+#: geodir_location_widgets.php:188
+msgid "Location Neighbourhood"
+msgstr ""
+
+#: geodir_location_widgets.php:275 geodir_location_widgets.php:278
+msgid "GD > Popular Neighbourhood Post"
+msgstr ""
+
+#: geodir_location_widgets.php:315
+#, php-format
+msgid "Neighbourhood %s"
+msgstr ""
+
+#: geodir_location_widgets.php:486
+msgid "Post Type:"
+msgstr ""
+
+#: geodir_location_widgets.php:503
+msgid "Use current viewing post type"
+msgstr ""
+
+#: geodir_location_widgets.php:507
+msgid "Post Category:"
+msgstr ""
+
+#: geodir_location_widgets.php:519 geodir_location_widgets.php:528
+msgid "All"
+msgstr ""
+
+#: geodir_location_widgets.php:533
+msgid "Sort by:"
+msgstr ""
+
+#: geodir_location_widgets.php:536
+msgid "Latest"
+msgstr ""
+
+#: geodir_location_widgets.php:537
+msgid "Featured"
+msgstr ""
+
+#: geodir_location_widgets.php:538
+msgid "Review"
+msgstr ""
+
+#: geodir_location_widgets.php:539
+msgid "Rating"
+msgstr ""
+
+#: geodir_location_widgets.php:546
+msgid "Number of posts:"
+msgstr ""
+
+#: geodir_location_widgets.php:554
+msgid "Layout:"
+msgstr ""
+
+#: geodir_location_widgets.php:556
+msgid "Grid View (Two Columns)"
+msgstr ""
+
+#: geodir_location_widgets.php:557
+msgid "Grid View (Three Columns)"
+msgstr ""
+
+#: geodir_location_widgets.php:558
+msgid "Grid View (Four Columns)"
+msgstr ""
+
+#: geodir_location_widgets.php:559
+msgid "Grid View (Five Columns)"
+msgstr ""
+
+#: geodir_location_widgets.php:560
+msgid "List view"
+msgstr ""
+
+#: geodir_location_widgets.php:566
+msgid "Post Content excerpt character count :"
+msgstr ""
+
+#: geodir_location_widgets.php:627 geodir_location_widgets.php:630
+msgid "GD > Location Description"
+msgstr ""
+
+#: geodir_location_widgets.php:745 geodir_location_widgets.php:748
+msgid "GD > Near Me Button"
+msgstr ""
+
+#: language.php:8
+msgid "Geo Directory Manage Location"
+msgstr ""
+
+#: language.php:10
+msgid "Location set default successfully."
+msgstr ""
+
+#: language.php:12
+msgid "Location merge successfully."
+msgstr ""
+
+#: language.php:14
+msgid "Location deleted successfully."
+msgstr ""
+
+#: language.php:22
+msgid "City Latitude"
+msgstr ""
+
+#: language.php:24
+msgid "City Longitude"
+msgstr ""
+
+#: language.php:26
+msgid "Default City"
+msgstr ""
+
+#: language.php:28
+msgid "Action"
+msgstr ""
+
+#: language.php:30
+msgid "Edit"
+msgstr ""
+
+#: language.php:32
+msgid "Delete"
+msgstr ""
+
+#: language.php:34
+msgid "Note"
+msgstr ""
+
+#: language.php:36
+msgid ": Please select city for merge."
+msgstr ""
+
+#: language.php:38
+msgid "Merge"
+msgstr ""
+
+#: language.php:40
+msgid "Please select merge city."
+msgstr ""
+
+#: language.php:42 language.php:44
+msgid "Are sure you want to make this city default?"
+msgstr ""
+
+#: language.php:46
+msgid ": Select city for set primary city."
+msgstr ""
+
+#: language.php:48
+msgid "Set Primary"
+msgstr ""
+
+#: language.php:50
+msgid "Geo Directory Add Location"
+msgstr ""
+
+#: language.php:52
+msgid "Location saved successfully."
+msgstr ""
+
+#: language.php:54
+msgid "Location updated successfully."
+msgstr ""
+
+#: language.php:56
+msgid "Location already exits."
+msgstr ""
+
+#: language.php:58
+msgid "Set City on Map"
+msgstr ""
+
+#: language.php:60
+msgid "City Meta"
+msgstr ""
+
+#: language.php:62
+msgid "City Description"
+msgstr ""
+
+#: language.php:64
+msgid "Save"
+msgstr ""
+
+#: language.php:66
+msgid "This Field are required."
+msgstr ""
+
+#: language.php:68
+msgid "Wish to enable multi city ?"
+msgstr ""
+
+#: language.php:70
+msgid ""
+"Select the option if you wish to enable multi city option. If it is not "
+"selected, default first city options will apply to complete site."
+msgstr ""
+
+#: language.php:72
+msgid "Wish to enable EVERYWHERE city ?"
+msgstr ""
+
+#: language.php:74
+msgid ""
+"Select the option if you wish to enable the option to show all city's info."
+msgstr ""
+
+#: language.php:76
+msgid "Set neighbourhood on map"
+msgstr ""
+
+#: language.php:78
+msgid "Location settings saved successfully."
+msgstr ""
+
+#: language.php:82
+msgid "City Neighbourhood"
+msgstr ""
+
+#: language.php:84
+msgid "Add Neighbourhood"
+msgstr ""
+
+#: language.php:86
+msgid "Geo Directory Manage Neighbourhood"
+msgstr ""
+
+#: language.php:88
+msgid "Neighbourhood Name"
+msgstr ""
+
+#: language.php:92
+msgid "Latitude"
+msgstr ""
+
+#: language.php:94
+msgid "Longitude"
+msgstr ""
+
+#: language.php:96
+msgid "Neighbourhood added successfully."
+msgstr ""
+
+#: language.php:98
+msgid "Neighbourhood updated successfully."
+msgstr ""
+
+#: language.php:100
+msgid "Neighbourhood already exits."
+msgstr ""
+
+#: language.php:102
+msgid "Neighbourhood deleted successfully."
+msgstr ""
+
+#: language.php:104
+msgid "No Result Found."
+msgstr ""
+
+#: language.php:106
+msgid "Change Location"
+msgstr ""
+
+#: language.php:108
+msgid "Geo Directory Manage Countries Translation"
+msgstr ""
+
+#: language.php:109
+msgid "Please select country to update translation."
+msgstr ""
+
+#: language.php:110
+msgid "Country Url"
+msgstr ""
+
+#: language.php:111
+msgid "Country After Translation"
+msgstr ""
+
+#: language.php:112
+msgid "Country Url After Translation"
+msgstr ""
+
+#: language.php:113
+msgid "Total Locations"
+msgstr ""
+
+#: language.php:114
+msgid "Total Listings"
+msgstr ""
+
+#: language.php:115
+msgid ""
+": Please select country to update translation for country name and country "
+"url."
+msgstr ""
+
+#: language.php:116
+msgid "Update"
+msgstr ""
+
+#: language.php:118
+msgid "Records updated successfully."
+msgstr ""
+
+#: language.php:119
+msgid "No records updated!"
+msgstr ""

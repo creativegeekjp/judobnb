@@ -64,6 +64,7 @@ function check_prev()
  
 function reservation_host()
 {  
+    
     if ( check_prev() )
     {
         echo "<a href='".site_url()."/reservations-for-guests/'>View Guest Reservations</a>";
@@ -102,7 +103,7 @@ function reservation_host()
             if( $wpdb->num_rows > 0 )
             {
                 echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-                      <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+                      <th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
             }
             else
             {
@@ -137,11 +138,11 @@ function reservation_host()
                 $price = $list->price;
                 $reservated = $list->reservated;
                
-                //$get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
-                //$authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
+                $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
+                $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
                 
                 //get author by roomid for messaging
-                //$user_info = get_userdata( $authors );
+                $user_info = get_userdata( $authors );
         	    
         	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
         	     
@@ -159,7 +160,6 @@ function reservation_host()
                         <td>".$email."</td>
                         <td>".$country."</td>
                         <td>".$approve."</td>
-                        <td>".$roomnumber."</td>
                         <td>".$number."</td>
                         <td>".$childs."</td>
                         <td>".$curr['symbol'].''.$curr['converted']."</td>
@@ -221,7 +221,7 @@ function reservation_guest()
             {
                 echo '<form name="post" method="post" id="post">';
                 echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-                      <th>ROOMNUMBER</th><th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+                      <th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
             }
             else
             {
@@ -284,7 +284,6 @@ function reservation_guest()
                         <td>".$email."</td>
                         <td>".$country."</td>
                         <td>".$approve."</td>
-                        <td>".$roomnumber."</td>
                         <td>".$number."</td>
                         <td>".$childs."</td>
                         <td>".$curr['symbol'].''.$curr['converted']."</td>

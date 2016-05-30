@@ -112,8 +112,9 @@ function vh_featured_properties($atts, $content = null, $code) {
 		</script>';
 
 		$secondary_title = '<span>' . $listing_stitle . '</span>';
+		
 
-		$output .= '<h1 class="main-module-title">' . $listing_ptitle . $secondary_title . '</h1>';
+		$output .= '<h1 class="main-module-title">' . __($listing_ptitle, 'vh') . $secondary_title . '</h1>';
 	   
 		$output .= '<div class="featured-properties-controls">
 			<a href="javascript:void(0)" class="listing-next icon-angle-right"></a>
@@ -372,9 +373,9 @@ function vh_popular_destinations($atts, $content = null, $code) {
 	if( $the_query->have_posts() ) {
 		$output .= '<div class="popular-destinations-main">';
 
-		$secondary_title = '<span>' . $popular_dest_stitle . '</span>';
+		$secondary_title = '<span>' . __($popular_dest_stitle,'vh') . '</span>';
 
-		$output .= '<h1 class="main-module-title">' . $popular_dest_ptitle . $secondary_title . '</h1>';
+		$output .= '<h1 class="main-module-title">' . __($popular_dest_ptitle,'vh') . __($secondary_title,'vh') . '</h1>';
 		$output .= '<div class="clearfix"></div>';
 
 		while ( $the_query->have_posts() ) {
@@ -528,7 +529,7 @@ function vh_popular_destinations($atts, $content = null, $code) {
 				}
 				$output .= '<span class="city-country">' . $city_display . '</span>';
 				$output .= '<span class="city-country country">' . $country_display . '</span>';
-				$output .= '<a href="javascript:void(0)" class="city-text">' . __('View Listings') . '</a>';
+				$output .= '<a href="javascript:void(0)" class="city-text">' . __('View Listings','vh') . '</a>';
 				$output .= '</div>';
 				$output .= '</div>';
 				$count++;

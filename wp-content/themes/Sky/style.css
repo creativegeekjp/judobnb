@@ -14754,7 +14754,7 @@ body {
 }
 
 .wrapper .header {
-	background: #fff;
+	/*background: #fff;*/
 }
 
 .header-button {
@@ -15228,6 +15228,7 @@ body.home .popular-destinations-main .main-module-title {
 
 body.geodir-page .header .top-header,
 body.search-results .header .top-header {
+	/*background: url(images/header_bg.jpg) no-repeat;*/
 	background: url(images/header_bg.jpg) no-repeat;
 	background-size: 100% 70px;
 	position: relative;
@@ -15478,7 +15479,7 @@ label .btn-translate {
 	
 	.welcome-container {
 		height: auto;
-		top: 0;
+		top: 150px;
 	}
 	
 	body .wrapper .header .top-header {
@@ -15493,13 +15494,15 @@ label .btn-translate {
 	
 	body.home .wrapper .header .top-header a,
 	body.home .wrapper .header .top-header a:hover {
-		background: url(images/logo_v1.png) no-repeat center center;
+		/*background: url(images/logo_v1.png) no-repeat center center;*/
+		background: url(images/logo-judobnb-v6_black.png) no-repeat center center;
 		background-size: 100%;
 	}
 	
 	body .wrapper .header .top-header a,
 	body .wrapper .header .top-header a:hover {
-		background: url(images/logo-judobnb-v6_white_bg) no-repeat center center;
+		/*background: url(images/logo-judobnb-v6_white_bg) no-repeat center center;*/
+		background: url(images/logo-judobnb-v6_black.png) no-repeat center center;
 		background-size: 100%;
 	}
 	
@@ -15553,3 +15556,5 @@ label .btn-translate {
 		top: -150px !important;
 	}
 }
+
+

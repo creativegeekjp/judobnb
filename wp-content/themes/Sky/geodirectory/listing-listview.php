@@ -35,7 +35,7 @@ if ( isset($_GET['stype']) ) {
 				} else {
 					$childrens = $_GET["sgeo_childrens"];
 				}
-				// to avoid duplication of guest TAG when filtered -rhea
+				
 			//	echo '<li class="test">'.(intval($_GET["sgeo_adults"])+intval($childrens))." ".__("guests", "vh").'</li>';
 			}
 			?>
@@ -438,7 +438,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " guests";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + "guests";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 							jQuery(this).remove();

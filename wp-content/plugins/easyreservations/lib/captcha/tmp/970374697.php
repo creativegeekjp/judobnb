@@ -1,0 +1,1 @@
+<?php $captcha = "WTF8"; ?>

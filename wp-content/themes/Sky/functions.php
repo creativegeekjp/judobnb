@@ -3228,4 +3228,3 @@ function wp_sitemap_page_list(){
 }
 add_shortcode('sitemap', 'wp_sitemap_page_list');
 
-
