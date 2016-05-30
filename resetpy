@@ -7,8 +7,9 @@ except:
     sql = open("./sql.dump")
     print sql.read()
     exit()
-
-splitted = sql.split("192.168.1.2:23662")
+oldd = "judobnb.creativegeek.jp"
+newd = "www.judobnb.com"
+splitted = sql.split(oldd)
 result = []
 for i in range(len(splitted)):
         
@@ -24,7 +25,7 @@ for i in range(len(splitted)):
 
             try:
                 length = int(var[1])
-                newlength = length + 6
+                newlength = length + abs(len(newd) - len(oldd))
                 var[1] = str(newlength)
       
                 splthestr[-1]  = ":".join(var)
@@ -39,7 +40,7 @@ for i in range(len(splitted)):
         else:
             result.append(thestr)
      
-print "judobnb.creativegeek.jp".join(result)
+print newd.join(result)
 
 # print "judobnb.creativegeek.jp".join(result)
 # print (splitted[-2][-100:])+"192.168.1.2.:23662"+splitted[-1][:100]
