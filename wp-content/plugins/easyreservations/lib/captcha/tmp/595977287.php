@@ -1,1 +1,0 @@
-<?php $captcha = "VB6K"; ?>

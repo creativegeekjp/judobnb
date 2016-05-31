@@ -712,6 +712,7 @@
 							</div>
 						</div>
 						<div class="header-search-form">
+							<img class="home-arrow-down" id="arrow-down" src="<?= get_template_directory_uri() ?>/images/homepage-down-arrow.png" />
 							<div class="header-form-container">
 								<?php
 									$listing_categories = get_terms('gd_placecategory');

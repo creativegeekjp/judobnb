@@ -64,7 +64,8 @@ function check_prev()
  
 function reservation_host()
 {  
-    
+   
+	
     if ( check_prev() )
     {
         echo "<a href='".site_url()."/reservations-for-guests/'>View Guest Reservations</a>";

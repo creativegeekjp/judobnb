@@ -1,1 +1,0 @@
-<?php $captcha = "WP4G"; ?>

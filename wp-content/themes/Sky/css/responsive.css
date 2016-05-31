@@ -666,6 +666,11 @@
 	body .wrapper .top-header .logo {
 	    max-width: 175px;
 	}
+	/*Arrow Down*/
+	.header-search-container img.home-arrow-down{
+		top: -200px !important;
+		display: block;
+	}
 }
 
 @media (max-width: 480px) {

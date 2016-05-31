@@ -877,7 +877,8 @@ jQuery(document).ready(function($) {
 					var b_date = new Date(Date.parse(jQuery.cookie('vh_endrange')).toString('yyyy'), parseInt(Date.parse(jQuery.cookie('vh_endrange')).toString('M'))-1, Date.parse(jQuery.cookie('vh_endrange')).toString('d'), 0, 0, 0, 0);
 
 					if ( jQuery(".single-listing-info").length ) {
-						jQuery(".single-listing-info .single-listing-text .for-selected").html(jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24)+1));
+						///////////////////////jino "for selected dates"
+						//jQuery(".single-listing-info .single-listing-text .for-selected").html(jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24)+1));
 					}
 
 					// Hide datepicker
@@ -963,7 +964,7 @@ jQuery(document).ready(function($) {
 	}
 
 	if (jQuery.cookie('vh_selected_people') == null) {
-		jQuery.cookie('vh_selected_people', '1 Adult/No Children', { path: '/' });
+		jQuery.cookie('vh_selected_people', '1 Adult/No Children' , { path: '/' });
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
 	} else {
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
@@ -1601,6 +1602,7 @@ jQuery(document).ready(function($) {
 				};
 
 				if (jQuery.cookie('vh_selected_people') == null) {
+					/*jino*/
 					jQuery.cookie('vh_selected_people', '1 Adult/No Children', { path: '/' });
 					jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
 				} else {

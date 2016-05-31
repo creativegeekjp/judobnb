@@ -182,9 +182,11 @@ function get_departures(){
         	    $host=$authors;
         	    $tid=$reserve->tid;
         	    $id=$reserve->id;
+        	    $paypal_acc =$wpdb->get_var("SELECT value from jd_bp_xprofile_data WHERE user_id=$host");
+        	    
         	    date_default_timezone_set("Asia/Manila");
         	    
-        	    
+        	    echo $paypal_acc;
         	      
         	              $time=new DateTime($reserve->departure);
         	              $time->add(new DateInterval("PT24H"));
@@ -205,8 +207,8 @@ function get_departures(){
                                 "VERSION"       => "99",
                                 "RECEIVERTYPE"  =>"EMailAddress",
                                 "CURRENCYCODE"  =>$arr['currency'],
-                                "L_EMAIL0"      =>"daryljoycepalis-facilitator-1@ymail.com",
-                                "L_AMT0"        =>'30.00'
+                                "L_EMAIL0"      =>$paypal_acc,
+                                "L_AMT0"        =>$arr['total']
                                 );
                             
                               $result=call_pay_api($data);

@@ -1363,6 +1363,7 @@ function my_widget_class($params) {
 add_filter('dynamic_sidebar_params', 'my_widget_class');
 
 function vh_get_listing_people_options() {
+
 	$adults = array(__("1 Adult", "vh"), __("2 Adults", "vh"), __("3 Adults", "vh"), __("4 Adults", "vh"), __("5 Adults", "vh"), __("6 Adults", "vh"), __("7 Adults", "vh"), __("8 Adults", "vh"), __("9 Adults", "vh"), __("10 Adults", "vh"));
 	$childrens = array(__("No Children", "vh"), __("1 Child", "vh"), __("2 Children", "vh"), __("3 Children", "vh"), __("4 Children", "vh"), __("5 Children", "vh"), __("6 Children", "vh"), __("7 Children", "vh"), __("8 Children", "vh"), __("9 Children", "vh"), __("10 Children", "vh"));
 

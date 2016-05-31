@@ -218,6 +218,10 @@ input[type="submit"] {
 	position: relative;
 }
 
+.header-search-container img.home-arrow-down{
+	display: none;
+}
+
 .header-custom-posts {
 	position: absolute;
 	bottom: 0;

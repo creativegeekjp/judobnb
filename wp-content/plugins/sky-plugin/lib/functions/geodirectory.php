@@ -875,7 +875,7 @@ function vh_get_header_form() {
 			ob_end_clean();
 			$form_output .= '
 			<div class="clearfix"></div></div>
-			<div class="header-input-container"><span class="header-input-title">'.__('People:', 'vh').'</span><input type="text" id="header-people" readonly>';
+			<div class="header-input-container"><span class="header-input-title">'.__('People:>>>>>', 'vh').'</span><input type="text" id="header-people" readonly>';
 			ob_start();
 			vh_get_listing_people_options();
 			$form_output .= ob_get_contents();
