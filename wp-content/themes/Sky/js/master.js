@@ -966,8 +966,12 @@ jQuery(document).ready(function($) {
 	if (jQuery.cookie('vh_selected_people') == null) {
 		jQuery.cookie('vh_selected_people', '1 Adult/No Children' , { path: '/' });
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
+		
 	} else {
+		console.log(">>>>>>>>>>>>>>>>>>>>");
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
+	//	jQuery("#header-people, #listing-people").val('vh_selected_people');
+	
 	}
 
 	jQuery(".calendar-search-item").live({

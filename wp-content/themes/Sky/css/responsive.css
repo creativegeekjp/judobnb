@@ -507,7 +507,7 @@
 	}
 
 	.wrapper .single-listing-contact-author {
-		margin-left: 0;
+		/*margin-left: 0;*/
 	}
 
 	.wrapper .geodir-map-left {
@@ -629,6 +629,7 @@
 		border-right: 6px solid rgba(0,0,0,0.5);
 		border-bottom: none;
 		padding-right: 15px;
+		height: auto !important;
 	}
 
 	body.home.admin-bar #ui-datepicker-div {
@@ -657,15 +658,15 @@
 	.header-search-form{
 		position: relative;
 	}
-	body .wrapper .top-header .logo a {
-		padding: 0;
-	}
-	body .wrapper .top-header .logo, body .top-menu-container, body .wrapper .header-add-property {
-    margin-top: 10px;
-	}
-	body .wrapper .top-header .logo {
-	    max-width: 175px;
-	}
+	/*body .wrapper .top-header .logo a {*/
+	/*	padding: 0;*/
+	/*}*/
+	/*body .wrapper .top-header .logo, body .top-menu-container, body .wrapper .header-add-property {*/
+ /*   margin-top: 10px;*/
+	/*}*/
+	/*body .wrapper .top-header .logo {*/
+	/*    max-width: 175px;*/
+	/*}*/
 	/*Arrow Down*/
 	.header-search-container img.home-arrow-down{
 		top: -200px !important;
@@ -973,6 +974,15 @@
 	.recent-activities .info-container .item-author {
 		margin-bottom: 25px;
 		display: inline-block;
+	}
+	body.home #ui-datepicker-div {
+	    top: 1050px !important;
+	    left: -28px !important;
+	    margin-top: 8px;
+	}
+	#ui-datepicker-div {
+	    border: 6px solid rgba(0,0,0,0.5);
+	    background-color: #fff;
 	}
 }
 
@@ -1939,9 +1949,11 @@
 		top: 340px;
 		left: 165px;
 	}
-
+ /*jino*/
 	.geodir-filter-container {
-		left: 338px !important;
+		/*left: 338px !important;*/
+		left: 5px !important;
+    width: 60%;
 	}
 
 	.geodir_category_list_view li.gridview_onehalf {

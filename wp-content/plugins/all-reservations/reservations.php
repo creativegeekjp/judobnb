@@ -73,7 +73,7 @@ function load_all_reservations(){
     if( $wpdb->num_rows > 0 )
     {
         
-        echo '<form name="post" method="post" id="post">';
+        echo '<div id="page-wrap">';
         echo '<table class="gridtable">
                 <thead>
                     <tr>
@@ -111,7 +111,7 @@ function load_all_reservations(){
     	    }
 	    
                 echo "<tr>
-                    <td><a href=".get_permalink($pid).">View</a></td>
+                    <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">View</a></td>
                     <td>".date('F d, Y h:i A',strtotime($reserve->arrival) )."</td>
                     <td>".date('F d, Y h:i A',strtotime($reserve->departure) )."</td>
                     <td>".$reserve->name."</td>
@@ -122,10 +122,10 @@ function load_all_reservations(){
                     <td>".$reserve->childs."</td>
                     <td>".$reserve->price."</td>
                     <td>".date('F d, Y h:i A', strtotime($reserve->reservated) )."</td>
-                    <td><a href='".site_url()."/payment-confirmation/?host=".$reserve->host_id."&tid=".$reserve->tid."&id=".$reserve->id."&status=payout'><button type='button' name='payoutButton' class='btn-success' >PAY HOST</button></a></td>
+                    <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/payment-confirmation/?host=".$reserve->host_id."&tid=".$reserve->tid."&id=".$reserve->id."&status=payout'>PAYHOST</a></td>
                 </tr>";
         }
-        echo "</tbody></table></form>";
+        echo "</tbody></table>";
              
               return;
     }else{

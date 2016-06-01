@@ -68,7 +68,7 @@ function reservation_host()
 	
     if ( check_prev() )
     {
-        echo "<a href='".site_url()."/reservations-for-guests/'>View Guest Reservations</a>";
+        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests/'>View Guest Reservations</a>";
     }
     else
     {
@@ -103,8 +103,9 @@ function reservation_host()
             
             if( $wpdb->num_rows > 0 )
             {
-                echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-                      <th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+                 echo '<div id="page-wrap">';
+                echo '<table class="gridtable"><thead><tr><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>APPROVE</th>
+                      <th>ADULTS</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th></tr></thead>';
             }
             else
             {
@@ -154,23 +155,22 @@ function reservation_host()
         	    }
         	   
                 echo "<tr>
-                 <td><a href=".get_permalink($pid).">View</a></td>
+                 <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">View</a></td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
                         <td>".$email."</td>
-                        <td>".$country."</td>
                         <td>".$approve."</td>
                         <td>".$number."</td>
                         <td>".$childs."</td>
                         <td>".$curr['symbol'].''.$curr['converted']."</td>
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
-                        <td><a href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
-                         <td><a href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
-                         <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
+                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
+                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
+                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
                       </tr>";
             }
-            echo "</tr></table>";
+            echo "</tr></table></div>";
             }
             else
             {
@@ -187,7 +187,7 @@ function reservation_guest()
 {
     if ( !check_prev() )
     {
-        echo "<a href='".site_url()."/list-reservation-host/'>View Host Reservations</a>";
+        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>View Host Reservations</a>";
     }
     else
     {
@@ -220,9 +220,9 @@ function reservation_guest()
             
             if( $wpdb->num_rows > 0 )
             {
-                echo '<form name="post" method="post" id="post">';
-                echo '<table class="gridtable"><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>COUNTRY</th><th>APPROVE</th>
-                      <th>NUMBER</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th>';
+                echo '<div id="page-wrap">';
+                echo '<table class="gridtable"><thead><tr><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>APPROVE</th>
+                      <th>ADULTS</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th></tr></thead>';
             }
             else
             {
@@ -264,10 +264,10 @@ function reservation_guest()
                 $user_info = get_userdata( $authors );
         	    
         	    //create link edit if not cancelled yet
-        	    $edit_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>Edit</a>";
+        	    $edit_check = $list->approve == "del" ? "----" : "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>Edit</a>";
         	    
         	    //create link cancel if not cancelled yet
-        	    $cancel_check = $list->approve == "del" ? "----" : "<a href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a>";
+        	    $cancel_check = $list->approve == "del" ? "----" : "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Cancel</a>";
         	    
         	    //get original post_id from post_meta
         	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
@@ -278,12 +278,11 @@ function reservation_guest()
         	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
         	     
                 echo "<tr>
-                        <td><a href=".get_permalink($pid).">View</a></td>
+                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">View</a></td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
                         <td>".$email."</td>
-                        <td>".$country."</td>
                         <td>".$approve."</td>
                         <td>".$number."</td>
                         <td>".$childs."</td>
@@ -291,14 +290,14 @@ function reservation_guest()
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                          <td>".$edit_check."</td>
                         <td>".$cancel_check."</td>
-                        <td><a href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>Send Message</a></td>
+                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
                       </tr>";
             }
-            echo "</tr></table>";
+            echo "</tr></table></div>";
             }
             else
             {
-               echo "Please login<a href='#' class='simplemodal-login'> here</a>";
+               echo "Please login<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='#' class='simplemodal-login'>here</a>";
             }
    }
       return;
@@ -313,7 +312,7 @@ function reservation_editing_confirmation()
     $room = isset($_GET['resource_id']) ? $_GET['resource_id'] : "" ;
     
     echo 'Youre about editing your previous transaction. proceed? <br><br>';
-    echo "<a href='".site_url()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>Yes</a> | <a href='".site_url()."/reservations-for-guests/'>No</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests/'>No</a>";
     
     return;
 }
@@ -325,7 +324,7 @@ function confirmation_host_disapproved()
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     
     echo 'Are you sure you want to disapproved this reservation?<br><br>';
-    echo "<a href='".site_url()."/host-disapproved/?idr=".$idr."&idt=".$idt."'>Yes</a> | <a href='".site_url()."/list-reservation-host/'>No</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-disapproved/?idr=".$idr."&idt=".$idt."'>Yes</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>No</a>";
  
     return ;
 }
@@ -344,11 +343,11 @@ function hosts_disapproved()
         
         if($list->approve == "del") //cancelled already
         {
-            echo "Failed to disapprove reservation. reservation might be cancelled.  <a href='".site_url()."/list-reservation-host/'>Return</a>";
+            echo "Failed to disapprove reservation. reservation might be cancelled.  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
         }
         else
         {
-            echo "Reservation was disapproved <a href='".site_url()."/list-reservation-host/'>return</a>";
+            echo "Reservation was disapproved <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret,$adminClientID,$adminSecret;
@@ -378,7 +377,7 @@ function confirmation_host_approved()
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
     
     echo 'Are you sure you want to approved this reservation?<br><br>';
-    echo "<a href='".site_url()."/host-approved/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>Yes</a> | <a href='".site_url()."/list-reservation-host/'>No</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-approved/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>No</a>";
 }
 
 function hosts_approved()
@@ -399,7 +398,7 @@ function hosts_approved()
         {
             $reason = $list->approve == "del" ? "Cancelled" : "Disapproved"; 
             
-            echo "Unable to approve this reservation the reaservation was : <b>".$reason."</b> by the guest. <a href='".site_url()."/list-reservation-host/'> return</a>";
+            echo "Unable to approve this reservation the reaservation was : <b>".$reason."</b> by the guest. <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
         }
         else
         {
@@ -417,7 +416,7 @@ function hosts_approved()
                 "is_final_capture": true
               }');
             
-            echo "Reservation was successfully approved <a href='".site_url()."/list-reservation-host/'>return</a>";
+            echo "Reservation was successfully approved <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
            
             $query=$wpdb->query("UPDATE jd_reservations SET approve='yes' WHERE id=$idr");
         }
@@ -431,7 +430,7 @@ function cancels_confirm_reservations()
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
  
     echo 'Are you sure you want to cancel this reservation?<br><br>';
-    echo "<a href='".site_url()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>Yes</a> | <a href='".site_url()."/reservations-for-guest/'>No</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>No</a>";
  
 }
 function cancel_reservations()
@@ -448,11 +447,11 @@ function cancel_reservations()
         
         if($list->approve == "del") //cancelled already
         {
-            echo "Reservation already cancelled.  <a href='".site_url()."/reservations-for-guest/'>Return</a>";
+            echo "Reservation already cancelled.  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>return</a>";
         }
         else
         {
-            echo "Reservation was cancelled <a href='".site_url()."/reservations-for-guest'>return</a>";
+            echo "Reservation was cancelled <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest'>return</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret;
@@ -531,9 +530,9 @@ function successreservation_reservations()
 			 );
 		 
    if ( !check_prev() ){
-        echo "Your reservation was successfully reserved.<a href='".site_url()."/list-reservation-host/'>View Reservations</a>";
+        echo "Your reservation was successfully reserved.<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>View Reservations</a>";
     }else{
-        echo "Your reservation was successfully reserved. <a href='".site_url()."/reservations-for-guests'>View Reservations</a>";
+        echo "Your reservation was successfully reserved. <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests'>View Reservations</a>";
     }
     return;
 }
@@ -545,7 +544,7 @@ function listings_message_confirmation()
              echo "Listing was successfully deleted.  <a href='" . site_url() . "/manage-listing/'> return </a>";
         }else{
             echo "Are you sure you want to delete this listing?<br><br>";
-            	echo "<a href='" . get_delete_post_link( $pid ) . "'>Yes</a> | <a href='" . site_url() . "/manage-listing/'> No </a>";
+            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>Yes</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listing/'> No </a>";
         }
     return;
 }
@@ -965,29 +964,63 @@ function cascade()
 {
 
 echo "<style>
-     table.gridtable {
-		font-family: verdana,arial,sans-serif;
-		font-size:11px;
-		color:#333333;
-		border-width: 1px;
-		border-color: #3A3A3A;
-		border-collapse: collapse;
+table.gridtable { font-size: 12px; font-family: 'Helvetica'; }
+a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding: 8px; }
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+	/* Force table to not be like tables anymore */
+
+	table.gridtable, .gridtable thead, .gridtable tbody, .gridtable th, .gridtable td, .gridtable tr { 
+		display: block; 
 	}
-	table.gridtable th {
-		border-width: 1px;
-		padding: 8px;
-		border-style: solid;
-		border-color: #3A3A3A;
-		background-color: #B3B3B3;
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	table.gridtable thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
 	}
-	table.gridtable td {
-		border-width: 1px;
-		padding: 8px;
-		border-style: solid;
-		border-color: #3A3A3A;
-		background-color: #ffffff;
+	
+	table.gridtable tr { border: 1px solid #ccc; }
+	
+	table.gridtable td { 
+		/* Behave  like a 'row' */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
 	}
-    
+	
+	table.gridtable td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	table.gridtable td:nth-of-type(1):before { content: 'ROOM'; }
+	table.gridtable td:nth-of-type(2):before { content: 'ARRIVAL'; }
+	table.gridtable td:nth-of-type(3):before { content: 'DEPARTURE'; }
+	table.gridtable td:nth-of-type(4):before { content: 'NAME'; }
+	table.gridtable td:nth-of-type(5):before { content: 'EMAIL'; }
+	table.gridtable td:nth-of-type(6):before { content: 'COUNTRY'; }
+	table.gridtable td:nth-of-type(7):before { content: 'APPROVE'; }
+	table.gridtable td:nth-of-type(8):before { content: 'NUMBER'; }
+	table.gridtable td:nth-of-type(9):before { content: 'CHILDS'; }
+	table.gridtable td:nth-of-type(10):before { content: 'PRICE'; }
+	table.gridtable td:nth-of-type(11):before { content: 'RESERVATED'; }
+	table.gridtable td:nth-of-type(12):before { content: 'ACTION(S)'; }
+}
+
+
 
     </style>";
 }

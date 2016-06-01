@@ -267,7 +267,7 @@ function reservations_form_shortcode($atts){
    	endforeach;
    	
      //jino adult and children
-	preg_match_all('!\d+!', $_COOKIE['vh_selected_people'] , $matches);
+	preg_match_all('!\d+!', $_COOKIE['vh_selected_people'] + "test>>>>>>" , $matches);
     foreach ($matches as $value) :
         $adultss = isset($value[0]) ? $value[0] : "";
         $childrenss = isset($value[1]) ? $value[1] : "";

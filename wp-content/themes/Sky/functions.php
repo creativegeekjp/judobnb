@@ -1175,9 +1175,22 @@ function vh_get_header_search_field() {
 			do_action('vh_action_get_listing_when_options');
 			$form_output .= ob_get_contents();
 			ob_end_clean();
+			
+		/*	if($_SERVER['REQUEST_URI']=='/ja/'){
+				
+				
+				__($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh')
+			}
+			$vhpeople = $_COOKIE['vh_selected_people'];
+			$vhpeopleArray = explode('/', $vhpeople);*/
+			
 			$form_output .= '
 			<div class="clearfix"></div></div>
 			<div class="header-input-container"><span class="header-input-title">'.__('People:', 'vh').'</span><input type="text" id="header-people" readonly>';
+			//	id="header-people"
+			
+			//$form_output .=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".__($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh');
+			
 			ob_start();
 			vh_get_listing_people_options();
 			$form_output .= ob_get_contents();
