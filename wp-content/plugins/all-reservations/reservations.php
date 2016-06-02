@@ -180,13 +180,14 @@ function get_departures(){
         	   
         	    
         	    $host=$authors;
+        	    
         	    $tid=$reserve->tid;
         	    $id=$reserve->id;
-        	    $paypal_acc =$wpdb->get_var("SELECT value from jd_bp_xprofile_data WHERE user_id=$host");
+        	    $paypal_acc =$wpdb->get_var("SELECT value from jd_bp_xprofile_data WHERE user_id=$host AND field_id=330");
         	    
         	    date_default_timezone_set("Asia/Manila");
         	    
-        	    echo $paypal_acc;
+        	    
         	      
         	              $time=new DateTime($reserve->departure);
         	              $time->add(new DateInterval("PT24H"));

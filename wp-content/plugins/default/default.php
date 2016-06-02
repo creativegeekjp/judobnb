@@ -176,5 +176,40 @@ function wp_output_into_footer() {
 
 }
 add_action('wp_footer','wp_output_into_footer');
-
+/*
+function set_vh_peoplecookie(){
+    
+   $vhpeople = $_COOKIE['vh_selected_people'];
+   $vhpeopleArray = explode('/', $vhpeople);
+   $newValue = __($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh');
+		
   
+    
+  
+    
+     if(ICL_LANGUAGE_CODE== 'en' && isJapanese($_COOKIE['vh_selected_people'])){
+       
+       if($_COOKIE['vh_selected_people']=='')
+       {
+            setcookie('vh_selected_people', $newValue , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+   
+           
+       }
+		
+     }
+    echo $_COOKIE['vh_selected_people'];
+    
+   
+    
+ 
+    
+}
+
+function isJapanese($word) {
+    return preg_match('/[\x{4E00}-\x{9FBF}\x{3040}-\x{309F}\x{30A0}-\x{30FF}]/u', $word);
+}
+
+
+add_action('init', 'set_vh_peoplecookie');
+
+ */ 

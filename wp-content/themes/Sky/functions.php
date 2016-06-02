@@ -1176,13 +1176,13 @@ function vh_get_header_search_field() {
 			$form_output .= ob_get_contents();
 			ob_end_clean();
 			
-		/*	if($_SERVER['REQUEST_URI']=='/ja/'){
-				
-				
-				__($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh')
-			}
-			$vhpeople = $_COOKIE['vh_selected_people'];
-			$vhpeopleArray = explode('/', $vhpeople);*/
+			/*if($_SERVER['REQUEST_URI']=='/ja/'){
+			}*/
+			
+		/*	$vhpeople = $_COOKIE['vh_selected_people'];
+			$vhpeopleArray = explode('/', $vhpeople);
+			
+			$_COOKIE['vh_selected_people'] = __($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh');*/
 			
 			$form_output .= '
 			<div class="clearfix"></div></div>

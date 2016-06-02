@@ -9194,14 +9194,14 @@ body.geodir-main-search #geodir-wrapper {
 }
 /*jino*/
 body.geodir-main-search .geodir_category_list_view {
-	/*width: 673px;*/
-	width: 100%;
-	float: left;
-	padding: 0 16px 27px 0;
-	/*overflow: auto;*/
-	-webkit-overflow-scrolling: touch;
-	box-sizing: border-box;
-	/*position: absolute !important;*/
+	    width: 658px;
+    /* width: 50%; */
+    float: left;
+    padding: 0 16px 27px 0;
+    /* overflow: auto; */
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    /* position: absolute !important; */
 }
 
 body.geodir-main-search.skydirectory .geodir_category_list_view {
@@ -9762,9 +9762,9 @@ body.geodir-main-search .Navi {
 }
 
 body.geodir-main-search .stick_trigger_container {
-	float: left;
-	position: relative;
-	max-width: 50%;
+	float: right;
+	/*position: relative;*/
+	max-width: 100%;
 }
 
 body.home .stick_trigger_container {

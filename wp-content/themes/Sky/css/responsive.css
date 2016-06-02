@@ -621,13 +621,13 @@
 
 	.search-calendar-container {
 		width: 270px !important;
-		left: 50%;
-		transform: translateX(-50%);
+		left: -20%;
+		/*transform: translateX(-50%);*/
 	}
 
 	.search-calendar-options {
 		border-right: 6px solid rgba(0,0,0,0.5);
-		border-bottom: none;
+		/*border-bottom: none;*/
 		padding-right: 15px;
 		height: auto !important;
 	}
@@ -671,6 +671,15 @@
 	.header-search-container img.home-arrow-down{
 		top: -200px !important;
 		display: block;
+	}
+	body.home #ui-datepicker-div {
+	    top: 1048px !important;
+	    left: 0px !important;
+	    margin-top: 8px;
+	}
+	#ui-datepicker-div {
+	    border: 6px solid rgba(0,0,0,0.5);
+	    background-color: #fff;
 	}
 }
 
@@ -800,8 +809,8 @@
 	body .wrapper .top-header .logo {
 		width: 50%;
 		position: relative;
-		top: 50%;
-		transform: translateY(-50%);
+		top: 10%;
+		/*transform: translateY(-50%);*/
 		/*max-width: 105px;*/
 	}
 
@@ -976,14 +985,17 @@
 		display: inline-block;
 	}
 	body.home #ui-datepicker-div {
-	    top: 1050px !important;
-	    left: -28px !important;
+	    top: 1048px !important;
+	    left: 0px !important;
 	    margin-top: 8px;
 	}
 	#ui-datepicker-div {
 	    border: 6px solid rgba(0,0,0,0.5);
 	    background-color: #fff;
 	}
+	/*#simplemodal-login-container {*/
+ /*   	padding: 0px !important;*/
+	/*}*/
 }
 
 @media (max-width: 570px) {
@@ -1102,6 +1114,18 @@
 	.single-listing-by-main.skydirectory #twitter-widget-0 {
 		clear: none;
 		float: right !important;
+	}
+	.wrapper #publish_listing .geodir_publish_button, .wrapper #publish_listing .geodir_cancle_button {
+		font-size: 14px;
+	}
+	.wrapper .map-view-default, .wrapper .map-view-satellite, .wrapper .map-view-hybrid{
+		right: inherit;
+	}
+	.wrapper .map-view-satellite {
+	    left: 72px;
+	}
+	.wrapper .map-view-hybrid {
+	    left: 149px;
 	}
 }
 

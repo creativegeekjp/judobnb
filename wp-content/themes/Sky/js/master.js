@@ -879,6 +879,7 @@ jQuery(document).ready(function($) {
 					if ( jQuery(".single-listing-info").length ) {
 						///////////////////////jino "for selected dates"
 						//jQuery(".single-listing-info .single-listing-text .for-selected").html(jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24)+1));
+						jQuery(".single-listing-info .single-listing-text .for-selected").html(jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24)));
 					}
 
 					// Hide datepicker
@@ -2872,4 +2873,5 @@ jQuery(document).ready(function() {
 			bottom: jQuery(this).find('img').height() + 150
 		},250);
 	});
+	
 });
