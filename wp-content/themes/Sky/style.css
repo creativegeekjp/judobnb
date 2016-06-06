@@ -3598,6 +3598,13 @@ body.buddypress .gdbp-wrapper-reviews .comments-area .nocomments {
 		width: 100%;
 		margin-bottom: 30px;
 	}
+	
+	#buddypress .standard-form #basic-details-section #pass-strength-result {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5px;
+		height: auto;
+	}
 }
 
 
@@ -9295,7 +9302,7 @@ body.skydirectory .geodir-map-listing-top {
 body.geodir-main-search #geodir-wrapper,
 .search-results #geodir-wrapper-content,
 #geodir-main-content {
-	/*position: absolute;*/
+	position: relative;
 	width: 100%;
 	height: 100%;
 }
@@ -9313,10 +9320,10 @@ body.geodir-main-search #geodir-wrapper,
 body.geodir-main-search #geodir-wrapper {
 	height: calc(100% - 70px);
 }
-/*jino*/
-.geodir-map-left {
-	height: 560%;
-}
+/*jino - removed by elmer*/
+/*.geodir-map-left {*/
+/*	height: 560%;*/
+/*}*/
 
 .geodir_category_list_view li.gridview_onehalf {
 	overflow: hidden;
@@ -9782,7 +9789,7 @@ body.geodir-main-search .Navi {
 #geodir-main-search {
 	clear: both;
 	/*position: absolute;*/
-	height: calc(100% - 130px);
+	height: calc(100% - 101px);
 	width: 100%;
 	overflow-y: scroll;
 	bottom: 0;
@@ -9790,7 +9797,8 @@ body.geodir-main-search .Navi {
 /*jino*/
 .geodir-map-left {
 	float: left;
-	position: relative;
+	position: absolute; /*fix elmer*/
+	height: 100%;
 }
 
 body.geodir-main-search .stick_trigger_container {
@@ -15400,6 +15408,8 @@ body.page-id-6 .header-background-img {
 	left: 0;
 	padding: 10px 15px;
 	margin-bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .our-community .vc_gitem-post-data-source-post_excerpt .title {

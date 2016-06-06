@@ -330,11 +330,20 @@
 	}
 
 	.single-listing-info {
-		display: none;
+		/*display: none;*/
 	}
 
 	.single-listing-options input[type="text"] {
 		max-width: 170px;
+		font-size: 12px;
+	}
+	
+	.listing-input-title{
+		line-height: 1em;
+	}
+	
+	.single-listing-options input[type="text"]{
+		padding: 0 20px;
 	}
 
 	html body .wrapper .single-listing-booknow {
@@ -512,6 +521,11 @@
 
 	.wrapper .geodir-map-left {
 		width: 100%;
+		position: relative;
+	}
+	
+	#geodir-main-search {
+		margin-bottom: 30px;
 	}
 
 	body.geodir-main-search .geodir_category_list_view {
@@ -632,14 +646,14 @@
 		height: auto !important;
 	}
 
-	body.home.admin-bar #ui-datepicker-div {
-		top: 700px !important;
-		margin-left: 0;
-		padding: 0;
-		left: 50% !important;
-		transform: translateX(-50%);
-		border-left: 6px solid rgba(0,0,0,0.5);
-	}
+	/*body.home.admin-bar #ui-datepicker-div {*/
+	/*	top: 700px !important;*/
+	/*	margin-left: 0;*/
+	/*	padding: 0;*/
+	/*	left: 50% !important;*/
+	/*	transform: translateX(-50%);*/
+	/*	border-left: 6px solid rgba(0,0,0,0.5);*/
+	/*}*/
 
 	#ui-datepicker-div:after {
 		display: none;
@@ -653,6 +667,7 @@
 
 	.calendar-search-item {
 		width: 243px;
+		/*top: 272px;*/
 	}
 	/* Search Form Below Slider*/
 	.header-search-form{
@@ -673,13 +688,75 @@
 		display: block;
 	}
 	body.home #ui-datepicker-div {
-	    top: 1048px !important;
+	    top: 1094px !important;
 	    left: 0px !important;
 	    margin-top: 8px;
 	}
 	#ui-datepicker-div {
 	    border: 6px solid rgba(0,0,0,0.5);
 	    background-color: #fff;
+	}
+	.geodir-top-main {
+	    max-width: 1170px;
+	    height: auto;
+	    margin: 0 auto;
+	    padding: 0;
+	}
+	.single-listing-text.small {
+	    font-size: 10px;
+	    clear: both;
+	}
+	.single-listing-text{
+	    font-size: 12px !important;
+	    clear: both;
+	}
+	.single-listing-options{
+		width: 50%;
+		border-bottom: 1px solid rgba(0,0,0,0.2);
+	}
+	#listing-people{
+		border-right: none;
+	}
+	.geodir-top-selection {
+	    position: relative;
+	    top: 0;
+	    min-height: 141px;
+	    background-color: #359936;
+	    z-index: 33;
+	}
+	body .wrapper .single-listing-booknow{
+		border-bottom: none;
+		border-right: 5px solid rgba(0,0,0,0.2);
+   		border-left: 5px solid rgba(0,0,0,0.2);
+	}
+	.single-listing-text.small{
+		text-align: left;
+	}
+	body.single-geodir-page #ui-datepicker-div.listing-when {
+	    /*margin-left: 0;*/
+	    /*top: 621px !important;*/
+	}
+	.search-people-adults, .search-people-children{
+		width: 108px ;
+	}
+	.search-people-container{
+		width: auto;
+	}
+	.calendar-people-item {
+    	font-size: 12px;
+	}
+	body .wrapper #easyFormInnerlay input[type="button"] {
+	    float: left !important;
+	    font-size: 18px !important;
+	}
+	.wrapper #easyFormInnerlay.full{
+		min-width: 100%;
+	}
+	.wrapper #easyFrontendFormular .easy-button, .wrapper #easyFrontendFormular .easy-button.back, .wrapper #easyFormInnerlay input[type="button"]{
+		padding: 0 20px;
+	}
+	body.single-geodir-page #ui-datepicker-div.listing-when{
+		margin-top: 270px;
 	}
 }
 
@@ -910,8 +987,8 @@
 	}
 
 	html body .wrapper .single-listing-booknow {
-		font-size: 13px;
-		padding: 13px 10px;
+		/*font-size: 13px;*/
+		/*padding: 13px 10px;*/
 	}
 
 	.contact-us-widget-main {
@@ -985,7 +1062,7 @@
 		display: inline-block;
 	}
 	body.home #ui-datepicker-div {
-	    top: 1048px !important;
+	    top: 1095px !important;
 	    left: 0px !important;
 	    margin-top: 8px;
 	}
@@ -996,6 +1073,10 @@
 	/*#simplemodal-login-container {*/
  /*   	padding: 0px !important;*/
 	/*}*/
+	body.single-geodir-page #ui-datepicker-div.listing-when {
+	    margin-left: 0;
+	    /*top: 1018px !important;*/
+	}
 }
 
 @media (max-width: 570px) {
@@ -1010,7 +1091,7 @@
 	}
 
 	.single-listing-options.people {
-		display: none;
+		/*display: none;*/
 	}
 
 	.wrapper .listing-item-title {
@@ -1357,7 +1438,7 @@
 	}
 
 	.single-listing-info {
-		display: none;
+		/*display: none;*/
 	}
 
 	.wrapper .google-map-location {
