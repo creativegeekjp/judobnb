@@ -150,10 +150,10 @@
      }
  }
  @media (max-width: 767px) {
-     #main_header_image img {
-         left: -200px !important;
-     }
-     #main_header_image img.slide-item-189px {
-         left: -270px !important;
-     }
+     /*#main_header_image img {*/
+     /*    left: -200px !important;*/
+     /*}*/
+     /*#main_header_image img.slide-item-189px {*/
+     /*    left: -270px !important;*/
+     /*}*/
  }
