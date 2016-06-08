@@ -2,11 +2,13 @@
 
 import os, re
 try:
-    sql = open("/home/ubuntu/workspace/judobnb/sql.dump").read()
+    sql = open("/var/www/html/sql.dump").read()
 except:
     sql = open("./sql.dump")
     print sql.read()
     exit()
+    
+
 oldd = "judobnb.creativegeek.jp"
 newd = "www.judobnb.com"
 splitted = sql.split(oldd)
