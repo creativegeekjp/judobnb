@@ -269,10 +269,48 @@ function reservations_form_shortcode($atts){
      //jino adult and children
 	preg_match_all('!\d+!', $_COOKIE['vh_selected_people'] , $matches);
     foreach ($matches as $value) :
-        $adultss = isset($value[0]) ? $value[0] : "";
-        $childrenss = isset($value[1]) ? $value[1] : "";
+       $adultss = isset($value[0]) ? $value[0] : "";
+       $childrenss = isset($value[1]) ? $value[1] : "";
     endforeach;
-
+    
+ 
+    //autopopulate datas
+     foreach ($wpdb->get_results("SELECT * FROM jd_bp_xprofile_data WHERE user_id= '".get_current_user_id()."'") as $signups) {
+		 switch($signups->field_id)
+		{
+			case 1 :
+				$name = $signups->value ;
+			break;
+		
+			case 4:
+				$country =  country_codes($signups->value) ;
+			
+			break;
+		
+			case 5 :
+				$city = $signups->value ;
+			break;
+		
+			case 6 :
+				$postal = $signups->value ;
+			break;
+		
+			case 7 :
+				$address = $signups->value ;
+			break;
+		
+			case 329 :
+				$phones = $signups->value ;
+			break;
+		
+			case 330 :
+				$ppal = $signups->value ;  
+			break;
+		
+		
+		}
+     }
+     
    	//$curr = return_sign_book_now( $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource_id."' AND meta_key='jd_cg_currency'") );
   		//$reservations_ =get_option("reservations_currency");
     
@@ -321,12 +359,12 @@ function reservations_form_shortcode($atts){
 		    }else if(isset($_GET['editing'])){
 		    	$value = date(RESERVATIONS_DATE_FORMAT, strtotime($departure_E)); //jino
 		    }
-			if(empty($value)) $value = date(RESERVATIONS_DATE_FORMAT, time()+172800);
+			if(empty($value)) 
+			  $value = date(RESERVATIONS_DATE_FORMAT, time()+172800);
 			elseif(preg_match('/\+{1}[0-9]+/i', $value)){
 				$cutplus = str_replace('+', '',$value);
 				//jino 
-				$value = date(RESERVATIONS_DATE_FORMAT, time()+((int) $cutplus*86400));
-				
+				$value = date(RESERVATIONS_DATE_FORMAT, time()+($cutplus*172800));
 			
 			}
 			$theForm=str_replace('['.$fields.']', '<input id="easy-form-to" type="text" name="to" value="'.$value.'" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
@@ -370,7 +408,7 @@ function reservations_form_shortcode($atts){
 			$theForm=preg_replace('/\['.$fields.'\]/', '<select name="childs" '.$disabled.' style="'.$style.'" title="'.$title.'" onchange="'.$price_action.$validate_action.'">'.easyreservations_num_options($start,$end, $value ).'</select>', $theForm);
 		} elseif($field[0]=="thename"){ //NAME
 		
-		    $value = isset( $name_E ) ?  $name_E : $value;//jino
+		    $value = isset( $name_E ) ?  $name_E : $name;//jino
 		    
 			$theForm=preg_replace('/\['.$fields.'\]/', '<input type="text" id="easy-form-thename" name="thename" '.$disabled.' value="'.$value.'" style="'.$style.'" title="'.$title.'" onchange="'.$validate_action.'">', $theForm);
 		} elseif($field[0]=="error"){
@@ -397,7 +435,7 @@ function reservations_form_shortcode($atts){
 			* edited by jino 
 			* email Jino
 			*/
-			$value = isset( $email_E ) ?  $email_E : $value;
+			$value = isset( $email_E ) ?  $email_E : $ppal;
 			
 			$theForm=preg_replace('/\['.$fields.'\]/', '<input type="text" id="easy-form-email" name="email" '.$disabled.' value="'.$value.'" title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		} elseif($field[0]=="country"){
@@ -406,7 +444,7 @@ function reservations_form_shortcode($atts){
 					* edited by jino 
 					* country Jino
 					*/
-			$value = isset( $country_E  ) ? $country_E : $value;
+			$value = isset( $country_E  ) ? $country_E : $country;
 			
 			$theForm=str_replace('['.$fields.']', '<select id="easy-form-country" name="country" '.$disabled.' title="'.$title.'" style="'.$style.'">'.easyreservations_country_options($value).'</select>', $theForm);
 		} elseif($field[0]=="show_price"){
@@ -481,19 +519,19 @@ function reservations_form_shortcode($atts){
 				  
 				    switch ($field[2]) {
 				    	case 'Phone':
-				    	     $value = isset($phone_E ) ? $phone_E : $value ;
+				    	     $value = isset($phone_E ) ? $phone_E : $phones ;
 				    	break;
 				    	
 				        case 'Street':
-				    	     $value = isset($street_E ) ? $street_E : $value ;
+				    	     $value = isset($street_E ) ? $street_E : $address ;
 				    	break;
 				    	
 				    	case 'PostCode':
-				    	      $value = isset($postal_E ) ? $postal_E : $value ;
+				    	      $value = isset($postal_E ) ? $postal_E : $postal ;
 				    	break;
 				    	
 				    	case 'City':
-				    	      $value = isset($city_E ) ? $city_E : $value ;
+				    	      $value = isset($city_E ) ? $city_E : $city ;
 				    	break;
 				    	
 				    
@@ -621,7 +659,8 @@ function reservations_form_shortcode($atts){
 			elseif(isset($field[1])) $value=$field[1];
 			$action = '';
 			if(!empty($validate_action)) $action .= 'easyreservations_send_validate(\'send\',\''.$formid.'\'); return false';
-			$theForm = preg_replace('/\['.$fields.'\]/', '<input type="submit" title="'.$title.'" style="'.$style.'" class="easy-button scroll-to-top" value="'.$value.'" '.$disabled.' onclick="'.$action.'"><span id="easybackbutton"></span>', $theForm);
+			//$theForm = preg_replace('/\['.$fields.'\]/', '<input type="submit" title="'.$title.'" style="'.$style.'" class="easy-button scroll-to-top" value="'.$value.'" '.$disabled.' onclick="'.$action.'"><span id="easybackbutton"></span>', $theForm);
+			$theForm = preg_replace('/\['.$fields.'\]/', '<input type="submit" title="'.$title.'" style="'.$style.'" class="easy-button scroll-to-top" value="'.$value.'" '.$disabled.' onclick="'.$action.'"><span id="easybackbuttons"></span>', $theForm);
 		} else {
 			$theForm = apply_filters('easy-form-tag', $theForm, $fields, $formid);
 		}
@@ -646,11 +685,11 @@ function reservations_form_shortcode($atts){
 	$popuptemplate.= '<th>'.__($atts['resourcename']).'</th>';
 	if($atts['pers'] && $atts['pers'] == 1) $popuptemplate.= '<th>'.__('Persons', 'easyReservations').'</th>';
 	$popuptemplate.= '<th>'.__('Price', 'easyReservations').'</th>';
-	$popuptemplate.= '<th></th></tr></thead><tbody id="easy_overlay_tbody"></tbody></table>';
-	$popuptemplate.= '<input onclick="easyAddAnother();" type="button" value="'.__('Add another reservation', 'easyReservations').'">';
-	$popuptemplate.= '<input class="easy_overlay_submit"  type="button" onclick="easyFormSubmit(1);" value="'.__('Submit all reservations', 'easyReservations').'">';
+	$popuptemplate.= '<th>&nbsp;&nbsp;</th></tr></thead><tbody id="easy_overlay_tbody"></tbody></table>';
+	$popuptemplate.= '<input onclick="easyAddAnother();" type="hidden" value="'.__('Add another reservation', 'easyReservations').'">';
+	$popuptemplate.= '<input class="easy_overlay_submit"  type="button" onclick="easyFormSubmit(1);" value="'.__('Submit Reservation', 'easyReservations').'">';
 	
-	###jino price pass to form.js ####
+	###jino price symbol pass to form.js ####
     $price = get_post_meta($_GET['resource_id'], 'reservations_groundprice', true);
 	$values =  dynamic_convert($_GET['resource_id'],$_COOKIE['C_CURRENCY'],$price);
     $atts['symbol'] = $values['sign'];
@@ -735,8 +774,9 @@ JAVASCRIPT;
 		easyreservations_load_resources();
 		global $the_rooms_array;
 		$rooms = '';
+		
 		foreach($the_rooms_array as $key => $resource){
-			$rooms[$key] = array( 'post_title' => __($resource->post_title));
+		  $rooms[$key] = array( 'post_title' => __($resource->post_title));
 		}
 		$easyreservations_script .= 'var all_resoures_array='.json_encode($rooms).';';
 	}

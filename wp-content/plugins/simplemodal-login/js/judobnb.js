@@ -19,8 +19,19 @@ jQuery(function ($) {
 					s.login.show(); s.lostpw.hide(); s.register.hide();
 				}
 				else if ($(this).hasClass('simplemodal-register')) {
-					s.form = '#registerform';
-					s.register.show(); s.login.hide(); s.lostpw.hide();
+					 s.form = '#registerform';
+					 s.register.hide(); s.login.hide(); s.lostpw.hide();
+					 
+						var data = $(document.createElement('div')).html(resp),
+								redirect = $('#simplemodal-login-redirect', data[0]);
+
+							if (redirect.length) {
+								var href = location.href;
+								if (redirect.html().length) {
+									href = redirect.html();
+								}
+								window.location = href;
+							}
 				}
 				else {
 					s.form = '#lostpasswordform';

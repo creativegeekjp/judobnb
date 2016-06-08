@@ -875,7 +875,7 @@ function vh_get_header_form() {
 			ob_end_clean();
 			$form_output .= '
 			<div class="clearfix"></div></div>
-			<div class="header-input-container"><span class="header-input-title">'.__('People:>>>>>', 'vh').'</span><input type="text" id="header-people" readonly>';
+			<div class="header-input-container"><span class="header-input-title">'.__('People:', 'vh').'</span><input type="text" id="header-people" readonly>';
 			ob_start();
 			vh_get_listing_people_options();
 			$form_output .= ob_get_contents();
@@ -1214,7 +1214,8 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				  $site_title= add_listing_price_holder();
 				
 				?>
-			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
+				
+			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
 			<span class="geodir_message_note"><?php _e($admin_desc,'vh');?></span>
 			<?php if($is_required) {?>
 			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
@@ -1493,16 +1494,29 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				<script type="text/javascript" >
 				
 				jQuery(function() {
-							
-					jQuery( "#<?php echo $name;?>" ).datepicker({changeMonth: true,	changeYear: true,});
+	          
+                     //jQuery( "#geodir_listing_start_date" ).datepicker({changeMonth: false,   changeYear: false});
+                     jQuery( "#geodir_listing_start_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+                     jQuery( "#geodir_listing_end_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+
+                    // jQuery( "#geodir_listing_start_date" ).datepicker( "option", "dayNamesMin", ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']);
+                    
+                    //  jQuery( "#geodir_listing_end_date" ).datepicker({changeMonth: false,   changeYear: false});
+                   
+
+                    // jQuery( "#geodir_listing_end_date" ).datepicker( "option", "dayNamesMin", ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']);
+                    
+                    
+					jQuery("#geodir_listing_start_date").datepicker({
+					    minDate: 0,
+					    onSelect: function(dateText, inst) {
+					       var actualDate = new Date(dateText);
+					       var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+1);
+					        jQuery('#geodir_listing_end_date').datepicker('option', 'minDate', newDate );
+					    }
+					});
 					
-					jQuery( "#<?php echo $name;?>" ).datepicker( "option", "dateFormat", '<?php echo $extra_fields['date_format'];?>');
-
-					jQuery( "#<?php echo $name;?>" ).datepicker( "option", "dayNamesMin", ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']);
-
-					<?php if(!empty($value)){?>
-					jQuery( "#<?php echo $name;?>" ).datepicker( "setDate" , "<?php echo $value;?>" );
-					<?php } ?>
+					jQuery("#geodir_listing_end_date").datepicker();
 				
 				});
 				
@@ -1765,7 +1779,7 @@ function vh_geodir_addpost_categories_html($request_taxonomy, $parrent, $selecte
 				){
 ?>
 	
-	<?php $main_cat = get_term( $parrent, $request_taxonomy); ?>
+	<?php $main_cat = get_term( $parrent, $request_taxonomy);?>
 	
 	<div class="post_catlist_item" style="border:1px solid #CCCCCC; margin:5px auto; padding:5px;">
 		<img src="<?php echo esc_attr(geodir_plugin_url()).'/geodirectory-assets/images/move.png';?>" onclick="jQuery(this).closest('div').remove();update_listing_cat();" align="right" /> 
@@ -1942,8 +1956,8 @@ function vh_geodir_custom_taxonomy_walker2($cat_taxonomy, $cat_limit = '')
 							maincat_obj.find('.chosen_select').chosen();
 						}					
 						
-						update_listing_cat();
-																	
+					update_listing_cat();
+					maincat_obj.hide();	//jino													
 					});
 				}
 			}
@@ -1993,17 +2007,20 @@ function vh_geodir_custom_taxonomy_walker2($cat_taxonomy, $cat_limit = '')
 				if(cat_limit != '' && jQuery('#'+cat_taxonomy).find('.cat_sublist > div.post_catlist_item').length >= cat_limit && cat_limit != 0 ){
 					maincat_obj.find('.chosen_select').chosen('destroy');
 					maincat_obj.hide();		
-				}else{
+				}else{//inadd ko
 					maincat_obj.show();
 					maincat_obj.find('.chosen_select').chosen('destroy');
 					maincat_obj.find('.chosen_select').prop('selectedIndex', 0);
-					maincat_obj.find('.chosen_select').chosen();	
+					maincat_obj.find('.chosen_select').chosen();
+					
+					maincat_obj.find('.chosen_select').trigger("chosen:updated");
+					jQuery('#'+cat_taxonomy).find('#post_category').val(cat_ids);
+					jQuery('#'+cat_taxonomy).find('#post_category_str').val(post_cat_str);
 				}
 						
-				maincat_obj.find('.chosen_select').trigger("chosen:updated");
-				jQuery('#'+cat_taxonomy).find('#post_category').val(cat_ids);
-				jQuery('#'+cat_taxonomy).find('#post_category_str').val(post_cat_str);
-				
+			
+			 
+			   
 				
 			}
 			

@@ -226,7 +226,7 @@ class BP_XProfile_Field_Type_Datebox extends BP_XProfile_Field_Type {
 			case 'year':
 				$html = sprintf( '<option value="" %1$s>%2$s</option>', selected( $year, 0, false ), /* translators: no option picked in select box */ __( '----', 'buddypress' ) );
 
-				for ( $i = 2037; $i > 1901; $i-- ) {
+				for ( $i = 1999; $i > 1901; $i-- ) {
 					$html .= sprintf( '<option value="%1$s" %2$s>%3$s</option>', (int) $i, selected( $year, $i, false ), (int) $i );
 				}
 			break;

@@ -9,7 +9,10 @@ Author URI: Author's Website
 License:GPL2
 */
 
+
+
 global $wpdb;
+
 
 	foreach ($wpdb->get_results("SELECT * FROM jd_cg_paypal_keys") as $credentials) {
 	    switch ($credentials->name) {
@@ -36,6 +39,7 @@ global $wpdb;
 	    }
 	}
 	
+	
 function check_role(){
     global $wpdb;
     
@@ -48,6 +52,100 @@ function check_role(){
     
     return $capability;
 }
+
+function my_cron_schedules($schedules){
+    if(!isset($schedules["5min"])){
+        $schedules["5min"] = array(
+            'interval' => 5*60,
+            'display' => __('Once every 5 minutes'));
+    }
+    if(!isset($schedules["30min"])){
+        $schedules["30min"] = array(
+            'interval' => 30*60,
+            'display' => __('Once every 30 minutes'));
+    }
+    return $schedules;
+}
+add_filter('cron_schedules','my_cron_schedules');
+
+function cron_activation() {
+    if( !wp_next_scheduled( 'send_emails' ) ) {
+	    wp_schedule_event(time(), 'daily', 'send_emails' );
+    }
+} // end activate
+
+add_action('wp', 'cron_activation');
+
+// unschedule event upon plugin deactivation
+function cronstarter_deactivate() {	
+	// find out when the last event was scheduled
+	$timestamp = wp_next_scheduled ('send_emails');
+	// unschedule previous event if any
+	wp_unschedule_event ($timestamp, 'send_emails');
+} 
+register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
+
+function email_hosts(){
+    global $wpdb;
+    
+    $reserves=[];
+    $reservations=$wpdb->get_results("SELECT * FROM jd_reservations where approve NOT IN('yes','del','no')");
+        
+    foreach ($reservations as $value) {
+            $get_credentials =$wpdb->get_row("SELECT jd_users.ID,jd_users.display_name,jd_users.user_email,jd_users.ID,jd_posts.post_title FROM jd_users INNER JOIN jd_posts ON jd_posts.post_author=jd_users.ID INNER JOIN jd_postmeta ON jd_postmeta.post_id=jd_posts.ID WHERE jd_postmeta.meta_value='".$value->room."'  AND jd_users.user_email !=''");
+            
+            $data=array(
+                'res_name'=>$value->name,
+                'res_arrival' => date('M d, Y',strtotime($value->arrival)),
+                'res_departure' => date('M d, Y',strtotime($value->departure))
+            );
+            
+                $reserves[$get_credentials->ID]['host_name']=$get_credentials->display_name;
+                $reserves[$get_credentials->ID]['host_email']=$get_credentials->user_email;
+            
+            
+                $reserves[$get_credentials->ID]['reservations'][$value->room]['room_title']=$get_credentials->post_title;
+            
+            $reserves[$get_credentials->ID]['reservations'][$value->room]['res'][]=$data;
+            
+    }
+    
+   
+    
+    foreach($reserves as $val){
+        $htm='';
+         $htm='<table style="border:1"><tr style="background-color:#d3d3d3"><td style="text-align:center">PLACE</td><td style="text-align:center">RESERVATIONS</td>';
+        foreach($val['reservations'] as $res){
+            $htm .='<tr><td>'.$res['room_title'].'</td>';
+            $htm .='<td>';
+            foreach($res['res'] as $x ){
+                $htm .='<p><b>'.$x['res_arrival'].'</b> to <b>'.$x['res_departure'].'</b> by <i>'.$x['res_name'].'</i></p>';
+            };
+                $htm .='</td></tr>';
+        };
+        $htm .='</table>';
+        
+                $email_to=$val['host_email'];
+                //$email_to='daryl@yopmail.com';
+                $subject="JudoBnB Host Emails.";
+                $body = file_get_contents(includes_url() . 'custom-emails/host-emails.html');
+                $message = str_ireplace('[host_display_name]',$val['host_name'], $body);
+                $message = str_ireplace('[reservation_list]',$htm, $message);
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                
+                $stat=wp_mail($email_to,$subject,$message,$headers);
+                echo $stat;
+         
+    }
+    
+   
+   
+                
+    
+}
+add_action ('send_emails', 'email_hosts'); 
+
 
 function load_reservation(){
     
@@ -404,6 +502,11 @@ function confirmPayout($content){
     add_shortcode('confirmPayout','confirm_payout');
     return $content;
 }
+/*function emailhost($content){
+    
+    add_shortcode('emailhost','email_hosts');
+    return $content;
+}*/
 
 function pay($token,$data){
         
@@ -448,3 +551,5 @@ function pay($token,$data){
 add_action( 'the_content', 'allreservations');
 add_action( 'the_content', 'confirmPayout');
 add_action( 'the_content', 'departures');
+//add_action( 'the_content', 'emailhost');
+//register_deactivation_hook(__FILE__, 'cron_deactivation');

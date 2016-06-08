@@ -174,7 +174,7 @@ class BP_Email {
 		// This was escaped with esc_html on the way into the database in sanitize_option().
 		$site_name = wp_specialchars_decode( bp_get_option( 'blogname' ), ENT_QUOTES );
 
-		$this->set_from( "wordpress@$domain", $site_name );
+		$this->set_from( "info@$domain", $site_name );
 		$this->set_reply_to( bp_get_option( 'admin_email' ), $site_name );
 
 		/**

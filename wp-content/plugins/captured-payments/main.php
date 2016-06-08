@@ -105,7 +105,7 @@ function reservation_host()
             {
                  echo '<div id="page-wrap">';
                 echo '<table class="gridtable"><thead><tr><th>ROOM</th><th>ARRIVAL</th><th>DEPARTURE</th><th>NAME</th><th>EMAIL</th><th>APPROVE</th>
-                      <th>ADULTS</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th colspan=4>ACTION</th></tr></thead>';
+                      <th>ADULTS</th><th>CHILDS</th><th>PRICE</th><th>RESERVATED</th><th>ACTION</th></tr></thead>';
             }
             else
             {
@@ -153,7 +153,17 @@ function reservation_host()
         	    {
         	        $pid = $pids->post_id;
         	    }
-        	   
+        	    
+        	    $lnks = $approve != "Cancelled" ? " <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a>
+                        
+                                                    <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a>" : "" ;
+                                                    
+                                                    
+                 //get current usernicename
+        	     global $current_user;
+     
+                get_currentuserinfo();
+                
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">View</a></td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
@@ -165,9 +175,10 @@ function reservation_host()
                         <td>".$childs."</td>
                         <td>".$curr['symbol'].''.$curr['converted']."</td>
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
-                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>Approve</a></td>
-                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>Disapprove</a></td>
-                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
+                        <td>
+                        
+                         $lnks 
+                         <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -185,6 +196,7 @@ function reservation_host()
 
 function reservation_guest()
 {
+   
     if ( !check_prev() )
     {
         echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>View Host Reservations</a>";
@@ -277,6 +289,11 @@ function reservation_guest()
         	     
         	    $curr = exchangeRate( $mc_gross, $mc_currency , $_COOKIE['C_CURRENCY']);
         	     
+        	     //get current usernicename
+        	     global $current_user;
+     
+                get_currentuserinfo();
+                
                 echo "<tr>
                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">View</a></td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
@@ -290,7 +307,7 @@ function reservation_guest()
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                          <td>".$edit_check."</td>
                         <td>".$cancel_check."</td>
-                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/judan/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
+                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/". $current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -364,8 +381,26 @@ function hosts_disapproved()
                 	), 
                 	array( '%d' ) 
                 );
+            
+            //daryl updates for email 6/6
+            $post_title=$wpdb->get_row("SELECT jd_posts.post_title FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$list->id");
+                $guest_email=$wpdb->get_row("SELECT * FROM jd_users WHERE ID=$list->user");
+                $guest_name=$guest_email->display_name;
+                $email_to=$guest_email->user_email;
+                $subject="JudoBnB Reservation Email.";
+                $body = file_get_contents(includes_url() . 'custom-emails/host-disapproved.html');
+                $message = str_ireplace('[guest_display_name]',$guest_name, $body);
+                $message = str_ireplace('[post_title]',$post_title->post_title, $message);
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                
+                $stat=wp_mail($email_to,$subject,$message,$headers);
+                
+            //
         }
     }
+    
+    
     
     return ;
 }
@@ -415,6 +450,22 @@ function hosts_approved()
                 },
                 "is_final_capture": true
               }');
+              
+              //daryl update for email 6/6
+                    $post_title=$wpdb->get_row("SELECT jd_posts.post_title,jd_reservations.user FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$idr");
+                    $guest_email=$wpdb->get_row("SELECT * FROM jd_users WHERE ID=$post_title->user");
+                    $guest_name=$guest_email->display_name;
+                    $email_to=$guest_email->user_email;
+                    $subject="JudoBnB Reservation Email.";
+                    $body = file_get_contents(includes_url() . 'custom-emails/host-approved.html');
+                    $message = str_ireplace('[guest_display_name]',$guest_name, $body);
+                    $message = str_ireplace('[post_title]',$post_title->post_title, $message);
+                    $headers  = 'MIME-Version: 1.0' . "\r\n";
+                    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                    
+                    $stat=wp_mail($email_to,$subject,$message,$headers);
+                    
+              //end
             
             echo "Reservation was successfully approved <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
            
@@ -528,11 +579,42 @@ function successreservation_reservations()
 				 	 	    
 				 	 array("%s" ,"%s", "%s", "%s", "%s", "%s", "%s" )
 			 );
+			  
+        //daryl updates for email 06/06
+        
+    		$author_id=$wpdb->get_row("SELECT jd_posts.post_author,jd_posts.post_title FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$room_id");
+    		$author=$author_id->post_author;
+    		$post_title=$author_id->post_title;
+    		$guest_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$host_id"); 
+    		$host_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$author");
+		
 		 
+		    $guestemail_to = $guest_email->user_email;
+            $guestemail_subject = "JudoBnB Reservation Email";
+            $guestemail_body = file_get_contents(includes_url() . 'custom-emails/guest-reservation.html');
+            $guest_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $guestemail_body);
+            $guest_email_message = str_ireplace('[post_title]',$author_id->post_title, $guest_email_message);
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            
+            
+            $hostemail_to=$host_email->user_email;
+            $hostemail_subject='JudoBnB Reservation Email';
+            $hostemail_body= file_get_contents(includes_url() . 'custom-emails/host-reservation.html');
+            $host_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $hostemail_body);
+            $host_email_message = str_ireplace('[post_title]',$author_id->post_title, $host_email_message);
+            $host_email_message=str_ireplace('[host_display_name]',$host_email->display_name, $host_email_message);
+            
+            $guest_status = wp_mail($guestemail_to, $guestemail_subject, $guest_email_message,$headers);
+            $host_status = wp_mail($hostemail_to, $hostemail_subject, $host_email_message,$headers);
+            
+           
+        //end
+
    if ( !check_prev() ){
-        echo "Your reservation was successfully reserved.<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>View Reservations</a>";
+        echo "Your reservation was successfully reserved.<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>View Reservations</a>";
     }else{
-        echo "Your reservation was successfully reserved. <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests'>View Reservations</a>";
+        echo "Your reservation was successfully reserved.<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests'>View Reservations</a>";
     }
     return;
 }
@@ -770,13 +852,28 @@ function get_pdt_response($user,$tx)
            
         }
 }
-############set currency#########333
-add_action( 'init', 'my_setcookie' );
 
-function my_setcookie() {
+add_action( 'init', 'my_initial' );
+
+function my_initial() {
     if($_COOKIE['C_CURRENCY']==''){
         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     }
+    
+  
+
+   if(ICL_LANGUAGE_CODE=='en')
+   {
+       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+       unset($_COOKIE['vh_selected_people']);
+   }
+   
+   if( ICL_LANGUAGE_CODE == 'ja')
+   {
+       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+       unset($_COOKIE['vh_selected_people']);
+   }
+
 }
 
 function dynamic_convert($postid, $currency_format, $previous_money , $page )
@@ -930,10 +1027,13 @@ function exchangerate($amount, $from, $to)
             break;
     }
 
-  	$data = file_get_contents("https://www.google.com/finance/converter?a=$amount&from=$from&to=$to");
-	preg_match("/<span class=bld>(.*)<\/span>/",$data, $converted);
-	$converted = preg_replace("/[^0-9.]/", "", $converted[1]);
-	
+    if($from == $to){
+        $converted = $amount;
+    }else{
+        	$data = file_get_contents("https://www.google.com/finance/converter?a=$amount&from=$from&to=$to");
+        	preg_match("/<span class=bld>(.*)<\/span>/",$data, $converted);
+        	$converted = preg_replace("/[^0-9.]/", "", $converted[1]);
+    }
 	return array(
 				'converted' => number_format($converted, 0, '.', ''),
 				 'currency' => $to_t,
@@ -982,7 +1082,10 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
 		left: -9999px;
 	}
 	
-	table.gridtable tr { border: 1px solid #ccc; }
+	table.gridtable tr { 
+	    border: 1px solid #ccc; 
+	    margin-bottom: 5px;
+	}
 	
 	table.gridtable td { 
 		/* Behave  like a 'row' */
@@ -1011,13 +1114,29 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
 	table.gridtable td:nth-of-type(3):before { content: 'DEPARTURE'; }
 	table.gridtable td:nth-of-type(4):before { content: 'NAME'; }
 	table.gridtable td:nth-of-type(5):before { content: 'EMAIL'; }
-	table.gridtable td:nth-of-type(6):before { content: 'COUNTRY'; }
-	table.gridtable td:nth-of-type(7):before { content: 'APPROVE'; }
-	table.gridtable td:nth-of-type(8):before { content: 'NUMBER'; }
-	table.gridtable td:nth-of-type(9):before { content: 'CHILDS'; }
-	table.gridtable td:nth-of-type(10):before { content: 'PRICE'; }
-	table.gridtable td:nth-of-type(11):before { content: 'RESERVATED'; }
-	table.gridtable td:nth-of-type(12):before { content: 'ACTION(S)'; }
+	table.gridtable td:nth-of-type(6):before { content: 'APPROVE'; }
+	table.gridtable td:nth-of-type(7):before { content: 'ADULTS'; }
+	table.gridtable td:nth-of-type(8):before { content: 'CHILDS'; }
+	table.gridtable td:nth-of-type(9):before { content: 'PRICE'; }
+	table.gridtable td:nth-of-type(10):before { content: 'RESERVATED'; }
+	table.gridtable td:nth-of-type(11):before { content: 'ACTION(S)'; }
+	
+	/*
+	Label the data in all reservations
+	*/
+	
+	.page-id-2806 table.gridtable td:nth-of-type(1):before { content: 'ROOM'; }
+	.page-id-2806 table.gridtable td:nth-of-type(2):before { content: 'ARRIVAL'; }
+    .page-id-2806 table.gridtable td:nth-of-type(3):before { content: 'DEPARTURE'; }
+	.page-id-2806 table.gridtable td:nth-of-type(4):before { content: 'NAME'; }
+	.page-id-2806 table.gridtable td:nth-of-type(5):before { content: 'EMAIL'; }
+	.page-id-2806 table.gridtable td:nth-of-type(6):before { content: 'COUNTRY'; }
+	.page-id-2806 table.gridtable td:nth-of-type(7):before { content: 'ROOMNUMBER'; }
+	.page-id-2806 table.gridtable td:nth-of-type(8):before { content: 'NUMBER'; }
+	.page-id-2806 table.gridtable td:nth-of-type(9):before { content: 'CHILDS'; }
+	.page-id-2806 table.gridtable td:nth-of-type(10):before { content: 'PRICE'; }
+	.page-id-2806 table.gridtable td:nth-of-type(11):before { content: 'RESERVATED'; }
+	.page-id-2806 table.gridtable td:nth-of-type(12):before { content: 'ACTION(S)'; }
 }
 
 
@@ -1025,5 +1144,258 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
     </style>";
 }
 
+
+/*country codes*/
+
+function country_codes($value)
+{
+            $countrycodes = array (
+          'AF' => 'Afghanistan',
+          'AX' => 'Åland Islands',
+          'AL' => 'Albania',
+          'DZ' => 'Algeria',
+          'AS' => 'American Samoa',
+          'AD' => 'Andorra',
+          'AO' => 'Angola',
+          'AI' => 'Anguilla',
+          'AQ' => 'Antarctica',
+          'AG' => 'Antigua and Barbuda',
+          'AR' => 'Argentina',
+          'AU' => 'Australia',
+          'AT' => 'Austria',
+          'AZ' => 'Azerbaijan',
+          'BS' => 'Bahamas',
+          'BH' => 'Bahrain',
+          'BD' => 'Bangladesh',
+          'BB' => 'Barbados',
+          'BY' => 'Belarus',
+          'BE' => 'Belgium',
+          'BZ' => 'Belize',
+          'BJ' => 'Benin',
+          'BM' => 'Bermuda',
+          'BT' => 'Bhutan',
+          'BO' => 'Bolivia',
+          'BA' => 'Bosnia and Herzegovina',
+          'BW' => 'Botswana',
+          'BV' => 'Bouvet Island',
+          'BR' => 'Brazil',
+          'IO' => 'British Indian Ocean Territory',
+          'BN' => 'Brunei Darussalam',
+          'BG' => 'Bulgaria',
+          'BF' => 'Burkina Faso',
+          'BI' => 'Burundi',
+          'KH' => 'Cambodia',
+          'CM' => 'Cameroon',
+          'CA' => 'Canada',
+          'CV' => 'Cape Verde',
+          'KY' => 'Cayman Islands',
+          'CF' => 'Central African Republic',
+          'TD' => 'Chad',
+          'CL' => 'Chile',
+          'CN' => 'China',
+          'CX' => 'Christmas Island',
+          'CC' => 'Cocos (Keeling) Islands',
+          'CO' => 'Colombia',
+          'KM' => 'Comoros',
+          'CG' => 'Congo',
+          'CD' => 'Zaire',
+          'CK' => 'Cook Islands',
+          'CR' => 'Costa Rica',
+          'CI' => 'Côte D\'Ivoire',
+          'HR' => 'Croatia',
+          'CU' => 'Cuba',
+          'CY' => 'Cyprus',
+          'CZ' => 'Czech Republic',
+          'DK' => 'Denmark',
+          'DJ' => 'Djibouti',
+          'DM' => 'Dominica',
+          'DO' => 'Dominican Republic',
+          'EC' => 'Ecuador',
+          'EG' => 'Egypt',
+          'SV' => 'El Salvador',
+          'GQ' => 'Equatorial Guinea',
+          'ER' => 'Eritrea',
+          'EE' => 'Estonia',
+          'ET' => 'Ethiopia',
+          'FK' => 'Falkland Islands (Malvinas)',
+          'FO' => 'Faroe Islands',
+          'FJ' => 'Fiji',
+          'FI' => 'Finland',
+          'FR' => 'France',
+          'GF' => 'French Guiana',
+          'PF' => 'French Polynesia',
+          'TF' => 'French Southern Territories',
+          'GA' => 'Gabon',
+          'GM' => 'Gambia',
+          'GE' => 'Georgia',
+          'DE' => 'Germany',
+          'GH' => 'Ghana',
+          'GI' => 'Gibraltar',
+          'GR' => 'Greece',
+          'GL' => 'Greenland',
+          'GD' => 'Grenada',
+          'GP' => 'Guadeloupe',
+          'GU' => 'Guam',
+          'GT' => 'Guatemala',
+          'GG' => 'Guernsey',
+          'GN' => 'Guinea',
+          'GW' => 'Guinea-Bissau',
+          'GY' => 'Guyana',
+          'HT' => 'Haiti',
+          'HM' => 'Heard Island and Mcdonald Islands',
+          'VA' => 'Vatican City State',
+          'HN' => 'Honduras',
+          'HK' => 'Hong Kong',
+          'HU' => 'Hungary',
+          'IS' => 'Iceland',
+          'IN' => 'India',
+          'ID' => 'Indonesia',
+          'IR' => 'Iran, Islamic Republic of',
+          'IQ' => 'Iraq',
+          'IE' => 'Ireland',
+          'IM' => 'Isle of Man',
+          'IL' => 'Israel',
+          'IT' => 'Italy',
+          'JM' => 'Jamaica',
+          'JP' => 'Japan',
+          'JE' => 'Jersey',
+          'JO' => 'Jordan',
+          'KZ' => 'Kazakhstan',
+          'KE' => 'KENYA',
+          'KI' => 'Kiribati',
+          'KP' => 'Korea, Democratic People\'s Republic of',
+          'KR' => 'Korea, Republic of',
+          'KW' => 'Kuwait',
+          'KG' => 'Kyrgyzstan',
+          'LA' => 'Lao People\'s Democratic Republic',
+          'LV' => 'Latvia',
+          'LB' => 'Lebanon',
+          'LS' => 'Lesotho',
+          'LR' => 'Liberia',
+          'LY' => 'Libyan Arab Jamahiriya',
+          'LI' => 'Liechtenstein',
+          'LT' => 'Lithuania',
+          'LU' => 'Luxembourg',
+          'MO' => 'Macao',
+          'MK' => 'Macedonia, the Former Yugoslav Republic of',
+          'MG' => 'Madagascar',
+          'MW' => 'Malawi',
+          'MY' => 'Malaysia',
+          'MV' => 'Maldives',
+          'ML' => 'Mali',
+          'MT' => 'Malta',
+          'MH' => 'Marshall Islands',
+          'MQ' => 'Martinique',
+          'MR' => 'Mauritania',
+          'MU' => 'Mauritius',
+          'YT' => 'Mayotte',
+          'MX' => 'Mexico',
+          'FM' => 'Micronesia, Federated States of',
+          'MD' => 'Moldova, Republic of',
+          'MC' => 'Monaco',
+          'MN' => 'Mongolia',
+          'ME' => 'Montenegro',
+          'MS' => 'Montserrat',
+          'MA' => 'Morocco',
+          'MZ' => 'Mozambique',
+          'MM' => 'Myanmar',
+          'NA' => 'Namibia',
+          'NR' => 'Nauru',
+          'NP' => 'Nepal',
+          'NL' => 'Netherlands',
+          'AN' => 'Netherlands Antilles',
+          'NC' => 'New Caledonia',
+          'NZ' => 'New Zealand',
+          'NI' => 'Nicaragua',
+          'NE' => 'Niger',
+          'NG' => 'Nigeria',
+          'NU' => 'Niue',
+          'NF' => 'Norfolk Island',
+          'MP' => 'Northern Mariana Islands',
+          'NO' => 'Norway',
+          'OM' => 'Oman',
+          'PK' => 'Pakistan',
+          'PW' => 'Palau',
+          'PS' => 'Palestinian Territory, Occupied',
+          'PA' => 'Panama',
+          'PG' => 'Papua New Guinea',
+          'PY' => 'Paraguay',
+          'PE' => 'Peru',
+          'PH' => 'Philippines',
+          'PN' => 'Pitcairn',
+          'PL' => 'Poland',
+          'PT' => 'Portugal',
+          'PR' => 'Puerto Rico',
+          'QA' => 'Qatar',
+          'RE' => 'Réunion',
+          'RO' => 'Romania',
+          'RU' => 'Russian Federation',
+          'RW' => 'Rwanda',
+          'SH' => 'Saint Helena',
+          'KN' => 'Saint Kitts and Nevis',
+          'LC' => 'Saint Lucia',
+          'PM' => 'Saint Pierre and Miquelon',
+          'VC' => 'Saint Vincent and the Grenadines',
+          'WS' => 'Samoa',
+          'SM' => 'San Marino',
+          'ST' => 'Sao Tome and Principe',
+          'SA' => 'Saudi Arabia',
+          'SN' => 'Senegal',
+          'RS' => 'Serbia',
+          'SC' => 'Seychelles',
+          'SL' => 'Sierra Leone',
+          'SG' => 'Singapore',
+          'SK' => 'Slovakia',
+          'SI' => 'Slovenia',
+          'SB' => 'Solomon Islands',
+          'SO' => 'Somalia',
+          'ZA' => 'South Africa',
+          'GS' => 'South Georgia and the South Sandwich Islands',
+          'ES' => 'Spain',
+          'LK' => 'Sri Lanka',
+          'SD' => 'Sudan',
+          'SR' => 'Suriname',
+          'SJ' => 'Svalbard and Jan Mayen',
+          'SZ' => 'Swaziland',
+          'SE' => 'Sweden',
+          'CH' => 'Switzerland',
+          'SY' => 'Syrian Arab Republic',
+          'TW' => 'Taiwan, Province of China',
+          'TJ' => 'Tajikistan',
+          'TZ' => 'Tanzania, United Republic of',
+          'TH' => 'Thailand',
+          'TL' => 'Timor-Leste',
+          'TG' => 'Togo',
+          'TK' => 'Tokelau',
+          'TO' => 'Tonga',
+          'TT' => 'Trinidad and Tobago',
+          'TN' => 'Tunisia',
+          'TR' => 'Turkey',
+          'TM' => 'Turkmenistan',
+          'TC' => 'Turks and Caicos Islands',
+          'TV' => 'Tuvalu',
+          'UG' => 'Uganda',
+          'UA' => 'Ukraine',
+          'AE' => 'United Arab Emirates',
+          'GB' => 'United Kingdom',
+          'US' => 'United States',
+          'UM' => 'United States Minor Outlying Islands',
+          'UY' => 'Uruguay',
+          'UZ' => 'Uzbekistan',
+          'VU' => 'Vanuatu',
+          'VE' => 'Venezuela',
+          'VN' => 'Viet Nam',
+          'VG' => 'Virgin Islands, British',
+          'VI' => 'Virgin Islands, U.S.',
+          'WF' => 'Wallis and Futuna',
+          'EH' => 'Western Sahara',
+          'YE' => 'Yemen',
+          'ZM' => 'Zambia',
+          'ZW' => 'Zimbabwe',
+        );
+
+return array_search($value, $countrycodes);
+
+}
 
 ?>

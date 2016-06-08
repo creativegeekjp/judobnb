@@ -650,7 +650,7 @@ jQuery(document).ready(function($) {
 
 	jQuery(".addlisting-upload-button").click(function() {
 		$select_file_button = 'clicked';
-		jQuery("#post_imagesplupload-browse-button").click();
+		jQuery("#post_imagesplupload-browse-button").click();//post_imagesplupload-thumbs
 	});
 
 	jQuery(".checkbox_box").live('click', function() {
@@ -2360,6 +2360,7 @@ jQuery(document).ready(function($) {
 		}, 150, function() {
 			jQuery(this).parent().find(".search-people-container").addClass("active");
 		});
+	   
 	});
 
 	jQuery("#header-contract, #header-top-contract").live('click', function() {
@@ -2873,5 +2874,8 @@ jQuery(document).ready(function() {
 			bottom: jQuery(this).find('img').height() + 150
 		},250);
 	});
+	
+	
+
 	
 });

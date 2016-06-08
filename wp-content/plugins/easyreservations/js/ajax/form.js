@@ -147,6 +147,7 @@ function easyInnerlay(content,add){
             }
           }
           var res_info = all_resoures_array[datas['easyroom']]['post_title'];
+          
           reservations+='</td><td>'+res_info+'</td>';
           if(easyReservationAtts['pers'] && easyReservationAtts['pers'] == 1){
             reservations+='<td>'+datas['persons'];

@@ -7,6 +7,16 @@
 }
 
 @media (max-width: 767px) {
+	
+	.single-listing-info {
+	    float: left;
+	    padding-left: 12px;
+	}
+	
+	.single-listing-social{
+		display: none;
+	}
+	
 	#buy-now-ribbon {
 		display: none !important;
 	}
@@ -348,7 +358,7 @@
 
 	html body .wrapper .single-listing-booknow {
 		padding: 13px 25px;
-		font-size: 20px;
+		font-size: 15px;
 	}
 
 	.wrapper .single-listing-sidebar {

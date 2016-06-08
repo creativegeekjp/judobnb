@@ -9320,13 +9320,11 @@ body.geodir-main-search #geodir-wrapper,
 body.geodir-main-search #geodir-wrapper {
 	height: calc(100% - 70px);
 }
-/*jino - removed by elmer*/
-/*.geodir-map-left {*/
-/*	height: 560%;*/
-/*}*/
+
 
 .geodir_category_list_view li.gridview_onehalf {
 	overflow: hidden;
+	display: block !important;
 }
 
 #dd1 {
@@ -15659,6 +15657,15 @@ label .btn-translate {
 	
 	.top-menu-container .header-menu li.menu-item-has-children:last-child ul {
 		right: 0;
+	}
+	.single-listing-options input[type="text"]{
+		font-size: 12px;
+	}
+	body .wrapper .single-listing-booknow{
+		font-size: 17px;
+	}
+	.single-listing-info .single-listing-text {
+	    font-size: 12px;
 	}
 }
 

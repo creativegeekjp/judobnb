@@ -373,10 +373,16 @@ if (!class_exists('SimpleModalLogin')) {
 				__('Log In', 'simplemodal-login'),
 				__('Cancel', 'simplemodal-login')
 			);
-
+			
+			if(ICL_LANGUAGE_CODE=='en'){
+				$red = site_url('register', 'login');
+			}else if(ICL_LANGUAGE_CODE=='ja'){
+				$red = site_url('ja/register', 'login');
+			}
+			
 			if ($this->users_can_register && $this->options['registration']) {
 				$output .= sprintf('<a class="simplemodal-register" href="%s">%s</a>',
-					site_url('wp-login.php?action=register', 'login'),
+					$red,
 					__('Register', 'simplemodal-login')
 				);
 			}
@@ -488,7 +494,7 @@ if (!class_exists('SimpleModalLogin')) {
 		<label>%s<br />
 		<input type="text" name="user_email" class="user_email input" value="" size="25" tabindex="20" /></label>
 	</p>',
-				site_url('wp-login.php?action=register', 'login_post'),
+				site_url('register', 'login_post'),
 				__('Register', 'simplemodal-login'),
 				__('Username', 'simplemodal-login'),
 				__('E-mail', 'simplemodal-login')

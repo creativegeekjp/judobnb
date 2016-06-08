@@ -93,7 +93,7 @@ define( 'FTP_HOST', 'judobnb.creativegeek.jp' );
 define( 'FTP_SSL', false );
 define( 'BP_MESSAGES_AUTOCOMPLETE_ALL', true );
 define( 'WP_DEBUG_DISPLAY', false );
-
+define('DISABLE_WP_CRON', true);
  
 /* That's all, stop editing! Happy blogging. */
 
