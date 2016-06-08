@@ -2892,3 +2892,22 @@ jQuery(document).ready(function() {
 
 	
 });
+
+function isNumber(evt) {
+
+
+
+          	 var e = jQuery("#geodir_listing_price");
+        	 var n = e.val();
+        	 var result = parseInt(n);
+	        var pattern = /^\d+$/;
+	         
+	        
+        	if (!pattern.test(n)){
+	        	
+				alert('Invalid listing price');
+	            jQuery("#geodir_listing_price").val("");   
+        	}
+ 
+        return true;
+    }

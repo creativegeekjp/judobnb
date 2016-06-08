@@ -323,12 +323,12 @@ global $cat_display,$post_cat, $current_user;
 						
 						<h3><?php _e("Images", "vh"); ?></h3>
 						 
-						<div class="geodir_form_row clearfix" id="<?php echo esc_attr($id); ?>dropbox" align="center" style="border:1px solid #ccc; min-height:100px; height:auto; padding:10px;">
+						<div class="required_field geodir_form_row clearfix" id="<?php echo esc_attr($id); ?>dropbox" align="center" style="border:1px solid #ccc; min-height:100px; height:auto; padding:10px;">
 							<span class="input-required" style="background-color: rgb(255, 102, 0);"></span>
 							<input type="hidden" name="<?php echo esc_attr($id); ?>" id="<?php echo esc_attr($id); ?>" value="<?php echo esc_attr($svalue); ?>" />
 							<input type="hidden" name="<?php echo esc_attr($id); ?>image_limit" id="<?php echo esc_attr($id); ?>image_limit" value="<?php echo esc_attr($image_limit); ?>" />
 							<input type="hidden" name="<?php echo esc_attr($id); ?>totImg" id="<?php echo esc_attr($id); ?>totImg" value="<?php echo esc_attr($totImg); ?>" />
-							<div class="plupload-upload-uic hide-if-no-js <?php if ($multiple): ?>plupload-upload-uic-multiple<?php endif; ?>" id="<?php echo esc_attr($id); ?>plupload-upload-ui">
+							<div class="required_field plupload-upload-uic hide-if-no-js <?php if ($multiple): ?>plupload-upload-uic-multiple<?php endif; ?>" id="<?php echo esc_attr($id); ?>plupload-upload-ui">
 								<span class="addlisting-upload-text"><?php _e('Drop images here to upload or','vh');?></span> <a href="javascript:void(0)" class="addlisting-upload-button"><?php _e("Select files", "vh"); ?></a>
 								<input id="<?php echo esc_attr($id); ?>plupload-browse-button" type="button" value="<?php esc_attr_e('Select Files','vh'); ?>" class="geodir_button"/>
 								<span class="ajaxnonceplu" id="ajaxnonceplu<?php echo esc_attr(wp_create_nonce($id.'pluploadan')); ?>"></span>
@@ -1216,7 +1216,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				
 				?>
 				
-			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
+			<input onkeyup="isNumber(this);" field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
 			<span class="geodir_message_note"><?php _e($admin_desc,'vh');?></span>
 			<?php if($is_required) {?>
 			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
@@ -1731,7 +1731,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				<input type="hidden" name="<?php echo esc_attr($file_id); ?>image_limit" id="<?php echo esc_attr($file_id); ?>image_limit" value="<?php echo $file_image_limit; ?>" />
 				<input type="hidden" name="<?php echo esc_attr($file_id); ?>totImg" id="<?php echo esc_attr($file_id); ?>totImg" value="<?php if(isset($file_totImg)){ echo esc_attr($file_totImg);}else{ echo '0';} ?>" />
 				<div style="float:left; width:100%;">
-				<div class="plupload-upload-uic hide-if-no-js <?php if ($file_multiple): ?>plupload-upload-uic-multiple<?php endif; ?>" id="<?php echo esc_attr($file_id); ?>plupload-upload-ui" style="float:left; width:100%;">
+				<div class="required_field plupload-upload-uic hide-if-no-js <?php if ($file_multiple): ?>plupload-upload-uic-multiple<?php endif; ?>" id="<?php echo esc_attr($file_id); ?>plupload-upload-ui" style="float:left; width:100%;">
 					<?php /*?><h4><?php _e('Drop files to upload');?></h4><br/><?php */?>
 					<input id="<?php echo esc_attr($file_id); ?>plupload-browse-button" type="button" value="<?php esc_attr_e('Select Files','vh'); ?>" class="geodir_button" style="margin-top:10px;"  />
 					<span class="ajaxnonceplu" id="ajaxnonceplu<?php echo wp_create_nonce($file_id.'pluploadan'); ?>"></span>
