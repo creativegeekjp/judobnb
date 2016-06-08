@@ -3428,11 +3428,14 @@ jQuery(document).ready(function() {
 	});
 
 
+	jQuery("#geodir_listing_price").keyup(function(){
+			isNumber();
+	});
 
 
 });
 
-function isNumber(evt) {
+function isNumber() {
 
 
 
@@ -3450,3 +3453,13 @@ function isNumber(evt) {
 
 	return true;
 }
+
+function checkImages(){
+	
+	if(jQuery("#post_images").val()==""){
+		alert("Please post at least 1 image of the room.");
+		return false;
+	}
+	
+	return true;
+};

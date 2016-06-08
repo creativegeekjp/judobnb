@@ -180,7 +180,7 @@ global $cat_display,$post_cat, $current_user;
 	
 	
 	
-	<form name="propertyform" id="propertyform" action="<?php echo get_page_link(get_option('geodir_preview_page'));?>" method="post" enctype="multipart/form-data">
+	<form name="propertyform" onsubmit="return checkImages();" id="propertyform" action="<?php echo get_page_link(get_option('geodir_preview_page'));?>" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="preview" value="<?php echo esc_attr($listing_type);?>" />
 					<input type="hidden" name="listing_type" value="<?php echo esc_attr($listing_type);?>" />
 					<?php if(isset($_REQUEST['pid']) && $_REQUEST['pid'] !='') { ?>
@@ -368,7 +368,8 @@ global $cat_display,$post_cat, $current_user;
 		
 									<!-- end captcha code -->
 									
-							<a href="javascript:void(0)" class="geodir_button wpb_button wpb_btn-warning wpb_regularsize" <?php echo $submit_button;?>><?php _e('Review & Add', 'vh'); ?></a>
+							<a href="javascript:void(0);" id="submitplace" class="geodir_button wpb_button wpb_btn-warning wpb_regularsize" <?php echo $submit_button;?>><?php _e('Review & Add', 'vh'); ?></a>
+							
 							<span class="geodir_message_note icon-info submit-note" style="padding-left:0px;"> <?php _e('Note: You will be able to see a preview in the next page','vh');?></span>
 							<div class="clearfix"></div>
 						</div>
@@ -1216,7 +1217,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				
 				?>
 				
-			<input onkeyup="isNumber(this);" field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
+			<input  field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
 			<span class="geodir_message_note"><?php _e($admin_desc,'vh');?></span>
 			<?php if($is_required) {?>
 			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
