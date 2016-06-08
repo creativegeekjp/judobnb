@@ -464,7 +464,9 @@ case 'logout' :
 	if ( ! empty( $_REQUEST['redirect_to'] ) ) {
 		$redirect_to = $requested_redirect_to = $_REQUEST['redirect_to'];
 	} else {
-		$redirect_to = 'wp-login.php?loggedout=true';
+		//jino
+		//$redirect_to = 'wp-login.php?loggedout=true';
+		$redirect_to = 'index.php';
 		$requested_redirect_to = '';
 	}
 

@@ -621,6 +621,7 @@ function successreservation_reservations()
 
 function listings_message_confirmation()
 {
+    global $post;
         $pid = isset($_GET['pid_del'] ) ? $_GET['pid_del'] : "";
         if($_GET['trashed'] == 1){
              echo "Listing was successfully deleted.  <a href='" . site_url() . "/manage-listing/'> return </a>";
@@ -859,20 +860,18 @@ function my_initial() {
     if($_COOKIE['C_CURRENCY']==''){
         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     }
-    
-  
 
-   if(ICL_LANGUAGE_CODE=='en')
-   {
-       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
-       unset($_COOKIE['vh_selected_people']);
-   }
+//   if(ICL_LANGUAGE_CODE=='en')
+//   {
+//       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+//       unset($_COOKIE['vh_selected_people']);
+//   }
    
-   if( ICL_LANGUAGE_CODE == 'ja')
-   {
-       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
-       unset($_COOKIE['vh_selected_people']);
-   }
+//   if( ICL_LANGUAGE_CODE == 'ja')
+//   {
+//       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+//       unset($_COOKIE['vh_selected_people']);
+//   }
 
 }
 

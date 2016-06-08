@@ -8,6 +8,25 @@
 
 @media (max-width: 767px) {
 	
+	.listing-item-exitfullscreen.icon-resize-full{
+		display: none;
+	}
+	.wrapper .listing-item-exitfullscreen.googlemap.streetview{
+		display: block;
+	}
+	.wrapper .geodir-addtofav i, .wrapper .geodir-addtofav-icon i, .wrapper .geodir-removetofav-icon i{
+		top: 0;
+	}
+	
+	#post_imagesplupload-browse-button {
+		display: block;
+		margin: 0 auto !important;
+		position: static;
+	}
+	body .wrapper .addlisting-upload-button{
+		display: none;
+	}
+	
 	.single-listing-info {
 	    float: left;
 	    padding-left: 12px;
@@ -357,7 +376,7 @@
 	}
 
 	html body .wrapper .single-listing-booknow {
-		padding: 13px 25px;
+		padding: 13px 10px;
 		font-size: 15px;
 	}
 
@@ -771,6 +790,21 @@
 }
 
 @media (max-width: 480px) {
+	.single-listing-by-container{
+		max-height: none;
+	}
+	.single-listing-by-info .author-name{
+		padding-left: 10px;
+	}
+	.single-listing-by-info .author-name a{
+		font-size: 15px;
+	}
+	.single-listing-by-info .author-text{
+		padding-left: 0px;
+	}
+	.single-listing-by-info{
+		text-align: center;
+	}
 	.featured-properties-image {
 		width: 100% !important;
 		max-height: 246px !important;

@@ -566,7 +566,7 @@
 											
 											?>
 											<span class="single-listing-text small"><?php echo $sign; ?><span class="per-night" itemprop="priceRange"><?php echo $listing_price; ?> </span><?php _e("per night", "vh"); ?></span>
-											<span class="single-listing-text"><?php  echo $sign; ?><span class="for-selected">0</span> <?php _e("for selected dates", "vh"); ?></span>
+											<span class="single-listing-text"><?php  echo $sign; ?><span class="for-selected"><?php echo $listing_price; ?></span> <?php _e("for selected dates", "vh"); ?></span>
 										</div>
 									<?php } else { ?>
 										<div class="single-listing-info">
@@ -725,7 +725,7 @@
 
 								<?php vh_get_header_search_field(); ?>
 
-								<a href="javascript:void(0)" class="wpb_button wpb_btn-warning icon-search" id="header-submit"></a>
+								<a href="javascript:void(0)" class="wpb_button wpb_btn-warning" id="header-submit"><i class="fa fa-search fa-2x" id="search-icon" ></i></a>
 								
 								<?php if ( get_option("vh_theme_version") == "SkyEstate" ) { ?>
 									<div class="clearfix"></div>

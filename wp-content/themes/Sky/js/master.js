@@ -879,7 +879,18 @@ jQuery(document).ready(function($) {
 					if ( jQuery(".single-listing-info").length ) {
 						///////////////////////jino "for selected dates"
 						//jQuery(".single-listing-info .single-listing-text .for-selected").html(jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24)+1));
-						jQuery(".single-listing-info .single-listing-text .for-selected").html(jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24)));
+						var amnt = jQuery(".single-listing-info .single-listing-text.small .per-night").html()*(Math.round((b_date-a_date)/1000/60/60/24));
+					
+						
+						if(amnt==0)
+						{
+						
+						}
+						else
+						{
+						 jQuery(".single-listing-info .single-listing-text .for-selected").html(amnt);
+						}
+					
 					}
 
 					// Hide datepicker
@@ -1194,6 +1205,8 @@ jQuery(document).ready(function($) {
 		} else {
 			var container_height = jQuery(window).height();
 		}
+		
+		console.log(jQuery(window).height());
 
 		jQuery(".listing-gallery-carousel-main").append("<style>.gdplaces-header-container.gallery .listing-carousel-container, .gdplaces-header-container.gallery .listing-gallery-carousel-main, .gdplaces-header-container.gallery .listing-gallery-carousel-container { height: "+container_height+"px; } body.single-geodir-page.header-gallery #geodir-wrapper { margin-top: "+geodir_height+"px; } .listing-gallery-item.active-right img, .listing-gallery-item.active-left img { max-height: "+picture_max_height+"px; } .listing-gallery-carousel li { height: "+container_height+"px; }</style>");
 

@@ -3092,7 +3092,7 @@ class Easy_Social_Media extends WP_Widget {
 				if ($sm_li != '' ) : $output .= '<li><a class="li" href="'.$sm_li.'" target="_blank"><i class="fa fa-linkedin"></i></a></li>'; endif;
 				if ($sm_pt != '' ) : $output .= '<li><a class="pt" href="'.$sm_pt.'" target="_blank"><i class="fa fa-pinterest"></i></a></li>'; endif;
 				if ($sm_yt != '' ) : $output .= '<li><a class="yt" href="'.$sm_yt.'" target="_blank"><i class="fa fa-youtube-play"></i></a></li>'; endif;
-				if ($sm_ig != '' ) : $output .= '<li><a class="ig" href="'.$sm_yt.'" target="_blank"><i class="fa fa-instagram"></i></a></li>'; endif;
+				if ($sm_ig != '' ) : $output .= '<li><a class="ig" href="'.$sm_ig.'" target="_blank"><i class="fa fa-instagram"></i></a></li>'; endif;
 		$output .= '</ul>';
 
 		echo $args['before_widget'];
@@ -3243,3 +3243,9 @@ function wp_sitemap_page_list(){
 }
 add_shortcode('sitemap', 'wp_sitemap_page_list');
 
+function add_subscriber_delete_cap() {
+    $role = get_role( 'host' );
+    $role->add_cap( 'delete_posts' );
+    $role->add_cap( 'delete_published_posts' );
+}
+add_action( 'admin_init', 'add_subscriber_delete_cap');

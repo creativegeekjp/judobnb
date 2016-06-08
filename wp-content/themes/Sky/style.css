@@ -958,7 +958,7 @@ body.geodirectory-payment-manager .geodir_preview_section .geodir-main-preview-m
 .listing-item-location {
 	display: block;
 	position: absolute;
-	top: 47%;
+	top: 50%;
 	width: 100%;
 	text-align: center;
 }
@@ -1065,6 +1065,7 @@ body.geodirectory-payment-manager .geodir_preview_section .geodir-main-preview-m
 
 .listing-item-info .listing-item-fullscreen {
 	font-size: 18px;
+	display: none;
 }
 
 .listing-item-info .listing-item-fullscreen:before {
@@ -10237,14 +10238,14 @@ body.home-php .wrapper .main .page-wrapper {
 	text-decoration: none;
 }
 
-#header-submit:after,
-#header-submit2:after {
-	content: '\1f50d';
-	font-family: 'icons';
-	font-size: 25px;
-	color: #fff;
-	line-height: 62px;
-}
+/*#header-submit:after,*/
+/*#header-submit2:after {*/
+/*	content: '\1f50d';*/
+/*	font-family: 'icons';*/
+/*	font-size: 25px;*/
+/*	color: #fff;*/
+/*	line-height: 62px;*/
+/*}*/
 
 .header-form-container {
 	float: left;
@@ -15633,6 +15634,12 @@ label .btn-translate {
 	}
 	#post_set_address_button{
 		bottom: 86px;
+	}
+	i#search-icon{
+		color: #fff !important;
+	}
+	.fa-search:before{
+		color: #fff;
 	}
 }
 
