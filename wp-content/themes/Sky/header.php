@@ -196,6 +196,9 @@
 								} ?>
 								<?php if ( function_exists('geodir_is_page') && geodir_is_page('preview') ) { ?>
 									<div id="preview-msg">You are currently in preview mode</div>
+									<script type="text/javascript">
+										alert('You will see the image after you publish your post.');
+									</script>
 								<?php } ?>
 								<div class="listing-carousel-container">
 								<ul class="listing-carousel">
