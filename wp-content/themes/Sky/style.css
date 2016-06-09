@@ -15563,6 +15563,25 @@ label .btn-translate {
 	width: 100% !important;
 }
 
+#preview-msg {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #F49630;
+	color: #fff;
+	font-size: 14px;
+	line-height: 1.3;
+	text-align: center;
+	padding: 10px 15px;
+	box-sizing: border-box;
+	text-transform: uppercase;
+	z-index: 9999;
+}
+
+#lang_sel_click {
+	z-index: 9;
+}
+
 
 @media screen and (max-width: 767px) {
 	body .wrapper .header .top-header {
@@ -15641,6 +15660,10 @@ label .btn-translate {
 	.fa-search:before{
 		color: #fff;
 	}
+	
+	#preview-msg {
+		display: block;
+	}
 }
 
 @media screen and (max-width: 991px) {
@@ -15682,4 +15705,8 @@ label .btn-translate {
 	}
 }
 
-
+@media screen and (min-width: 768px) {
+	#preview-msg {
+		display: none;
+	}
+}

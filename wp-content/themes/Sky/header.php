@@ -193,10 +193,13 @@
 									foreach ($post_images as $image_value) {
 										$picture_count++;
 									}
-								}
-								echo "<div class=\"listing-carousel-container\">
-								<ul class=\"listing-carousel\">";
-								if ( $geodir_video_url != '' ) { ?>
+								} ?>
+								<?php if ( function_exists('geodir_is_page') && geodir_is_page('preview') ) { ?>
+									<div id="preview-msg">You are currently in preview mode</div>
+								<?php } ?>
+								<div class="listing-carousel-container">
+								<ul class="listing-carousel">
+								<?php if ( $geodir_video_url != '' ) { ?>
 									<li class="listing-item first">
 									<?php
 									$querystr = $wpdb->prepare("SELECT overall_rating,rating_count,post_city,post_country FROM " . $wpdb->prefix .  "geodir_" . $post_type . "_detail WHERE post_status = 'publish' AND post_id=%s", $post->ID);
