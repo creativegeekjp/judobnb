@@ -965,7 +965,7 @@ function geodir_action_page_title()
      * @param string $class The class to use. Default is 'entry-header'.
      */
     $class_header = apply_filters('geodir_page_title_header_class', 'entry-header');
-    echo '<header class="' . $class_header . '"><h1 class="' . $class . '">' . stripslashes(get_the_title()) . '</h1></header>';
+    echo '<header class="' . $class_header . '"><h1 class="' . $class . '">' . stripslashes(get_the_title()) . '</h1> </header>';
 }
 
 
@@ -2066,7 +2066,7 @@ function geodir_action_add_listing_page_title()
 
     echo '<header class="' . $class_header . '"><h1 class="' . $class . '">';
     echo $title;
-    echo '</h1></header>';
+    echo '</h1> </header>';
 }
 
 add_action('geodir_add_listing_page_mandatory', 'geodir_action_add_listing_page_mandatory', 10);

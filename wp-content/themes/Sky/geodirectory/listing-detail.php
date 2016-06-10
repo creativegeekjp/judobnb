@@ -1,3 +1,4 @@
+
 <style type="text/css">
 	.modalDialog {
     position: fixed;
@@ -75,11 +76,12 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 			
 					###### MAIN CONTENT ######
 					// this call the main page content
+				
 					if ( have_posts() ) { 					
 					the_post(); 
 					global $post, $post_images, $wpdb, $preview;
-
-					if ( geodir_is_page('preview') ) {
+				
+					if ( !geodir_is_page('preview') ) {
 						$post_type = $_REQUEST["listing_type"];
 						$listing_rating = '0';
 						$listing_rating_count = '0';
@@ -181,10 +183,12 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 											} 
 											else 
 											{
+												if(get_userdata( get_post_field( 'post_author', $post->ID ) )->user_login !== $current_user->user_nicename){
 											
 											    ?> 
 													<a href="<?php bp_send_private_message_link('&unames='.get_userdata( get_post_field( 'post_author', $post->ID ) )->user_login); ?>" class="wpb_button single-listing-contact-author">Send Message</a>
 												<?php
+												}
 											}
 									?>
 									

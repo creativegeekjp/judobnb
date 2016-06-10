@@ -195,10 +195,15 @@
 									}
 								} ?>
 								<?php if ( function_exists('geodir_is_page') && geodir_is_page('preview') ) { ?>
-									<div id="preview-msg">You are currently in preview mode</div>
-									<script type="text/javascript">
-										alert('You will see the image after you publish your post.');
-									</script>
+									<div id="preview-msg"><?php echo __('You are currently in preview mode'); ?></div>
+									<div id="modal-info">
+										<div class="title-bar">&nbsp;</div>
+										<div class="content">
+										<p><?php echo __('You will view the image after you publish your post.'); ?></p>
+										<p><button  onclick="viewListing()" class="geodir_publish_button wpb_button ok">OK</button>
+										</p>
+										</div>
+									</div>
 								<?php } ?>
 								<div class="listing-carousel-container">
 								<ul class="listing-carousel">
@@ -408,8 +413,7 @@
 												?>
 													<?php echo $post_title; ?>
 													<?php echo geodir_favourite_html(get_current_user_id(), $post->ID); ?>
-												</div>
-												<div class="listing-item-location">
+													<p style="font-size: 15px; color: #fff;">
 													<?php
 													if ( isset($_REQUEST["preview"]) ) {
 														echo $_REQUEST["post_address"];
@@ -417,6 +421,16 @@
 														echo $queryresults['0']->post_city . ", " . $queryresults['0']->post_country;
 													}
 													?>
+													</p>
+												</div>
+												<div class="listing-item-location">
+													 <?php
+													// if ( isset($_REQUEST["preview"]) ) {
+													// 	echo $_REQUEST["post_address"];
+													// } else {
+													// 	echo $queryresults['0']->post_city . ", " . $queryresults['0']->post_country;
+													// }
+													 ?>
 												</div>
 												<div class="listing-item-info">
 													<?php if ( $geodir_video_url != '' && $picture_count >= 4 ) { ?>

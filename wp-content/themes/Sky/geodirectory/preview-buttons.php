@@ -54,10 +54,11 @@ if($_REQUEST['pid']=='')
      update_post_meta($_REQUEST['pid'], 'jd_cg_code', $code);
 }
 
+
 ?>
 
 <?php 
-do_action('geodir_before_publish_listing_form');
+do_action('geodir_after_publish_listing_form');
 ob_start()// start publish listing form buffering 
 ?>
 <div class="geodir_preview_section" >
@@ -67,8 +68,8 @@ ob_start()// start publish listing form buffering
 		<input type="hidden" name="pid" value="<?php if(isset($post->pid)){  echo $post->pid;}?>">
         <?php do_action('geodir_publish_listing_form_before_msg') ;?>    
         <?php
-	        define('vh_GOING_TO_FREE_MSG',__('This is a preview of your listing and its not published yet. If there is something wrong then "Edit" or if you want to add your listing then click on "Publish". Your %s listing will be published for %s days','vh'));
-			define('vh_GOING_TO_UPDATE_MSG',__('This is a preview of your listing and its not updated yet. If there is something wrong then "Edit" or if you want to update listing then click on "Update now"','vh'));
+	        define('vh_GOING_TO_FREE_MSG',__('This is a preview of your listing. If you want to view your listing then click on "View".','vh'));
+			//define('vh_GOING_TO_UPDATE_MSG',__('This is a preview of your listing and its not updated yet. If there is something wrong then "Edit" or if you want to update listing then click on "Update now"','vh'));
                         $alive_days = UNLIMITED;
                         $type_title = '';
 						ob_start();
@@ -97,9 +98,9 @@ ob_start()// start publish listing form buffering
 		?>
               <?php if(isset($_REQUEST['pid']) && $_REQUEST['pid']!='') { ?> 
             
-            <input type="submit" name="Submit and Pay" value="<?php echo "Publish and View";?>" class="geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
+            <input type="submit" name="Submit and Pay" value="<?php echo "View";?>" class="geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
             <?php } else { ?>
-			     	<input type="submit" name="Submit and Pay" value="<?php echo "Publish and View";?>" class=" geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
+			     	<input type="submit" name="Submit and Pay" value="<?php echo "View";?>" class=" geodir_button geodir_publish_button wpb_button wpb_btn-primary wpb_btn-small input_button" />
 				<?php		
 				}
 					$publish_listing_form_button = ob_get_clean();
@@ -119,7 +120,7 @@ ob_start()// start publish listing form buffering
 					
 					ob_start(); // start go back and edit / cancel buffering		 
             ?>
-           <input type="button" name="Cancel" value="<?php echo (PRO_CANCEL_BUTTON);?>" class="geodir_button geodir_cancle_button wpb_button wpb_btn-inverse wpb_btn-small input_button" 
+           <input type="hidden" name="Cancel" value="<?php echo (PRO_CANCEL_BUTTON);?>" class="geodir_button geodir_cancle_button wpb_button wpb_btn-inverse wpb_btn-small input_button" 
            onclick="window.location.href='<?php echo geodir_get_ajax_url().'&geodir_ajax=add_listing&ajax_action=cancel&pid='.$post_id.'&listing_type='.$post_type;?>'" />
         	<?php
             	

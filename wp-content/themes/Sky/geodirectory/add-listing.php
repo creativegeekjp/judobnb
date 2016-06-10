@@ -39,6 +39,18 @@ do_action( 'geodir_wrapper_open', 'add-listing-page', 'geodir-wrapper','');
 ###### WRAPPER CLOSE ######	
 // this adds the closing html tags to the wrapper div :: ($type='')
 do_action( 'geodir_wrapper_close', 'add-listing-page');
+?>
 
+<div id="modal-info">
+	<div class="title-bar">&nbsp;</div>
+	<div class="content">
+		<p>Invalid listing price</p>
+		<p><button class="geodir_publish_button wpb_button ok">OK</button></p>
+	</div>
+</div>
+
+<?php
 // call footer
-get_footer();     
+get_footer();
+
+?>

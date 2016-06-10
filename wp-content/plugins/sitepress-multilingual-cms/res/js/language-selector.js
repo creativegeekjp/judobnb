@@ -16,6 +16,7 @@
                 document.addEventListener('click', wpml_language_selector_click.close);                
                 wpml_language_selector_click.ls_click_flag = true;
             }
+          
             return false;
         },
         close: function(e){
@@ -24,5 +25,14 @@
                 sel.style.visibility = 'hidden';
             }
             wpml_language_selector_click.ls_click_flag = false;
+        },
+        ls: function(e)
+        {
+              if (jQuery.cookie('vh_selected_people') != null) {
+                //  jQuery.cookie('vh_selected_people',  '' , {path: '/'});
+                 //jQuery("#header-people").val( jQuery.cookie('vh_selected_people22')  );
+              }
         }
     };
+    
+

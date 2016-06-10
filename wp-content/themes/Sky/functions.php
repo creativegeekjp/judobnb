@@ -279,6 +279,11 @@ if (!function_exists('vh_scripts_method')) {
 
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('prettyphoto', array('jquery'), '', TRUE);
+		
+		if ( function_exists('geodir_is_page') && geodir_is_page('preview') ) :
+		wp_enqueue_script('simplemodal', get_template_directory_uri() . '/js/jquery.simplemodal.js', array('jquery'), '', TRUE);
+		endif;
+		
 		wp_enqueue_script('master', get_template_directory_uri() . '/js/master.js', array('jquery', 'prettyphoto'), '', TRUE);
 		wp_enqueue_script('isotope', get_template_directory_uri() . '/js/jquery.isotope.min.js', array('jquery', 'master'), '', TRUE);
 		// wp_enqueue_script('jquery-ui-tabs');
@@ -1183,14 +1188,11 @@ function vh_get_header_search_field() {
 			$vhpeopleArray = explode('/', $vhpeople);
 			
 			$_COOKIE['vh_selected_people'] = __($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh');*/
-			
+			//$adultsss = ICL_LANGUAGE_CODE == 'en' ? $_COOKIE['vh_selected_people'] : "大人/大人のみ";
 			$form_output .= '
 			<div class="clearfix"></div></div>
 			<div class="header-input-container"><span class="header-input-title">'.__('People:', 'vh').'</span><input type="text" id="header-people" readonly>';
-			//	id="header-people"
-			
-			//$form_output .=">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".__($vhpeopleArray[0],'vh').'/'.__($vhpeopleArray[1],'vh');
-			
+		
 			ob_start();
 			vh_get_listing_people_options();
 			$form_output .= ob_get_contents();

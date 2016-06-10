@@ -1106,18 +1106,14 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	if (jQuery.cookie('vh_selected_people') == null) {
-		jQuery.cookie('vh_selected_people', '1 Adult/No Children', {
-			path: '/'
-		});
+	if (jQuery.cookie('vh_selected_people') == null) {//1
+		jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
-
+		
 	}
 	else {
-		console.log(">>>>>>>>>>>>>>>>>>>>");
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
-		//	jQuery("#header-people, #listing-people").val('vh_selected_people');
-
+		jQuery("#header-people").val('');
 	}
 
 	jQuery(".calendar-search-item").live({
@@ -1152,6 +1148,8 @@ jQuery(document).ready(function($) {
 			jQuery("#header-when, #header-top-when, #listing-when").datepicker("refresh");
 		}
 	});
+	
+	
 
 	jQuery(".calendar-search-item").live('click', function() {
 		if (jQuery(this).hasClass("today")) {
@@ -1310,6 +1308,10 @@ jQuery(document).ready(function($) {
 			}
 		});
 		return "[" + today + tomorrow + this_weekend + next_week + "]";
+	}
+	
+	function checkMessaging(guest,host){
+		alert('ggggg');
 	}
 
 	setTimeout(function() {
@@ -1902,16 +1904,16 @@ jQuery(document).ready(function($) {
 					};
 				};
 
-				if (jQuery.cookie('vh_selected_people') == null) {
-					/*jino*/
-					jQuery.cookie('vh_selected_people', '1 Adult/No Children', {
-						path: '/'
-					});
-					jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
-				}
-				else {
-					jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
-				}
+				// if (jQuery.cookie('vh_selected_people') == null) {
+				// 	/*jino*/
+				// 	jQuery.cookie('vh_selected_people', '1 Adult/No Children', {
+				// 		path: '/'
+				// 	});
+				// 	jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
+				// }
+				// else {
+				// 	jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
+				// }
 
 				if (jQuery.cookie('vh_selected_date') != null) {
 					jQuery('#header-when').val(jQuery.cookie('vh_selected_date'));
@@ -3447,7 +3449,14 @@ function isNumber() {
 
 	if (!pattern.test(n)) {
 
-		alert('Invalid listing price');
+		//alert('Invalid listing price');
+		jQuery(function ($) {
+			$('#modal-info').modal();
+			
+			$('#modal-info .ok').click(function () {
+				$.modal.close();
+			});
+		});
 		jQuery("#geodir_listing_price").val("");
 	}
 
@@ -3463,3 +3472,20 @@ function checkImages(){
 	
 	return true;
 };
+
+
+
+// window.onbeforeunload = function() {
+// //	
+// 	 if(!jQuery("#easy_form_success").length<1){
+	 	 
+// 		 if(window.location.href == 'http://judobnb.creativegeek.jp/book-now/?resource_id=2906#easyFormInnerlay' ){
+// 		 	return "ff";
+// 		 }
+// 	 }
+	 
+// };
+
+function viewListing(){
+	jQuery(".geodir_publish_button").click();
+}

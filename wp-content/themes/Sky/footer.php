@@ -122,5 +122,18 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		</script>
 		
 		<?php endif; ?>
+		
+		<?php if ( function_exists('geodir_is_page') && geodir_is_page('preview') ) : ?>
+		<script>
+			jQuery(function ($) {
+				$('#modal-info').modal();
+				
+				$('#modal-info .ok').click(function () {
+					$.modal.close();
+				});
+			});
+		</script>
+		<?php endif; ?>
+		
 	</body>
 </html>

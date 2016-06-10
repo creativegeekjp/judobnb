@@ -1,5 +1,6 @@
 <?php
 $unames = isset($_GET['unames']) ?  $_GET['unames'] : "" ;
+$current_user = wp_get_current_user();
 ?>
 
 <form action="<?php bp_messages_form_action('compose'); ?>" method="post" id="send_message_form" class="standard-form" role="main" enctype="multipart/form-data">
@@ -9,15 +10,18 @@ $unames = isset($_GET['unames']) ?  $_GET['unames'] : "" ;
 	<label for="send-to-input"><?php _e("Send To", 'buddypress'); ?></label>
 	<ul class="first acfb-holder">
 		<li>
-			<?php bp_message_get_recipient_tabs(); ?>
-			<input type="text" name="send-to-input" class="send-to-input" <?php if(strlen($unames)>0): ?> readonly <?php endif ?> id="send-to-input" value="<?php echo $unames; ?>" />
+			<?php bp_message_get_recipient_tabs(); 
+			$x=$current_user->user_nicename;
+			?>
+			<input type="text" name="send-to-input" class="send-to-input" onblur=" var value=this.value; if('<?php echo $x; ?>' === value){ document.getElementById('send_error_span').innerHTML='Error: Invalid email'; }else{document.getElementById('send_error_span').innerHTML=''; };return false;" <?php if(strlen($unames)>0): ?> readonly <?php endif ?> id="send-to-input" value="<?php echo $unames; ?>" />
 		</li>
+		<span id="send_error_span" style="color:red"></span>
 	</ul>
 
 	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
 		<?php 
 			
-			$current_user = wp_get_current_user();
+			
 			
 			if ( is_user_logged_in() && $current_user->ID == 1 || current_user_can( 'administrator' )  ) 
 			{ 

@@ -8,6 +8,10 @@
 
 @media (max-width: 767px) {
 	
+	body table .wpb_button.wpb_btn-small{
+		font-size: 15px;
+	}
+	
 	.listing-item-exitfullscreen.icon-resize-full{
 		display: none;
 	}
@@ -23,17 +27,17 @@
 		margin: 0 auto !important;
 		position: static;
 	}
-	body .wrapper .addlisting-upload-button{
+	.wrapper .addlisting-upload-text, body .wrapper .addlisting-upload-button, #upload-msg{
 		display: none;
+	}
+	
+	#post_imagesplupload-browse-button{
+		font-size: x-large;
 	}
 	
 	.single-listing-info {
 	    float: left;
 	    padding-left: 12px;
-	}
-	
-	.single-listing-social{
-		display: none;
 	}
 	
 	#buy-now-ribbon {
@@ -387,14 +391,14 @@
 
 	#twitter-widget-0,
 	#___plus_0 {
-		display: block !important;
+		display: none !important;
 		float: right !important;
 		clear: both;
 	}
 
 	.fb_iframe_widget,
 	.fb_iframe_widget iframe {
-		display: block !important;
+		display: none !important;
 		float: right;
 		clear: both;
 	}
@@ -800,7 +804,7 @@
 		font-size: 15px;
 	}
 	.single-listing-by-info .author-text{
-		padding-left: 0px;
+		padding-left: 10px;
 	}
 	.single-listing-by-info{
 		text-align: center;

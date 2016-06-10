@@ -109,12 +109,12 @@ function reservation_host()
             }
             else
             {
-                echo 'No Reservations found.';
+                echo "You haven't received any reservations yet";
             }
             
                 
             foreach ($lists as $list) {
-                
+                $x="";
                 //jd_cg_captured_payments
                 $idt = $list->tid;
                 $txn_id = $list->txn_id;
@@ -160,9 +160,19 @@ function reservation_host()
                                                     
                                                     
                  //get current usernicename
-        	     global $current_user;
+        	     global $user_info;
      
                 get_currentuserinfo();
+                
+                
+                //if($current_user->user_nicename===$user_info->user_login)
+                if($user === $authors){
+                    $x="disabled";
+                    $xclass="";
+                }else{
+                    $xclass="wpb_btn-primary";
+                }
+                
                 
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">View</a></td>
@@ -178,7 +188,7 @@ function reservation_host()
                         <td>
                         
                          $lnks 
-                         <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
+                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >Send Message</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -238,7 +248,7 @@ function reservation_guest()
             }
             else
             {
-                echo 'No Reservations found.';
+                echo "You haven't  done any reservations yet";
             }
             
             foreach ($lists as $list) {
@@ -294,6 +304,13 @@ function reservation_guest()
      
                 get_currentuserinfo();
                 
+                 if($user === $authors){
+                    $x="disabled";
+                    $xclass="";
+                }else{
+                    $xclass="wpb_btn-primary";
+                }
+                
                 echo "<tr>
                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">View</a></td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
@@ -307,7 +324,7 @@ function reservation_guest()
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                          <td>".$edit_check."</td>
                         <td>".$cancel_check."</td>
-                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/members/". $current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'>SendMessage</a></td>
+                       <td> <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >SendMessage</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -688,6 +705,7 @@ function listing_message_confirmation($content)
     add_shortcode(  'listing_message_confirmation' , 'listings_message_confirmation' );
     return $content;
 }
+
 add_action( 'the_content', 'rhost');
 add_action( 'the_content', 'rguest');
 add_action( 'the_content', 'confhostdisapproved');
