@@ -22,7 +22,8 @@ do_action( 'geodir_wrapper_open', 'add-listing-page', 'geodir-wrapper','');
 			
 					###### MAIN CONTENT ######
 					// this adds the page title
-					do_action( 'geodir_add_listing_page_title');
+					//do_action( 'geodir_add_listing_page_title');
+					?><h1 class="entry-title fn"><?php the_title(); ?></h1><?php
 					// this adds the add listing form
 					do_action( 'geodir_add_listing_form_new');
 					
@@ -44,7 +45,7 @@ do_action( 'geodir_wrapper_close', 'add-listing-page');
 <div id="modal-info">
 	<div class="title-bar">&nbsp;</div>
 	<div class="content">
-		<p>Invalid listing price</p>
+		<p><?php echo _e('Invalid listing price', 'geodirectory'); ?></p>
 		<p><button class="geodir_publish_button wpb_button ok">OK</button></p>
 	</div>
 </div>
