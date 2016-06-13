@@ -37,7 +37,7 @@
 	?>
 
 	<?php if ( have_comments() ) : ?>
-	<div class="btn-translate" onClick="translateTxt()">translate</div>
+	<div class="btn-translate" onClick="translateTxt()"><?php echo _e('translate', 'geodirectory'); ?></div>
 			<?php
 
 				if ( in_array(get_post_type(), $geodir_post_types) ) {

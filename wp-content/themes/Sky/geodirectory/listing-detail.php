@@ -203,7 +203,7 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 							</div>
 							<?php } ?>
 							<div class="single-listing-main-content">
-								<div id="translate" class="btn-translate" onclick="translateContent()">translate</div>
+								<div id="translate" class="btn-translate" onclick="translateContent()"><?php echo _e('translate', 'buddypress'); ?></div>
 								
 								<?php
 								if ($preview) {
