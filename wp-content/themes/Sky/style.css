@@ -15802,3 +15802,7 @@ html[lang="ja"] .wrapper .map-view-default {
 	width: 100%;
 	box-sizing: border-box;
 }
+
+.admin-bar .emodal {
+	top: 32px !important;
+}
