@@ -11742,6 +11742,7 @@ body table .wpb_button.wpb_btn-small {
 	margin-bottom: 5px;
 	padding: 0px 8px;
 	text-shadow: none;
+	white-space: nowrap;
 }
 
 body.skydirectory .wpb_button.wpb_btn-small {
@@ -15795,4 +15796,9 @@ html[lang="ja"] .wrapper .map-view-satellite {
 
 html[lang="ja"] .wrapper .map-view-default {
     right: 167px;
+}
+
+#buddypress #signup_form.standard-form div div.error {
+	width: 100%;
+	box-sizing: border-box;
 }
