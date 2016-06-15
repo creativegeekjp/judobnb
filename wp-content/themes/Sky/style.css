@@ -15811,3 +15811,17 @@ html[lang="ja"] .wrapper .map-view-default {
 	top: 10px;
 	bottom: auto;
 }
+
+#main_header_image.author .slidesjs-navigation {
+	display: none;
+}
+
+#main_header_image.author {
+	background: url('images/bg-author.jpg') no-repeat;
+	background-position: top center !important;
+	background-size: cover !important;
+}
+
+body.archive.author #main_header_bg {
+	background-color: rgba(0, 0 , 0, 0.2);
+}
