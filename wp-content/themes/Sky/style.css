@@ -15825,3 +15825,7 @@ html[lang="ja"] .wrapper .map-view-default {
 body.archive.author #main_header_bg {
 	background-color: rgba(0, 0 , 0, 0.2);
 }
+
+.author-dash-info {
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+}
