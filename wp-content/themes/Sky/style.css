@@ -15806,3 +15806,8 @@ html[lang="ja"] .wrapper .map-view-default {
 .admin-bar .emodal {
 	top: 32px !important;
 }
+
+.featured-carousel-controls {
+	top: 10px;
+	bottom: auto;
+}
