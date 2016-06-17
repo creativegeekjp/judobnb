@@ -2,6 +2,6 @@
 
 
 echo 'drop database judobnb; create database judobnb;'| mysql -uroot -pcgeek judobnb
-./resetpy | mysql -uroot -pcgeek judobnb
+./resetpy judobnb.creativegeek.jp www.judobnb.com | mysql -uroot -pcgeek judobnb
 sudo service apache2 restart
 sudo chmod 777 -R /var/www/html/wp-content/uploads 
