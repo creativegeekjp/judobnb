@@ -89,8 +89,12 @@ function my_page_template_redirect()
 {
         
     if(isset($_GET['resource'])){
-echo '/book-now/?resource_id=' . $_GET['resource'];
-        wp_redirect('/book-now/?resource_id=' . $_GET['resource']);
+    echo '/book-now/?resource_id=' . $_GET['resource'];
+
+       if(ICL_LANGUAGE_CODE=='en')
+            wp_redirect('/book-now/?resource_id=' . $_GET['resource']);
+        else
+            wp_redirect('/ja/book-now/?resource_id=' . $_GET['resource']);
         exit();
     }
 }

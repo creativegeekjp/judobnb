@@ -199,7 +199,7 @@
 									<div id="modal-info">
 										<div class="title-bar">&nbsp;</div>
 										<div class="content">
-										<p><?php echo __('You will view the image after you publish your post.'); ?></p>
+										<p><?php echo __('You will view the image after you publish your post.', 'wordpress'); ?></p>
 										<p><button  onclick="viewListing()" class="geodir_publish_button wpb_button ok">OK</button>
 										</p>
 										</div>
@@ -240,7 +240,7 @@
 												player = new YT.Player('ytplayer', {
 													height: '611',
 													width: '100%',
-													videoId: '<?php echo $match; ?>',
+													videoId: '<?php echo trim($match); ?>',
 													playerVars : {
 														'autoplay' : 1,
 														'rel' : 0,
@@ -518,6 +518,7 @@
 									<?php } ?>
 									<?php
 										$reservation_url = get_permalink(get_option('vh_book_now'));
+										
 										$reservation_id = get_post_meta(get_the_ID(), 'vh_resource_id');
 										
 									
@@ -628,9 +629,7 @@
 							}
 							?>
 						</div>
-						<div id="main_header_image" class="author">
-						
-						</div>
+						<div id="main_header_image" class="author"></div>
 						<div class="author-dash-image">
 							<?php
 							$author = get_user_by( 'slug', get_query_var( 'author_name' ) );

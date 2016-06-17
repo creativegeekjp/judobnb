@@ -184,8 +184,10 @@ function reservation_settings_page(){
 		$ifformcurrent='class="current"';
 
 		$formresult = $wpdb->get_results($wpdb->prepare("SELECT option_name, option_value FROM ".$wpdb->prefix ."options WHERE option_name like '%1\$s' ", like_escape("reservations_form_") . '%'));
+		
 		foreach( $formresult as $result ){
 			$formcutedname=str_replace('reservations_form_', '', $result->option_name);
+		
 			if($formcutedname!=""){
 				if(isset($_GET['form']) && $formcutedname == $_GET['form']) $class=' class="curr"'; else $class = '';
 				$link = 'admin.php?page=reservation-settings&site=form';
@@ -592,7 +594,7 @@ if($setting_current_page == "general"){
 	              }
 	          },
 	          "date-from": {
-	              name: '<?php echo addslashes(__( 'Arrival date' , 'easyReservations' ));?>',
+	              name: '<?php echo addslashes(__( 'Arrival date ' , 'easyReservations' ));?>',
 	              desc: '<?php echo addslashes(__( 'Field with datepicker for the arrival date. Is required in any form.' , 'easyReservations' ));?>',
 	              options: {
 	                  value: {

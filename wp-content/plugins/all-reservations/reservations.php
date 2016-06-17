@@ -125,16 +125,33 @@ function email_hosts(){
         };
         $htm .='</table>';
         
+                $from_name="JudoBNB";
+    		    $from_email="info@judobnb.creativegeek.jp";
+    		    
+    		    $headers  = "MIME-Version: 1.0 \n" ;
+                $headers .= "From: " .
+                       "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
+                       "<".$from_email."> \n";
+                $headers .= "Reply-To: " .
+                       "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
+                       "<".$from_email."> \n";
+                
+                    
+                $headers .= "Content-Type: text/plain;charset=ISO-2022-JP \n";
+            
+        
                 $email_to=$val['host_email'];
                 //$email_to='daryl@yopmail.com';
-                $subject="JudoBnB Host Emails.";
                 $body = file_get_contents(includes_url() . 'custom-emails/host-emails.html');
                 $message = str_ireplace('[host_display_name]',$val['host_name'], $body);
                 $message = str_ireplace('[reservation_list]',$htm, $message);
-                $headers  = 'MIME-Version: 1.0' . "\r\n";
-                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+               
+                $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
+                mb_language("ja");
+                $subject = mb_convert_encoding("JudoBnB Hosts Email", "ISO-2022-JP","AUTO");
+                $subject = mb_encode_mimeheader($subject);
                 
-                $stat=wp_mail($email_to,$subject,$message,$headers);
+                $stat=wp_mail($email_to,$subject,$email_body,$headers);
                 echo $stat;
          
     }

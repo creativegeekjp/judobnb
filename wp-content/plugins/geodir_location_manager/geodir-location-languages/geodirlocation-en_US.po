@@ -797,7 +797,7 @@ msgstr ""
 #: geodir_location_hooks_actions.php:2614
 #: geodir_location_hooks_actions.php:2766
 msgid "Click on above field and type to filter list"
-msgstr ""
+msgstr "test"
 
 #: geodir_location_hooks_actions.php:2636
 #: geodir_location_hooks_actions.php:2698 geodir_location_template_tags.php:760

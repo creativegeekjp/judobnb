@@ -69,7 +69,7 @@ ob_start()// start publish listing form buffering
         <?php do_action('geodir_publish_listing_form_before_msg') ;?>    
         <?php
 	        define('vh_GOING_TO_FREE_MSG',__('This is a preview of your listing. If you want to view your listing then click on "View".','vh'));
-			//define('vh_GOING_TO_UPDATE_MSG',__('This is a preview of your listing and its not updated yet. If there is something wrong then "Edit" or if you want to update listing then click on "Update now"','vh'));
+			define('vh_GOING_TO_UPDATE_MSG',__('This is a preview of your listing. If you want to view your listing then click on "View".','vh'));
                         $alive_days = UNLIMITED;
                         $type_title = '';
 						ob_start();

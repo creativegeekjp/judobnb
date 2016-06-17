@@ -3085,7 +3085,8 @@ class Easy_Social_Media extends WP_Widget {
 		$sm_yt = $instance['yt'];
 		$sm_ig = $instance['ig'];
 
-		$output = '<h4>' . __($sm_tt, 'widget') . '</h4>';
+		$output = '<h4>' . __($sm_tt, 'social_media') . '</h4>';
+		
 		$output .= '
 			<ul class="inline-list social">';
 				if ($sm_fb != '' ) : $output .= '<li><a class="fb" href="'.$sm_fb.'" target="_blank"><i class="fa fa-facebook"></i></a></li>'; endif;
@@ -3098,7 +3099,7 @@ class Easy_Social_Media extends WP_Widget {
 		$output .= '</ul>';
 
 		echo $args['before_widget'];
-		echo __( $output, 'social_media' );
+		echo __($output,'social_media');
 		echo $args['after_widget'];
 	}
 

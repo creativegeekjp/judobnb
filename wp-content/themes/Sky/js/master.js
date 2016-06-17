@@ -2965,6 +2965,7 @@ jQuery(document).ready(function($) {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude + "&sgeo_keyword=" + keyword;
 
 				window.location.href = my_ajax.blog_url + location;
+			
 			}
 			else if (jQuery('.header-input-container.advanced').length) {
 				var advanced_location = '';
@@ -3082,7 +3083,7 @@ jQuery(document).ready(function($) {
 					window.location.href = my_ajax.blog_url + "/ja/" + location;
 
 				}
-
+				
 			}
 			else if (jQuery("body").hasClass("skydirectory")) {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude + "&sgeo_keyword=" + keyword + "&sgeo_category=" + category;
@@ -3152,6 +3153,7 @@ jQuery(document).ready(function($) {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude;
 				window.location.href = my_ajax.blog_url + location;
 			}
+		
 		});
 	})
 
@@ -3473,19 +3475,43 @@ function checkImages(){
 	return true;
 };
 
+(function () {
+    var d = document,
+        pwd = d.querySelector('#signup_password');
+    
+    pwd.addEventListener('keyup', checklen);
+    
+    function checklen(e){
+        var valLen = this.value.length
+           ,cando = valLen > 7 && valLen <= 20;
+        d.querySelector('#pwdrow')
+          .setAttribute( 'data-lenchk', 
+          					valLen < 1 ? '	'
+                          : valLen < 8 ? 'Password is too short (min 8)'
+                          : valLen > 20 ? 'Password is too long (max 20)' : '' );
+    }
+}());
 
 
-// window.onbeforeunload = function() {
-// //	
-// 	 if(!jQuery("#easy_form_success").length<1){
-	 	 
-// 		 if(window.location.href == 'http://judobnb.creativegeek.jp/book-now/?resource_id=2906#easyFormInnerlay' ){
-// 		 	return "ff";
-// 		 }
-// 	 }
-	 
-// };
 
+
+/*
 function viewListing(){
 	jQuery(".geodir_publish_button").click();
 }
+*/
+
+function f(){
+	
+	arr = ["featured"]; 
+	
+	if(jQuery.inArray( jQuery("#post_tags").val().toLowerCase(), arr ) !==-1 ){
+		alert("\'"+jQuery("#post_tags").val()+"\' is not available please select other tag.");
+		jQuery("#post_tags").val('');
+		return true;
+	}else{
+		return false;
+	}
+}
+
+

@@ -1414,7 +1414,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                            value="<?php echo esc_attr(stripslashes($lat)); ?>" size="25"/>
                     <span class="geodir_message_note"><?php echo GET_LATITUDE_MSG; ?></span>
                     <?php if ($is_required) { ?>
-                        <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                        <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                     <?php } ?>
                 </div>
 
@@ -1429,7 +1429,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                            value="<?php echo esc_attr(stripslashes($lng)); ?>" size="25"/>
                     <span class="geodir_message_note"><?php echo GET_LOGNGITUDE_MSG; ?></span>
                     <?php if ($is_required) { ?>
-                        <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                        <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                     <?php } ?>
                 </div>
             <?php } ?>
@@ -1502,7 +1502,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                        value="<?php echo esc_attr(stripslashes($value));?>" type="<?php echo $type;?>" class="geodir_textfield" <?php echo $validation;echo $validation_msg;?> />
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1522,7 +1522,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                        value="<?php echo esc_attr(stripslashes($value));?>" type="email" class="geodir_textfield"/>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1542,7 +1542,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                        value="<?php echo esc_attr(stripslashes($value));?>" type="tel" class="geodir_textfield"/>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1565,7 +1565,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                     />
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1593,7 +1593,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                 ?>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1616,7 +1616,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                      onchange="if(this.checked){jQuery('#<?php echo $name;?>').val('1');} else{ jQuery('#<?php echo $name;?>').val('0');}"/>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1650,7 +1650,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
 
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1687,7 +1687,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                         option-ajaxchosen="false"><?php echo $select_options;?></select>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1765,7 +1765,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
             <?php } else { ?></ul><?php } ?>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory'); ?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
         <?php
@@ -1788,7 +1788,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
 
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory'); ?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
 
             </div>
@@ -1846,7 +1846,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
 
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1878,7 +1878,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
 
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -1991,7 +1991,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
 
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 
@@ -2097,7 +2097,7 @@ function geodir_get_custom_fields_html($package_id = '', $default = 'custom', $p
                 </div>
                 <span class="geodir_message_note"><?php _e($admin_desc, 'geodirectory');?> <?php echo ( $display_file_types != '' ? __('Allowed file types:', 'geodirectory') . ' ' . $display_file_types : '' );?></span>
                 <?php if ($is_required) { ?>
-                    <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory'); ?></span>
+                    <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory'); ?></span>
                 <?php } ?>
             </div>
 

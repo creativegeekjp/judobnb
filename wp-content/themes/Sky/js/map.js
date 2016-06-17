@@ -20,11 +20,14 @@ function vh_getUrlParameter(sParam) {
 }
 
 function initMap(map_options){ 
-	// alert(map_options)
+	//alert(map_options)
 	map_options = eval(map_options) ;
 	map_options.zoom = parseInt(map_options.zoom);
 	
 	options = map_options;
+	
+
+	
 	var pscaleFactor;
 	var pstartmin;
 	var ajax_url =  options.ajax_url;

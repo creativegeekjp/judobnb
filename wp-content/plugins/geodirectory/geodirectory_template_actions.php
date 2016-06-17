@@ -2187,7 +2187,7 @@ function geodir_action_add_listing_form()
                    value="<?php echo esc_attr(stripslashes($title)); ?>"/>
                   
                    
-            <span class="geodir_message_error"><?php _e($required_msg, 'geodirectory');?></span>
+            <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory');?></span>
         </div>
         <?php
         $show_editor = get_option('geodir_tiny_editor_on_add_listing');

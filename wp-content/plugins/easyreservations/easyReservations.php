@@ -89,6 +89,8 @@ ID: [ID]<br>Name: [thename] <br>Email: [email] <br>From: [arrival] <br>To: [depa
 
 <div style="text-align:center;">[submit Send]</div>';
 
+
+
 		$permission = array('dashboard' => 'edit_posts', 'statistics' => 'edit_posts', 'resources' => 'edit_posts', 'settings' => 'edit_posts');
 		add_option('reservations_main_permission', $permission, '', 'yes' );
 		add_option( 'reservations_email_to_user', array('msg' => $emailstandart4, 'subj' =>  'Your Reservation on '.get_option('blogname'), 'active' => 1), '', 'no');
@@ -101,7 +103,7 @@ ID: [ID]<br>Name: [thename] <br>Email: [email] <br>From: [arrival] <br>To: [depa
 		add_option( 'reservations_email_sendmail', array('msg' => $emailstandart0, 'subj' => 'Message from '.get_option('blogname'), 'active' => 1), '', 'no');
 
 		add_option( 'reservations_uninstall', '1', '', 'no' );
-		add_option( 'reservations_form', $formstandart, '', 'no' );
+		add_option( 'reservations_form', __($formstandart,'easyReservations'), '', 'no' );
 		add_option( 'reservations_regular_guests', '', '', 'no' );
 		add_option( 'reservations_edit_url', '', '', 'yes' );
 		add_option( 'reservations_price_per_persons', '1', '', 'yes' );

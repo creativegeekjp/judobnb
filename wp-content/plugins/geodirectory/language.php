@@ -45,7 +45,7 @@ define('PLACE_DESC_TEXT', __('Listing Description', 'geodirectory'));
 
 define('LISTING_ADDRESS_TEXT', __('Listing Address:', 'geodirectory'));
 define('PLACE_ADDRESS', __('Address:', 'geodirectory'));
-define('ADDRESS_MSG', __('Please enter listing address. eg. : 230 Vine Street', 'geodirectory'));
+define('ADDRESS_MSG', __('Please enter listing address. eg. : <b>230 Vine Street</b>', 'geodirectory'));
 define('PLACE_CITY_TEXT', __('City:', 'geodirectory'));
 define('PLACE_REGION_TEXT', __('Region:', 'geodirectory'));
 define('PLACE_COUNTRY_TEXT', __('Country:', 'geodirectory'));
@@ -128,7 +128,7 @@ define('CONTACT_MSG', __('You can enter phone number,cell phone number etc.', 'g
 define('WEBSITE_MSG', __('Enter website URL. eg. : <b>http://myplace.com</b>', 'geodirectory'));
 define('TWITTER_MSG', __('Enter twitter URL. eg. : <b>http://twitter.com/myplace</b>', 'geodirectory'));
 define('FACEBOOK_MSG', __('Enter facebook URL. eg. : <b>http://facebook.com/myplace</b>', 'geodirectory'));
-define('CATEGORY_MSG', __('Select listing category from here. Select at least one category', 'geodirectory'));
+define('CATEGORY_MSG', __('Select listing category from here. Select one category', 'geodirectory'));
 define('TAGKW_MSG', __('Tags are short keywords, with no space within.(eg: tag1, tag2, tag3) Up to 40 characters only.', 'geodirectory'));
 define('HTML_TAGS_ALLOW_MSG', __('Note : Basic HTML tags are allowed', 'geodirectory'));
 define('HTML_SPECIAL_TEXT', __('Note: List out any special offers (optional)', 'geodirectory'));
@@ -530,3 +530,14 @@ __('Zambia', 'geodirectory');
 __('Zimbabwe', 'geodirectory');
 __('Curaçao', 'geodirectory');
 __('Caribbean Netherlands', 'geodirectory');
+
+__('guests','geodirectory');
+__('bedrooms','geodirectory');
+__('Listing start date','geodirectory');
+__('Listing end date','geodirectory');
+__('Listing Price (JPY)','geodirectory');
+__('beds','geodirectory');
+__('Adult count','geodirectory');
+__('Children count','geodirectory');
+__('Rent','geodirectory');
+__('Bathroom count','geodirectory');

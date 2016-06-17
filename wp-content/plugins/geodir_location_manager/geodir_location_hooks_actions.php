@@ -2613,7 +2613,7 @@ function geodir_location_address_extra_listing_fields($val) {
                     </div>
                     <span class="geodir_message_note"><?php _e('Click on above field and type to filter list' , 'geodirlocation')?></span>
                     <?php if ($is_required) { ?>
-                        <span class="geodir_message_error"><?php echo $required_msg?></span>
+                        <span class="geodir_message_error"><?php echo _e($required_msg,'geodirectory') ?></span>
                     <?php } ?>
                 </div>
             <?php
@@ -2674,7 +2674,7 @@ function geodir_location_address_extra_listing_fields($val) {
                     </div>
                     <span class="geodir_message_note"><?php _e('Click on above field and type to filter list or add a new region' , 'geodirlocation')?></span>
                     <?php if ($is_required) { ?>
-                        <span class="geodir_message_error"><?php echo $required_msg?></span>
+                        <span class="geodir_message_error"><?php echo _e($required_msg,'geodirectory')?></span>
                     <?php } ?>
                 </div>
             <?php
@@ -2736,7 +2736,7 @@ function geodir_location_address_extra_listing_fields($val) {
                     </div>
                     <span class="geodir_message_note"><?php _e('Click on above field and type to filter list or add a new city' , 'geodirlocation')?></span>
                     <?php if ($is_required) { ?>
-                        <span class="geodir_message_error"><?php echo $required_msg;?></span>
+                        <span class="geodir_message_error"><?php echo _e($required_msg,'geodirectory');?></span>
                     <?php } ?>
                 </div>
             <?php
@@ -2892,6 +2892,16 @@ function geodir_location_map_extra($prefix='')
     global $pagenow;
 
     if(((is_page() && get_query_var('page_id') == get_option( 'geodir_add_listing_page' ) )) || (is_admin() && ( $pagenow == 'post.php'  || isset($_REQUEST['post_type'])))){
+        
+        ##jino translate lingwahe
+        // if(ICL_LANGUAGE_CODE=='ja')
+        // {
+        //     $linguwahe = '&language=ja';
+        // }
+        // else
+        // {
+        //     $linguwahe = '&language=en';
+        // }
         return "&libraries=places";
     }
 }

@@ -551,8 +551,8 @@ JAVASCRIPT;
                     $currency = $values['currency'];
                     
                     $return .= 'name="_xclick" action="'.$theModusURL.'" method="post" id="easy_paypal_form">';
-                    if(!$button) $return.= '<input type="image" src="'.$gateway_opt['button'].'" border="0" name="submit" alt="Pay with Paypal!">';
-                    else $return.= $button;
+                    if(!$button){ if(ICL_LANGUAGE_CODE=='ja') $gateway_opt['button']=str_replace('en_US','ja_JP',$gateway_opt['button']); $return.= '<input type="image" src="'.$gateway_opt['button'].'" border="0" name="submit" alt="Pay with Paypal!">';
+                    }else{ if(ICL_LANGUAGE_CODE=='ja') $button=str_replace('en_US','ja_JP',$button); $return.= $button; }
                     $array = array(
                         'cmd' => '_xclick',
                         'custom' => $nonce,

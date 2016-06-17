@@ -37,6 +37,7 @@ class vh_googlemap extends WP_Widget {
 		// Load google map JS
 		if (!empty($gmap_key)) { ?>
 			<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+			
 		<?php
 			//wp_enqueue_script('gmap-api', 'http://maps.google.com/maps?file=api&amp;key=' . $gmap_key . '&sensor=false&amp;v=3', array(), false);
 			wp_enqueue_script('jquery-gmap', get_template_directory_uri() . '/js/jquery.gmap-1.1.0-min.js', array('jquery'), false);

@@ -107,7 +107,7 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 									</div>
 									<div class="single-listing-by-container">
 										<div class="single-listing-by-info">
-											<span class="author-text"><?php _e('Listing by:', 'vh'); ?></span>
+											<span class="author-text"><?php echo _e('Listing by:', 'vh'); ?></span>
 											<?php
 												if ( get_option('permalink_structure') ) {
 													$dash_symbol = '?';

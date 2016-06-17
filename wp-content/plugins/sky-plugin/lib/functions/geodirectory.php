@@ -198,7 +198,7 @@ global $cat_display,$post_cat, $current_user;
 						<div id="geodir_post_title_row" class="required_field geodir_form_row clearfix">
 							<span class="input-required"></span>
 							<input type="text" field_type="text" name="post_title" id="post_title" class="geodir_textfield" placeholder="<?php echo _e(PLACE_TITLE_TEXT,'geodirectory'); ?>" value="<?php echo esc_attr(stripslashes($title)); ?>"  />
-							<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span>
+							<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span>
 						</div>
 						
 						<?php 
@@ -231,7 +231,7 @@ global $cat_display,$post_cat, $current_user;
 							<?php if ($desc_limit_msg!='') { ?>
 							<span class="geodir_message_note"><?php echo _e($desc_limit_msg,'geodirectory');?></span>
 							<?php } ?>
-						   <span class="geodir_message_error"><?php echo _e($required_msg, 'vh');?></span>
+						   <span class="geodir_message_error"><?php echo _e($required_msg, 'geodirectory');?></span>
 						</div>
 						<?php do_action('geodir_after_description_field'); ?>
 						
@@ -247,7 +247,7 @@ global $cat_display,$post_cat, $current_user;
 						do_action('geodir_before_listing_tags_field');
 						?>
 						<div id="geodir_post_tags_row" class="geodir_form_row clearfix" >
-							 <input name="post_tags" id="post_tags" value="<?php echo esc_attr($kw_tags); ?>" type="text" class="geodir_textfield" placeholder="<?php echo _e(TAGKW_TEXT,'geodirectory'); ?>" maxlength="<?php echo esc_attr($kw_tags_count);?>"  />
+							 <input name="post_tags" id="post_tags" value="<?php echo esc_attr($kw_tags); ?>" onchange="javascript:f();" type="text" class="geodir_textfield" placeholder="<?php echo _e(TAGKW_TEXT,'geodirectory'); ?>" maxlength="<?php echo esc_attr($kw_tags_count);?>"  />
 							 <span class="geodir_message_note"><?php echo _e($kw_tags_msg,'geodirectory');?></span>
 						</div>
 						<?php do_action('geodir_after_listing_tags_field'); ?>
@@ -344,7 +344,7 @@ global $cat_display,$post_cat, $current_user;
 							</div>
 							<span id="upload-msg" ><?php _e('Please drag &amp; drop the images to rearrange the order','vh');?></span>
 							<span id="<?php echo esc_attr($id); ?>upload-error" style="display:none"></span>
-							<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span>
+							<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span>
 						</div>
 											
 						<?php } ?>
@@ -1072,6 +1072,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		
 			?><h3><?php echo $site_title;?>
 				<?php if($admin_desc != '')echo '<small>( '.__($admin_desc,'geodirectory').' )</small>';?>
+					
 			</h3><?php
 		
 		}elseif($type=='address'){	
@@ -1137,9 +1138,9 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				<div id="geodir_<?php echo esc_attr($prefix).'address';?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 					<input type="text" field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($prefix).'address';?>" id="<?php echo esc_attr($prefix).'address';?>" class="geodir_textfield" placeholder="<?php echo _e($address_title,'geodirectory'); ?>" value="<?php echo esc_attr(stripslashes($address)); ?>"  />
-					<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
+					<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory'); ?></span>
 					<?php if($is_required) {?> 
-						<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+						<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 					<?php } ?>
 				</div>
 				
@@ -1151,7 +1152,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				if(isset($extra_fields['show_zip']) && $extra_fields['show_zip']) {?> 
 				  
 				<div id="geodir_<?php echo esc_attr($prefix).'zip';?>_row" class="<?php /*if($is_required) echo 'required_field';*/?> <?php echo $css_class;?> geodir_form_row clearfix">
-					<input type="text" field_type="<?php echo $type;?>" name="<?php echo esc_attr($prefix).'zip';?>" id="<?php echo esc_attr($prefix).'zip';?>" class="geodir_textfield autofill" placeholder="<?php echo esc_attr($zip_title); ?>" value="<?php echo esc_attr(stripslashes($zip)); ?>"  />
+					<input type="text" field_type="<?php echo $type;?>" name="<?php echo esc_attr($prefix).'zip';?>" id="<?php echo esc_attr($prefix).'zip';?>" class="geodir_textfield autofill" placeholder="<?php echo _e($zip_title,'geodirectory'); ?>" value="<?php echo esc_attr(stripslashes($zip)); ?>"  />
 					<?php /*if($is_required) {?>
 					<span class="geodir_message_error"><?php echo _e($required_msg,'vh');?></span> 
 					<?php }*/ ?>
@@ -1164,18 +1165,18 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				<div id="geodir_<?php echo esc_attr($prefix).'latitude';?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix" <?php echo $style_latlng;?>>
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 					<input type="text" field_type="<?php echo $type;?>" name="<?php echo esc_attr($prefix).'latitude';?>" id="<?php echo esc_attr($prefix).'latitude';?>" class="geodir_textfield" placeholder="<?php echo esc_attr(PLACE_ADDRESS_LAT); ?>" value="<?php echo esc_attr(stripslashes($lat)); ?>" size="25"  />
-					<span class="geodir_message_note"><?php echo GET_LATITUDE_MSG;?></span>
+					<span class="geodir_message_note"><?php echo _e(GET_LATITUDE_MSG,'geodirectory');?></span>
 					<?php if($is_required) {?>
-					<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+					<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 					<?php } ?>
 				 </div>
 				 
 				 <div id="geodir_<?php echo esc_attr($prefix).'longitude';?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix" <?php echo $style_latlng;?>>
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 					<input type="text" field_type="<?php echo $type;?>" name="<?php echo esc_attr($prefix).'longitude';?>" id="<?php echo esc_attr($prefix).'longitude';?>" class="geodir_textfield" placeholder="<?php echo esc_attr(PLACE_ADDRESS_LNG); ?>" value="<?php echo esc_attr(stripslashes($lng)); ?>" size="25"  />
-					<span class="geodir_message_note"><?php echo GET_LOGNGITUDE_MSG;?></span>
+					<span class="geodir_message_note"><?php echo _e(GET_LOGNGITUDE_MSG,'geodirectory');?></span>
 					<?php if($is_required) {?>
-					<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+					<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 					<?php } ?>
 				 </div>
 				
@@ -1196,7 +1197,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 						<span class="geodir_user_define hybrid"><input field_type="<?php echo esc_attr($type);?>" type="radio" class="gd-checkbox"  name="<?php echo esc_attr($prefix).'mapview';?>" id="map_view2" <?php if($mapview=='HYBRID'){echo 'checked="checked"';}?>  value="HYBRID" size="25"  /> <?php _e('Hybrid Map','vh');?></span>
 
 					<?php }?>
-					<span class="geodir_message_note"><?php echo GET_MAP_MSG;?></span>
+					<span class="geodir_message_note"><?php echo _e(GET_MAP_MSG,'geodirectory');?></span>
 				</div> 
 		
 				<?php } ?>
@@ -1208,8 +1209,8 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		elseif($type=='text'){?>
 		 
 		 <div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
-				<?php if($is_required) echo '<span class="input-required"></span>';?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php if($is_required) echo _e('<span class="input-required"></span>','geodirectory');?>
 				<!-- text jino edited Listing Price only -->
 				<?php 
 				if($name=='geodir_listing_price')
@@ -1217,10 +1218,11 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				
 				?>
 				
-			<input  field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
+			<input  field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" type="text" class="geodir_textfield" />
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php echo _e($required_msg,'geodirectory'); ?></span> 
+		
 			<?php } ?>
 		 </div>
 		
@@ -1230,13 +1232,14 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		 
 			<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 
-					<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+					<?php $site_title = __($site_title,'geodirctory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 	
-				<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
+				<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" type="text" class="geodir_textfield" />
 				<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
+			
 				<?php if($is_required) {?>
-				<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+				<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 				<?php } ?>
 			</div>
 		
@@ -1252,7 +1255,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 					<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield" />
 					<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 					<?php if($is_required) {?>
-					<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+					<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 					<?php } ?>
 				</div> 
 		
@@ -1262,10 +1265,10 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		
 			<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 				
-					<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+					<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 			
-				<input field_type="<?php echo $type;?>" name="<?php echo $name;?>" id="<?php echo $name;?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo $site_title; ?>" type="text" class="geodir_textfield" />
+				<input field_type="<?php echo $type;?>" name="<?php echo $name;?>" id="<?php echo $name;?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" type="text" class="geodir_textfield" />
 				<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 				<?php if($is_required) {?>
 				<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
@@ -1276,7 +1279,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		elseif($type=='radio'){ ?>     
 			<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 				
-					<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+					<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 			
 				
@@ -1294,7 +1297,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 								
 						?>
 					
-						<input name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" <?php if($radio_value == $value){ echo 'checked="checked"';}?>  value="<?php echo esc_attr($radio_value); ?>" placeholder="<?php echo esc_attr($site_title); ?>" class="gd-checkbox" field_type="<?php echo esc_attr($type);?>" type="radio"  /><?php _e($radio_lable); ?>
+						<input name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" <?php if($radio_value == $value){ echo 'checked="checked"';}?>  value="<?php echo esc_attr($radio_value); ?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" class="gd-checkbox" field_type="<?php echo esc_attr($type);?>" type="radio"  /><?php _e($radio_lable); ?>
 						
 						<?php	
 						} 
@@ -1302,7 +1305,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				?>
 				<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 				<?php if($is_required) {?>
-				<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+				<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 				<?php } ?>
 			</div>
 			
@@ -1311,17 +1314,17 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		
 		<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 
 					<?php	if($value != '1'){	$value = '0';}?>
 					<input type="hidden" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo esc_attr($value);?>" />
 					<span class="checkbox_box"></span>
 			<input  <?php if($value == '1'){ echo 'checked="checked"';}?>  value="1" style="display: none" class="gd-checkbox" field_type="<?php echo esc_attr($type);?>" type="checkbox" onchange="if(this.checked){jQuery('#<?php echo $name;?>').val('1');} else{ jQuery('#<?php echo $name;?>').val('0');}" /> 
-			<span class="checkbox_text"><?php echo $site_title; ?></span>
+			<span class="checkbox_text"><?php echo _e($site_title,'geodirectory'); ?></span>
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 		</div>
 		
@@ -1330,7 +1333,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		
 		<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 		
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 			<?php
 			
@@ -1344,14 +1347,16 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				</div><?php
 			
 			}else{
-				?><textarea field_type="<?php echo esc_attr($type);?>" class="geodir_textarea" name="<?php echo esc_attr($name);?>" placeholder="<?php echo esc_attr($site_title); ?>" id="<?php echo esc_attr($name);?>"><?php echo stripslashes($value);?></textarea><?php
+				?><textarea field_type="<?php echo esc_attr($type);?>" class="geodir_textarea" name="<?php echo esc_attr($name);?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" id="<?php echo esc_attr($name);?>"><?php echo stripslashes($value);?></textarea><?php
 			
 			}?>
 			
 			
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
+		
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
+		
 			<?php } ?>
 		</div>     
 		
@@ -1359,10 +1364,10 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		elseif($type=='select'){	?>
 		<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row geodir_custom_fields clearfix">
 		
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 		
-			<select field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" class="geodir_textfield textfield_x chosen_select" data-placeholder="<?php echo  __('Choose','vh' ) .' '.$site_title .'&hellip;' ;?>" option-ajaxchosen="false" >
+			<select field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" class="geodir_textfield textfield_x chosen_select" data-placeholder="<?php echo  _e('Choose','vh' ) .' '._e($site_title,'geodirectory') .'&hellip;' ;?>" option-ajaxchosen="false" >
 	
 			<?php if($option_values){   $option_values_arr = explode(',',$option_values);
 			
@@ -1378,14 +1383,16 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 						}
 					
 					?>
-							<option value="<?php echo esc_attr($select_value); ?>" <?php if($value==$select_value){ echo 'selected="selected"';}?>><?php echo $select_lable; ?></option>
+							<option value="<?php echo _e($select_value,'geodirectory'); ?>" <?php if($value==$select_value){ echo 'selected="selected"';}?>><?php echo _e($select_lable,'geodirectory'); ?></option>
+							
 					<?php }
 				}
 			?>
 			</select>
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
+			
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 		</div>
 			
@@ -1398,7 +1405,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 			?>
 			<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 				
-					<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+					<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 					<?php if($is_required) echo '<span class="input-required"></span>';?>
 				
 				<input type="hidden" name="gd_field_<?php echo esc_attr($name);?>" value="1" />
@@ -1460,8 +1467,9 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				</select></div>
 			<?php } else { ?></ul><?php } ?>
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
+			
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 		</div>
 		<?php
@@ -1470,7 +1478,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 
 		<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 		
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 	
 			
@@ -1482,7 +1490,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 			
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 			 
 		</div>
@@ -1526,14 +1534,14 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		 <div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 			
 				
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 		  
-			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo esc_attr($value);?>" placeholder="<?php echo esc_attr($site_title);?>" type="text" class="geodir_textfield"  />
+			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo esc_attr($value);?>" placeholder="<?php echo _e($site_title,'geodirectory');?>" type="text" class="geodir_textfield"  />
 					
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 		 </div>
 		
@@ -1560,14 +1568,14 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 		 <div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 			
 				
-				<?php $site_title = __($site_title,'vh'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
+				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 		  
-			<input readonly="readonly" field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo esc_attr($value);?>" placeholder="<?php echo esc_attr($site_title); ?>" type="text" class="geodir_textfield"  />
-					
+			<input readonly="readonly" field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo esc_attr($value);?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" type="text" class="geodir_textfield"  />
+				
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 		 </div>
 		
@@ -1673,9 +1681,9 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 			?>
 			</div>
 			
-			<span class="geodir_message_note"><?php _e($admin_desc,'vh');?></span>
+			<span class="geodir_message_note"><?php _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 		</div>
 			
@@ -1726,7 +1734,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 			<div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix" >
 			
 			<div id="<?php echo esc_attr($file_id); ?>dropbox" class="geodir-file-upload" align="center" style="">
-				<span class="field-title"><?php $site_title = __($site_title,'vh'); echo $site_title; ?></span>
+				<span class="field-title"><?php $site_title = __($site_title,'geodirectory'); echo $site_title; ?></span>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 				<input class="geodir-custom-file-upload" field_type="file" type="hidden" name="<?php echo esc_attr($file_id); ?>" id="<?php echo esc_attr($file_id); ?>" value="<?php echo esc_attr($file_value); ?>" />
 				<input type="hidden" name="<?php echo esc_attr($file_id); ?>image_limit" id="<?php echo esc_attr($file_id); ?>image_limit" value="<?php echo $file_image_limit; ?>" />
@@ -1754,7 +1762,7 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 			</div>
 			<span class="geodir_message_note"><?php _e($admin_desc,'vh');?></span>
 			<?php if($is_required) {?>
-			<span class="geodir_message_error"><?php _e($required_msg,'vh');?></span> 
+			<span class="geodir_message_error"><?php _e($required_msg,'geodirectory');?></span> 
 			<?php } ?>
 			</div>
 		
@@ -2069,7 +2077,7 @@ function vh_geodir_after_main_form_fields() {
 				</span>
 				</span>
 			</div>
-			 <span class="geodir_message_error"><?php if(isset($required_msg)){ _e($required_msg,'vh');}?></span>
+			 <span class="geodir_message_error"><?php if(isset($required_msg)){ _e($required_msg,'geodirectory');}?></span>
 		</div>
 	<?php
 	
