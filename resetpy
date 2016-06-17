@@ -14,7 +14,7 @@ newd = sys.argv[2]
 
 splitted = sql.split(oldd)
 result = []
-for i in range(len(splitted)):
+for i in range(len(splitted)): 
         
         thestr = splitted[i]#[-100:]#+"192.168.1.2:23369"+splitted[i+1][:100]
         
