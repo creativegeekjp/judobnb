@@ -4138,7 +4138,7 @@ msgstr ""
 #: lib/modules/search/search.php:211 lib/widgets/form_widget.php:140
 #: lib/widgets/form_widget.php:147
 msgid "Reserve now!"
-msgstr "今予約を!"
+msgstr "予約を"
 
 #: lib/modules/search/search.php:382
 #, php-format

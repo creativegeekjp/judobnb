@@ -64,8 +64,7 @@ function check_prev()
  
 function reservation_host()
 {  
-   
-	
+  
     if ( check_prev() )
     {
         echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests/'>".__('View Guest Reservations','easyReservations')."</a>";
@@ -445,14 +444,16 @@ function hosts_disapproved()
                    
                 $guest_name=$guest_email->display_name;
                 $email_to=$guest_email->user_email;
-                $email_lang_diss=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$email_to");
+                $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$list->user."";
+                    //echo $query
+                    $email_lang_diss=$wpdb->get_row($query);
                 
-                if($email_lang_diss->language == 'en'){
-                     $body = file_get_contents(includes_url() . 'custom-emails/en/host-disapproved.html');
+                if($email_lang_diss->value == 'English'){
+                     $body = file_get_contents('wp-includes/custom-emails/host-disapproved.html');
                       $subject = mb_convert_encoding("JudoBnB Disapproval Email", "ISO-2022-JP","AUTO");
                 }
-                if($email_lang_diss->language == 'ja'){
-                     $body = file_get_contents(includes_url() . 'custom-emails/ja/host-disapproved.html');
+                if($email_lang_diss->value == 'Japanese'){
+                     $body = file_get_contents('wp-includes/custom-emails/host-disapproved-ja.html');
                       $subject = mb_convert_encoding("JudoBnB不承認メール", "ISO-2022-JP","AUTO");
                 }
                
@@ -539,16 +540,22 @@ function hosts_approved()
                     $headers .= 'Content-type: text/html; charset=ISO-2022-JP' . "\r\n";
             
                     $guest_name=$guest_email->display_name;
-                    $email_to=$guest_email->user_email;
-                    $email_lang=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$email_to");
+                   $email_to=$guest_email->user_email;
+                    //$query="SELECT * FROM jd_cg_email_language WHERE email='".$email_to."'";
+                    $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$post_title->user."";
+                    //echo $query
+                    $email_lang=$wpdb->get_row($query);
                     
-                    if($email_lang->language == 'en'){
-                         $body = file_get_contents(includes_url() . 'custom-emails/en/host-approved.html');
+                    if($email_lang->value == 'English'){
+                        
+                         $body = file_get_contents('wp-includes/custom-emails/host-approved.html');
                          $subject = mb_convert_encoding("JudoBnB Approval Email", "ISO-2022-JP","AUTO");
+                         
                     }
-                    if($email_lang->language == 'ja'){
-                          $body = file_get_contents(includes_url() . 'custom-emails/ja/host-approved.html');
+                    if($email_lang->value == 'Japanese'){
+                          $body = file_get_contents('wp-includes/custom-emails/host-approved-ja.html');
                           $subject = mb_convert_encoding("JudoBnB承認メール", "ISO-2022-JP","AUTO");
+                          
                     }
                     
                        
@@ -562,6 +569,8 @@ function hosts_approved()
                 
                     
                     $stat=wp_mail($email_to,$subject,$email_body,$headers);
+                    
+               
                     
               //end
             
@@ -685,7 +694,7 @@ function successreservation_reservations()
     		$post_title=$author_id->post_title;
     		$guest_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$host_id"); 
     		$host_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$author");
-    		 echo $guestemail_to;
+    		  
 		    $from_name="JudoBNB";
 		    $from_email="info@judobnb.creativegeek.jp";
 		    
@@ -701,13 +710,14 @@ function successreservation_reservations()
             $headers .= "Content-Type: text/plain;charset=ISO-2022-JP \n";
 		
 		    $guestemail_to = $guest_email->user_email;
-		    $guest_language=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$guestemail_to");
-            if($guest_language->language == 'en'){
-                $guestemail_body = file_get_contents(includes_url() . 'custom-emails/en/guest-reservation.html');
+		   $query_guest="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$host_id."";
+		    $guest_language=$wpdb->get_row($query_guest);
+            if($guest_language->value == 'English'){
+                $guestemail_body = file_get_contents('wp-includes/custom-emails/guest-reservation.html');
                 $guest_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
             }
-            if($guest_language->language == 'ja'){
-                $guestemail_body = file_get_contents(includes_url() . 'custom-emails/ja/guest-reservation.html');
+            if($guest_language->value == 'Japanese'){
+                $guestemail_body = file_get_contents('wp-includes/custom-emails/guest-reservation-ja.html');
                 $guest_subject = mb_convert_encoding("JudoBnB予約メール", "ISO-2022-JP","AUTO");
             }
             $guest_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $guestemail_body);
@@ -720,13 +730,14 @@ function successreservation_reservations()
             
             
             $hostemail_to=$host_email->user_email;
-            $host_language=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$hostemail_to");
-            if($host_language->language == 'en'){
-                $hostemail_body= file_get_contents(includes_url() . 'custom-emails/en/host-reservation.html');
-                $guest_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
+           $query_host="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$author."";
+		    $host_language=$wpdb->get_row($query_host);
+            if($host_language->value == 'English'){
+                $hostemail_body= file_get_contents('wp-includes/custom-emails/host-reservation.html');
+                $hostemail_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
             }
-            if($host_language->language == 'ja'){
-                 $hostemail_body= file_get_contents(includes_url() . 'custom-emails/ja/host-reservation.html');
+            if($host_language->value == 'Japanese'){
+                 $hostemail_body= file_get_contents('wp-includes/custom-emails/host-reservation-ja.html');
                  $hostemail_subject = mb_convert_encoding("JudoBnB予約メール", "ISO-2022-JP","AUTO");
             }
             $host_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $hostemail_body);
@@ -992,20 +1003,34 @@ function my_initial() {
         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     }
 
-//   if(ICL_LANGUAGE_CODE=='en')
-//   {
-//       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
-//       unset($_COOKIE['vh_selected_people']);
-//   }
-   
-//   if( ICL_LANGUAGE_CODE == 'ja')
-//   {
-//       setcookie('vh_selected_people', '' , time()-3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
-//       unset($_COOKIE['vh_selected_people']);
-//   }
-
+      
 }
+/*
+function get_emails($user)
+{
 
+   global $wpdb;
+   
+     if (is_user_logged_in()  )
+     {
+         foreach($wpdb->get_results("SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='330' AND user_id = $user") as $res1)
+         {
+             $emails = $res1->value;//email
+         }
+        
+         foreach($wpdb->get_results("SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id =  $user") as $res2)
+         {
+             $langs = $res2->value;//language
+         }
+       	
+        return array(
+            'language' => $langs,
+            'email' => $emails
+        );
+    
+     }
+ }
+*/
 function dynamic_convert($postid, $currency_format, $previous_money , $page )
 {
    

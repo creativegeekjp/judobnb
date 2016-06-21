@@ -1,0 +1,90 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id 90B5CC5F0; Tue, 21 Jun 2016 19:42:22 +0900 (JST)
+Date: Tue, 21 Jun 2016 19:42:22 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="4F4B7A624.1466505742/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160621104222.90B5CC5F0@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--4F4B7A624.1466505742/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<d@g.com>: Host or domain name not found. Name service error for name=g.com
+    type=AAAA: Host not found
+
+--4F4B7A624.1466505742/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 4F4B7A624
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Tue, 21 Jun 2016 19:42:22 +0900 (JST)
+
+Final-Recipient: rfc822; d@g.com
+Action: failed
+Status: 5.4.4
+Diagnostic-Code: X-Postfix; Host or domain name not found. Name service error
+    for name=g.com type=AAAA: Host not found
+
+--4F4B7A624.1466505742/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 4F4B7A624; Tue, 21 Jun 2016 19:42:22 +0900 (JST)
+To: d@g.com
+Subject: Your Reservation on JudoBNB
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Tue, 21 Jun 2016 19:42:22 +0900
+From: JudoBNB <support@judobnb.com>
+Message-ID: <1ec28ddc6f31345b5222ebe133bbf18b@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We've got your reservaion and treat it as soon as possible.
+
+
+Reservation Details:
+
+ID: 453
+Name: だりる 
+Email: d@g.com 
+From: 2016-08-18 
+To: 2016-08-19 
+Persons: 1 
+Children: 0 
+Resource: test 8 dollar 
+Price: 878.00
+
+edit your reservation on http://www.judobnb.com/edit-reservations/?edit&id=453&email=d%40g.com&ernonce=d3cad24c55
+
+
+--4F4B7A624.1466505742/mail.judobnb.com--

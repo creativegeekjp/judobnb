@@ -102,6 +102,7 @@ function email_hosts(){
             
                 $reserves[$get_credentials->ID]['host_name']=$get_credentials->display_name;
                 $reserves[$get_credentials->ID]['host_email']=$get_credentials->user_email;
+                $reserves[$get_credentials->ID]['host_id']=$get_credentials->ID;
             
             
                 $reserves[$get_credentials->ID]['reservations'][$value->room]['room_title']=$get_credentials->post_title;
@@ -142,14 +143,16 @@ function email_hosts(){
         
                 $email_to=$val['host_email'];
 
-                $email_lang=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$email_to");
+                 $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$val['host_id']."";
+                    //echo $query
+                $email_lang=$wpdb->get_row($query);
                 
-                if($email_lang->language == 'en'){
-                     $body = file_get_contents(includes_url() . 'custom-emails/en/host-emails.html');
+                if($email_lang->value == 'English'){
+                     $body = file_get_contents(includes_url() . 'custom-emails/host-emails.html');
                       $subject = mb_convert_encoding("JudoBnB Hosts Email", "ISO-2022-JP","AUTO");
                 }
-                if($email_lang->language == 'ja'){
-                    $body = file_get_contents(includes_url() . 'custom-emails/ja/host-emails.html');
+                if($email_lang->value == 'Japanese'){
+                    $body = file_get_contents(includes_url() . 'custom-emails/host-emails-ja.html');
                     $subject = mb_convert_encoding("JudoBnBメールをホスト", "ISO-2022-JP","AUTO");
                 }
                 

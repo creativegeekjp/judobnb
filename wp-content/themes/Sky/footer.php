@@ -190,29 +190,34 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		 
 	     function ls(t)
 	     {
-	     	 <?php echo save_emails();?> 
+	     
+	     	 <?php //save_emails();?> 
 	     }
+	     
+	   
 		
 		</script>
 		
+		
 		<?php 
-		function save_emails()
+		
+	    function save_emails()
 		{
+		
 		   global $wpdb;
 		   $id = get_current_user_id();
+		   
 				 if (is_user_logged_in()  )
 				 {
+				  /*
 				    $lists =$wpdb->get_results(" SELECT * FROM jd_cg_email_language WHERE user_id =$id");
-            
+            		
+				   	
 				    if( $wpdb->num_rows > 0 ) 
              		{ 
-             		  $wpdb->update( 
-							'jd_cg_email_language', 
-							array('language' => ICL_LANGUAGE_CODE), 
-							array( 'user_id' => $id ), 
-							array('%s'), 
-							array( '%d' ) 
-						);
+        			$query="UPDATE jd_cg_email_language SET language='".ICL_LANGUAGE_CODE."' WHERE user_id=".$id."";
+             		  $wpdb->query($query);
+				
             		}else{
 				        foreach ($wpdb->get_results("SELECT value,user_id FROM `jd_bp_xprofile_data` WHERE field_id ='330' AND user_id =$id") as $values) {
 				        	$mails = $values->value;
@@ -220,13 +225,14 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 						$wpdb->insert('jd_cg_email_language',array(
 							"email" => $mails, 
 							"user_id" =>  get_current_user_id(),
-							"language" =>  ICL_LANGUAGE_CODE ),
+							"language" =>   ICL_LANGUAGE_CODE),
 						array("%s" ,"%s", "%s")
 						);
             		}
-				
+				    */	
 				 }
-		}
+		 }
+	
 		?>
 	</body>
 </html>
