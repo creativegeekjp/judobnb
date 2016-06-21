@@ -141,14 +141,23 @@ function email_hosts(){
             
         
                 $email_to=$val['host_email'];
-                //$email_to='daryl@yopmail.com';
-                $body = file_get_contents(includes_url() . 'custom-emails/host-emails.html');
+
+                $email_lang=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$email_to");
+                
+                if($email_lang->language == 'en'){
+                     $body = file_get_contents(includes_url() . 'custom-emails/en/host-emails.html');
+                      $subject = mb_convert_encoding("JudoBnB Hosts Email", "ISO-2022-JP","AUTO");
+                }
+                if($email_lang->language == 'ja'){
+                    $body = file_get_contents(includes_url() . 'custom-emails/ja/host-emails.html');
+                    $subject = mb_convert_encoding("JudoBnBメールをホスト", "ISO-2022-JP","AUTO");
+                }
+                
                 $message = str_ireplace('[host_display_name]',$val['host_name'], $body);
                 $message = str_ireplace('[reservation_list]',$htm, $message);
                
                 $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
                 mb_language("ja");
-                $subject = mb_convert_encoding("JudoBnB Hosts Email", "ISO-2022-JP","AUTO");
                 $subject = mb_encode_mimeheader($subject);
                 
                 $stat=wp_mail($email_to,$subject,$email_body,$headers);
@@ -446,11 +455,11 @@ function call_pay_api($data){
 
 function checkPaymentMessage($stat,$hostName,$total){
     if($stat)
-        echo 'Transaction Complete.Payment sent to '.$hostName.'. Total:'.$total;
+        echo _e('Transaction Complete.Payment sent to ','easyReservations').$hostName.'. Total:'.$total;
     else
-        echo 'Transaction Failed.Payment not sent to '.$hostName.'.';
+        echo _e('Transaction Failed.Payment not sent to ','easyReservations').$hostName;
         
-        echo '<br/><a href="'.site_url().'/all-reservations">Return</a>';
+        echo '<br/><a href="'.site_url().'/all-reservations">'.__('Return','easyReservations').'</a>';
     return;
 }
 

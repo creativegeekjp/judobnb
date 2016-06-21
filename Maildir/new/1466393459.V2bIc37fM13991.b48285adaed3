@@ -1,0 +1,86 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id E0F0CC38A; Mon, 20 Jun 2016 12:30:58 +0900 (JST)
+Date: Mon, 20 Jun 2016 12:30:58 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="11D34C37F.1466393458/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160620033058.E0F0CC38A@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--11D34C37F.1466393458/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<geekbuyer01@gmail.com>: host gmail-smtp-in.l.google.com[74.125.23.27] said:
+    550-5.7.1 [103.225.138.70] The IP you're using to send mail is not
+    authorized to 550-5.7.1 send email directly to our servers. Please use the
+    SMTP relay at your 550-5.7.1 service provider instead. Learn more at 550
+    5.7.1  https://support.google.com/mail/answer/10336 j27si29790824ioi.109 -
+    gsmtp (in reply to end of DATA command)
+
+--11D34C37F.1466393458/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 11D34C37F
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Mon, 20 Jun 2016 12:30:51 +0900 (JST)
+
+Final-Recipient: rfc822; geekbuyer01@gmail.com
+Action: failed
+Status: 5.7.1
+Remote-MTA: dns; gmail-smtp-in.l.google.com
+Diagnostic-Code: smtp; 550-5.7.1 [103.225.138.70] The IP you're using to send
+    mail is not authorized to 550-5.7.1 send email directly to our servers.
+    Please use the SMTP relay at your 550-5.7.1 service provider instead. Learn
+    more at 550 5.7.1  https://support.google.com/mail/answer/10336
+    j27si29790824ioi.109 - gsmtp
+
+--11D34C37F.1466393458/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 11D34C37F; Mon, 20 Jun 2016 12:30:51 +0900 (JST)
+To: geekbuyer01@gmail.com
+Subject: JudoBnB Reservation Email
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Mon, 20 Jun 2016 12:30:51 +0900
+From: JudoBN <info@judobnb.creativegeek.jp>
+Message-ID: <b10d7a6c9ec60d3aafd706f8917e4a70@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Reply-To: JudoBNB<info@judobnb.creativegeek.jp>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=ISO-2022-JP
+Content-Transfer-Encoding: 8bit
+
+Dear <span id="guestname" style="font-weight:bold">Geek Buyer</span>,<br/><br/>
+<b>Your reservation at Can walk to TOKYO Disney Resort was successfully processed.Kindly wait for the approval of the host,to finalize your transaction.</b>
+
+
+--11D34C37F.1466393458/mail.judobnb.com--

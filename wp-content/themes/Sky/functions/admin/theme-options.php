@@ -579,7 +579,7 @@ if (!function_exists('of_options')) {
 			"name"   => "404 Page Title",
 			"desc"   => "Set the page title that is displayed on the 404 Error Page",
 			"id"     => SHORTNAME . "_404_title",
-			"order"  => "This is somewhat embarrassing, isn't it?",
+			"order"  => __("This is somewhat embarrassing, isn't it?","easyReservations"),
 			"type"   => "text",
 			"slider" => "no");
 
@@ -587,7 +587,7 @@ if (!function_exists('of_options')) {
 			"name"  => "404 Message",
 			"desc"  => "Set the message that is displayed on the 404 Error Page",
 			"id"    => SHORTNAME . "_404_message",
-			"order" => "It seems we can't find what you're looking for. Perhaps searching, or one of the links below, can help.",
+			"order" => __("It seems we can't find what you're looking for. Perhaps searching, or one of the links below, can help.","easyReservations"),
 			"type"  => "textarea");
 
 		// Close this group

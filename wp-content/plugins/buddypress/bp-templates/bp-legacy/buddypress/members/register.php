@@ -103,7 +103,10 @@
 				 *
 				 * @since 1.1.0
 				 */
-				do_action( 'bp_signup_password_errors' ); ?><div id="pwdrow" data-lenchk></div>
+				do_action( 'bp_signup_password_errors' ); ?>
+				
+				<div id="pwdrow" data-lenchk></div>
+			
 				<input type="password" name="signup_password" id="signup_password"  value="" class="password-entry" <?php bp_form_field_attributes( 'password' ); ?>/>
 				<div id="pass-strength-result"></div>
 

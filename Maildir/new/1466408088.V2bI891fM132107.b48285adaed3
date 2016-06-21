@@ -1,0 +1,90 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id 388758A2A; Mon, 20 Jun 2016 16:34:47 +0900 (JST)
+Date: Mon, 20 Jun 2016 16:34:47 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="C579C8845.1466408087/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160620073447.388758A2A@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--C579C8845.1466408087/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<test@yahyoo.com>: connect to yahyoo.com[185.53.177.30]:25: Connection timed
+    out
+
+--C579C8845.1466408087/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: C579C8845
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Fri, 10 Jun 2016 15:57:12 +0900 (JST)
+
+Final-Recipient: rfc822; test@yahyoo.com
+Action: failed
+Status: 4.4.1
+Diagnostic-Code: X-Postfix; connect to yahyoo.com[185.53.177.30]:25: Connection
+    timed out
+
+--C579C8845.1466408087/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id C579C8845; Fri, 10 Jun 2016 15:57:12 +0900 (JST)
+To: test@yahyoo.com
+Subject: Your Reservation on JudoBNB
+X-PHP-Originating-Script: 1001:class-phpmailer.php
+Date: Fri, 10 Jun 2016 15:57:12 +0900
+From: JudoBNB <support@judobnb.com>
+Message-ID: <7b56a306672584ed6346d6056a867887@judobnb.creativegeek.jp>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We've got your reservaion and treat it as soon as possible.
+
+
+Reservation Details:
+
+ID: 384
+Name: admin 
+Email: test@yahyoo.com 
+From: 2016-06-11 
+To: 2016-06-12 
+Persons: 1 
+Children: 2 
+Resource: Grand Pacific Le Daiba 
+Price: 1098.00
+
+edit your reservation on http://judobnb.creativegeek.jp/edit-reservations/?edit&id=384&email=test%40yahyoo.com&ernonce=2dbf951980
+
+
+--C579C8845.1466408087/mail.judobnb.com--

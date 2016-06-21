@@ -582,12 +582,12 @@ if($setting_current_page == "general"){
 	                  error_title: {
 	                      title: '<?php echo addslashes(__( 'Title' , 'easyReservations' ));?>',
 	                      input: 'text',
-	                      default: 'Errors found in the form'
+	                      default: <?php echo _e('Errors found in the form','easyReservations'); ?>
 	                  },
 	                  error_message: {
 	                      title: '<?php echo addslashes(__( 'Message' , 'easyReservations' ));?>',
 	                      input: 'textarea',
-	                      default: 'There is a problem with the form, please check and correct the following:'
+	                      default: <?php echo _e('There is a problem with the form, please check and correct the following:','easyReservations'); ?>
 	                  },
 	                  style: style,
 	                  title: title

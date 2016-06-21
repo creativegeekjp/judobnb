@@ -536,8 +536,11 @@ __('bedrooms','geodirectory');
 __('Listing start date','geodirectory');
 __('Listing end date','geodirectory');
 __('Listing Price (JPY)','geodirectory');
+__('Listing Price (USD)','geodirectory');
 __('beds','geodirectory');
 __('Adult count','geodirectory');
 __('Children count','geodirectory');
 __('Rent','geodirectory');
 __('Bathroom count','geodirectory');
+
+

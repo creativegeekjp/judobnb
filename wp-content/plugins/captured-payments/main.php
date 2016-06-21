@@ -209,7 +209,7 @@ function reservation_host()
             }
             else
             {
-                echo "Please login<a href='#' class='simplemodal-login'> here</a>";
+                echo _e("Please login<a href='#' class='simplemodal-login'> here</a>","easyReservations");
             }
     
     }
@@ -358,7 +358,7 @@ function reservation_guest()
             }
             else
             {
-               echo "Please login<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='#' class='simplemodal-login'>here</a>";
+               echo _e("Please login<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='#' class='simplemodal-login'>here</a>","easyReservations");
             }
    }
       return;
@@ -384,8 +384,8 @@ function confirmation_host_disapproved()
     $idr = isset($_GET['idr']) ? $_GET['idr'] : "" ;
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     
-    echo 'Are you sure you want to disapproved this reservation?<br><br>';
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-disapproved/?idr=".$idr."&idt=".$idt."'>Yes</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>No</a>";
+    echo _e('Are you sure you want to disapproved this reservation?<br><br>','easyReservations');
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-disapproved/?idr=".$idr."&idt=".$idt."'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('No','easyReservations')."</a>";
  
     return ;
 }
@@ -408,7 +408,7 @@ function hosts_disapproved()
         }
         else
         {
-            echo "Reservation was disapproved <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
+            echo __('Reservation was disapproved','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('return','easyReservations')."</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret,$adminClientID,$adminSecret;
@@ -445,13 +445,23 @@ function hosts_disapproved()
                    
                 $guest_name=$guest_email->display_name;
                 $email_to=$guest_email->user_email;
-                $body = file_get_contents(includes_url() . 'custom-emails/host-disapproved.html');
+                $email_lang_diss=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$email_to");
+                
+                if($email_lang_diss->language == 'en'){
+                     $body = file_get_contents(includes_url() . 'custom-emails/en/host-disapproved.html');
+                      $subject = mb_convert_encoding("JudoBnB Disapproval Email", "ISO-2022-JP","AUTO");
+                }
+                if($email_lang_diss->language == 'ja'){
+                     $body = file_get_contents(includes_url() . 'custom-emails/ja/host-disapproved.html');
+                      $subject = mb_convert_encoding("JudoBnB不承認メール", "ISO-2022-JP","AUTO");
+                }
+               
                 $message = str_ireplace('[guest_display_name]',$guest_name, $body);
                 $message = str_ireplace('[post_title]',$post_title->post_title, $message);
                 
                 $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
                 mb_language("ja");
-                $subject = mb_convert_encoding("JudoBnB Disapproval Email", "ISO-2022-JP","AUTO");
+               
                 $subject = mb_encode_mimeheader($subject);
                 
                 $stat=wp_mail($email_to,$subject, $email_body,$headers);
@@ -471,8 +481,8 @@ function confirmation_host_approved()
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
     
-    echo 'Are you sure you want to approved this reservation?<br><br>';
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-approved/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>No</a>";
+    echo __('Are you sure you want to approved this reservation?','easyReservations')."<br><br>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-approved/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('No','easyReservations')."</a>";
 }
 
 function hosts_approved()
@@ -530,13 +540,24 @@ function hosts_approved()
             
                     $guest_name=$guest_email->display_name;
                     $email_to=$guest_email->user_email;
-                    $body = file_get_contents(includes_url() . 'custom-emails/host-approved.html');
+                    $email_lang=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$email_to");
+                    
+                    if($email_lang->language == 'en'){
+                         $body = file_get_contents(includes_url() . 'custom-emails/en/host-approved.html');
+                         $subject = mb_convert_encoding("JudoBnB Approval Email", "ISO-2022-JP","AUTO");
+                    }
+                    if($email_lang->language == 'ja'){
+                          $body = file_get_contents(includes_url() . 'custom-emails/ja/host-approved.html');
+                          $subject = mb_convert_encoding("JudoBnB承認メール", "ISO-2022-JP","AUTO");
+                    }
+                    
+                       
                     $message = str_ireplace('[guest_display_name]',$guest_name, $body);
                     $message = str_ireplace('[post_title]',$post_title->post_title, $message);
                     
                     $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
                     mb_language("ja");
-                    $subject = mb_convert_encoding("JudoBnB Approval Email", "ISO-2022-JP","AUTO");
+                    
                     $subject = mb_encode_mimeheader($subject);
                 
                     
@@ -544,7 +565,7 @@ function hosts_approved()
                     
               //end
             
-            echo "Reservation was successfully approved <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
+            echo __('Reservation was successfully approved','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('return','easyReservations')."</a>";
            
             $query=$wpdb->query("UPDATE jd_reservations SET approve='yes' WHERE id=$idr");
         }
@@ -557,8 +578,8 @@ function cancels_confirm_reservations()
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
  
-    echo 'Are you sure you want to cancel this reservation?<br><br>';
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>No</a>";
+    echo _e('Are you sure you want to cancel this reservation?<br><br>','easyReservations');
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>".__('No','easyReservations')."</a>";
  
 }
 function cancel_reservations()
@@ -575,11 +596,11 @@ function cancel_reservations()
         
         if($list->approve == "del") //cancelled already
         {
-            echo "Reservation already cancelled.  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>return</a>";
+            echo __('Reservation already cancelled.','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>".__('return','easyReservations')."</a>";
         }
         else
         {
-            echo "Reservation was cancelled <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest'>return</a>";
+            echo __("Reservation was cancelled","easyReservations")." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest'>".__('return','easyReservations')."</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret;
@@ -664,6 +685,7 @@ function successreservation_reservations()
     		$post_title=$author_id->post_title;
     		$guest_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$host_id"); 
     		$host_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$author");
+    		 echo $guestemail_to;
 		    $from_name="JudoBNB";
 		    $from_email="info@judobnb.creativegeek.jp";
 		    
@@ -677,38 +699,52 @@ function successreservation_reservations()
             
                 
             $headers .= "Content-Type: text/plain;charset=ISO-2022-JP \n";
-		 
+		
 		    $guestemail_to = $guest_email->user_email;
-            //$guestemail_subject = "JudoBnB Reservation Email";
-            $guestemail_body = file_get_contents(includes_url() . 'custom-emails/guest-reservation.html');
+		    $guest_language=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$guestemail_to");
+            if($guest_language->language == 'en'){
+                $guestemail_body = file_get_contents(includes_url() . 'custom-emails/en/guest-reservation.html');
+                $guest_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
+            }
+            if($guest_language->language == 'ja'){
+                $guestemail_body = file_get_contents(includes_url() . 'custom-emails/ja/guest-reservation.html');
+                $guest_subject = mb_convert_encoding("JudoBnB予約メール", "ISO-2022-JP","AUTO");
+            }
             $guest_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $guestemail_body);
             $guest_email_message = str_ireplace('[post_title]',$author_id->post_title, $guest_email_message);
             
             $guest_body = mb_convert_encoding($guest_email_message, "ISO-2022-JP","AUTO");
             mb_language("ja");
-            $subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
-            $subject = mb_encode_mimeheader($subject);
+            
+            $guest_subject = mb_encode_mimeheader($guest_subject);
             
             
             $hostemail_to=$host_email->user_email;
-            //$hostemail_subject='JudoBnB Reservation Email';
-            $hostemail_body= file_get_contents(includes_url() . 'custom-emails/host-reservation.html');
+            $host_language=$wpdb->get_row("SELECT * FROM jd_cg_email_language WHERE email=$hostemail_to");
+            if($host_language->language == 'en'){
+                $hostemail_body= file_get_contents(includes_url() . 'custom-emails/en/host-reservation.html');
+                $guest_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
+            }
+            if($host_language->language == 'ja'){
+                 $hostemail_body= file_get_contents(includes_url() . 'custom-emails/ja/host-reservation.html');
+                 $hostemail_subject = mb_convert_encoding("JudoBnB予約メール", "ISO-2022-JP","AUTO");
+            }
             $host_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $hostemail_body);
             $host_email_message = str_ireplace('[post_title]',$author_id->post_title, $host_email_message);
             $host_email_message=str_ireplace('[host_display_name]',$host_email->display_name, $host_email_message);
             
             $host_body = mb_convert_encoding($host_email_message, "ISO-2022-JP","AUTO");
             
-            $guest_status = wp_mail($guestemail_to, $subject, $guest_body,$headers);
-            $host_status = wp_mail($hostemail_to, $subject, $host_body,$headers);
+            $guest_status = wp_mail($guestemail_to, $guest_subject, $guest_body,$headers);
+            $host_status = wp_mail($hostemail_to, $hostemail_subject, $host_body,$headers);
             
            
         //end
 
    if ( !check_prev() ){
-        echo "Your reservation was successfully reserved.<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>View Reservations</a>";
+        echo __('Your reservation was successfully reserved.','easyReservations')."<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('View Reservations','easyReservations')."</a>";
     }else{
-        echo "Your reservation was successfully reserved.<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests'>View Reservations</a>";
+        echo __('Your reservation was successfully reserved.','easyReservations')."<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests'>".__('View Reservations','easyReservations')."</a>";
     }
     return;
 }
@@ -718,10 +754,10 @@ function listings_message_confirmation()
     global $post;
         $pid = isset($_GET['pid_del'] ) ? $_GET['pid_del'] : "";
         if($_GET['trashed'] == 1){
-             echo "Listing was successfully deleted.  <a href='" . site_url() . "/manage-listing/'> return </a>";
+             echo __("Listing was successfully deleted.","easyReservations"). "<a href='" . site_url() . "/manage-listing/'>".__('return','easyReservations')."</a>";
         }else{
-            echo "Are you sure you want to delete this listing?<br><br>";
-            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>Yes</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listing/'> No </a>";
+            echo __("Are you sure you want to delete this listing?<br><br>","easyReservations");
+            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listing/'>".__('No','easyReservations')."</a>";
         }
     return;
 }
@@ -1490,6 +1526,15 @@ function country_codes($value)
 
 return array_search($value, $countrycodes);
 
+}
+
+
+function save_email()
+{
+    if(is_user_logged_in())
+    {
+        
+    }
 }
 
 ?>

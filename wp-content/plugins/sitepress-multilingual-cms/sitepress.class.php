@@ -3233,7 +3233,7 @@ class SitePress extends WPML_WPDB_User{
 
 		$language_selector = '<div id="lang_sel" '
                              .$style_display_none_icl_lang_sel_type.' '
-                             .$class_icl_rtl.' ><ul><li><a href="#" class="lang_sel_sel icl-'.$main_language['language_code'].'">';
+                             .$class_icl_rtl.' ><ul><li><a href="#" onclick="javascript:alert();" class="lang_sel_sel icl-'.$main_language['language_code'].'">';
 
 		if ( $this->settings[ 'icl_lso_flags' ] || $icl_language_switcher_preview ) {
 			$language_selector .= '<img ' . ( !$this->settings['icl_lso_flags'] ? 'style="display:none"' : '' )
@@ -3368,7 +3368,7 @@ class SitePress extends WPML_WPDB_User{
 
 		foreach ( $languages as $code => $language ) {
 			$language_selector_mobile .= '<li class="icl-' . $language[ 'language_code' ] . '">'
-			                             . '<a rel="alternate" onclick="wpml_language_selector_click.ls(this);" href="' . apply_filters( 'WPML_filter_link',
+			                             . '<a rel="alternate" onclick="ls(this);" href="' . apply_filters( 'WPML_filter_link',
 			                                                                            $language[ 'url' ],
 			                                                                            $language ) . '">';
 

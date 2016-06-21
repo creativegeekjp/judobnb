@@ -163,7 +163,7 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	 */
 	$message = apply_filters( 'login_message', $message );
 	if ( !empty( $message ) )
-		echo $message . "\n";
+		echo __($message, 'simplemodal-login') . "\n";
 
 	// In case a plugin uses $error rather than the $wp_errors object
 	if ( !empty( $error ) ) {
@@ -178,9 +178,9 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 			$severity = $wp_error->get_error_data( $code );
 			foreach ( $wp_error->get_error_messages( $code ) as $error_message ) {
 				if ( 'message' == $severity )
-					$messages .= '	' . $error_message . "<br />\n";
+					$messages .= '	' . __($error_message,'simplemodal-login') . "<br />\n";
 				else
-					$errors .= '	' . $error_message . "<br />\n";
+					$errors .= '	' . __($error_message,'simplemodal-login') . "<br />\n";
 			}
 		}
 		if ( ! empty( $errors ) ) {
@@ -191,7 +191,7 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 			 *
 			 * @param string $errors Login error message.
 			 */
-			echo '<div id="login_error">' . apply_filters( 'login_errors', $errors ) . "</div>\n";
+			echo '<div id="login_error">' . apply_filters( 'login_errors', __($errors,'simplemodal-login') ) . "</div>\n";
 		}
 		if ( ! empty( $messages ) ) {
 			/**
@@ -201,7 +201,7 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 			 *
 			 * @param string $messages Login messages.
 			 */
-			echo '<p class="message">' . apply_filters( 'login_messages', $messages ) . "</p>\n";
+			echo '<p class="message">' . apply_filters( 'login_messages', __($messages,'simplemodal-login') ) . "</p>\n";
 		}
 	}
 } // End of login_header()
@@ -300,14 +300,14 @@ function retrieve_password() {
 	 * @param WP_Error $errors A WP_Error object containing any errors generated
 	 *                         by using invalid credentials.
 	 */
-	do_action( 'lostpassword_post', $errors );
+	do_action( 'lostpassword_post', __($errors,'simplemodal-login') );
 
 	if ( $errors->get_error_code() )
-		return $errors;
+		return __($errors,'simplemodal-login');
 
 	if ( !$user_data ) {
 		$errors->add('invalidcombo', __('<strong>ERROR</strong>: Invalid username or email.'));
-		return $errors;
+		return __($errors,'simplemodal-login');
 	}
 
 	// Redefining user_login ensures we return the right case in the email.
@@ -738,7 +738,7 @@ case 'register' :
 
 <p id="nav">
 <a href="<?php echo esc_url( wp_login_url() ); ?>"><?php _e( 'Log in' ); ?></a> |
-<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" title="<?php esc_attr_e( 'Password Lost and Found' ) ?>"><?php _e( 'Lost your password?' ); ?></a>
+<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" title="<?php esc_attr_e( 'Password Lost and Found' ) ?>"><?php echo _e('Lost your password?','simplemodal-login'); ?></a>
 </p>
 
 <?php
@@ -867,7 +867,7 @@ default:
 	if ( $reauth )
 		wp_clear_auth_cookie();
 
-	login_header(__('Log In'), '', $errors);
+	login_header(__('Log In'), '', __($errors,'simplemodal-login'));
 
 	if ( isset($_POST['log']) )
 		$user_login = ( 'incorrect_password' == $errors->get_error_code() || 'empty_password' == $errors->get_error_code() ) ? esc_attr(wp_unslash($_POST['log'])) : '';
@@ -922,7 +922,7 @@ default:
 		echo apply_filters( 'register', $registration_url ) . ' | ';
 	endif;
 	?>
-	<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" title="<?php esc_attr_e( 'Password Lost and Found' ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+	<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" title="<?php esc_attr_e( 'Password Lost and Found' ); ?>"><?php echo _e('Lost your password?','simplemodal-login'); ?></a>
 <?php endif; ?>
 </p>
 <?php } ?>

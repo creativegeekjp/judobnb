@@ -7,8 +7,8 @@
  */
 get_header();
 
-	$title_404 = get_option(SHORTNAME . '_404_title', "This is somewhat embarrassing, isn't it?");
-	$title_msg = get_option(SHORTNAME . '_404_message', "It seems we can't find what you're looking for. Perhaps searching, or one of the links below, can help.");
+	$title_404 = get_option(SHORTNAME . '_404_title', __("This is somewhat embarrassing, isn't it?","wordpress"));
+	$title_msg = get_option(SHORTNAME . '_404_message', __("It seems we can't find what you're looking for. Perhaps searching, or one of the links below, can help.","wordpress"));
 ?>
 <div class="page-<?php echo LAYOUT; ?> page-wrapper search-no-results">
 	<div class="clearfix"></div>

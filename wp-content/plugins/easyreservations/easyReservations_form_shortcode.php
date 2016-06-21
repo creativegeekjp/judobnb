@@ -206,8 +206,8 @@ function reservations_form_shortcode($atts){
 		if(empty($error) && isset($arrival)){ //When Check gives no error Insert into Database and send mail
 			do_action('reservation_successful_guest', $res);
 			$finalform .= '<div class="easy_form_success" id="easy_form_success">';
-			if(!empty($atts['submit'])) $finalform.= '<b class="easy_submit">'.$atts['submit'].'!</b>';
-			if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.$atts['subsubmit'].'</span>';
+			if(!empty($atts['submit'])) $finalform.= '<b class="easy_submit">'.__($atts['submit'],'easyReservations').'!</b>';
+			if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.__($atts['subsubmit'],'easyReservations').'</span>';
 			$res->Calculate(true);
 			
 			if($atts['price'] == 1) $finalform.= '<span class="easy_show_price_submit">'.__('Price','easyReservations').': <b>'.$res->price.'</b></span>';
@@ -434,12 +434,12 @@ function reservations_form_shortcode($atts){
 				$class=' hide-it';
 			}
 			if(isset($field['error_title'])) $error_title = $field['error_title'];
-			else $error_title='Errors found in the form';
+			else $error_title= __('Errors found in the form','easyReservations');
 			if(isset($field['error_message'])) $error_message = $field['error_message'];
-			else $error_message='There is a problem with the form, please check and correct the following:';
-			$theForm=preg_replace('/\['.$fields.'\]/', '<div class="easy-show-error-div'.$class.'" id="easy-show-error-div" style="'.$style.'"><h2>'.$error_title.'</h2>'.$error_message.'<ul id="easy-show-error">'.$form_error.'</ul></div>', $theForm);
+			else $error_message=__('There is a problem with the form, please check and correct the following:','easyReservations');
+			$theForm=preg_replace('/\['.$fields.'\]/', '<div class="easy-show-error-div'.$class.'" id="easy-show-error-div" style="'.$style.'"><h2>'.$error_title.'</h2>'.__($error_message,'easyReservations').'<ul id="easy-show-error">'.__($form_error,'easyReservations').'</ul></div>', $theForm);
 		} elseif($field[0]=="infobox"){ //INFOBOX
-			$resource_block = '<div id="resource_infobox" style="'.$style.'" title="'.$title.'"></div>';
+			$resource_block = '<div id="resource_infobox" style="'.$style.'" title="'.__($title,'easyReservations').'"></div>';
 			$theForm=preg_replace('/\['.$fields.'\]/', $resource_block, $theForm);
 			$infobox = $field;
 		} elseif($field[0]=="email"){
@@ -500,11 +500,10 @@ function reservations_form_shortcode($atts){
 			$roomfield=1;
 			if(isset($field['exclude'])) $exclude = explode(',', $field['exclude']); else $exclude = '';
 			$theForm=str_replace('['.$fields.']', '<select name="easyroom" style="'.$style.'" id="form_room" '.$disabled.' onchange="'.$price_action.$validate_action.'">'.easyreservations_resource_options(($value == '') ? $atts['resource'] : $value, 0, $exclude).'</select>', $theForm);
+			
 		} elseif($field[0]=="custom"){
 			if(isset($field['id'])){
-				
 				$custom_fields = get_option('reservations_custom_fields');
-				
 				$form_field = '';
 				if(isset($custom_fields['fields'][$field['id']])){
 					$custom_field = $custom_fields['fields'][$field['id']];
@@ -703,9 +702,11 @@ function reservations_form_shortcode($atts){
 		$easyreservations_script .= 'jQuery(document).ready(function(){easyreservations_send_price(\''.$formid.'\');});';
 	}
 
-	$popuptemplate = '<span class="easy_validate_message">'.$atts['validate'].'</span>';
+	$popuptemplate = '<span class="easy_validate_message">'.__($atts['validate'],'easyReservations').'</span>';
+	
 
-	if(!empty($atts['subvalidate'])) $popuptemplate.= '<span class="easy_validate_message_sub">'.$atts['subvalidate'].'</span>';
+
+	if(!empty($atts['subvalidate'])) $popuptemplate.= '<span class="easy_validate_message_sub">'.__($atts['subvalidate'],'easyReservations').'</span>';
 	
 	$popuptemplate.= '<table id="easy_overlay_table"><thead><tr>';
 	$popuptemplate.= '<th>'.__('Time', 'easyReservations').'</th>';

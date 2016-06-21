@@ -15830,7 +15830,7 @@ body.archive.author #main_header_bg {
 	text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
 }
 #pwdrow:after {
-    content: attr(data-lenchk);
+	content: attr(data-lenchk);
     color:red;
     font-weight: bold;
 }

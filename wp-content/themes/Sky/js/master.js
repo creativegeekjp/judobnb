@@ -3073,6 +3073,7 @@ jQuery(document).ready(function($) {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude + "&sgeo_when=" + when + "&sgeo_adults=" + adults["0"] + "&sgeo_childrens=" + childrens["0"];
 
 				//Codes to add url extension for search +"/ja/ in ?geodir_search="
+				
 				var docURL = document.URL;
 				if (docURL.indexOf("ja") == -1) {
 					//string not found
@@ -3484,11 +3485,24 @@ function checkImages(){
     function checklen(e){
         var valLen = this.value.length
            ,cando = valLen > 7 && valLen <= 20;
-        d.querySelector('#pwdrow')
-          .setAttribute( 'data-lenchk', 
+           
+        	var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+				
+					 d.querySelector('#pwdrow').setAttribute( 'data-lenchk', 
           					valLen < 1 ? '	'
                           : valLen < 8 ? 'Password is too short (min 8)'
                           : valLen > 20 ? 'Password is too long (max 20)' : '' );
+				}
+				else {
+				d.querySelector('#pwdrow').setAttribute( 'data-lenchk', 
+          					valLen < 1 ? '	'
+                          : valLen < 8 ? 'パスワードの桁数制限は、８桁以上にあります'
+                          : valLen > 20 ? 'パスワードは20桁を超えてます。ご確認ください。' : '' );
+
+				}
+				
+        
     }
 }());
 
@@ -3513,5 +3527,4 @@ function f(){
 		return false;
 	}
 }
-
 

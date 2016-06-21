@@ -364,8 +364,8 @@ function easyreservations_send_form_callback(){
 
 					if(isset($arrival)){
 						$finalform.= '<div class="easy_form_success" id="easy_form_success">';
-						if(!empty($atts['submit'])) $finalform.= '<b class="easy_submit">'.$atts['submit'].'!</b>';
-						if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.$atts['subsubmit'].'</span>'; 
+						if(!empty($atts['submit'])) $finalform.= '<b class="easy_submit">'.__($atts['submit'],'easyReservations').'!</b>';
+						if(!empty($atts['subsubmit'])) $finalform.= '<span class="easy_subsubmit">'.__($atts['subsubmit'],'easyReservations').'</span>'; 
 						######################################################
 						### edit jino 
 						##  book now paypal confirm top label

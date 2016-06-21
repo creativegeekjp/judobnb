@@ -1,0 +1,125 @@
+UPDATE `jd_options` SET `option_value` = '[error]
+
+<h1>今予約を![show_price before="Price:" style="float:right; display: none; visibility: hidden;"]</h1>
+
+<h2>一般情報</h2>
+
+
+
+<label>到着日
+
+<span class="small">いつお越しになりますか?</span>
+
+</label>[date-from style="width:150px"] [date-from-hour style="width:auto" value="12"]:[date-from-min style="width:auto"]</span>
+
+
+
+<label>出発日
+
+<span class="small">いつ行かれますか?</span>
+
+</label><span class="row">[date-to style="width:150px"] [date-to-hour style="width:auto" value="12"]:[date-to-min style="width:auto"]</span>
+
+
+
+<label>Resource
+
+<span class="small">Where you want to sleep?</span>
+
+</label>[resources]
+
+
+
+<label>大人
+
+<span class="small">何名様ですか?</span>
+
+</label>[adults 1 10]
+
+
+
+<label>子供たちの
+
+<span class="small">子供たちと?</span>
+
+</label>[childs 0 10]
+
+
+
+<h2>個人情報</h2>
+
+
+
+<label>お名前
+
+<span class="small">あなたのお名前はなんですか?</span>
+
+</label>[thename]
+
+
+
+<label>Eメール
+
+<span class="small">あなたの E メールはなんですか?</span>
+
+</label>[email]
+
+
+
+<label>電話
+
+<span class="small">あなたの電話番号</span>
+
+</label>[custom text Phone]
+
+
+
+<label>通り名
+
+<span class="small">あなたの通り名?</span>
+
+</label>[custom text Street]
+
+
+
+<label>郵便番号
+
+<span class="small">あなたの郵便番号?</span>
+
+</label>[custom text PostCode]
+
+
+
+<label>市
+
+<span class="small">あなたの市?</span>
+
+</label>[custom text City]
+
+
+
+<label>国
+
+<span class="small">あなたの国?</span>
+
+</label>[country]
+
+
+
+<label>メッセージ
+
+<span class="small">何かご意見はございますか?</span>
+
+</label>[custom textarea Message]
+
+
+
+<label>キャプチャ
+
+<span class="small">コードのご入力</span>
+
+</label>[captcha]
+
+
+
+<div style="text-align:center">[submit 送信]</div>' WHERE `jd_options`.`option_id` = 3314;

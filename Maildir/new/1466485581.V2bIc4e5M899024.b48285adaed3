@@ -1,0 +1,97 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id CDCD0C460; Tue, 21 Jun 2016 14:06:21 +0900 (JST)
+Date: Tue, 21 Jun 2016 14:06:21 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="38821C4E5.1466485581/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160621050621.CDCD0C460@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--38821C4E5.1466485581/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<adsad@gmail.com>: host gmail-smtp-in.l.google.com[74.125.204.27] said:
+    550-5.1.1 The email account that you tried to reach does not exist. Please
+    try 550-5.1.1 double-checking the recipient's email address for typos or
+    550-5.1.1 unnecessary spaces. Learn more at 550 5.1.1
+    https://support.google.com/mail/answer/6596 103si37709933iog.32 - gsmtp (in
+    reply to RCPT TO command)
+
+--38821C4E5.1466485581/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 38821C4E5
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Tue, 21 Jun 2016 14:06:19 +0900 (JST)
+
+Final-Recipient: rfc822; adsad@gmail.com
+Action: failed
+Status: 5.1.1
+Remote-MTA: dns; gmail-smtp-in.l.google.com
+Diagnostic-Code: smtp; 550-5.1.1 The email account that you tried to reach does
+    not exist. Please try 550-5.1.1 double-checking the recipient's email
+    address for typos or 550-5.1.1 unnecessary spaces. Learn more at 550 5.1.1
+    https://support.google.com/mail/answer/6596 103si37709933iog.32 - gsmtp
+
+--38821C4E5.1466485581/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 38821C4E5; Tue, 21 Jun 2016 14:06:19 +0900 (JST)
+To: adsad@gmail.com
+Subject: Your Reservation on JudoBNB
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Tue, 21 Jun 2016 14:06:19 +0900
+From: JudoBNB <support@judobnb.com>
+Message-ID: <2b90fa6ad748a0eaecff6ba2bfa7e90d@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We've got your reservaion and treat it as soon as possible.
+
+
+Reservation Details:
+
+ID: 446
+Name: admin 
+Email: adsad@gmail.com 
+From: 2016-06-22 
+To: 2016-06-22 
+Persons: 1 
+Children: 0 
+Resource: test 8 dollar 
+Price: 878.00
+
+edit your reservation on http://www.judobnb.com/edit-reservations/?edit&id=446&email=adsad%40gmail.com&ernonce=d3cad24c55
+
+
+--38821C4E5.1466485581/mail.judobnb.com--

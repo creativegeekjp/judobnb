@@ -315,7 +315,7 @@ if (!function_exists('vh_scripts_method')) {
 		// } else {
 		// 	$geo_advanced_search = 'true';
 		// }
-
+        
 		if ( wp_script_is('geodir-autocompleter-js') ) {
 			wp_dequeue_script( 'geodir-autocompleter-js' );
 			$geo_advanced_search = 'false';

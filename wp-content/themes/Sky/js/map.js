@@ -1,7 +1,11 @@
+
 jQuery(window).load(function() {
 	if ( typeof jQuery.goMap.map != 'undefined' ) {
 		setTimeout(function() {
 			google.maps.event.trigger(jQuery.goMap.map, 'resize');
+	    /*jino map added to center*/
+		var center = bounds.getCenter();
+		jQuery.goMap.map.setCenter(center);
 		}, 500);
 	}
 });
@@ -126,7 +130,7 @@ function initMap(map_options){
 		window.setTimeout(function() { 
 			var center = jQuery.goMap.map.getCenter(); 
 			jQuery("#"+map_canvas).goMap();
-			// google.maps.event.trigger(jQuery.goMap.map, 'resize');
+			google.maps.event.trigger(jQuery.goMap.map, 'resize');
 			jQuery.goMap.map.setCenter(center); 
 			setGeodirMapSize(true);
 		}, 100);
@@ -557,6 +561,7 @@ function parse_marker_jason(data, map_canvas_var) {
 						} else if ( jsonData[0].totalcount == 1 ) {
 							jQuery.goMap.map.fitBounds(bounds);
 							jQuery.goMap.map.setZoom(15);
+							jQuery.goMap.map.setCenter(center);
 						} else {
 							jQuery.goMap.map.fitBounds(bounds);
 						}
@@ -890,9 +895,13 @@ function geo_map_movement() {
 			post_id = post_id['1'];
 			if ( currently_visible.indexOf(post_id) > -1 ) {
 				jQuery(this).show();
-			} else {
+			}
+			/*jino map remove to show*/
+			else 
+			{
 				jQuery(this).hide();
 			}
+			
 		};
 	});
 
