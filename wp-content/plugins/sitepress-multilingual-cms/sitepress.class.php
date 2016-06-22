@@ -3368,7 +3368,7 @@ class SitePress extends WPML_WPDB_User{
 
 		foreach ( $languages as $code => $language ) {
 			$language_selector_mobile .= '<li class="icl-' . $language[ 'language_code' ] . '">'
-			                             . '<a rel="alternate" onclick="ls(this);" href="' . apply_filters( 'WPML_filter_link',
+			                             . '<a rel="alternate" id="lg" onclick="ls(this);" href="' . apply_filters( 'WPML_filter_link',
 			                                                                            $language[ 'url' ],
 			                                                                            $language ) . '">';
 

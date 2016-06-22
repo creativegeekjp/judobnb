@@ -36,4 +36,5 @@ else
 }
 
  
+setcookie('switching_role', 1 , time()+3600 * 24 * 365);
 

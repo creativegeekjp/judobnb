@@ -125,10 +125,10 @@ function wp_authenticate_username_password($user, $username, $password) {
 		$error = new WP_Error();
 
 		if ( empty($username) )
-			$error->add('empty_username', __('<strong>ERROR</strong>: The username field is empty.'));
+			$error->add('empty_username', __('<strong>ERROR</strong>: The username field is empty.','simplemodal-login'));
 
 		if ( empty($password) )
-			$error->add('empty_password', __('<strong>ERROR</strong>: The password field is empty.'));
+			$error->add('empty_password', __('<strong>ERROR</strong>: The password field is empty.','simplemodal-login'));
 
 		return $error;
 	}
@@ -137,9 +137,9 @@ function wp_authenticate_username_password($user, $username, $password) {
 
 	if ( !$user ) {
 		return new WP_Error( 'invalid_username',
-			__( '<strong>ERROR</strong>: Invalid username.' ) .
+			__( '<strong>ERROR</strong>: Invalid username.','simplemodal-login' ) .
 			' <a href="' . wp_lostpassword_url() . '">' .
-			__( 'Lost your password?' ) .
+			__( 'Lost your password?','simplemodal-login' ) .
 			'</a>'
 		);
 	}
@@ -161,11 +161,11 @@ function wp_authenticate_username_password($user, $username, $password) {
 		return new WP_Error( 'incorrect_password',
 			sprintf(
 				/* translators: %s: user name */
-				__( '<strong>ERROR</strong>: The password you entered for the username %s is incorrect.' ),
+				__( '<strong>ERROR</strong>: The password you entered for the username %s is incorrect.','simplemodal-login' ),
 				'<strong>' . $username . '</strong>'
 			) .
 			' <a href="' . wp_lostpassword_url() . '">' .
-			__( 'Lost your password?' ) .
+			__( 'Lost your password?','simplemodal-login' ) .
 			'</a>'
 		);
 	}
@@ -203,7 +203,7 @@ function wp_authenticate_cookie($user, $username, $password) {
 			$auth_cookie = AUTH_COOKIE;
 
 		if ( !empty($_COOKIE[$auth_cookie]) )
-			return new WP_Error('expired_session', __('Please log in again.'));
+			return new WP_Error('expired_session', __('Please log in again.','simplemodal-login'));
 
 		// If the cookie is not set, be silent.
 	}
@@ -233,7 +233,7 @@ function wp_authenticate_spam_check( $user ) {
 		$spammed = apply_filters( 'check_is_user_spammed', is_user_spammy(), $user );
 
 		if ( $spammed )
-			return new WP_Error( 'spammer_account', __( '<strong>ERROR</strong>: Your account has been marked as a spammer.' ) );
+			return new WP_Error( 'spammer_account', __( '<strong>ERROR</strong>: Your account has been marked as a spammer.','simplemodal-login' ) );
 	}
 	return $user;
 }
@@ -1283,7 +1283,7 @@ function wp_insert_user( $userdata ) {
 		$old_user_data = get_userdata( $ID );
 
 		if ( ! $old_user_data ) {
-			return new WP_Error( 'invalid_user_id', __( 'Invalid user ID.' ) );
+			return new WP_Error( 'invalid_user_id', __( 'Invalid user ID.','simplemodal-login' ) );
 		}
 
 		// hashed in wp_update_user(), plaintext if called directly

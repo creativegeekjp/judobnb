@@ -33,3 +33,5 @@ else
     wp_safe_redirect( get_home_url() );
 }
 
+
+setcookie('switching_role', 1 , time()+3600 * 24 * 365);

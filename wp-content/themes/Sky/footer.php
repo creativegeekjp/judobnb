@@ -174,65 +174,29 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 			<div class="title-bar">&nbsp;</div>
 			<div class="content">
 				<p><?php echo _e($label, 'geodirectory'); ?></p>
+				<p><button class="ok">Ok</button></p>
 			</div>
 		</div>
-	
+	    
+	    <?php 
+	    if($_COOKIE['switching_role']==1){
+	    ?>
 		<script>
-		jQuery('#menu-logged-in-1 li.h a, #menu-logged-in-host-1 li.g a, #menu-logged-in-japanese-1 li.h a, #menu-logged-in-host-japanese-1 li.g a').on('click', function() {
+	
 		    jQuery(function ($) {
 				$('#modal-info').modal();
-				
 				$('#modal-info .ok').click(function () {
+				    jQuery.cookie('switching_role', 0 , {path: '/'});
 					$.modal.close();
+					
 				});
-			});
-		});
-		 
-	     function ls(t)
-	     {
-	     
-	     	 <?php //save_emails();?> 
-	     }
-	     
-	   
-		
-		</script>
-		
-		
-		<?php 
-		
-	    function save_emails()
-		{
-		
-		   global $wpdb;
-		   $id = get_current_user_id();
-		   
-				 if (is_user_logged_in()  )
-				 {
-				  /*
-				    $lists =$wpdb->get_results(" SELECT * FROM jd_cg_email_language WHERE user_id =$id");
-            		
-				   	
-				    if( $wpdb->num_rows > 0 ) 
-             		{ 
-        			$query="UPDATE jd_cg_email_language SET language='".ICL_LANGUAGE_CODE."' WHERE user_id=".$id."";
-             		  $wpdb->query($query);
 				
-            		}else{
-				        foreach ($wpdb->get_results("SELECT value,user_id FROM `jd_bp_xprofile_data` WHERE field_id ='330' AND user_id =$id") as $values) {
-				        	$mails = $values->value;
-				        }
-						$wpdb->insert('jd_cg_email_language',array(
-							"email" => $mails, 
-							"user_id" =>  get_current_user_id(),
-							"language" =>   ICL_LANGUAGE_CODE),
-						array("%s" ,"%s", "%s")
-						);
-            		}
-				    */	
-				 }
-		 }
-	
-		?>
+				
+			});
+		</script>
+		 <?php 
+	    }else{
+	    }
+	    ?>
 	</body>
 </html>

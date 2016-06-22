@@ -1,0 +1,94 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id DEEE4CABC; Wed, 22 Jun 2016 11:36:08 +0900 (JST)
+Date: Wed, 22 Jun 2016 11:36:08 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="A4A3ACAC5.1466562968/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160622023608.DEEE4CABC@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--A4A3ACAC5.1466562968/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<airain417@gmail.com>: host gmail-smtp-in.l.google.com[64.233.189.26] said:
+    550-5.7.1 [103.225.138.70] The IP you're using to send mail is not
+    authorized to 550-5.7.1 send email directly to our servers. Please use the
+    SMTP relay at your 550-5.7.1 service provider instead. Learn more at 550
+    5.7.1  https://support.google.com/mail/answer/10336 i3si718441pfc.94 -
+    gsmtp (in reply to end of DATA command)
+
+--A4A3ACAC5.1466562968/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: A4A3ACAC5
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Wed, 22 Jun 2016 11:35:50 +0900 (JST)
+
+Final-Recipient: rfc822; airain417@gmail.com
+Action: failed
+Status: 5.7.1
+Remote-MTA: dns; gmail-smtp-in.l.google.com
+Diagnostic-Code: smtp; 550-5.7.1 [103.225.138.70] The IP you're using to send
+    mail is not authorized to 550-5.7.1 send email directly to our servers.
+    Please use the SMTP relay at your 550-5.7.1 service provider instead. Learn
+    more at 550 5.7.1  https://support.google.com/mail/answer/10336
+    i3si718441pfc.94 - gsmtp
+
+--A4A3ACAC5.1466562968/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id A4A3ACAC5; Wed, 22 Jun 2016 11:35:50 +0900 (JST)
+To: airain417@gmail.com
+Subject: [JudoBNB] Comment: "Casa Maguix"
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Wed, 22 Jun 2016 11:35:50 +0900
+From: Creative Buyer <wordpress@judobnb.com>
+Message-ID: <0dcd2e56c9a0d5c41cb6f085e53bfc97@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+Reply-To: "cgbuyer@gmail.com" <cgbuyer@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+New comment on your post "Casa Maguix"
+Author: Creative Buyer (IP: 192.168.1.2, 192.168.1.2)
+Email: cgbuyer@gmail.com
+URL: 
+Comment: 
+Sample review on this page . . .
+
+You can see all comments on this post here:
+http://www.judobnb.com/places/spain/extremadura/badajoz/casa-maguix/#comments
+
+Permalink: http://www.judobnb.com/places/spain/extremadura/badajoz/casa-maguix/#comment-47
+
+
+--A4A3ACAC5.1466562968/mail.judobnb.com--

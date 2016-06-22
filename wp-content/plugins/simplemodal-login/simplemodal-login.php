@@ -410,7 +410,7 @@ if (!class_exists('SimpleModalLogin')) {
 			<div class="simplemodal-login-activity" style="display:none;"><br><center></center></div>
 		</form>';
 
-			return $output;
+			return __($output,'simplemodal-login');
 		}
 
 		/**
