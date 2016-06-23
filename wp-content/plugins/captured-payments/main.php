@@ -768,10 +768,74 @@ function listings_message_confirmation()
              echo __("Listing was successfully deleted.","easyReservations"). "<a href='" . site_url() . "/manage-listing/'>".__('return','easyReservations')."</a>";
         }else{
             echo __("Are you sure you want to delete this listing?<br><br>","easyReservations");
-            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listing/'>".__('No','easyReservations')."</a>";
+            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listings/'>".__('No','easyReservations')."</a>";
         }
     return;
 }
+
+function listings_list()
+{
+    global $wpdb;
+    
+    $id = get_current_user_id();
+    
+    $pagenum = isset( $_GET['pagenum'] ) ? absint( $_GET['pagenum'] ) : 1;
+    
+    $limit = 20; 
+    $offset = ( $pagenum - 1 ) * $limit;
+    $total = $wpdb->get_var( "SELECT COUNT(`ID`) FROM `jd_posts`   " );
+    $num_of_pages = ceil( $total / $limit );
+
+    $myrows = $wpdb->get_results( "SELECT * FROM `jd_posts` WHERE post_author = '$id' AND post_status ='publish' AND post_type='gd_place' LIMIT $offset, $limit ");
+
+    if ($myrows) 
+    {
+         echo '<table class="gridtable">
+                        <thead>
+                            <tr>
+                                <th width="15%">'.__('TITLE','easyReservations').'</th>
+                                <th  width="80%">'.__('DESCRIPTION','easyReservations').'</th>
+                                <th colspan=4>'.__('ACTION','easyReservations').'</th>
+                            </tr>
+                        </thead>';
+                        
+        foreach ($myrows as $value) {
+            $pid = $value->ID;
+            $pid_del = $value->ID;
+            $title = $value->post_title;
+            $content = $value->post_content;
+            
+            echo '<tr>';
+            echo "<td>".$title."</td>";
+            echo "<td>".$content."</td>";
+            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".get_permalink($pid)."'>".__('View','easyReservations')."</a></td>";
+            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/add-listing/?listing_type=gd_place&pid=".$pid."'>".__('Edit','easyReservations')."</a></td>";
+            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/delete-listing-confirmation/?pid_del=".$pid."'>".__('Delete','easyReservations')."</a></td>";
+            echo '</tr>';
+            
+        }
+        echo '</table>';
+        
+        $page_links = paginate_links( array(
+            'base' => add_query_arg( 'pagenum', '%#%' ),
+            'format' => '',
+            'prev_text' => __( '&laquo;', 'text-domain' ),
+            'next_text' => __( '&raquo;', 'text-domain' ),
+            'total' => $num_of_pages,
+            'current' => $pagenum
+        ) );
+        if ( $page_links ) {
+            echo '<div class="tablenav"> <div class="tablenav-pages" style="margin: 1em 0">' . $page_links . '</div> </div>';
+        }
+    }else
+    {
+        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/manage-listings'>".__(" << Listings ", "easyReservations")."</a>";
+    }
+    
+    return;
+}
+
+
 function rhost($content)
 {
     add_shortcode(  'rhost' , 'reservation_host' );
@@ -830,6 +894,12 @@ function listing_message_confirmation($content)
     return $content;
 }
 
+function listings($content)
+{
+    add_shortcode(  'listings' , 'listings_list' );
+    return $content;
+}
+
 add_action( 'the_content', 'rhost');
 add_action( 'the_content', 'rguest');
 add_action( 'the_content', 'confhostdisapproved');
@@ -841,6 +911,7 @@ add_action( 'the_content', 'cancel_reservation');
 add_action( 'the_content', 'successreservation');
 add_action( 'the_content', 'res_editing_confirmation');
 add_action( 'the_content', 'listing_message_confirmation');
+add_action( 'the_content', 'listings');
 add_action( 'wp_head' , 'cascade' );
 
 
@@ -1292,6 +1363,7 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
 	.page-id-2806 table.gridtable td:nth-of-type(10):before { content: 'PRICE'; }
 	.page-id-2806 table.gridtable td:nth-of-type(11):before { content: 'RESERVATED'; }
 	.page-id-2806 table.gridtable td:nth-of-type(12):before { content: 'ACTION(S)'; }
+	
 }
 
 

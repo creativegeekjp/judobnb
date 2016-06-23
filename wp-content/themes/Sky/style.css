@@ -15834,3 +15834,12 @@ body.archive.author #main_header_bg {
     color:red;
     font-weight: bold;
 }
+/*.bp-required-field-label:after{
+	content: " * ";
+	color: #FF0000;
+}
+#basic-details-section label:after{
+	content: " * ";
+	color: #FF0000;
+}
+*/

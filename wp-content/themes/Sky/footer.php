@@ -179,7 +179,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		</div>
 	    
 	    <?php 
-	    if($_COOKIE['switching_role']==1){
+	    if($_COOKIE['switching_role']==1 && isset($user->data->ID) ){
 	    ?>
 		<script>
 	
