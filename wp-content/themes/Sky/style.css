@@ -15869,3 +15869,12 @@ body.archive.author #main_header_bg {
 .wrapper #easyFrontendFormular label span {
 	margin: 8px 0 5px;
 }
+
+
+#lostpasswordform .simplemodal-login-activity {
+	display: none !important;
+}
+
+#simplemodal-login-form #lostpasswordform input[type="text"] {
+	width: 100%;
+}
