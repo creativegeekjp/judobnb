@@ -765,7 +765,7 @@ function listings_message_confirmation()
     global $post;
         $pid = isset($_GET['pid_del'] ) ? $_GET['pid_del'] : "";
         if($_GET['trashed'] == 1){
-             echo __("Listing was successfully deleted.","easyReservations"). "<a href='" . site_url() . "/manage-listing/'>".__('return','easyReservations')."</a>";
+             echo __("Listing was successfully deleted.","easyReservations"). "<a href='" . site_url() . "/manage-listings/'>".__('return','easyReservations')."</a>";
         }else{
             echo __("Are you sure you want to delete this listing?<br><br>","easyReservations");
             	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listings/'>".__('No','easyReservations')."</a>";
