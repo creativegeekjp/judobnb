@@ -786,7 +786,7 @@ function listings_list()
     $total = $wpdb->get_var( "SELECT COUNT(`ID`) FROM `jd_posts`   " );
     $num_of_pages = ceil( $total / $limit );
 
-    $myrows = $wpdb->get_results( "SELECT * FROM `jd_posts` WHERE post_author = '$id' AND post_status ='publish' AND post_type='gd_place' LIMIT $offset, $limit ");
+    $myrows = $wpdb->get_results( "SELECT * FROM `jd_posts` WHERE post_author = '$id' AND post_status ='publish' AND post_type='gd_place' ORDER BY ID DESC LIMIT $offset, $limit" );
 
     if ($myrows) 
     {

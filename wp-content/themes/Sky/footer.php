@@ -174,7 +174,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 			<div class="title-bar">&nbsp;</div>
 			<div class="content">
 				<p><?php echo _e($label, 'geodirectory'); ?></p>
-				<p><button class="ok">Ok</button></p>
+				<p><button class="ok"><?php echo _e('Ok', 'geodirectory'); ?></button></p>
 			</div>
 		</div>
 	    
@@ -182,7 +182,6 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 	    if($_COOKIE['switching_role']==1 && isset($user->data->ID) ){
 	    ?>
 		<script>
-	
 		    jQuery(function ($) {
 				$('#modal-info').modal();
 				$('#modal-info .ok').click(function () {

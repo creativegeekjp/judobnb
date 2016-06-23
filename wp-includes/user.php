@@ -137,9 +137,9 @@ function wp_authenticate_username_password($user, $username, $password) {
 
 	if ( !$user ) {
 		return new WP_Error( 'invalid_username',
-			__( '<strong>ERROR</strong>: Invalid username.','simplemodal-login' ) .
+			__('<strong>ERROR</strong>: Invalid username.','WordPress') .
 			' <a href="' . wp_lostpassword_url() . '">' .
-			__( 'Lost your password?','simplemodal-login' ) .
+			__('Lost your password?','WordPress') .
 			'</a>'
 		);
 	}
@@ -161,11 +161,11 @@ function wp_authenticate_username_password($user, $username, $password) {
 		return new WP_Error( 'incorrect_password',
 			sprintf(
 				/* translators: %s: user name */
-				__( '<strong>ERROR</strong>: The password you entered for the username %s is incorrect.','simplemodal-login' ),
+				__( '<strong>ERROR</strong>: The password you entered for the username %s is incorrect.','WordPress' ),
 				'<strong>' . $username . '</strong>'
 			) .
 			' <a href="' . wp_lostpassword_url() . '">' .
-			__( 'Lost your password?','simplemodal-login' ) .
+			__( 'Lost your password?','WordPress' ) .
 			'</a>'
 		);
 	}
@@ -203,7 +203,7 @@ function wp_authenticate_cookie($user, $username, $password) {
 			$auth_cookie = AUTH_COOKIE;
 
 		if ( !empty($_COOKIE[$auth_cookie]) )
-			return new WP_Error('expired_session', __('Please log in again.','simplemodal-login'));
+			return new WP_Error('expired_session', __('Please log in again.','wordpress'));
 
 		// If the cookie is not set, be silent.
 	}
@@ -233,7 +233,7 @@ function wp_authenticate_spam_check( $user ) {
 		$spammed = apply_filters( 'check_is_user_spammed', is_user_spammy(), $user );
 
 		if ( $spammed )
-			return new WP_Error( 'spammer_account', __( '<strong>ERROR</strong>: Your account has been marked as a spammer.','simplemodal-login' ) );
+			return new WP_Error( 'spammer_account', __( '<strong>ERROR</strong>: Your account has been marked as a spammer.','wordpress' ) );
 	}
 	return $user;
 }

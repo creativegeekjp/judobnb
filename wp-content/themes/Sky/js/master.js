@@ -3473,15 +3473,29 @@ function checkImages(){
 		return false;
 	}
 	
+	if(jQuery("#geodir_listing_start_date").val()=="")
+	{
+		alert("Listing start date is required!");
+		jQuery("#geodir_listing_start_date").focus();
+		return false;
+	}
+	
+	if(jQuery("#geodir_listing_end_date").val()=="")
+	{
+		alert("Listing end date is required!"); 
+		jQuery("#geodir_listing_end_date").focus();
+		return false;
+	}
+	
 	return true;
 };
 
 (function () {
     var d = document,
         pwd = d.querySelector('#signup_password');
-    
-    pwd.addEventListener('keyup', checklen);
-    
+     if(jQuery('body').is('.register')){
+    	pwd.addEventListener('keyup', checklen);
+     }
     function checklen(e){
         var valLen = this.value.length
            ,cando = valLen > 7 && valLen <= 20;
@@ -3497,12 +3511,9 @@ function checkImages(){
 				else {
 				d.querySelector('#pwdrow').setAttribute( 'data-lenchk', 
           					valLen < 1 ? '	'
-                          : valLen < 8 ? 'パスワードの桁数制限は、８桁以上にあります'
-                          : valLen > 20 ? 'パスワードは20桁を超えてます。ご確認ください。' : '' );
-
+                          : valLen < 8 ? '半角英数８文字以上'
+                          : valLen > 20 ? '半角英数２０文字以下' : '' );
 				}
-				
-        
     }
 }());
 
