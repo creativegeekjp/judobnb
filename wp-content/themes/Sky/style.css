@@ -15843,3 +15843,29 @@ body.archive.author #main_header_bg {
 	color: #FF0000;
 }
 */
+
+.easyFrontendFormular #easyFrontendFormular h1 {
+	font-size: 26px;
+	margin: 0 0 10px;
+}
+
+.easyFrontendFormular #easyFrontendFormular h2 {
+	font-size: 32px;
+	margin: 25px 0 5px;
+}
+
+
+.wrapper #easyFrontendFormular input[type="text"] {
+	float: left;
+	margin: 0 5px 0 0;
+}
+
+
+
+.wrapper #easyFrontendFormular label {
+	margin: 15px 0 5px;
+}
+
+.wrapper #easyFrontendFormular label span {
+	margin: 8px 0 5px;
+}
