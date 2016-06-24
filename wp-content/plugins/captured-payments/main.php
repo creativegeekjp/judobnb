@@ -61,13 +61,32 @@ function check_prev()
 	}
 
 }
- 
+
+function langs()
+{
+    switch (ICL_LANGUAGE_CODE) {
+        case 'ja':
+              $ext = "/ja";
+            break;
+        
+         case 'en':
+              $ext = "";
+            break;
+        
+        
+        default:
+             $ext = "";
+            break;
+    }
+    
+    return $ext;
+}
 function reservation_host()
 {  
   
     if ( check_prev() )
     {
-        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests/'>".__('View Guest Reservations','easyReservations')."</a>";
+        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>".__('View Guest Reservations','easyReservations')."</a>";
     }
     else
     {
@@ -167,9 +186,9 @@ function reservation_host()
         	        $pid = $pids->post_id;
         	    }
         	    
-        	    $lnks = $approve != "Cancelled" ? " <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>".__('Approve','easyReservations')."</a>
+        	    $lnks = $approve != "Cancelled" ? " <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/confirmation-approve/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>".__('Approve','easyReservations')."</a>
                         
-                                                    <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>".__('Disapprove','easyReservations')."</a>" : "" ;
+                                                    <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/confirmation-disapproved/?idr=".$idr."&idt=".$idt."'>".__('Disapprove','easyReservations')."</a>" : "" ;
                                                     
                                                     
                  //get current usernicename
@@ -201,7 +220,7 @@ function reservation_host()
                         <td>
                         
                          $lnks 
-                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$name."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
+                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$name."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -222,7 +241,7 @@ function reservation_guest()
    
     if ( !check_prev() )
     {
-        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('View Host Reservations','easyReservations')."</a>";
+        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('View Host Reservations','easyReservations')."</a>";
     }
     else
     {
@@ -312,10 +331,10 @@ function reservation_guest()
                 $user_info = get_userdata( $authors );
         	    
         	    //create link edit if not cancelled yet
-        	    $edit_check = $list->approve == "del" ? "----" : "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>".__('Edit','easyReservations')."</a>";
+        	    $edit_check = $list->approve == "del" ? "----" : "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservation-editing-confirmation/?resource_id=".$room."&idr=".$idr."&idt=".$idt."'>".__('Edit','easyReservations')."</a>";
         	    
         	    //create link cancel if not cancelled yet
-        	    $cancel_check = $list->approve == "del" ? "----" : "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>".__('Cancel','easyReservations')."</a>";
+        	    $cancel_check = $list->approve == "del" ? "----" : "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/cancel-confirm-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn_id."'>".__('Cancel','easyReservations')."</a>";
         	    
         	    //get original post_id from post_meta
         	    foreach($wpdb->get_results("SELECT post_id FROM jd_postmeta WHERE meta_key = 'vh_resource_id' AND meta_value='$room'") as $pids )
@@ -350,7 +369,7 @@ function reservation_guest()
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                          <td>".$edit_check."</td>
                         <td>".$cancel_check."</td>
-                       <td> <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
+                       <td> <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -372,7 +391,7 @@ function reservation_editing_confirmation()
     $room = isset($_GET['resource_id']) ? $_GET['resource_id'] : "" ;
     
     echo '<b>Note:</b> You are about editing your previous transaction, any unfinished transaction will be permanently removed. click yes to proceed on editing or no to return list reservation. <br><br>';
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests/'>No</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>No</a>";
     
     return;
 }
@@ -384,7 +403,7 @@ function confirmation_host_disapproved()
     $idt = isset($_GET['idt']) ? $_GET['idt'] : "" ;
     
     echo _e('Are you sure you want to disapproved this reservation?<br><br>','easyReservations');
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-disapproved/?idr=".$idr."&idt=".$idt."'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('No','easyReservations')."</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/host-disapproved/?idr=".$idr."&idt=".$idt."'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('No','easyReservations')."</a>";
  
     return ;
 }
@@ -403,11 +422,11 @@ function hosts_disapproved()
         
         if($list->approve == "del") //cancelled already
         {
-            echo "Failed to disapprove reservation. reservation might be cancelled.  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
+            echo "Failed to disapprove reservation. reservation might be cancelled.  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>return</a>";
         }
         else
         {
-            echo __('Reservation was disapproved','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('return','easyReservations')."</a>";
+            echo __('Reservation was disapproved','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('return','easyReservations')."</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret,$adminClientID,$adminSecret;
@@ -483,7 +502,7 @@ function confirmation_host_approved()
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
     
     echo __('Are you sure you want to approved this reservation?','easyReservations')."<br><br>";
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/host-approved/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('No','easyReservations')."</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/host-approved/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('No','easyReservations')."</a>";
 }
 
 function hosts_approved()
@@ -504,7 +523,7 @@ function hosts_approved()
         {
             $reason = $list->approve == "del" ? "Cancelled" : "Disapproved"; 
             
-            echo "Unable to approve this reservation the reaservation was : <b>".$reason."</b> by the guest. <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>return</a>";
+            echo "Unable to approve this reservation the reaservation was : <b>".$reason."</b> by the guest. <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>return</a>";
         }
         else
         {
@@ -574,7 +593,7 @@ function hosts_approved()
                     
               //end
             
-            echo __('Reservation was successfully approved','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('return','easyReservations')."</a>";
+            echo __('Reservation was successfully approved','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('return','easyReservations')."</a>";
            
             $query=$wpdb->query("UPDATE jd_reservations SET approve='yes' WHERE id=$idr");
         }
@@ -588,7 +607,7 @@ function cancels_confirm_reservations()
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
  
     echo _e('Are you sure you want to cancel this reservation?<br><br>','easyReservations');
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>".__('No','easyReservations')."</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guest/'>".__('No','easyReservations')."</a>";
  
 }
 function cancel_reservations()
@@ -605,11 +624,11 @@ function cancel_reservations()
         
         if($list->approve == "del") //cancelled already
         {
-            echo __('Reservation already cancelled.','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest/'>".__('return','easyReservations')."</a>";
+            echo __('Reservation already cancelled.','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guest/'>".__('return','easyReservations')."</a>";
         }
         else
         {
-            echo __("Reservation was cancelled","easyReservations")." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guest'>".__('return','easyReservations')."</a>";
+            echo __("Reservation was cancelled","easyReservations")." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guest'>".__('return','easyReservations')."</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret;
@@ -753,9 +772,9 @@ function successreservation_reservations()
         //end
 
    if ( !check_prev() ){
-        echo __('Your reservation was successfully reserved.','easyReservations')."<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/list-reservation-host/'>".__('View Reservations','easyReservations')."</a>";
+        echo __('Your reservation was successfully reserved.','easyReservations')."<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('View Reservations','easyReservations')."</a>";
     }else{
-        echo __('Your reservation was successfully reserved.','easyReservations')."<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/reservations-for-guests'>".__('View Reservations','easyReservations')."</a>";
+        echo __('Your reservation was successfully reserved.','easyReservations')."<br><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests'>".__('View Reservations','easyReservations')."</a>";
     }
     return;
 }
@@ -765,10 +784,10 @@ function listings_message_confirmation()
     global $post;
         $pid = isset($_GET['pid_del'] ) ? $_GET['pid_del'] : "";
         if($_GET['trashed'] == 1){
-             echo __("Listing was successfully deleted.","easyReservations"). "<a href='" . site_url() . "/manage-listings/'>".__('return','easyReservations')."</a>";
+             echo __("Listing was successfully deleted.","easyReservations"). "<a href='" .site_url().''.langs(). "/manage-listing/'>".__('return','easyReservations')."</a>";
         }else{
             echo __("Are you sure you want to delete this listing?<br><br>","easyReservations");
-            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . site_url() . "/manage-listings/'>".__('No','easyReservations')."</a>";
+            	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" .site_url().''.langs(). "/manage-listing/'>".__('No','easyReservations')."</a>";
         }
     return;
 }
@@ -783,7 +802,7 @@ function listings_list()
     
     $limit = 20; 
     $offset = ( $pagenum - 1 ) * $limit;
-    $total = $wpdb->get_var( "SELECT COUNT(`ID`) FROM `jd_posts`   " );
+    $total = $wpdb->get_var( "SELECT COUNT(`ID`) FROM `jd_posts` WHERE post_status ='publish' AND post_type='gd_place'  " );
     $num_of_pages = ceil( $total / $limit );
 
     $myrows = $wpdb->get_results( "SELECT * FROM `jd_posts` WHERE post_author = '$id' AND post_status ='publish' AND post_type='gd_place' ORDER BY ID DESC LIMIT $offset, $limit" );
@@ -809,8 +828,8 @@ function listings_list()
             echo "<td>".$title."</td>";
             echo "<td>".$content."</td>";
             echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".get_permalink($pid)."'>".__('View','easyReservations')."</a></td>";
-            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/add-listing/?listing_type=gd_place&pid=".$pid."'>".__('Edit','easyReservations')."</a></td>";
-            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/delete-listing-confirmation/?pid_del=".$pid."'>".__('Delete','easyReservations')."</a></td>";
+            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/add-listing/?listing_type=gd_place&pid=".$pid."'>".__('Edit','easyReservations')."</a></td>";
+            echo "<td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/delete-listing-confirmation/?pid_del=".$pid."'>".__('Delete','easyReservations')."</a></td>";
             echo '</tr>';
             
         }
@@ -827,10 +846,9 @@ function listings_list()
         if ( $page_links ) {
             echo '<div class="tablenav"> <div class="tablenav-pages" style="margin: 1em 0">' . $page_links . '</div> </div>';
         }
-    }else
-    {
-        echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/manage-listings'>".__(" << Listings ", "easyReservations")."</a>";
     }
+  
+  
     
     return;
 }
@@ -1074,7 +1092,9 @@ function my_initial() {
         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     }
 
-      
+    
+    setcookie('LANG', ICL_LANGUAGE_CODE , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+    
 }
 /*
 function get_emails($user)
@@ -1626,12 +1646,5 @@ return array_search($value, $countrycodes);
 }
 
 
-function save_email()
-{
-    if(is_user_logged_in())
-    {
-        
-    }
-}
 
 ?>

@@ -3252,3 +3252,14 @@ function add_subscriber_delete_cap() {
     $role->add_cap( 'delete_published_posts' );
 }
 add_action( 'admin_init', 'add_subscriber_delete_cap');
+
+
+// function custom_forgot_pwd_message( $error ) {
+// 	if ( ICN_LANGUAGE_CODE == 'en' ) {
+// 		$msg = __('<strong>ERROR</strong>: Invalid username or email', 'WordPress');
+// 	} else {
+// 		$msg = '<strong>エラー</strong>: 無効なユーザー名またはメールアドレスです。';
+// 	}
+// 	return $msg;
+// }
+// add_filter( 'login_errors', 'custom_forgot_pwd_message' );
