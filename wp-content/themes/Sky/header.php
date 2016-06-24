@@ -548,17 +548,32 @@
 										<div class="geodir_display_popup_forms"></div>
 										<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize vh_b_send_inquiry single-listing-booknow"><?php _e("Send message", "vh"); ?></a>
 									<?php } else { 
-										if(!is_user_logged_in())
-										{
-										?>
-										<a class="wpb_button wpb_btn-primary wpb_regularsize single-listing single-listing-booknow simplemodal-login"><?php _e("Book now!", "vh"); ?></a>
-										<?php
-										}else{
-									?>
-										<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
-									<?php 
-											
-										}
+										
+											 global $wpdb, $current_user;
+     
+                							get_currentuserinfo();
+											 
+									        $uID = get_current_user_id();
+									        $facebook_id =$wpdb->get_var("SELECT meta_value FROM jd_usermeta WHERE user_id =$uID AND meta_key= 'deuid'");
+	       
+	       
+											if(!is_user_logged_in() )
+											{
+											?>
+											<a class="wpb_button wpb_btn-primary wpb_regularsize single-listing single-listing-booknow simplemodal-login"><?php _e("Book now!", "vh"); ?></a>
+											<?php
+											}else if(is_user_logged_in() && empty($facebook_id) ){
+												?>
+													<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
+												<?php 
+												
+											}else if( is_user_logged_in() && isset($facebook_id) )//if logged in facebook
+											{   
+												 $edit_profile = site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/";
+												 ?>
+													<a href="<?php echo $edit_profile; ?>" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
+												<?php 
+											}
 										} 
 									?>
 									<?php if ( get_option("vh_theme_version") == "SkyVacation" ) { ?>

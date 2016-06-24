@@ -770,6 +770,8 @@ default:
 			$redirect_to = preg_replace('|^http://|', 'https://', $redirect_to);
 	} else {
 		// $redirect_to = admin_url();
+	
+         
 		$redirect_to = $_SERVER[HTTP_REFERER];
 	}
 

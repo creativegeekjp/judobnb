@@ -82,8 +82,8 @@ function langs()
     return $ext;
 }
 function reservation_host()
-{  
-  
+{     
+
     if ( check_prev() )
     {
         echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>".__('View Guest Reservations','easyReservations')."</a>";
@@ -1644,7 +1644,6 @@ function country_codes($value)
 return array_search($value, $countrycodes);
 
 }
-
 
 
 ?>

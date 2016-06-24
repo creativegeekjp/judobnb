@@ -3254,12 +3254,27 @@ function add_subscriber_delete_cap() {
 add_action( 'admin_init', 'add_subscriber_delete_cap');
 
 
-// function custom_forgot_pwd_message( $error ) {
-// 	if ( ICN_LANGUAGE_CODE == 'en' ) {
-// 		$msg = __('<strong>ERROR</strong>: Invalid username or email', 'WordPress');
-// 	} else {
-// 		$msg = '<strong>エラー</strong>: 無効なユーザー名またはメールアドレスです。';
+// function wrong_login($error) {
+// 	global $errors;
+// 	$err_codes = $errors->get_error_codes();
+
+	
+// 	if( $_COOKIE['LANG'] == 'ja' ) {
+// 		$error = '<strong>エラー</strong>: 無効なユーザー名';
+	
+// 		if ( in_array( 'invalid_username', $err_codes ) || in_array( 'incorrect_password', $err_codes ) ) {
+// 			$error = '<strong>エラー</strong>: 無効なユーザー名/パスワード';
+// 		}
 // 	}
-// 	return $msg;
+	
+// 	if( $_COOKIE['LANG'] == '' ) {
+// 		$error = '<strong>ERROR</strong>: Invalid username or email';
+	
+// 		if ( in_array( 'invalid_username', $err_codes ) || in_array( 'incorrect_password', $err_codes ) ) {
+// 			$error = '<strong>ERROR</strong>: Invalid username or password';
+// 		}
+// 	}
+	
+// 	return $error;
 // }
-// add_filter( 'login_errors', 'custom_forgot_pwd_message' );
+// add_filter( 'login_errors', 'wrong_login' );
