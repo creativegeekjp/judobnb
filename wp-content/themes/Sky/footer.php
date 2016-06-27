@@ -209,7 +209,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 	    <?php 
 	    function update_user_language()
 	    {
-	    	   $user_ID = get_current_user_id();
+	    	    $user_ID = get_current_user_id();
 	    	  
 			   	$uriParts = explode('/',$_COOKIE['langss']);
 	

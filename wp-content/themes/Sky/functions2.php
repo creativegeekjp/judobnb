@@ -3105,3 +3105,4 @@ class Easy_Social_Media extends WP_Widget {
 	}
 }
 add_action('widgets_init',create_function('', 'return register_widget("Easy_Social_Media");'));
+
