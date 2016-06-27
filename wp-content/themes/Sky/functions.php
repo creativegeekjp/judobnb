@@ -3280,9 +3280,3 @@ function wrong_login($error) {
 }
 add_filter( 'login_errors', 'wrong_login' );
 
-// function custom_login_redirect( $redirect_to, $request, $user  ) {
-//   //return site_url()."/ja/" ;
-// }
-// add_filter( 'login_redirect', 'custom_login_redirect' );
-
-

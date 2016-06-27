@@ -463,6 +463,20 @@ if (!class_exists('SimpleModalLogin')) {
                                         && function_exists('redirect_to_front_page')) {
                                 $redirect_to = redirect_to_front_page($redirect_to, $req_redirect_to, $user);
                         }
+                            
+                            global $wpdb;
+                         
+                             
+                            foreach($wpdb->get_results("SELECT * FROM jd_bp_xprofile_data WHERE field_id='635' AND user_id=$user->ID") as $list)
+                            {
+                                if($list->value=="Japanese")
+                                    $languages_s = "/ja/";
+                                 else
+                                    $languages_s = "";
+                            }
+                                                
+                         $redirect_to = $languages_s;  
+                            
                         echo "<div id='simplemodal-login-redirect'>$redirect_to</div>";
                         exit();
                 }
