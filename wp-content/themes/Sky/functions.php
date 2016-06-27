@@ -3254,27 +3254,31 @@ function add_subscriber_delete_cap() {
 add_action( 'admin_init', 'add_subscriber_delete_cap');
 
 
-// function wrong_login($error) {
-// 	global $errors;
-// 	$err_codes = $errors->get_error_codes();
+function wrong_login($error) {
+	global $errors;
+	$err_codes = $errors->get_error_codes();
 
+	$uriParts = explode('/',$_COOKIE['langss']);
 	
-// 	if( $_COOKIE['LANG'] == 'ja' ) {
-// 		$error = '<strong>エラー</strong>: 無効なユーザー名';
+	if( $uriParts[3]== 'ja' ) {
+		$error = '<strong>エラー</strong>: 無効なユーザー名';
 	
-// 		if ( in_array( 'invalid_username', $err_codes ) || in_array( 'incorrect_password', $err_codes ) ) {
-// 			$error = '<strong>エラー</strong>: 無効なユーザー名/パスワード';
-// 		}
-// 	}
+		if ( in_array( 'invalid_username', $err_codes ) || in_array( 'incorrect_password', $err_codes ) ) {
+			$error = '<strong>エラー</strong>: 無効なユーザー名/パスワード';
+		}
+	}
 	
-// 	if( $_COOKIE['LANG'] == '' ) {
-// 		$error = '<strong>ERROR</strong>: Invalid username or email';
+	if( $_COOKIE['LANG'] == 'en' ) {
+		$error = '<strong>ERROR</strong>: Invalid username or email';
 	
-// 		if ( in_array( 'invalid_username', $err_codes ) || in_array( 'incorrect_password', $err_codes ) ) {
-// 			$error = '<strong>ERROR</strong>: Invalid username or password';
-// 		}
-// 	}
+		if ( in_array( 'invalid_username', $err_codes ) || in_array( 'incorrect_password', $err_codes ) ) {
+			$error = '<strong>ERROR</strong>: Invalid username or password';
+		}
+	}
 	
-// 	return $error;
-// }
-// add_filter( 'login_errors', 'wrong_login' );
+
+
+
+	return  $error;
+}
+add_filter( 'login_errors', 'wrong_login' );

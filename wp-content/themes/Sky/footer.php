@@ -135,6 +135,9 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		</script>
 		<?php endif; ?>
 		
+		
+		
+		
 		<?php 
 		
 	   $user = wp_get_current_user();
@@ -197,5 +200,32 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 	    }else{
 	    }
 	    ?>
+	    <script>
+		     function ls(e)
+		     {
+				<?php update_user_language(); ?>
+		     }
+	    </script>
+	    <?php 
+	    function update_user_language()
+	    {
+	    	   $user_ID = get_current_user_id();
+	    	  
+			   	$uriParts = explode('/',$_COOKIE['langss']);
+	
+				if( $uriParts[3]== 'ja' ) { //detect is japanese since current language is japanse reverse update to english
+					$langs = "English";
+				}else{
+					$langs = "Japanese";
+				}
+			   
+			   global $wpdb;
+			   
+				if( is_user_logged_in() ) {
+						$wpdb->query( "UPDATE jd_bp_xprofile_data SET value='".$langs."' WHERE field_id='635' AND user_id=80 " );
+				}
+	    }
+	    ?>
+	    
 	</body>
 </html>

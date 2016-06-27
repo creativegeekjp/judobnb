@@ -555,25 +555,37 @@
 											 
 									        $uID = get_current_user_id();
 									        $facebook_id =$wpdb->get_var("SELECT meta_value FROM jd_usermeta WHERE user_id =$uID AND meta_key= 'deuid'");
-	       
-	       
+	       				
+	       									foreach ($wpdb->get_results("SELECT field_id,value FROM `jd_bp_xprofile_data` WHERE user_id =$uID") as $value) {
+	       									   if($value->field_id==1)
+	       									   {
+	       									       	$edited = true;
+	       									   }
+	       									}
+	       									
 											if(!is_user_logged_in() )
 											{
 											?>
 											<a class="wpb_button wpb_btn-primary wpb_regularsize single-listing single-listing-booknow simplemodal-login"><?php _e("Book now!", "vh"); ?></a>
 											<?php
-											}else if(is_user_logged_in() && empty($facebook_id) ){
-												?>
-													<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
-												<?php 
-												
-											}else if( is_user_logged_in() && isset($facebook_id) )//if logged in facebook
-											{   
-												 $edit_profile = site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/";
-												 ?>
-													<a href="<?php echo $edit_profile; ?>" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
-												<?php 
+											}else
+											{
+													if(isset($facebook_id) && $edited == false  )
+													{
+															$edit_profile = site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/";
+														 ?>
+															<a href="<?php echo $edit_profile; ?>" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
+														<?php 
+														
+													}
+													else//if logged in facebook
+													{   
+														?>
+															<a href="javascript:void(0)" class="wpb_button wpb_btn-primary wpb_regularsize single-listing-booknow"><?php _e("Book now!", "vh"); ?></a>
+														<?php 
+													}
 											}
+										
 										} 
 									?>
 									<?php if ( get_option("vh_theme_version") == "SkyVacation" ) { ?>

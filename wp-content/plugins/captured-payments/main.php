@@ -83,7 +83,7 @@ function langs()
 }
 function reservation_host()
 {     
-
+   
     if ( check_prev() )
     {
         echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>".__('View Guest Reservations','easyReservations')."</a>";
@@ -1093,7 +1093,7 @@ function my_initial() {
     }
 
     
-    setcookie('LANG', ICL_LANGUAGE_CODE , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+    //setcookie('LANG', $_SERVER['REQUEST_URI'], time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     
 }
 /*
@@ -1383,6 +1383,14 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
 	.page-id-2806 table.gridtable td:nth-of-type(10):before { content: 'PRICE'; }
 	.page-id-2806 table.gridtable td:nth-of-type(11):before { content: 'RESERVATED'; }
 	.page-id-2806 table.gridtable td:nth-of-type(12):before { content: 'ACTION(S)'; }
+	
+    /* manage Listing*/	
+    
+    .page-id-3946 table.gridtable td:nth-of-type(1):before { content: 'TITLE'; }
+    .page-id-3946 table.gridtable td:nth-of-type(2):before { content: 'DESCRIPTION'; }
+    .page-id-3946 table.gridtable td:nth-of-type(3):before { content: 'ACTION'; }
+    .page-id-3946 table.gridtable td:nth-of-type(4):before { content: ''; }
+    .page-id-3946 table.gridtable td:nth-of-type(5):before { content: ''; }
 	
 }
 

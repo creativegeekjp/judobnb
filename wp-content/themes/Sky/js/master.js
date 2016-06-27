@@ -3518,6 +3518,9 @@ function checkImages(){
 }());
 
 
+(function () {
+	jQuery.cookie('langss',  document.URL  , {path: '/'});
+}());
 
 
 /*
@@ -3538,4 +3541,6 @@ function f(){
 		return false;
 	}
 }
+
+
 

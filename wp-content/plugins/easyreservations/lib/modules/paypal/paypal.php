@@ -753,22 +753,22 @@ JAVASCRIPT;
                         }
                     }
                     if(!empty($perc_options)){
-                        $last = 'perc';
-                        $deposit_html .= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_perc" value="perc" onchange="changePayPalAmount(\'perc\')"> '.__('Pay a deposit of', 'easyReservations').' <select id="easy_deposit_perc" onchange="changePayPalAmount(\'perc\')">'.$perc_options.'</select></span>';
+                        $last = 'perc';//remove jino
+                        //$deposit_html .= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_perc" value="perc" onchange="changePayPalAmount(\'perc\')"> '.__('Pay a deposit of', 'easyReservations').' <select id="easy_deposit_perc" onchange="changePayPalAmount(\'perc\')">'.$perc_options.'</select></span>';
                     }
                 }
             }
            
             if($deposit['own'] == 1){
                 $last = 'own';
-                $deposit_html .= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_own" value="own" onchange="changePayPalAmount(\'own\')"> '.__('Pay a deposit of', 'easyReservations').' <input type="text" id="easy_deposit_own" style="width:100px;text-align:right" onchange="changePayPalAmount(\'own\')"></span>';
+                //$deposit_html .= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_own" value="own" onchange="changePayPalAmount(\'own\')"> '.__('Pay a deposit of', 'easyReservations').' <input type="text" id="easy_deposit_own" style="width:100px;text-align:right" onchange="changePayPalAmount(\'own\')"></span>';
             }
             if($deposit['full'] == 1){
                 $last = 'full';
                 ###jino edit
                 ##$values = independent_convert($_COOKIE['C_CURRENCY'],$price);
                 ##$deposit_html.= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_full" value="full" checked="checked"  onchange="changePayPalAmount(\'full\')"> '.__('Pay the full price of', 'easyReservations').' '.easyreservations_format_money($price, 1).'</span>';
-                $deposit_html.= '<span class="submitrow"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_full" value="full" checked="checked"  onchange="changePayPalAmount(\'full\')"> '.__('Pay the full price of', 'easyReservations').' '.$price.'</span>';
+                $deposit_html.= '<span class="submitrow" style="display:none;"><input type="radio" name="easy_deposit_radio[]" id="easy_radio_full" value="full" checked="checked"  onchange="changePayPalAmount(\'full\')"> '.__('Pay the full price of', 'easyReservations').' '.$price.'</span>';
             }
 
             $deposit_html .= '<script type="text/javascript">var easyStartPrice = '.$price.';';

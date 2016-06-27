@@ -15878,3 +15878,7 @@ body.archive.author #main_header_bg {
 #simplemodal-login-form #lostpasswordform input[type="text"] {
 	width: 100%;
 }
+
+#login_error .simplemodal-forgotpw {
+	display: none;
+}
