@@ -271,9 +271,9 @@ function vh_featured_properties($atts, $content = null, $code) {
 								$ajaxlink = geodir_get_ajax_url();
 								$deletelink = geodir_getlink($ajaxlink,array('geodir_ajax'=>'add_listing','ajax_action'=>'delete','pid'=>$listing_value->post_id),false);
 
-								$output .= '<a href="'.$updatelink.'" class="update-listing icon-upload" title="Upgrade"></a>';
-								$output .= '<a href="'.$editlink.'" class="edit-listing icon-pencil" title="Edit"></a>';
-								$output .= '<a href="'.$deletelink.'" class="delete-listing icon-trash-empty" title="Delete"></a>';
+								//$output .= '<a href="'.$updatelink.'" class="update-listing icon-upload" title="Upgrade"></a>';
+								//$output .= '<a href="'.$editlink.'" class="edit-listing icon-pencil" title="Edit"></a>';
+								//$output .= '<a href="'.$deletelink.'" class="delete-listing icon-trash-empty" title="Delete"></a>';
 							}
 						}
 					$output .= '</div>';

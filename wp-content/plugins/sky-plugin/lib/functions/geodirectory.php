@@ -178,7 +178,7 @@ global $cat_display,$post_cat, $current_user;
 	<?php } ?>
 <div class="geodirectory-add-property-container <?php echo LAYOUT.' '.$span_size; ?>">
 	
-	
+	<?php  //<form name="propertyform" get_page_link(get_option('geodir_preview_page'));?>
 	
 	<form name="propertyform" onsubmit="return checkImages();" id="propertyform" action="<?php echo get_page_link(get_option('geodir_preview_page'));?>" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="preview" value="<?php echo esc_attr($listing_type);?>" />
