@@ -14,7 +14,7 @@ get_header();
 	<div class="clearfix"></div>
 	<div class="page_info">
 		<div class="page-title">
-			<h1><?php echo $title_404; ?></h1>
+			<h1><?php echo _e($title_404,'wordpress'); ?></h1>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -25,7 +25,7 @@ get_header();
 				<div class="main-inner">
 					<div class="vc_row wpb_row vc_row-fluid">
 						<div class="vc_col-sm-12">
-							<p><?php echo sanitize_text_field($title_msg); ?></p>
+							<p><?php echo sanitize_text_field(_e($title_msg,'wordpress')); ?></p>
 							<?php require("searchform.php"); ?>
 							<p>&nbsp;</p>
 						</div>

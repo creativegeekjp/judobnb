@@ -254,15 +254,19 @@ if ( isset($_GET['stype']) ) {
 			var listing_price_val = listing_guests_val = listing_bedrooms_val = listing_beds_val = '';
 
 			jQuery("#geodir-filter-list li").each(function() {
-				console.log(">>>>>>>jquery"+  jQuery(this).find(".tagit-label"));
+			
 				if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
 					listing_price_val = jQuery(this).find(".tagit-label").html();
+						console.log(">>>>>>>Price"+  listing_price_val);
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 					listing_guests_val = jQuery(this).find(".tagit-label").html();
+						console.log(">>>>>>>Guset"+  listing_guests_val);
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("bedrooms") >= 0 ) {
 					listing_bedrooms_val = jQuery(this).find(".tagit-label").html();
+						console.log(">>>>>>>Bedroom"+  listing_bedrooms_val);
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
 					listing_beds_val = jQuery(this).find(".tagit-label").html();
+						console.log(">>>>>>>Beds"+  listing_beds_val);
 				} 
 			});
 
@@ -405,7 +409,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = '' + ui.values[ 0 ] + "-" + '' + ui.values[ 1 ] + " per night";/////jino
+					var tag = '' + ui.values[ 0 ] + "-" + '' + ui.values[ 1 ] + " <?php echo _e('per night','vh'); ?>";/////jino
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
 							jQuery(this).remove();
@@ -438,7 +442,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + "guests";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('guests','geodirectory'); ?>";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 							jQuery(this).remove();
@@ -481,7 +485,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " bedrooms";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','geodirectory'); ?>";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("bedrooms") >= 0 ) {
 							jQuery(this).remove();
@@ -514,7 +518,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " beds";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','geodirectory'); ?>";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
 							jQuery(this).remove();

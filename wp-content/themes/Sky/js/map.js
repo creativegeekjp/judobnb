@@ -31,7 +31,7 @@ function initMap(map_options){
 	options = map_options;
 	
 
-	
+
 	var pscaleFactor;
 	var pstartmin;
 	var ajax_url =  options.ajax_url;
@@ -64,6 +64,7 @@ function initMap(map_options){
 		} else {
 			options.height = (jQuery(window).height()-70)+'px';
 		};
+		
 	} else if ( jQuery("body").hasClass("page-template-template-frontpage") ) {
 		options.width = jQuery(window).width()+'px';
 		options.height = '747px';
@@ -103,6 +104,7 @@ function initMap(map_options){
 
 	google.maps.event.addListenerOnce(jQuery.goMap.map, 'tilesloaded', function(){
 		google.maps.event.trigger(jQuery.goMap.map, 'resize');
+		google.maps.event.trigger(jQuery.goMap.map, 'dragend');
 	});
 
 	google.maps.event.addListener(gd_infowindow,'domready',function(){
@@ -361,6 +363,7 @@ function parse_marker_jason(data, map_canvas_var) {
 	
 	//json evaluate returned data
 	if ( jQuery("#geodir-main-search").length ) {
+		
 		var listing_price_val = listing_guests_val = listing_bedrooms_val = listing_beds_val = '';
 		jQuery("#geodir-filter-list li").each(function() {
 			if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
@@ -375,12 +378,14 @@ function parse_marker_jason(data, map_canvas_var) {
 		});
 
 		if ( jQuery("body").hasClass("geodir-category-search") ) {
+			
 			jQuery.ajax({
 				type: 'POST',
 				url: my_ajax.ajaxurl,
 				data: {"action": "geodir_search_markers", listing_date: jQuery("#geodir-search-date").val(), listing_price: listing_price_val, listing_guests: listing_guests_val, listing_bedrooms: listing_bedrooms_val, listing_beds: listing_beds_val, search_type: 'category', search_category: jQuery("#geodir-search-cateogry").val(), post_type: jQuery('#geodir-search-post-type').val() },
 				success: function(response) {
 					jsonData = jQuery.parseJSON(response);
+					
 					if (jsonData[0] == undefined || jsonData[0].totalcount <= 0) {
 						document.getElementById( map_canvas_var+'_map_nofound').style.display = 'block';
 						var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
@@ -467,13 +472,14 @@ function parse_marker_jason(data, map_canvas_var) {
 			var updated_data = '{"action": "geodir_search_markers", "search_lat": "'+vh_getUrlParameter('sgeo_lat')+'", "search_long": "'+vh_getUrlParameter('sgeo_lon')+'", "listing_date": "'+jQuery("#geodir-search-date").val()+'", "listing_price": "'+listing_price_val+'", "listing_guests": "'+listing_guests_val+'", "listing_bedrooms": "'+listing_bedrooms_val+'", "listing_beds": "'+listing_beds_val+'", "search_keyword": "'+jQuery('#geodir-search-keyword').val()+'", "listing_search_cat": "'+jQuery('#geodir-listing-search-category').val()+'", "search_location": "'+jQuery('#geodir-listing-search-location').val()+'", "listing_contract": "'+jQuery('#geodir-search-contract').val()+'", "post_id": "'+jQuery('#geodir-current-page-id').val()+'", "post_type": "'+jQuery('#geodir-search-post-type').val()+'"'+ajaxParams+' }';
 
 			ajaxData = jQuery.parseJSON(updated_data);
-
+			console.log(ajaxData);
 			jQuery.ajax({
 				type: 'POST',
 				url: my_ajax.ajaxurl,
 				data: ajaxData,
 				success: function(response) {
 					jsonData = jQuery.parseJSON(response);
+				console.log(response);
 					if (jsonData[0] == undefined || jsonData[0].totalcount <= 0) {
 						document.getElementById( map_canvas_var+'_map_nofound').style.display = 'block';
 						var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
@@ -652,6 +658,7 @@ function parse_marker_jason(data, map_canvas_var) {
 					jQuery.goMap.map.setCenter(mapcenter);
 					jQuery.goMap.map.setZoom(eval(map_canvas_var).zoom);
 				} else {
+					console.log('sdfsdfsdfsd');
 					document.getElementById(map_canvas_var+'_map_nofound').style.display = 'none';
 					var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
 					list_markers(jsonData,map_canvas_var);

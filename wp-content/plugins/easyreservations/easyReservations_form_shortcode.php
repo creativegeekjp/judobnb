@@ -706,7 +706,7 @@ function reservations_form_shortcode($atts){
 	
 
 
-	if(!empty($atts['subvalidate'])) $popuptemplate.= '<span class="easy_validate_message_sub">'.__($atts['subvalidate'],'easyReservations').'</span>';
+	if(!empty($atts['subvalidate'])) $popuptemplate.= '<span class="easy_validate_message_sub"> </span>';
 	
 	$popuptemplate.= '<table id="easy_overlay_table"><thead><tr>';
 	$popuptemplate.= '<th>'.__('Time', 'easyReservations').'</th>';

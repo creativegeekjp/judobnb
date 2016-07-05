@@ -6754,7 +6754,7 @@ body.author .featured-properties-container .featured-properties-image .featured-
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	z-index: 222;
+	z-index: 1;
 	left: 0;
 	top: 0;
 	background-color: rgba(0,0,0,0.2);
@@ -7190,7 +7190,7 @@ body.skyestate.single-geodir-page .featured-bathrooms span {
 	position: absolute;
 	bottom: 10px;
 	left: 0;
-	z-index: 223;
+	z-index: 1;
 }
 
 .featured-carousel-controls {
@@ -10472,7 +10472,7 @@ body.category-field-focused .ui-menu .ui-menu-item a {
 
 body.home .search-calendar-container {
 	top: 76px;
-	height: auto !important;
+	height: auto;
 }
 
 .search-calendar-options {
@@ -15881,4 +15881,7 @@ body.archive.author #main_header_bg {
 
 #login_error .simplemodal-forgotpw {
 	display: none;
+}
+.home #ui-datepicker-div{
+	top: 717px !important;
 }

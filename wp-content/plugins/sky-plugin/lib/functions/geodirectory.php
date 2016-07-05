@@ -3044,7 +3044,7 @@ function get_geodir_search_markers( $return_data = null ) {
 	$output .= '<input type="hidden" id="geodir-price-min" value="' . $price_min . '" />';
 	$output .= '<input type="hidden" id="geodir-price-max" value="' . $price_max . '" />';
 	$output .= '<input type="hidden" id="geodir-search-post-type" value="' . $post_type . '" />';
-
+	
 	if ( !empty($queryresults) ) {
 		if ( $post_type != 'gd_event' ) {
 			foreach ($queryresults as $marker_value) {
@@ -3096,10 +3096,12 @@ function get_geodir_search_markers( $return_data = null ) {
 		$markers[] = array("totalcount"=>"0");
 		$markers['all_markers'] = $output;
 	}
+		
 
 	if ( $return_data == null ) {
 		echo json_encode($markers);
 	} else {
+	//	echo json_encode($query);
 		return json_encode($markers);
 	}
 	

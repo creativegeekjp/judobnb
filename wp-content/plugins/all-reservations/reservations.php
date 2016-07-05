@@ -126,19 +126,15 @@ function email_hosts(){
         };
         $htm .='</table>';
         
-                $from_name="JudoBNB";
-    		    $from_email="info@judobnb.creativegeek.jp";
+                $from_name='JudoBnB';
+    		    $from_email="info@judobnb.com";
     		    
-    		    $headers  = "MIME-Version: 1.0 \n" ;
-                $headers .= "From: " .
-                       "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                       "<".$from_email."> \n";
-                $headers .= "Reply-To: " .
-                       "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                       "<".$from_email."> \n";
+    		    //$headers  = "MIME-Version: 1.0 \n" ;
+                $headers = "From: " .$from_name." <".$from_email."> \n";
+                $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
                 
                     
-                $headers .= "Content-Type: text/plain;charset=ISO-2022-JP \n";
+                $headers .= "Content-Type: text/html;charset=ISO-2022-JP \n";
             
         
                 $email_to=$val['host_email'];

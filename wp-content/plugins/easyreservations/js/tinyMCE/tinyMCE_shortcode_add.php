@@ -140,7 +140,7 @@ function jumpto(x){ // Chained inputs;
 			FieldAdd += '</tr>';
 			FieldAdd += '<tr>';
 			FieldAdd += '<td nowrap="nowrap" style="vertical-align:top"><label for="easyreservation_form_val_submessage"><?php echo addslashes(__("Overlay sub-message", "easyReservations")); ?>: </label></td>';
-			FieldAdd += '<td><textarea id="easyreservation_form_val_submessage" name="easyreservation_form_val_submessage" style="width: 250px;padding:3px;font-size:13px"> <?php echo _e('Either make additional reservations or submit','easyReservations'); ?> </textarea></td>';
+			FieldAdd += '<td><textarea id="easyreservation_form_val_submessage" name="easyreservation_form_val_submessage" style="width: 250px;padding:3px;font-size:13px">  </textarea></td>';
 			FieldAdd += '</tr>';
 			FieldAdd += '<tr>';
 			FieldAdd += '<td nowrap="nowrap" style="vertical-align:top"><label for="easyreservation_form_res_name"><?php echo addslashes(__("Name for resources", "easyReservations")); ?>: </label></td>';

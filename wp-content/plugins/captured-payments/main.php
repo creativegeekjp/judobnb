@@ -206,7 +206,8 @@ function reservation_host()
                     $xclass="wpb_btn-primary";
                 }
                 
-                
+				 $user_info = get_userdata($user);
+     
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">".__('View','easyReservations')."</a></td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
@@ -221,7 +222,7 @@ function reservation_host()
                         <td>
                         
                          $lnks 
-                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$name."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
+                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_nicename."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -239,7 +240,7 @@ function reservation_host()
 
 function reservation_guest()
 {
-   
+    
     if ( !check_prev() )
     {
         echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/list-reservation-host/'>".__('View Host Reservations','easyReservations')."</a>";
@@ -357,8 +358,10 @@ function reservation_guest()
                     $xclass="wpb_btn-primary";
                 }
                 
+                $user_info = get_userdata($user);
+     
                 echo "<tr>
-                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">".__('View','easyReservations')."</a></td>
+                        <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">".__('View','easyReservations')."</a></td> 
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
@@ -370,7 +373,7 @@ function reservation_guest()
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
                          <td>".$edit_check."</td>
                         <td>".$cancel_check."</td>
-                       <td> <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_login."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
+                       <td> <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_nicename."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -391,8 +394,8 @@ function reservation_editing_confirmation()
     $idr = isset($_GET['idr']) ? $_GET['idr'] : "" ;
     $room = isset($_GET['resource_id']) ? $_GET['resource_id'] : "" ;
     
-    echo '<b>Note:</b> You are about editing your previous transaction, any unfinished transaction will be permanently removed. click yes to proceed on editing or no to return list reservation. <br><br>';
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>Yes</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>No</a>";
+    echo _e('<b>Note:</b> You are about editing your previous transaction, any unfinished transaction will be permanently removed. click yes to proceed on editing or no to return list reservation. <br><br>','easyReservations');
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/book-now/?resource_id=".$room."&editing=reservation_editing_mode&idr=".$idr."&idt=".$idt."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>".__('No','easyReservations')."</a>";
     
     return;
 }
@@ -449,16 +452,12 @@ function hosts_disapproved()
             $post_title=$wpdb->get_row("SELECT jd_posts.post_title FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$list->id");
                 $guest_email=$wpdb->get_row("SELECT * FROM jd_users WHERE ID=$list->user");
                 
-            $from_name="JudoBNB";
-		    $from_email="info@judobnb.creativegeek.jp";
+            $from_name='JudoBnB';
+		    $from_email="info@judobnb.com";
 		    
-		    $headers  = "MIME-Version: 1.0 \n" ;
-            $headers .= "From: " .
-                   "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                   "<".$from_email."> \n";
-            $headers .= "Reply-To: " .
-                   "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                   "<".$from_email."> \n";
+		    //$headers  = "MIME-Version: 1.0 \n" ;
+            $headers = "From: " .$from_name." <".$from_email."> \n";
+            $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
             $headers .= 'Content-type: text/html; charset=ISO-2022-JP' . "\r\n";
                    
                    
@@ -547,16 +546,12 @@ function hosts_approved()
                     $post_title=$wpdb->get_row("SELECT jd_posts.post_title,jd_reservations.user FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$idr");
                     $guest_email=$wpdb->get_row("SELECT * FROM jd_users WHERE ID=$post_title->user");
                     
-                    $from_name="JudoBNB";
-        		    $from_email="info@judobnb.creativegeek.jp";
+                    $from_name='JudoBnB';
+        		    $from_email="info@judobnb.com";
         		    
-        		    $headers  = "MIME-Version: 1.0 \n" ;
-                    $headers .= "From: " .
-                           "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                           "<".$from_email."> \n";
-                    $headers .= "Reply-To: " .
-                           "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                           "<".$from_email."> \n";
+        		    //$headers  = "MIME-Version: 1.0 \n" ;
+                    $headers = "From: " .$from_name." <".$from_email."> \n";
+                    $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
                     $headers .= 'Content-type: text/html; charset=ISO-2022-JP' . "\r\n";
             
                     $guest_name=$guest_email->display_name;
@@ -625,11 +620,11 @@ function cancel_reservations()
         
         if($list->approve == "del") //cancelled already
         {
-            echo __('Reservation already cancelled.','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guest/'>".__('return','easyReservations')."</a>";
+            echo __('Reservation already cancelled.','easyReservations')." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>".__('return','easyReservations')."</a>";
         }
         else
         {
-            echo __("Reservation was cancelled","easyReservations")." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guest'>".__('return','easyReservations')."</a>";
+            echo __("Reservation was cancelled","easyReservations")." <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests'>".__('return','easyReservations')."</a>";
             
             $arr = getpaypalamounts($idt);
             global $clientId,$secret;
@@ -715,19 +710,15 @@ function successreservation_reservations()
     		$guest_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$host_id"); 
     		$host_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$author");
     		  
-		    $from_name="JudoBNB";
-		    $from_email="info@judobnb.creativegeek.jp";
+		    $from_name='JudoBNB';
+		    $from_email="info@judobnb.com";
 		    
-		    $headers  = "MIME-Version: 1.0 \n" ;
-            $headers .= "From: " .
-                   "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                   "<".$from_email."> \n";
-            $headers .= "Reply-To: " .
-                   "".mb_encode_mimeheader (mb_convert_encoding($from_name,"ISO-2022-JP","AUTO")) ."" .
-                   "<".$from_email."> \n";
+		    //$headers  = "MIME-Version: 1.0 \n" ;
+            $headers = "From: " .$from_name." <".$from_email."> \n";
+            $headers .= "Reply-To: ".$from_name ." <".$from_email."> \n";
             
                 
-            $headers .= "Content-Type: text/plain;charset=ISO-2022-JP \n";
+            $headers .= "Content-Type: text/html;charset=ISO-2022-JP \n";
 		
 		    $guestemail_to = $guest_email->user_email;
 		   $query_guest="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$host_id."";
@@ -744,13 +735,13 @@ function successreservation_reservations()
             $guest_email_message = str_ireplace('[post_title]',$author_id->post_title, $guest_email_message);
             
             $guest_body = mb_convert_encoding($guest_email_message, "ISO-2022-JP","AUTO");
-            mb_language("ja");
+             mb_language("ja");
             
             $guest_subject = mb_encode_mimeheader($guest_subject);
             
             
             $hostemail_to=$host_email->user_email;
-           $query_host="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$author."";
+            $query_host="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$author."";
 		    $host_language=$wpdb->get_row($query_host);
             if($host_language->value == 'English'){
                 $hostemail_body= file_get_contents('wp-includes/custom-emails/host-reservation.html');
