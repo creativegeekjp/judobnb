@@ -204,9 +204,10 @@ function reservation_host()
                     $xclass="";
                 }else{
                     $xclass="wpb_btn-primary";
+                    $x="";
                 }
                 
-				 $user_info = get_userdata($user);
+				 $user_info2 = get_userdata($user);
      
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">".__('View','easyReservations')."</a></td>
@@ -222,7 +223,7 @@ function reservation_host()
                         <td>
                         
                          $lnks 
-                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_nicename."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
+                         <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info2->user_nicename."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -356,9 +357,10 @@ function reservation_guest()
                     $xclass="";
                 }else{
                     $xclass="wpb_btn-primary";
+                    $x="";
                 }
                 
-                $user_info = get_userdata($user);
+               // $user_info = get_userdata($user);
      
                 echo "<tr>
                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">".__('View','easyReservations')."</a></td> 
