@@ -720,11 +720,6 @@
 		top: -200px !important;
 		display: block;
 	}
-	body.home #ui-datepicker-div {
-	    top: 1049px !important;
-	    left: 0px !important;
-	    margin-top: 8px;
-	}
 	#ui-datepicker-div {
 	    border: 6px solid rgba(0,0,0,0.5);
 	    background-color: #fff;
@@ -1108,11 +1103,6 @@
 	.recent-activities .info-container .item-author {
 		margin-bottom: 25px;
 		display: inline-block;
-	}
-	body.home #ui-datepicker-div {
-	    top: 1049px !important;
-	    left: 0px !important;
-	    margin-top: 8px;
 	}
 	#ui-datepicker-div {
 	    border: 6px solid rgba(0,0,0,0.5);

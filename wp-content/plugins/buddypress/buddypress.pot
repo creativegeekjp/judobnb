@@ -6736,7 +6736,7 @@ msgstr ""
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:43
 msgid ""
-"Your account was activated successfully! You can now <a href=\"%s\">log "
+"Your account was activated successfully! You can now <a class="simplemodal-login" href=\"%s\">log "
 "in</a> with the username and password you provided when you signed up."
 msgstr ""
 

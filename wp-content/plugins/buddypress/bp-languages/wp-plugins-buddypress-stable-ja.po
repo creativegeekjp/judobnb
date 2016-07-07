@@ -2677,7 +2677,7 @@ msgstr "有効化キー:"
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:43
 #: bp-themes/bp-default/registration/activate.php:25
-msgid "Your account was activated successfully! You can now <a href=\"%s\">log in</a> with the username and password you provided when you signed up."
+msgid "Your account was activated successfully! You can now <a class="simplemodal-login" href=\"%s\">log in</a> with the username and password you provided when you signed up."
 msgstr "アカウントを有効化しました。登録時に指定したユーザー名とパスワードで<a href=\"%s\">ログイン</a>できます。"
 
 #: bp-templates/bp-legacy/buddypress/members/activate.php:48
@@ -5919,7 +5919,7 @@ msgstr "デフォルトで表示する友達:"
 
 #: bp-friends/bp-friends-widgets.php:91 bp-members/bp-members-widgets.php:105
 msgid "There were no members found, please try another filter."
-msgstr "該当するメンバーが見つかりません。別の条件を試してください。"
+msgstr "該当���るメンバーが見つかりません。別の条件を試してください。"
 
 #: bp-friends/classes/class-bp-core-friends-widget.php:184
 msgid "Max friends to show:"

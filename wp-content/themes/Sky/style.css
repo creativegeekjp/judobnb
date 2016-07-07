@@ -1173,6 +1173,7 @@ body.geodirectory-payment-manager .geodir_preview_section .geodir-main-preview-m
 .single-listing-options .search-calendar-container {
 	top: 70px;
 	left: 6px;
+	display: none !important;
 }
 
 .single-listing-options .search-calendar-options:after {
@@ -1254,8 +1255,6 @@ body .wrapper .single-listing-booknow:hover {
 }
 
 body.single-geodir-page #ui-datepicker-div.listing-when {
-	margin-left: 269px;
-	margin-top: 2px;
 	z-index: 100 !important;
 }
 
@@ -4749,6 +4748,7 @@ body .wrapper #easyFormInnerlay input[type="button"] {
 	border-radius: 0;
 	background: transparent;
 	z-index: 222 !important;
+	top: 1300px !important;
 }
 
 .ui-dialog.main-dialog .ui-dialog-titlebar {
@@ -10423,20 +10423,6 @@ body.category-field-focused .ui-menu .ui-menu-item a {
 	display: none;
 }
 
-#ui-datepicker-div {
-	margin-left: 37px;
-	margin-top: 2px;
-	border: none;
-	border-radius: 0;
-	font-family: "Merriweather";
-	border-bottom: 6px solid rgba(0,0,0,0.5);
-	border-right: 6px solid rgba(0,0,0,0.5);
-	width: auto;
-	min-height: 270px;
-	padding: 0px 15px;
-	background: transparent;
-}
-
 .search-calendar-container:before {
 	content: '';
 	position: absolute;
@@ -10473,6 +10459,7 @@ body.category-field-focused .ui-menu .ui-menu-item a {
 body.home .search-calendar-container {
 	top: 76px;
 	height: auto;
+	display: none !important;
 }
 
 .search-calendar-options {
@@ -15714,22 +15701,6 @@ label .btn-translate {
 	}
 }
 
-@media screen and (min-width: 992px) and (max-width: 5400px) {
-	.home #ui-datepicker-div{
-		top: 722px !important;
-	}
-}
-
-	
-@media screen and (min-width: 768px) and (max-width: 991px) {
-	#preview-msg {
-		display: none;
-	}
-	.home #ui-datepicker-div{
-		top: 515px !important;
-	}
-	
-}
 @media screen and (min-width: 768px){
 	#preview-msg {
 		display: none;
@@ -15897,4 +15868,8 @@ body.archive.author #main_header_bg {
 #login_error .simplemodal-forgotpw {
 	display: none;
 }
-
+.ui-widget-content {
+    border: 3px solid #aaaaaa;
+    background: #fff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x;
+    color: #222222;
+}

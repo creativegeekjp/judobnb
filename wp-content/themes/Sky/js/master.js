@@ -2905,7 +2905,7 @@ jQuery(document).ready(function($) {
 	};
 	
 	jQuery('.hasDatepicker').on('click',function(){
-		jQuery('#ui-datepicker-div').css('display','block');
+		//jQuery('#ui-datepicker-div').css('display','block');
 	})
 	
 	jQuery('.hasDatepicker').on('blur',function(){
@@ -3474,7 +3474,12 @@ function isNumber() {
 }
 
 function checkImages(){
-	
+	var hasBeenClicked = false;
+	jQuery('#submitplace').click(function () {
+	    hasBeenClicked = true;
+	});
+
+  
 	if(jQuery("#post_images").val()==""){
 		alert("Please post at least 1 image of the room.");
 		return false;

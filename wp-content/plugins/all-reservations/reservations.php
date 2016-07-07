@@ -190,7 +190,7 @@ function load_all_reservations(){
     global $wpdb;
     
     $reservations = $wpdb->get_results("
-    SELECT jd_reservations.*,jd_cg_captured_payments.host_id,jd_cg_captured_payments.tid FROM jd_reservations INNER JOIN jd_cg_captured_payments ON jd_cg_captured_payments.room_id=jd_reservations.id WHERE jd_reservations.approve='yes' AND jd_reservations.paid=0  GROUP BY jd_cg_captured_payments.txn_id;");
+    SELECT jd_reservations.*,jd_cg_captured_payments.host_id,jd_cg_captured_payments.tid,jd_cg_captured_payments.mc_currency,jd_cg_captured_payments.mc_gross FROM jd_reservations INNER JOIN jd_cg_captured_payments ON jd_cg_captured_payments.room_id=jd_reservations.id WHERE jd_reservations.approve='yes' AND jd_reservations.paid=0  GROUP BY jd_cg_captured_payments.txn_id");
 
 
     if( $wpdb->num_rows > 0 )
@@ -211,6 +211,7 @@ function load_all_reservations(){
                         <th>CHILDS</th>
                         <th>PRICE</th>
                         <th>RESERVATED</th>
+                         <th>HOST NAME</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
@@ -219,6 +220,11 @@ function load_all_reservations(){
            
              
         foreach($reservations as $reserve){
+            if($reserve->mc_currency=='USD')
+                $reserve->mc_currency='$';
+            
+            if($reserve->mc_currency=='JPY')
+                $reserve->mc_currency='¥';
             
              $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$reserve->room."'");
             $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -243,9 +249,10 @@ function load_all_reservations(){
                     <td>".$reserve->roomnumber."</td>
                     <td>".$reserve->number."</td>
                     <td>".$reserve->childs."</td>
-                    <td>".$reserve->price."</td>
+                    <td>".$reserve->mc_currency."".$reserve->mc_gross."</td>
                     <td>".date('F d, Y h:i A', strtotime($reserve->reservated) )."</td>
-                    <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/payment-confirmation/?host=".$reserve->host_id."&tid=".$reserve->tid."&id=".$reserve->id."&status=payout'>PAYHOST</a></td>
+                    <td>".$user_info->user_nicename."</td>
+                    <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url()."/payment-confirmation/?host=".$authors."&tid=".$reserve->tid."&id=".$reserve->id."&status=payout'>PAYHOST</a></td>
                 </tr>";
         }
         echo "</tbody></table>";
@@ -394,38 +401,46 @@ function confirm_payout(){
         $host = isset($_GET['host']) ? $_GET['host'] : "" ;
         $res_id = isset($_GET['id']) ? $_GET['id'] : "" ;
         $tid = isset($_GET['tid']) ? $_GET['tid'] : "" ;
-    
+        $query="SELECT paid FROM jd_reservations WHERE id=$res_id";
+        $status=$wpdb->get_row($query);
     
         $hostname=$wpdb->get_results("SELECT user_login FROM jd_users WHERE id=$host LIMIT 1");
         $hostname=$hostname[0]->user_login;
+        $host_email=$wpdb->get_results("SELECT value FROM jd_bp_xprofile_data WHERE field_id=330 AND user_id=$host LIMIT 1");
+        $host_email=$host_email[0]->value;
         
-        
-       // checkPaymentMessage(false,$hostname);
-        $arr=getamounts($tid);
-        
-        $data=array(
-            "USER"          => "daryljoycepalis-facilitator_api1.ymail.com",
-            "PWD"           => "ZGRMZGJE33BTU8RF",
-            "SIGNATURE"     => "AFcWxV21C7fd0v3bYYYRCpSSRl31AlMbxUVuS39eWS2Q.dHO7D6oXab7",
-            "METHOD"        => "MassPay",
-            "VERSION"       => "99",
-            "RECEIVERTYPE"  =>"EMailAddress",
-            "CURRENCYCODE"  =>$arr['currency'],
-            "L_EMAIL0"      =>"daryljoycepalis-facilitator-1@ymail.com",
-            "L_AMT0"        =>'30.00'
-            );
-        
-          $result=call_pay_api($data);
+        if((int)$status->paid == 0 && $status != 'NULL'){
+             // checkPaymentMessage(false,$hostname);
+                $arr=getamounts($tid);
+                
+                $data=array(
+                    "USER"          => "daryljoycepalis-facilitator_api1.ymail.com",
+                    "PWD"           => "ZGRMZGJE33BTU8RF",
+                    "SIGNATURE"     => "AFcWxV21C7fd0v3bYYYRCpSSRl31AlMbxUVuS39eWS2Q.dHO7D6oXab7",
+                    "METHOD"        => "MassPay",
+                    "VERSION"       => "99",
+                    "RECEIVERTYPE"  =>"EmailAddress",
+                    "CURRENCYCODE"  =>$arr['currency'],
+                    "L_EMAIL0"      =>$host_email,
+                    "L_AMT0"        =>$arr['total']
+                    );
+                
+                  $result=call_pay_api($data);
           
-
                 if(isset($result) && $result=='ACK=Success'){
                     
                      $query=$wpdb->query("UPDATE jd_reservations SET paid=1 WHERE id=$res_id");
-                    checkPaymentMessage(true,$hostname,$arr['total']);
+                    checkPaymentMessage(true,$hostname,$arr['total'],$arr['currency']);
                     
                 }else{
                     checkPaymentMessage(false,$hostname);
                 }
+        }else{
+             echo _e('Transaction Failed.Reservation was already paid.','easyReservations');
+        
+            echo '<br/><a href="'.site_url().'/all-reservations">'.__('Return','easyReservations').'</a>';
+        }
+      
                 
                 
                
@@ -452,9 +467,14 @@ function call_pay_api($data){
 }
     
 
-function checkPaymentMessage($stat,$hostName,$total){
+function checkPaymentMessage($stat,$hostName,$total,$currency){
+    if($currency=='USD')
+        $currency='$';
+    
+    if($currency=='JPY')
+        $currency='¥';
     if($stat)
-        echo _e('Transaction Complete.Payment sent to ','easyReservations').$hostName.'. Total:'.$total;
+        echo _e('Transaction Complete.Payment sent to ','easyReservations').$hostName.'. Total:'.$currency.''.$total;
     else
         echo _e('Transaction Failed.Payment not sent to ','easyReservations').$hostName;
         

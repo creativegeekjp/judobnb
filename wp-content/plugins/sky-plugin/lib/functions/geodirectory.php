@@ -1499,29 +1499,19 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 					
 					if($extra_fields['date_format'] == '')
 						$extra_fields['date_format'] = 'yy-mm-dd';
-						
 				?>
 				<script type="text/javascript" >
 				
 				jQuery(function() {
-	          
-                     //jQuery( "#geodir_listing_start_date" ).datepicker({changeMonth: false,   changeYear: false});
                      jQuery( "#geodir_listing_start_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
                      jQuery( "#geodir_listing_end_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
 
-                    // jQuery( "#geodir_listing_start_date" ).datepicker( "option", "dayNamesMin", ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']);
-                    
-                    //  jQuery( "#geodir_listing_end_date" ).datepicker({changeMonth: false,   changeYear: false});
-                   
-
-                    // jQuery( "#geodir_listing_end_date" ).datepicker( "option", "dayNamesMin", ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']);
-                    
                     
 					jQuery("#geodir_listing_start_date").datepicker({
 					    minDate: 0,
 					    onSelect: function(dateText, inst) {
-					       var actualDate = new Date(dateText);
-					       var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+1);
+					      var actualDate = new Date(dateText);
+					      var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+1);
 					        jQuery('#geodir_listing_end_date').datepicker('option', 'minDate', newDate );
 					    }
 					});
@@ -1531,13 +1521,15 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				});
 				
 				</script>
+				
 		 <div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 			
 				
 				<?php $site_title = __($site_title,'geodirectory'); (trim($site_title)) ? $site_title : '&nbsp;'; ?>
 				<?php if($is_required) echo '<span class="input-required"></span>';?>
 		  
-			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo esc_attr($value);?>" placeholder="<?php echo _e($site_title,'geodirectory');?>" type="text" class="geodir_textfield"  />
+		   
+			<input field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>" id="<?php echo esc_attr($name);?>" value="<?php echo $value ;?>" placeholder="<?php echo _e($site_title,'geodirectory');?>" type="text" class="geodir_textfield"  />
 					
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
