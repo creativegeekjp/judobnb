@@ -277,7 +277,7 @@ function reservations_form_shortcode($atts){
    	  	$message_E = $value;
    	endforeach;
    	
-     //jino adult and children
+    //jino adult and children
 	preg_match_all('!\d+!', $_COOKIE['vh_selected_people'] , $matches);
     foreach ($matches as $value) :
        $adultss = isset($value[0]) ? $value[0] : "";
@@ -295,7 +295,6 @@ function reservations_form_shortcode($atts){
 		
 			case 4:
 				$country =  country_codes($signups->value) ;
-			
 			break;
 		
 			case 5 :
@@ -321,6 +320,9 @@ function reservations_form_shortcode($atts){
 		
 		}
      }
+     
+     
+     $user_info = get_userdata(get_current_user_id());
      
    	//$curr = return_sign_book_now( $wpdb->get_var("SELECT meta_value FROM jd_postmeta WHERE post_id='".$resource_id."' AND meta_key='jd_cg_currency'") );
   		//$reservations_ =get_option("reservations_currency");
@@ -348,7 +350,7 @@ function reservations_form_shortcode($atts){
 		if(isset($field['maxlength'])) $maxlength = $field['maxlength'];
 		else $maxlength='';
 		if($field[0]=="date-from"){
-		    if(isset($_COOKIE['vh_startrange']) && !isset($_GET['editing']))
+		    if(!isset($_GET['editing']))
 		    {
 		      $value = date(RESERVATIONS_DATE_FORMAT, strtotime($_COOKIE['vh_startrange']));//edited by jino
 		    }
@@ -362,20 +364,26 @@ function reservations_form_shortcode($atts){
 				$value = date(RESERVATIONS_DATE_FORMAT, time()+($cutplus*86400));
 			}
 		  
-		  
 			$theForm=str_replace('['.$fields.']', '<input id="easy-form-from" type="text" name="from" value="'.$value.'" '.$disabled.' title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		
 		} elseif($field[0]=="date-to"){
 			$tofield = true;
-		    if(isset($_COOKIE['vh_endrange']) && !isset($_GET['editing']) )
+		    if(!isset($_GET['editing']) )
 		    {
-		      $value = date(RESERVATIONS_DATE_FORMAT, strtotime($_COOKIE['vh_endrange']));//edited by jino
+		    	if($_COOKIE['vh_endrange'] != "")
+		    	{
+		    		$times = $_COOKIE['vh_endrange'];
+		    	}else{
+		    		$times = $_COOKIE['vh_startrange'];
+		    	}
+		    	
+		      $value = date(RESERVATIONS_DATE_FORMAT, strtotime($times));//edited by jino
 		    }else if(isset($_GET['editing'])){
 		    	$value = date(RESERVATIONS_DATE_FORMAT, strtotime($departure_E)); //jino
 		    }
-			if(empty($value)) 
+			if(empty($value)){
 			  $value = date(RESERVATIONS_DATE_FORMAT, time()+172800);
-			elseif(preg_match('/\+{1}[0-9]+/i', $value)){
+			}elseif(preg_match('/\+{1}[0-9]+/i', $value)){
 				$cutplus = str_replace('+', '',$value);
 				//jino 
 				$value = date(RESERVATIONS_DATE_FORMAT, time()+($cutplus*172800));
@@ -449,7 +457,7 @@ function reservations_form_shortcode($atts){
 			* edited by jino 
 			* email Jino
 			*/
-			$value = isset( $email_E ) ?  $email_E : $ppal;
+			$value = isset( $email_E ) ?  $email_E : $user_info->user_email;
 			
 			$theForm=preg_replace('/\['.$fields.'\]/', '<input type="text" id="easy-form-email" name="email" '.$disabled.' value="'.$value.'" title="'.$title.'" style="'.$style.'" onchange="'.$price_action.$validate_action.'">', $theForm);
 		} elseif($field[0]=="country"){

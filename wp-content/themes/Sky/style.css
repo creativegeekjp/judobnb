@@ -6815,7 +6815,7 @@ body.author .featured-properties-container .featured-properties-image .featured-
 	border-top: 26px solid transparent;
 	border-bottom: 26px solid transparent;
 	border-right: 26px solid #fff;
-	z-index: 223;
+	z-index: 1;
 }
 
 .featured-properties-container img {
@@ -15714,12 +15714,27 @@ label .btn-translate {
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) and (max-width: 5400px) {
+	.home #ui-datepicker-div{
+		top: 722px !important;
+	}
+}
+
+	
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	#preview-msg {
+		display: none;
+	}
+	.home #ui-datepicker-div{
+		top: 515px !important;
+	}
+	
+}
+@media screen and (min-width: 768px){
 	#preview-msg {
 		display: none;
 	}
 }
-
 
 /* SIMPLE MODAL */
 #modal-info {display:none;}
@@ -15882,6 +15897,4 @@ body.archive.author #main_header_bg {
 #login_error .simplemodal-forgotpw {
 	display: none;
 }
-.home #ui-datepicker-div{
-	top: 717px !important;
-}
+

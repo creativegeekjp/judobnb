@@ -1113,7 +1113,7 @@ jQuery(document).ready(function($) {
 	}
 	else {
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
-		jQuery("#header-people").val('');
+		jQuery("#header-people").val(jQuery.cookie('vh_selected_people'));
 	}
 
 	jQuery(".calendar-search-item").live({
@@ -2877,7 +2877,7 @@ jQuery(document).ready(function($) {
 			});
 		};
 	});
-
+   
 	jQuery(".calendar-contract-item").live('click', function() {
 		if (jQuery(this).parent().parent().hasClass('category')) {
 			jQuery("#header-type, #header-top-type, #header-category, #header-top-category").val(jQuery(this).find("span").html());
@@ -2903,7 +2903,14 @@ jQuery(document).ready(function($) {
 
 		jQuery('.header-input-container input[name=event]').attr('placeholder', date);
 	};
-
+	
+	jQuery('.hasDatepicker').on('click',function(){
+		jQuery('#ui-datepicker-div').css('display','block');
+	})
+	
+	jQuery('.hasDatepicker').on('blur',function(){
+		//jQuery('.search-calendar-container').css('display','none');
+	});
 
 	jQuery("#header-submit, #header-submit2").live('click', function(e) {
 

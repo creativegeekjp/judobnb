@@ -514,7 +514,8 @@
 											<?php do_action('vh_action_get_listing_when_options'); ?>
 											<div class="clearfix"></div>
 										</div>
-										<div class="single-listing-options people"><span class="listing-input-title"><?php _e('People:', 'vh'); ?></span><input type="text" id="listing-people" readonly><?php vh_get_listing_people_options(); ?><div class="clearfix"></div></div>
+										<div class="single-listing-options people"><span class="listing-input-title"><?php _e('People:', 'vh'); ?></span>
+										<input type="text" id="listing-people" readonly><?php vh_get_listing_people_options(); ?><div class="clearfix"></div></div>
 									<?php } ?>
 									<?php
 										$reservation_url = get_permalink(get_option('vh_book_now'));
