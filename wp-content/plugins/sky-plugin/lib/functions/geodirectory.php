@@ -178,9 +178,9 @@ global $cat_display,$post_cat, $current_user;
 	<?php } ?>
 <div class="geodirectory-add-property-container <?php echo LAYOUT.' '.$span_size; ?>">
 	
-	<?php  //<form name="propertyform" get_page_link(get_option('geodir_preview_page'));?>
+	<?php //echo site_url().''.langs()."/listing-preview/" ;  ?>
 	
-	<form name="propertyform" onsubmit="return checkImages();" id="propertyform" action="<?php echo get_page_link(get_option('geodir_preview_page'));?>" method="post" enctype="multipart/form-data">
+	<form name="propertyform"  id="propertyform" action="<?php echo site_url().''.langs()."/listing-preview/" ;?>" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="preview" value="<?php echo esc_attr($listing_type);?>" />
 					<input type="hidden" name="listing_type" value="<?php echo esc_attr($listing_type);?>" />
 					<?php if(isset($_REQUEST['pid']) && $_REQUEST['pid'] !='') { ?>
@@ -1503,25 +1503,30 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				<script type="text/javascript" >
 				
 				jQuery(function() {
-                     jQuery( "#geodir_listing_start_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
-                     jQuery( "#geodir_listing_end_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+                     jQuery( "#geodir_listing_start_date" ).datepicker( {dateFormat: 'yy-mm-dd'});
+                     jQuery( "#geodir_listing_end_date" ).datepicker( {dateFormat: 'yy-mm-dd'});
+                     
+                     //jQuery( "#geodir_listing_start_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+                     //jQuery( "#geodir_listing_end_date" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
 
                     
-					jQuery("#geodir_listing_start_date").datepicker({
-					    minDate: 0,
-					    onSelect: function(dateText, inst) {
-					      var actualDate = new Date(dateText);
-					      var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+1);
-					        jQuery('#geodir_listing_end_date').datepicker('option', 'minDate', newDate );
-					    }
-					});
+					// jQuery("#geodir_listing_start_date").datepicker({
+					//  minDate: 0,
+					//  onSelect: function(dateText, inst) {
+					//   var actualDate = new Date(dateText);
+					//   var newDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), actualDate.getDate()+1);
+					//      jQuery('#geodir_listing_end_date').datepicker('option', 'minDate', newDate );
+					//  }
+					// });
 					
-					jQuery("#geodir_listing_end_date").datepicker();
-				
+					// jQuery("#geodir_listing_end_date").datepicker();
+				    
+				    
+				  
 				});
 				
 				</script>
-				
+		
 		 <div id="<?php echo esc_attr($name);?>_row" class="<?php if($is_required) echo 'required_field';?> <?php echo $css_class;?> geodir_form_row clearfix">
 			
 				
@@ -2676,8 +2681,9 @@ function get_geodir_search_markers( $return_data = null ) {
 		$listing_price = str_replace(get_option('vh_currency_symbol'), "", $listing_price);
 		$listing_price = str_replace(" per night", "", $listing_price);
 		$listing_price = explode("-", $listing_price);
-
-		$price_where = " AND (geodir_listing_price>=\"".$listing_price["0"]."\" && geodir_listing_price<=\"".$listing_price["1"]."\")";
+		$price_where = " AND (geodir_listing_price>=\"".$listing_price["0"]."\" && geodir_listing_price<=\"".$listing_price["1"]."\")";//jino
+		
+	
 	}
 
 	if ( $listing_guests != "" && $listing_guests != "undefined" ) {
@@ -2871,7 +2877,7 @@ function get_geodir_search_markers( $return_data = null ) {
 		$queryresults = $wpdb->get_results($query);
 	}
 
-	$output .= '<ul class="geodir_category_list_view clearfix">';
+	$output .= '<ul id="geodir_category_list_view_id" class="geodir_category_list_view clearfix">';
 	if ( !empty($queryresults) ) {
 		foreach ( $queryresults as $geodir_listing ) {
 			$image_count = 0;
@@ -3031,9 +3037,10 @@ function get_geodir_search_markers( $return_data = null ) {
 
 	//$map_json = get_geodir_search_markers('return');
 
+	//jino min max price
 	// $output .= "<span id=\"geodir-visible_markers\">".$map_json."</span>";
 	$output .= '<img id="geodir-search-loading" src="'.get_template_directory_uri() .'/images/loading.gif">';
-	$output .= '<input type="hidden" id="geodir-price-min" value="' . $price_min . '" />';
+	$output .= '<input type="hidden" id="geodir-price-min" value="' . $price_min. '" />';
 	$output .= '<input type="hidden" id="geodir-price-max" value="' . $price_max . '" />';
 	$output .= '<input type="hidden" id="geodir-search-post-type" value="' . $post_type . '" />';
 	
@@ -3861,7 +3868,7 @@ function get_geodir_show_listing_fields( $post_id, $type, $place='', $post_type=
 						$icon_text = geodir_get_post_meta($post_id,$extra_fields["htmlvar_name"],true);
 					}
 					$output .= '
-					<span class="featured-text">' . $icon_text . ' ' . $extra_fields["site_title"] . '</span>
+					<span class="featured-text">' . $icon_text . ' ' . __($extra_fields["site_title"],'vh') . '</span>
 				</div>';
 			}
 		}

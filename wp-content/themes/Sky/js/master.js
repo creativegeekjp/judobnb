@@ -554,7 +554,7 @@ jQuery(document).ready(function($) {
 		jQuery("#dd1").toggleClass("active");
 	});
 
-	jQuery(".geodir_category_list_view").isotope({
+/*	jQuery(".geodir_category_list_view").isotope({
 		transformsEnabled: true,
 		getSortData: {
 			price: function(elem) {
@@ -569,6 +569,7 @@ jQuery(document).ready(function($) {
 					var element = jQuery(elem).find(".listing-item-star.text").html();
 				}
 				return parseFloat(element);
+			
 			}
 		},
 		sortBy: 'price',
@@ -579,7 +580,7 @@ jQuery(document).ready(function($) {
 			queue: true
 		},
 		animationEngine: "jquery"
-	});
+	});*/
 
 	jQuery("#dd1 a").live('click', function() {
 		jQuery("#dd1 a").removeClass("active");
@@ -589,9 +590,10 @@ jQuery(document).ready(function($) {
 		jQuery("#dd1").removeClass("active");
 
 		var sortValue = jQuery(this).attr('data-sort-value');
-
+		//var xy = document.getElementById("geodir_category_list_view_id");
+	
 		if (sortValue == 'price') {
-			jQuery(".geodir_category_list_view").isotope({
+		/*	$('#geodir_category_list_view_id').isotope({
 				transformsEnabled: true,
 				getSortData: {
 					price: function(elem) {
@@ -599,12 +601,14 @@ jQuery(document).ready(function($) {
 						if (element != undefined) {
 							element = element.replace(my_ajax.currency_symbol, "");
 						};
+						
 						return parseFloat(element);
 					},
 					rating: function(elem) {
 						if (element != undefined) {
 							var element = jQuery(elem).find(".listing-item-star.text").html();
 						}
+						
 						return parseFloat(element);
 					}
 				},
@@ -616,35 +620,45 @@ jQuery(document).ready(function($) {
 					queue: true
 				},
 				animationEngine: "jquery"
-			});
+			});*/
 		}
 		else {
-			jQuery(".geodir_category_list_view").isotope({
+			var $x=$('#geodir_category_list_view_id').isotope({
 				transformsEnabled: true,
+				sortBy:sortValue,
+				sortAscending:false,
+				originTop:true,
 				getSortData: {
-					price: function(elem) {
-						var element = jQuery(elem).find(".map-listing-price").html();
-						if (element != undefined) {
-							element = element.replace(my_ajax.currency_symbol, "");
-						};
-						return parseFloat(element);
-					},
-					rating: function(elem) {
-						if (element != undefined) {
-							var element = jQuery(elem).find(".listing-item-star.text").html();
-						}
-						return parseFloat(element);
+				
+					rating:function(elem) {
+				      var weight = $(elem).find(".listing-item-star .text").text();
+				      return parseFloat(weight);
 					}
+					
 				},
-				sortBy: sortValue,
-				sortAscending: false,
 				animationOptions: {
 					duration: 250,
 					easing: 'swing',
 					queue: true
 				},
 				animationEngine: "jquery"
+				
+				
 			});
+			
+			
+			
+			
+			$x.isotope( 'on', 'layoutComplete',
+			  function( isoInstance, laidOutItems ) {
+			  	console.log(laidOutItems);
+			    //$("#geodir_category_list_view").append(laidOutItems);
+			    //var xy = document.getElementById("geodir_category_list_view_id");
+			    //xy.innerHTML = laidOutItems.join(',');
+			   //console.log(laidOutItems[0]);
+			  }
+			);
+			
 		}
 
 		if (jQuery("body").hasClass("admin-bar")) {
@@ -3473,34 +3487,29 @@ function isNumber() {
 	return true;
 }
 
-function checkImages(){
-	var hasBeenClicked = false;
-	jQuery('#submitplace').click(function () {
-	    hasBeenClicked = true;
-	});
-
-  
-	if(jQuery("#post_images").val()==""){
+	
+jQuery('#submitplace').click(function(){
+ 	if(jQuery("#post_images").val()==""){
 		alert("Please post at least 1 image of the room.");
 		return false;
 	}
-	
-	if(jQuery("#geodir_listing_start_date").val()=="")
+	else if(jQuery("#geodir_listing_start_date").val()=="")
 	{
 		alert("Listing start date is required!");
 		jQuery("#geodir_listing_start_date").focus();
 		return false;
 	}
-	
-	if(jQuery("#geodir_listing_end_date").val()=="")
+	else if(jQuery("#geodir_listing_end_date").val()=="")
 	{
 		alert("Listing end date is required!"); 
 		jQuery("#geodir_listing_end_date").focus();
 		return false;
 	}
 	
-	return true;
-};
+});
+
+
+
 
 (function () {
     var d = document,

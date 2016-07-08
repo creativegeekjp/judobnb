@@ -472,14 +472,14 @@ function parse_marker_jason(data, map_canvas_var) {
 			var updated_data = '{"action": "geodir_search_markers", "search_lat": "'+vh_getUrlParameter('sgeo_lat')+'", "search_long": "'+vh_getUrlParameter('sgeo_lon')+'", "listing_date": "'+jQuery("#geodir-search-date").val()+'", "listing_price": "'+listing_price_val+'", "listing_guests": "'+listing_guests_val+'", "listing_bedrooms": "'+listing_bedrooms_val+'", "listing_beds": "'+listing_beds_val+'", "search_keyword": "'+jQuery('#geodir-search-keyword').val()+'", "listing_search_cat": "'+jQuery('#geodir-listing-search-category').val()+'", "search_location": "'+jQuery('#geodir-listing-search-location').val()+'", "listing_contract": "'+jQuery('#geodir-search-contract').val()+'", "post_id": "'+jQuery('#geodir-current-page-id').val()+'", "post_type": "'+jQuery('#geodir-search-post-type').val()+'"'+ajaxParams+' }';
 
 			ajaxData = jQuery.parseJSON(updated_data);
-			console.log(ajaxData);
+			
 			jQuery.ajax({
 				type: 'POST',
 				url: my_ajax.ajaxurl,
 				data: ajaxData,
 				success: function(response) {
 					jsonData = jQuery.parseJSON(response);
-				console.log(response);
+				
 					if (jsonData[0] == undefined || jsonData[0].totalcount <= 0) {
 						document.getElementById( map_canvas_var+'_map_nofound').style.display = 'block';
 						var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
@@ -658,7 +658,7 @@ function parse_marker_jason(data, map_canvas_var) {
 					jQuery.goMap.map.setCenter(mapcenter);
 					jQuery.goMap.map.setZoom(eval(map_canvas_var).zoom);
 				} else {
-					console.log('sdfsdfsdfsd');
+				
 					document.getElementById(map_canvas_var+'_map_nofound').style.display = 'none';
 					var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
 					list_markers(jsonData,map_canvas_var);

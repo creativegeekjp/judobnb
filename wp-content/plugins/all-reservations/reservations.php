@@ -72,9 +72,12 @@ function cron_activation() {
     if( !wp_next_scheduled( 'send_emails' ) ) {
 	    wp_schedule_event(time(), 'daily', 'send_emails' );
     }
+    /*if( !wp_next_scheduled( 'dissapprove_list' ) ) {
+	    wp_schedule_event(time(), '30min', 'dissapprove_list' );
+    }*/
 } // end activate
 
-add_action('wp', 'cron_activation');
+//add_action('wp', 'cron_activation');
 
 // unschedule event upon plugin deactivation
 function cronstarter_deactivate() {	
@@ -83,7 +86,7 @@ function cronstarter_deactivate() {
 	// unschedule previous event if any
 	wp_unschedule_event ($timestamp, 'send_emails');
 } 
-register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
+//register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
 function email_hosts(){
     global $wpdb;
@@ -137,7 +140,9 @@ function email_hosts(){
                 $headers .= "Content-Type: text/html;charset=ISO-2022-JP \n";
             
         
-                $email_to=$val['host_email'];
+               //$email_to=$val['host_email'];
+               $email_to='test@yopmail.com';
+               
 
                  $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$val['host_id']."";
                     //echo $query
@@ -160,7 +165,7 @@ function email_hosts(){
                 $subject = mb_encode_mimeheader($subject);
                 
                 $stat=wp_mail($email_to,$subject,$email_body,$headers);
-                echo $stat;
+                
          
     }
     
@@ -169,7 +174,7 @@ function email_hosts(){
                 
     
 }
-add_action ('send_emails', 'email_hosts'); 
+//add_action ('send_emails', 'email_hosts'); 
 
 
 function load_reservation(){
@@ -331,9 +336,9 @@ function get_departures(){
         	                
             
                             $data=array(
-                                "USER"          => "daryljoycepalis-facilitator_api1.ymail.com",
-                                "PWD"           => "ZGRMZGJE33BTU8RF",
-                                "SIGNATURE"     => "AFcWxV21C7fd0v3bYYYRCpSSRl31AlMbxUVuS39eWS2Q.dHO7D6oXab7",
+                                "USER"          => "judobnbaccount_api1.ymail.com",
+                                "PWD"           => "LXGFD2V4HMAXM5JJ",
+                                "SIGNATURE"     => "AByuJ4MCKejqaxuZLZfW00sok6UDAcYnUtOBP600gxT4MoOLRdThULeo",
                                 "METHOD"        => "MassPay",
                                 "VERSION"       => "99",
                                 "RECEIVERTYPE"  =>"EMailAddress",
@@ -547,11 +552,12 @@ function confirmPayout($content){
     add_shortcode('confirmPayout','confirm_payout');
     return $content;
 }
-/*function emailhost($content){
+function email_for_hosts($content){
     
-    add_shortcode('emailhost','email_hosts');
+    add_shortcode('email_for_hosts','email_hosts');
     return $content;
-}*/
+}
+
 
 function pay($token,$data){
         
@@ -596,5 +602,7 @@ function pay($token,$data){
 add_action( 'the_content', 'allreservations');
 add_action( 'the_content', 'confirmPayout');
 add_action( 'the_content', 'departures');
-//add_action( 'the_content', 'emailhost');
+add_action( 'the_content', 'email_for_hosts');
+
+
 //register_deactivation_hook(__FILE__, 'cron_deactivation');

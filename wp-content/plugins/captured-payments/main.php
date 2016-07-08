@@ -413,6 +413,78 @@ function confirmation_host_disapproved()
  
     return ;
 }
+
+function dissaprove_reservation(){
+    global $wpdb;
+    
+   
+    $r=$wpdb->get_results("SELECT * FROM jd_reservations where approve NOT IN('yes','del','no')");
+    foreach ($r as $value) {
+        if(strtotime($value->arrival) < time()){
+            
+            $query="SELECT tid FROM jd_cg_captured_payments WHERE room_id=$value->id";
+            $payment_details=$wpdb->get_row($query);
+           if(!is_null($payment_details)){
+               
+               $arr2 = getpaypalamounts($payment_details->tid);
+                global $clientId,$secret,$adminClientID,$adminSecret;
+                $results = void_payment(create_access_token($adminClientID,$adminSecret),$arr2['txn']);
+                
+                    $wpdb->update( 
+                    	'jd_reservations', 
+                    	array( 
+                    		'approve' => 'no',	
+                    	), 
+                    	array( 'id' => $value->id ), 
+                    	array( 
+                    		'%s',
+                    	), 
+                    	array( '%d' ) 
+                    );
+                
+                //daryl updates for email 6/6
+                $post_title=$wpdb->get_row("SELECT jd_posts.post_title FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$value->id");
+                $guest_email=$wpdb->get_row("SELECT * FROM jd_users WHERE ID=$value->user");
+                    
+                $from_name='JudoBnB';
+    		    $from_email="info@judobnb.com";
+    		    
+    		    //$headers  = "MIME-Version: 1.0 \n" ;
+                $headers = "From: " .$from_name." <".$from_email."> \n";
+                $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
+                $headers .= 'Content-type: text/html; charset=ISO-2022-JP' . "\r\n";
+                       
+                       
+                    $guest_name=$guest_email->display_name;
+                    $email_to='test@yopmail.com';
+                    $query2="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$value->user."";
+                        //echo $query
+                        $email_lang_diss=$wpdb->get_row($query2);
+                    
+                    if($email_lang_diss->value == 'English'){
+                         $body = file_get_contents('wp-includes/custom-emails/host-disapproved.html');
+                          $subject = mb_convert_encoding("JudoBnB Disapproval Email", "ISO-2022-JP","AUTO");
+                    }
+                    if($email_lang_diss->value == 'Japanese'){
+                         $body = file_get_contents('wp-includes/custom-emails/host-disapproved-ja.html');
+                          $subject = mb_convert_encoding("JudoBnB不承認メール", "ISO-2022-JP","AUTO");
+                    }
+                   
+                    $message = str_ireplace('[guest_display_name]',$guest_name, $body);
+                    $message = str_ireplace('[post_title]',$post_title->post_title, $message);
+                    
+                    $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
+                    mb_language("ja");
+                   
+                    $subject = mb_encode_mimeheader($subject);
+                    
+                    $stat=wp_mail($email_to,$subject, $email_body,$headers);
+           }
+        }
+           
+    }
+}
+
 function hosts_disapproved()
 {
     
@@ -778,7 +850,7 @@ function listings_message_confirmation()
     global $post;
         $pid = isset($_GET['pid_del'] ) ? $_GET['pid_del'] : "";
         if($_GET['trashed'] == 1){
-             echo __("Listing was successfully deleted.","easyReservations"). "<a href='" .site_url().''.langs(). "/manage-listing/'>".__('return','easyReservations')."</a>";
+             echo _e("Listing was successfully deleted.","easyReservations"). "<a href='" .site_url().''.langs(). "/manage-listing/'> ".__('return','easyReservations')."</a>";
         }else{
             echo __("Are you sure you want to delete this listing?<br><br>","easyReservations");
             	echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" . get_delete_post_link( $pid ) . "'>".__('Yes','easyReservations')."</a> <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='" .site_url().''.langs(). "/manage-listing/'>".__('No','easyReservations')."</a>";
@@ -800,7 +872,7 @@ function listings_list()
     $num_of_pages = ceil( $total / $limit );
 
     $myrows = $wpdb->get_results( "SELECT * FROM `jd_posts` WHERE post_author = '$id' AND post_status ='publish' AND post_type='gd_place' ORDER BY ID DESC LIMIT $offset, $limit" );
-
+    
     if ($myrows) 
     {
          echo '<table class="gridtable">
@@ -841,6 +913,11 @@ function listings_list()
             echo '<div class="tablenav"> <div class="tablenav-pages" style="margin: 1em 0">' . $page_links . '</div> </div>';
         }
     }
+    else
+    {
+        echo _e("You don't have any listings yet","easyReservations");
+    }
+    
   
   
     
@@ -911,6 +988,11 @@ function listings($content)
     add_shortcode(  'listings' , 'listings_list' );
     return $content;
 }
+function emailhost($content){
+    
+    add_shortcode('emailhost','dissaprove_reservation');
+    return $content;
+}
 
 add_action( 'the_content', 'rhost');
 add_action( 'the_content', 'rguest');
@@ -924,6 +1006,7 @@ add_action( 'the_content', 'successreservation');
 add_action( 'the_content', 'res_editing_confirmation');
 add_action( 'the_content', 'listing_message_confirmation');
 add_action( 'the_content', 'listings');
+add_action( 'the_content', 'emailhost');
 add_action( 'wp_head' , 'cascade' );
 
 
@@ -1010,6 +1093,8 @@ function update_captures($token,$authorizations,$postdata)
 
 }
 
+
+
 //void payment in paypal
 function void_payment($token,$authorizations)
 {
@@ -1086,6 +1171,12 @@ function my_initial() {
         setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     }
 
+   /*if empty date*/
+   if($_COOKIE['vh_startrange'] == "" && $_COOKIE['vh_endtrange']=="")
+   {
+       setcookie('vh_startrange',  date('Y-m-d') , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+       setcookie('vh_endrange',  date('Y-m-d') , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+   }
     
     //setcookie('LANG', $_SERVER['REQUEST_URI'], time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     
@@ -1280,6 +1371,22 @@ function exchangerate($amount, $from, $to)
 				 'sign' => $sign_t,
 				 'symbol' => $symbol
 				);
+}
+function listprice($amount)
+{
+    $curr = $_COOKIE['C_CURRENCY'];
+    
+    if($curr == "USD")
+{
+	$from = "JPY";
+	$to = "USD";
+}else{
+	$from = "USD";
+	$to = "JPY";
+}
+    
+    preg_match("/<span class=bld>(.*)<\/span>/",file_get_contents("https://www.google.com/finance/converter?a=$amount&from=$from&to=$to"), $converted);
+    return array('amount'=>  number_format(preg_replace("/[^0-9.]/", "", $converted[1]), 0, '.', ''));
 }
 //places preview
 function preview_symbol()//add listing price preview

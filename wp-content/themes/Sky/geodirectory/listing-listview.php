@@ -158,7 +158,7 @@ if ( isset($_GET['stype']) ) {
 	<?php } ?>
 
 	<div id="geodir-main-search">
-		<img id="geodir-search-loading" src="<?php echo get_template_directory_uri();?>/images/loading.gif">
+		<img id="geodir-search-loading" src="<?php echo get_template_directory_uri();?>/images/loading.gifs">
 		<input type="hidden" id="geodir-search-results" value="<?php echo esc_attr($property_count); ?>" />
 		<input type="hidden" id="geodir-price-min" value="0" />
 		<input type="hidden" id="geodir-price-max" value="<?php echo vh_get_geodir_max_price( $curr_post_type ); ?>" />
@@ -257,6 +257,7 @@ if ( isset($_GET['stype']) ) {
 			
 				if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
 					listing_price_val = jQuery(this).find(".tagit-label").html();
+					//jQuery("div").find(".map-listing-price").html();
 						console.log(">>>>>>>Price"+  listing_price_val);
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 					listing_guests_val = jQuery(this).find(".tagit-label").html();
@@ -329,7 +330,12 @@ if ( isset($_GET['stype']) ) {
 					$sgeo_contract = esc_js($_GET["sgeo_contract"]);
 				}
 			?>
-
+			
+			/*
+			jQuery(".map-listing-price").each(function() {
+			console.log(jQuery(this).text());
+			});
+			*/
 			var updated_data = '{"action": "geodir_search_markers", "search_lat": "'+vh_getUrlParameter('sgeo_lat')+'", "search_long": "'+vh_getUrlParameter('sgeo_lon')+'", "listing_date": "<?php echo $sgeo_when; ?>", "listing_price": "'+listing_price_val+'", "listing_guests": "'+listing_guests_val+'", "listing_bedrooms": "'+listing_bedrooms_val+'", "listing_beds": "'+listing_beds_val+'", "search_keyword": "<?php echo $sgeo_keyword; ?>", "listing_search_cat": "'+listing_category+'", "listing_contract": "<?php echo $sgeo_contract; ?>"'+ajaxParams+' }';
 
 			ajaxData = jQuery.parseJSON(updated_data);
@@ -340,7 +346,6 @@ if ( isset($_GET['stype']) ) {
 				data: ajaxData,
 				success: function(response) {
 					jsonData = jQuery.parseJSON(response);
-
 					vh_setAllMap(null);
 					if ( jsonData['0'].totalcount != '0' ) {
 						list_markers(jsonData, 'geodir_map_v3_home_map_100');
@@ -485,7 +490,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','geodirectory'); ?>";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','vh'); ?>";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("bedrooms") >= 0 ) {
 							jQuery(this).remove();
@@ -518,7 +523,7 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','geodirectory'); ?>";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','vh'); ?>";
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
 							jQuery(this).remove();

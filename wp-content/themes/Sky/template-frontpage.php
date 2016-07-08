@@ -64,6 +64,13 @@ if ( LAYOUT == 'sidebar-no' ) {
 							<p>Sorry, it appears there is no content in this section.</p>';
 					}
 					?>
+					
+					<?php 
+					if ( ICL_LANGUAGE_CODE == 'en' ) : $l = 'en';
+					else : $l = 'ja';
+					endif;
+					get_template_part( 'parts/community', $l );
+					?>
 				</div>
 			</div>
 		</div>

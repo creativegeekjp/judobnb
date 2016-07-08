@@ -1818,6 +1818,7 @@ $.extend(Datepicker.prototype, {
 		// month selection
 		if (secondary || !changeMonth) {
 			monthHtml += "<span class='ui-datepicker-month'>" + monthNames[drawMonth] + "</span>";
+			console.log(monthHtml+">>>>>>>>>>>>>>>");
 		} else {
 			inMinYear = (minDate && minDate.getFullYear() === drawYear);
 			inMaxYear = (maxDate && maxDate.getFullYear() === drawYear);

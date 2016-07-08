@@ -40,7 +40,7 @@ if ($gd_session->get('gd_listing_view') && !isset($before_widget) && !isset($rel
 }
 ?>
 
-    <ul class="geodir_category_list_view clearfix <?php echo apply_filters('geodir_listing_listview_ul_extra_class', '', 'listing'); ?>">
+    <ul  class="geodir_category_list_view clearfix <?php echo apply_filters('geodir_listing_listview_ul_extra_class', '', 'listing'); ?>">
 
         <?php if (have_posts()) :
 

@@ -304,7 +304,9 @@ if (!function_exists('vh_scripts_method')) {
 		wp_enqueue_script('jquery.infobox', get_template_directory_uri() . '/js/infobox.js', array('jquery'), '', TRUE);
 
 		wp_enqueue_script( 'jquery-ui-datepicker' );
-		
+		if(ICL_LANGUAGE_CODE=='ja'){
+			wp_enqueue_script( 'datepicker-regional', get_template_directory_uri() . '/js/datepicker-ja.js',  array('jquery'), '', TRUE);
+		}
 		if ( function_exists('geodir_is_plugin_active') ) {
 			wp_enqueue_script( 'jquery-ui-dialog' );
 		}
@@ -3225,6 +3227,9 @@ function my_login_logo() { ?>
 		    padding: 8px 16px;
 		    height: auto;
 		}
+		#login form p.submit {
+			margin: 10px 0 0;
+		}
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
@@ -3280,3 +3285,9 @@ function wrong_login($error) {
 }
 add_filter( 'login_errors', 'wrong_login' );
 
+
+function har_remember_me_not()
+{        
+    echo '<style type="text/css">.forgetmenot { display:none; }</style>';
+}
+add_action('login_head', 'har_remember_me_not');

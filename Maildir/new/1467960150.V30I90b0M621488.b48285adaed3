@@ -1,0 +1,256 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id 892B79087; Fri,  8 Jul 2016 15:42:30 +0900 (JST)
+Date: Fri,  8 Jul 2016 15:42:30 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="9D181908A.1467960150/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160708064230.892B79087@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--9D181908A.1467960150/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<judobnb.ja@gmail.com>: host gmail-smtp-in.l.google.com[74.125.23.26] said:
+    550-5.7.1 [103.225.138.70] The IP you're using to send mail is not
+    authorized to 550-5.7.1 send email directly to our servers. Please use the
+    SMTP relay at your 550-5.7.1 service provider instead. Learn more at 550
+    5.7.1  https://support.google.com/mail/answer/10336 q6si3451275pad.66 -
+    gsmtp (in reply to end of DATA command)
+
+--9D181908A.1467960150/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 9D181908A
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Tue,  5 Jul 2016 15:55:22 +0900 (JST)
+
+Final-Recipient: rfc822; judobnb.ja@gmail.com
+Action: failed
+Status: 5.7.1
+Remote-MTA: dns; gmail-smtp-in.l.google.com
+Diagnostic-Code: smtp; 550-5.7.1 [103.225.138.70] The IP you're using to send
+    mail is not authorized to 550-5.7.1 send email directly to our servers.
+    Please use the SMTP relay at your 550-5.7.1 service provider instead. Learn
+    more at 550 5.7.1  https://support.google.com/mail/answer/10336
+    q6si3451275pad.66 - gsmtp
+
+--9D181908A.1467960150/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 9D181908A; Tue,  5 Jul 2016 15:55:22 +0900 (JST)
+To: Judo Bnb <judobnb.ja@gmail.com>
+Subject: [JudoBNB] New message from Rhea
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Tue, 5 Jul 2016 15:55:22 +0900
+From: JudoBNB <info@judobnb.com>
+Reply-To: JudoBNB <ado@creativegeek.jp>
+Message-ID: <14313833fa1c7b6dc9e6a17e96a008e7@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+X-BuddyPress: 2.5.2
+X-BuddyPress-Type: messages-unread
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="b1_14313833fa1c7b6dc9e6a17e96a008e7"
+Content-Transfer-Encoding: 8bit
+
+This is a multi-part message in MIME format.
+
+--b1_14313833fa1c7b6dc9e6a17e96a008e7
+Content-Type: text/plain; charset=us-ascii
+
+Rhea sent you a new message: "hi"
+
+"sample"
+
+Go to the discussion to reply or catch up on the conversation: http://www.judobnb.com/members/judobnb-jagmail-com/messages/view/75/
+
+
+--b1_14313833fa1c7b6dc9e6a17e96a008e7
+Content-Type: text/html; charset=us-ascii
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+
+	<!-- CSS Reset -->
+	<style type="text/css">
+		/* What it does: Remove spaces around the email design added by some email clients. */
+		/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+		html,
+		body {
+			Margin: 0 !important;
+			padding: 0 !important;
+			height: 100% !important;
+			width: 100% !important;
+		}
+
+		/* What it does: Stops email clients resizing small text. */
+		* {
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		/* What it does: Forces Outlook.com to display emails full width. */
+		.ExternalClass {
+			width: 100%;
+		}
+
+		/* What is does: Centers email on Android 4.4 */
+		div[style*="margin: 16px 0"] {
+			margin: 0 !important;
+		}
+
+		/* What it does: Stops Outlook from adding extra spacing to tables. */
+		table,
+		td {
+			mso-table-lspace: 0pt !important;
+			mso-table-rspace: 0pt !important;
+		}
+
+		/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+		table {
+			border-spacing: 0 !important;
+			border-collapse: collapse !important;
+			table-layout: fixed !important;
+			Margin: 0 auto !important;
+		}
+		table table table {
+			table-layout: auto;
+		}
+
+		/* What it does: Uses a better rendering method when resizing images in IE. */
+		/* & manages img max widths to ensure content body images don't exceed template width. */
+		img {
+			-ms-interpolation-mode:bicubic;
+			height: auto;
+			max-width: 100%;
+		}
+
+		/* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+		.yshortcuts a {
+			border-bottom: none !important;
+		}
+
+		/* What it does: A work-around for iOS meddling in triggered links. */
+		a[x-apple-data-detectors] {
+			color: inherit !important;
+			text-decoration: underline !important;
+		}
+	</style>
+
+</head>
+<body class="email_bg" width="100%" height="100%" bgcolor="#F7F3F0" style="Margin: 0;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#F7F3F0" style="border-collapse:collapse;" class="email_bg"><tr><td valign="top">
+	<center style="width: 100%;">
+
+		<!-- Visually Hidden Preheader Text : BEGIN -->
+		<div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+			
+		</div>
+		<!-- Visually Hidden Preheader Text : END -->
+
+		<div style="max-width: 600px;">
+			<!--[if (gte mso 9)|(IE)]>
+			<table cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+			<tr>
+			<td>
+			<![endif]-->
+
+			<!-- Email Header : BEGIN -->
+			<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px; border-top: 7px solid #D84800" bgcolor="#F7F3F0" class="header_bg">
+				<tr>
+					<td style="text-align: center; padding: 15px 0; font-family: sans-serif; mso-height-rule: exactly; font-weight: bold; color: #000000; font-size: 30px" class="header_text_color header_text_size">
+						JudoBNB					</td>
+				</tr>
+			</table>
+			<!-- Email Header : END -->
+
+			<!-- Email Body : BEGIN -->
+			<table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#FFFFFF" width="100%" style="max-width: 600px; border-radius: 5px;" class="body_bg">
+
+				<!-- 1 Column Text : BEGIN -->
+				<tr>
+					<td>
+						<table cellspacing="0" cellpadding="0" border="0" width="100%">
+						  <tr>
+								<td style="padding: 20px; font-family: sans-serif; mso-height-rule: exactly; line-height: 24px; color: #555555; font-size: 15px" class="body_text_color body_text_size">
+									<span style="font-weight: bold; font-size: 20px" class="welcome">Hi Judo Bnb,</span>
+									<hr color="#F7F3F0"><br>
+									Rhea sent you a new message: &quot;hi&quot;<br />
+<br />
+<blockquote>&quot;sample&quot;</blockquote><br />
+<br />
+<a style="color: #D84800;" href="http://www.judobnb.com/members/judobnb-jagmail-com/messages/view/75/">Go to the discussion</a> to reply or catch up on the conversation.
+								</td>
+						  </tr>
+						</table>
+					</td>
+				</tr>
+				<!-- 1 Column Text : BEGIN -->
+
+			</table>
+			<!-- Email Body : END -->
+
+			<!-- Email Footer : BEGIN -->
+			<br>
+			<table cellspacing="0" cellpadding="0" border="0" align="left" width="100%" style="max-width: 600px; border-radius: 5px;" bgcolor="#F7F3F0" class="footer_bg">
+				<tr>
+					<td style="padding: 20px; width: 100%; font-size: 12px; font-family: sans-serif; mso-height-rule: exactly; line-height: 19px; text-align: left; color: #525252;" class="footer_text_color footer_text_size">
+						
+						<span class="footer_text">&copy; 2016 JudoBNB</span>
+						<br><br>
+						<a href="http://www.judobnb.com/members/judobnb-jagmail-com/settings/notifications/" style="color: #D84800;text-decoration: underline;">unsubscribe</a>
+
+											</td>
+				</tr>
+			</table>
+			<!-- Email Footer : END -->
+
+			<!--[if (gte mso 9)|(IE)]>
+			</td>
+			</tr>
+			</table>
+			<![endif]-->
+		</div>
+	</center>
+</td></tr></table>
+</body>
+</html>
+
+
+
+--b1_14313833fa1c7b6dc9e6a17e96a008e7--
+
+
+--9D181908A.1467960150/mail.judobnb.com--
