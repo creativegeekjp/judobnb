@@ -180,7 +180,7 @@ global $cat_display,$post_cat, $current_user;
 	
 	<?php //echo site_url().''.langs()."/listing-preview/" ;  ?>
 	
-	<form name="propertyform"  id="propertyform" action="<?php echo site_url().''.langs()."/listing-preview/" ;?>" method="post" enctype="multipart/form-data">
+	<form name="propertyform"id="propertyform" action="<?php echo site_url().''.langs()."/listing-preview/" ;?>" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="preview" value="<?php echo esc_attr($listing_type);?>" />
 					<input type="hidden" name="listing_type" value="<?php echo esc_attr($listing_type);?>" />
 					<?php if(isset($_REQUEST['pid']) && $_REQUEST['pid'] !='') { ?>

@@ -3488,7 +3488,7 @@ function isNumber() {
 }
 
 	
-jQuery('#submitplace').click(function(){
+jQuery('#propertyform').on('submit', function(){
  	if(jQuery("#post_images").val()==""){
 		alert("Please post at least 1 image of the room.");
 		return false;
@@ -3505,6 +3505,7 @@ jQuery('#submitplace').click(function(){
 		jQuery("#geodir_listing_end_date").focus();
 		return false;
 	}
+	
 	
 });
 
