@@ -3376,7 +3376,7 @@ function isotopeDefinition( Outlayer, getSize, matchesSelector, Item, LayoutMode
   var Isotope = Outlayer.create( 'isotope', {
     layoutMode: "masonry",
     isJQueryFiltering: true,
-    sortAscending: true
+   sortAscending: true
   });
 
   Isotope.Item = Item;

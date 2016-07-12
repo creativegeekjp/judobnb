@@ -53,7 +53,7 @@ if ( isset($_GET['stype']) ) {
 				$beds_result = $wpdb->get_results('SHOW COLUMNS FROM '.$wpdb->prefix.'geodir_gd_place_detail LIKE "geodir_listing_bed_count"');
 				?>
 				<?php if ( !empty($price_result) ) { ?>
-				<div class="filter-field filter-per-night">
+				<div class="filter-field filter-per-night" style="display:none;">
 					<div class="filter-left">
 						<span class="filter-text"><?php _e("Price", "vh"); ?></span>
 						<span class="filter-second-text"><?php _e("Per night", "vh"); ?></span>
@@ -85,7 +85,7 @@ if ( isset($_GET['stype']) ) {
 						<span class="filter-text"><?php _e("Bedrooms", "vh"); ?></span>
 					</div>
 					<div class="filter-right">
-						<span class="range-slider-min">1</span>
+						<span class="range-slider-min">0</span>
 						<span class="range-slider-max">10+</span>
 						<div id="slider-range-bedrooms"></div>
 					</div>
@@ -98,7 +98,7 @@ if ( isset($_GET['stype']) ) {
 						<span class="filter-text"><?php _e("Beds", "vh"); ?></span>
 					</div>
 					<div class="filter-right">
-						<span class="range-slider-min">1</span>
+						<span class="range-slider-min">0</span>
 						<span class="range-slider-max">7+</span>
 						<div id="slider-range-beds"></div>
 					</div>
@@ -134,10 +134,11 @@ if ( isset($_GET['stype']) ) {
 		<span class="property-count">0</span><span class="property-count-text"><?php echo __("properties", "vh") . ":"; ?></span>
 		<div id="dd1" class="wrapper-dropdown">
 			<span class="sort-by-text"><?php echo __("Sort by", "vh") . ":"; ?></span>
-			<span class="sort-by icon-angle-down"><?php _e("Best price", "vh"); ?></span>
+			<span class="sort-by icon-angle-down"><?php _e("", "vh"); ?></span>
 			<ul class="dropdown">
-				<li><a href="javascript:void(0)" class="active" data-sort-value="price"><span class="geodir-sortby-item"><?php _e("Best price", "vh"); ?></span></a><input type="hidden" value="price"></li>
 				<li><a href="javascript:void(0)" data-sort-value="rating"><span class="geodir-sortby-item"><?php _e("Rating", "vh"); ?></span></a><input type="hidden" value="Rating"></li>
+				<li><a href="javascript:void(0)" class="active" data-sort-value="low"><span><?php _e("Lowest Price", "vh"); ?></span></a><input type="hidden" value="high"></li>
+			    <li><a href="javascript:void(0)" data-sort-value="high"><span><?php _e("Highest Price", "vh"); ?></span></a><input type="hidden" value="low"></li>
 			</ul>
 		</div>
 	</div>
@@ -249,6 +250,7 @@ if ( isset($_GET['stype']) ) {
 		}
 
 		var jsonData = '';
+		
 
 		function get_geomap_markers() {
 			var listing_price_val = listing_guests_val = listing_bedrooms_val = listing_beds_val = '';
@@ -257,8 +259,8 @@ if ( isset($_GET['stype']) ) {
 			
 				if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("per night") >= 0 ) {
 					listing_price_val = jQuery(this).find(".tagit-label").html();
-					//jQuery("div").find(".map-listing-price").html();
-						console.log(">>>>>>>Price"+  listing_price_val);
+					listing_price = listing_price_val.split("-");
+
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 					listing_guests_val = jQuery(this).find(".tagit-label").html();
 						console.log(">>>>>>>Guset"+  listing_guests_val);
@@ -267,7 +269,7 @@ if ( isset($_GET['stype']) ) {
 						console.log(">>>>>>>Bedroom"+  listing_bedrooms_val);
 				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
 					listing_beds_val = jQuery(this).find(".tagit-label").html();
-						console.log(">>>>>>>Beds"+  listing_beds_val);
+					console.log(">>>>>>>Bed"+  listing_beds_val);
 				} 
 			});
 
@@ -332,6 +334,7 @@ if ( isset($_GET['stype']) ) {
 			?>
 			
 			/*
+			jQuery( "div" ).find( ".range-slider-max" ).html( );
 			jQuery(".map-listing-price").each(function() {
 			console.log(jQuery(this).text());
 			});
@@ -339,12 +342,13 @@ if ( isset($_GET['stype']) ) {
 			var updated_data = '{"action": "geodir_search_markers", "search_lat": "'+vh_getUrlParameter('sgeo_lat')+'", "search_long": "'+vh_getUrlParameter('sgeo_lon')+'", "listing_date": "<?php echo $sgeo_when; ?>", "listing_price": "'+listing_price_val+'", "listing_guests": "'+listing_guests_val+'", "listing_bedrooms": "'+listing_bedrooms_val+'", "listing_beds": "'+listing_beds_val+'", "search_keyword": "<?php echo $sgeo_keyword; ?>", "listing_search_cat": "'+listing_category+'", "listing_contract": "<?php echo $sgeo_contract; ?>"'+ajaxParams+' }';
 
 			ajaxData = jQuery.parseJSON(updated_data);
-
+	
 			jQuery.ajax({
 				type: 'POST',
 				url: my_ajax.ajaxurl,
 				data: ajaxData,
 				success: function(response) {
+					
 					jsonData = jQuery.parseJSON(response);
 					vh_setAllMap(null);
 					if ( jsonData['0'].totalcount != '0' ) {
@@ -390,23 +394,26 @@ if ( isset($_GET['stype']) ) {
 				max_price = max_price.replace(my_ajax.currency_symbol, '');
 			} else {
 				var min_price = 0;
-				var max_price = <?php echo vh_get_geodir_max_price( $curr_post_type ); ?>;
+				var max_price = 10000;
 			}
+		
 
 			jQuery( "#slider-range-price" ).slider({
 				range: true,
-				min: 0,
-				max: <?php echo vh_get_geodir_max_price( $curr_post_type ); ?>,
+				min: min_price,
+				max: max_price,
 
 				values: [ min_price, max_price ],
 				create: function( event, ui ) {
 					var current_values = jQuery(this).slider("values");
 					jQuery(this).parent().find(".range-slider-min").html(my_ajax.curr_sign + current_values[ 0 ]);///////jino
-					jQuery(this).parent().find(".range-slider-max").html(my_ajax.curr_sign + current_values[ 1 ]);/////jino
+					jQuery(this).parent().find(".range-slider-max").html(my_ajax.curr_sign + current_values[ 1 ]+'+');/////jino
 				},
 				slide: function( event, ui ) {
 					jQuery(this).parent().find(".range-slider-min").html(my_ajax.curr_sign + ui.values[ 0 ]);/////jino
-					jQuery(this).parent().find(".range-slider-max").html(my_ajax.curr_sign + ui.values[ 1 ]);/////jino
+					jQuery(this).parent().find(".range-slider-max").html(my_ajax.curr_sign + ui.values[ 1 ]+'+');/////jino
+					
+					
 				},
 				start: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").addClass("ui-active");
@@ -473,7 +480,7 @@ if ( isset($_GET['stype']) ) {
 
 			jQuery( "#slider-range-bedrooms" ).slider({
 				range: true,
-				min: 1,
+				min: 0,
 				max: 10,
 				values: [ min_bedrooms, max_bedrooms ],
 				slide: function( event, ui ) {
@@ -506,9 +513,9 @@ if ( isset($_GET['stype']) ) {
 
 			jQuery( "#slider-range-beds" ).slider({
 				range: true,
-				min: 1,
+				min: 0,
 				max: 7,
-				values: [ 1, 7 ],
+				values: [ 0, 7 ],
 				slide: function( event, ui ) {
 					jQuery(this).parent().find(".range-slider-min").html(ui.values[ 0 ]);
 					if ( ui.values[ 1 ] == jQuery( "#slider-range-beds" ).slider("option", "max") ) {

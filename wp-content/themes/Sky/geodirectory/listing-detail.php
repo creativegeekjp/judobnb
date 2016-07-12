@@ -81,7 +81,7 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 					the_post(); 
 					global $post, $post_images, $wpdb, $preview;
 				
-					if ( !geodir_is_page('preview') ) {
+					if ( geodir_is_page('preview') ) {
 						$post_type = $_REQUEST["listing_type"];
 						$listing_rating = '0';
 						$listing_rating_count = '0';
@@ -204,7 +204,6 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 							<?php } ?>
 							<div class="single-listing-main-content">
 								<div id="translate" class="btn-translate" onclick="translateContent()"><?php echo _e('translate', 'buddypress'); ?></div>
-								
 								<?php
 								if ($preview) {
 									echo "<p>".$_REQUEST["post_desc"]."</p>";

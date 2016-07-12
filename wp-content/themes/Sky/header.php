@@ -564,6 +564,8 @@
 	       									   }
 	       									}
 	       									
+	       								
+			    
 											if(!is_user_logged_in() )
 											{
 											?>
@@ -571,7 +573,7 @@
 											<?php
 											}else
 											{
-													if(isset($facebook_id) && $edited == false  )
+													if(isset($facebook_id) && $edited == false)
 													{
 															$edit_profile = site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/";
 														 ?>

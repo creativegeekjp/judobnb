@@ -9,6 +9,8 @@ if(isset($_SESSION['gd_listing_view']) && $_SESSION['gd_listing_view']!='' && !i
 }
 $property_count = 0;
 $price_min = $price_max = 0;
+
+
 ?>
 
 <div class="geodir-map-listing-filters">
@@ -56,7 +58,7 @@ $price_min = $price_max = 0;
 				<span class="filter-text"><?php _e("Bedrooms", "vh"); ?></span>
 			</div>
 			<div class="filter-right">
-				<span class="range-slider-min">1</span>
+				<span class="range-slider-min">0</span>
 				<span class="range-slider-max">10+</span>
 				<div id="slider-range-bedrooms"></div>
 			</div>
@@ -67,7 +69,7 @@ $price_min = $price_max = 0;
 				<span class="filter-text"><?php _e("Beds", "vh"); ?></span>
 			</div>
 			<div class="filter-right">
-				<span class="range-slider-min">1</span>
+				<span class="range-slider-min">0</span>
 				<span class="range-slider-max">7+</span>
 				<div id="slider-range-beds"></div>
 			</div>
@@ -111,7 +113,7 @@ $price_min = $price_max = 0;
 </div>
 
 <input type="hidden" id="geodir-price-min" value="0" />
-<input type="hidden" id="geodir-price-max" value="9999" />
+<input type="hidden" id="geodir-price-max" value="45000" />
 <?php if ( $_GET["gd_placecategory"] != "" ) { ?>
 	<input type="hidden" id="geodir-search-cateogry" value="<?php echo esc_attr($_GET["gd_placecategory"]); ?>" />
 <?php } ?>
@@ -158,7 +160,8 @@ $price_min = $price_max = 0;
 				data: {"action": "geodir_search", listing_date: date, listing_price: price, listing_guests: guests, listing_bedrooms: bedrooms, listing_beds: beds, search: search_type, search_category: search_cat},
 				success: function(response) {
 					jQuery("#geodir-main-search").html(response);
-					jQuery(".geodir_category_list_view").isotope();
+					
+					//jQuery(".geodir_category_list_view").isotope();
 					// jQuery(".map-listing-carousel-container").jcarousel();
 					jQuery(".property-count").html(jQuery("#geodir-search-results").val());
 					jQuery("#geodir-main-search").removeClass("loading");
@@ -243,8 +246,8 @@ $price_min = $price_max = 0;
 			max: jQuery("#geodir-price-max").val(),
 			values: [ jQuery("#geodir-price-min").val(), jQuery("#geodir-price-max").val() ],
 			slide: function( event, ui ) {
-				jQuery(this).parent().find(".range-slider-min").html("$" + ui.values[ 0 ]);
-				jQuery(this).parent().find(".range-slider-max").html("$" + ui.values[ 1 ]);
+				jQuery(this).parent().find(".range-slider-min").html("$" + ui.values[ 0 ]+'+');
+				jQuery(this).parent().find(".range-slider-max").html("$" + ui.values[ 1 ]+'+');
 			},
 			start: function( event, ui ) {
 				jQuery(this).parent().find(".ui-slider-range.ui-widget-header").addClass("ui-active");

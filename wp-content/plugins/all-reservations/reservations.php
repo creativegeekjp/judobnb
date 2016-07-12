@@ -336,9 +336,9 @@ function get_departures(){
         	                
             
                             $data=array(
-                                "USER"          => "judobnbaccount_api1.ymail.com",
-                                "PWD"           => "LXGFD2V4HMAXM5JJ",
-                                "SIGNATURE"     => "AByuJ4MCKejqaxuZLZfW00sok6UDAcYnUtOBP600gxT4MoOLRdThULeo",
+                                "USER"          => "daryljoycepalis-facilitator_api1.ymail.com",
+                                "PWD"           => "ZGRMZGJE33BTU8RF",
+                                "SIGNATURE"     => "AFcWxV21C7fd0v3bYYYRCpSSRl31AlMbxUVuS39eWS2Q.dHO7D6oXab7",
                                 "METHOD"        => "MassPay",
                                 "VERSION"       => "99",
                                 "RECEIVERTYPE"  =>"EMailAddress",

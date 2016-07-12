@@ -154,33 +154,73 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		if($prev && ICL_LANGUAGE_CODE=='ja')
 		{
 			$label = "アカウントがゲストに切り替わりました。";
+		    $redirect_button = "<button class='ok'>Ok</button>";
 		}
 		
 		if($prev && ICL_LANGUAGE_CODE=='en')
 		{
 			$label ="You are now logged in as Guest";
+			$redirect_button = "<button class='ok'>Ok</button>";
 		}
 		
-		if(!$prev && ICL_LANGUAGE_CODE=='ja')
-		{
-				$label = "アカウントがホストに切り替わりました。";
-		}
+		global $wpdb, $current_user; 
 		
-		if(!$prev && ICL_LANGUAGE_CODE=='en')
-		{
-				$label = "You are now logged in as Host";
-		}
+	    $uID = get_current_user_id();
+	    
+		$myrows = $wpdb->get_results( "SELECT * FROM `jd_bp_xprofile_data` WHERE user_id = $uID and field_id= 330" );
+	
 		
+		if ($myrows) 
+	    {
+			if(!$prev && ICL_LANGUAGE_CODE=='ja')
+			{
+					$label = "アカウントがホストに切り替わりました。";
+					$redirect_button = "<button class='ok'>Ok</button>";
+			}
+			
+			if(!$prev && ICL_LANGUAGE_CODE=='en')
+			{
+					$label = "You are now logged in as Host";
+					$redirect_button = "<button class='ok'>Ok</button>";
+			}
+				
+	    }else{
+	    	if(!$prev && ICL_LANGUAGE_CODE=='ja')
+			{
+					$label = "ホストになる場合は、Paypalアカウントが必須になります。プロファイル編集画面にて、ご編集くださいませ。";
+					$redirect_button = "<a href=".site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/"."><button class='ok'>Ok</button></a>";
+			}
+			
+			if(!$prev && ICL_LANGUAGE_CODE=='en')
+			{
+					$label = "Before you become a host, please make sure that you set up your paypal email account.";
+					$redirect_button = "<a href=".site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/"."><button class='ok'>Ok</button></a>";
+					$disableds = true;
+			}
+			?>
+			 <script>
+		        jQuery( document ).ready(function() {
+	              if(jQuery( ".sub-menu" ).find('li.menu-item-2267').text() !=="" || jQuery( ".sub-menu" ).find('li.menu-item-2766').text() !==""  )
+					{ 
+					  jQuery( ".sub-menu" ).find('li.menu-item-2766').css("display","none");
+					  jQuery( ".sub-menu" ).find('li.menu-item-2267').css("display","none"); 
+					}
+	
+				});
+	    	</script>
+			<?php
+		
+	    }
 		
 		?>
 		<div id="modal-info">
 			<div class="title-bar">&nbsp;</div>
 			<div class="content">
 				<p><?php echo _e($label, 'geodirectory'); ?></p>
-				<p><button class="ok"><?php echo _e('Ok', 'geodirectory'); ?></button></p>
+				<p><?php echo $redirect_button; ?></p>
 			</div>
 		</div>
-	    
+	 
 	    <?php 
 	    if($_COOKIE['switching_role']==1 && isset($user->data->ID) ){
 	    ?>
@@ -190,10 +230,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 				$('#modal-info .ok').click(function () {
 				    jQuery.cookie('switching_role', 0 , {path: '/'});
 					$.modal.close();
-					
 				});
-				
-				
 			});
 		</script>
 		 <?php 
@@ -209,26 +246,25 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 	    <?php 
 	    function update_user_language()
 	    {
-	    	
-	    	    unset($_COOKIE['vh_selected_people']);
-	    	 
+	    
 	    	    $user_ID = get_current_user_id();
 	    	  
 			   	$uriParts = explode('/',$_COOKIE['langss']);
 	
-				if( $uriParts[3]== 'ja' ) { //detect is japanese since current language is japanse reverse update to english
-					$langs = "English";
-				}else{
+				if( $uriParts[3]== 'ja' ) { 
 					$langs = "Japanese";
+				}else{
+					$langs = "English";
 				}
 			   
 			   global $wpdb;
 			   
 				if( is_user_logged_in() ) {
-						$wpdb->query( "UPDATE jd_bp_xprofile_data SET value='".$langs."' WHERE field_id='635' AND user_id=80 " );
+						$wpdb->query( "UPDATE jd_bp_xprofile_data SET value='".$langs."' WHERE field_id='635' AND user_id=$user_ID " );
 				}
 	    }
 	    ?>
+	   
 	    
 	</body>
 </html>

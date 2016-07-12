@@ -728,6 +728,7 @@ function successreservation_reservations()
     $txn = isset($_GET['tx']) ? $_GET['tx'] : "";
 
     $response = get_pdt_response($user,$txn);
+  
     
      foreach ($response as $key => $value) {
                 
@@ -868,7 +869,7 @@ function listings_list()
     
     $limit = 20; 
     $offset = ( $pagenum - 1 ) * $limit;
-    $total = $wpdb->get_var( "SELECT COUNT(`ID`) FROM `jd_posts` WHERE post_status ='publish' AND post_type='gd_place'  " );
+    $total = $wpdb->get_var( "SELECT COUNT(`ID`) FROM `jd_posts` WHERE post_status ='publish' AND post_type='gd_place' AND post_author = '$id' " );
     $num_of_pages = ceil( $total / $limit );
 
     $myrows = $wpdb->get_results( "SELECT * FROM `jd_posts` WHERE post_author = '$id' AND post_status ='publish' AND post_type='gd_place' ORDER BY ID DESC LIMIT $offset, $limit" );
@@ -1181,32 +1182,35 @@ function my_initial() {
     //setcookie('LANG', $_SERVER['REQUEST_URI'], time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     
 }
-/*
-function get_emails($user)
+
+function chkMyLang()
 {
 
    global $wpdb;
    
+  $uid = get_current_user_id();
+   
      if (is_user_logged_in()  )
      {
-         foreach($wpdb->get_results("SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='330' AND user_id = $user") as $res1)
-         {
-             $emails = $res1->value;//email
-         }
-        
-         foreach($wpdb->get_results("SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id =  $user") as $res2)
-         {
-             $langs = $res2->value;//language
-         }
-       	
-        return array(
-            'language' => $langs,
-            'email' => $emails
-        );
-    
+         $lang = $wpdb->get_var("SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id = $uid");
+         
+           switch(ICL_LANGUAGE_CODE){
+			    	case 'ja':
+			    		$code = "Japanese";
+			    	break;
+			    	
+			    	case "" :
+			    		$code = "English";
+			    	break;
+			    }
+		 if($code != $lang )
+		 {
+		     return true;
+		 }
+			    
      }
  }
-*/
+
 function dynamic_convert($postid, $currency_format, $previous_money , $page )
 {
    

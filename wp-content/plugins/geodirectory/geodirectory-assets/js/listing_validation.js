@@ -59,13 +59,13 @@ function validate_field(field) {
 
             break;
 
-        case 'email':
+        /*case 'email':
             var filter = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             if (field.value != '' && filter.test(field.value)) {
                 is_error = false;
             }
             break;
-
+*/
         case 'url':
             var filter = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
             if (field.value != '' && filter.test(field.value)) {
@@ -171,9 +171,12 @@ jQuery(document).ready(function () {
                     is_validate = validate_field(this);
             });
         });
+        
+        
 
 
         if (is_validate) {
+            
             return true;
         } else {
 

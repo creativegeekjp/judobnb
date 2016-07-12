@@ -2666,7 +2666,7 @@ function get_geodir_search_markers( $return_data = null ) {
 	$price_min = 9999999999999;
 	$property_count = 0;
 	$property_ids = '';
-
+	
 	$post_category      = $post_type.'category';
 
 	if ( $post_type == '' || $post_type == 'undefined' ) {
@@ -2681,6 +2681,11 @@ function get_geodir_search_markers( $return_data = null ) {
 		$listing_price = str_replace(get_option('vh_currency_symbol'), "", $listing_price);
 		$listing_price = str_replace(" per night", "", $listing_price);
 		$listing_price = explode("-", $listing_price);
+		if($_COOKIE['C_CURRENCY'] == 'JPY'){
+			$listing_price["0"]=convertCurrency($listing_price["0"],"JPY","USD");
+			$listing_price["1"]=convertCurrency($listing_price["1"],"JPY","USD");
+		}
+		
 		$price_where = " AND (geodir_listing_price>=\"".$listing_price["0"]."\" && geodir_listing_price<=\"".$listing_price["1"]."\")";//jino
 		
 	
@@ -2887,14 +2892,17 @@ function get_geodir_search_markers( $return_data = null ) {
 			if ( vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ) < $price_min ) {
 				$price_min = vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) );
 			}
+			################################Jino edit price outside map left side#################################
+			$values =  dynamic_convert(get_post_meta($geodir_listing->post_id, 'vh_resource_id', true), $_COOKIE['C_CURRENCY'],vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ));
+			
 			$property_count++;
 			$property_ids .= $geodir_listing->post_id.",";
 			$output .= '
-			<li id="post-'.$geodir_listing->post_id.'" class="clearfix geodir-gridview gridview_onehalf gd-post-gd_place">';
+			<li  id="post-'.$geodir_listing->post_id.'" class="clearfix geodir-gridview gridview_onehalf gd-post-gd_place" data-position='.$values['money'].'>';
 				if ( get_option("vh_theme_version") != "SkyDirectory" && $post_type != 'gd_event' ) {
-					################################Jino edit price outside map left side#################################
+				
 					//$output .= '<div class="map-listing-price">'.get_option('vh_currency_symbol').vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ).'</div>';
-					$values =  dynamic_convert(get_post_meta($geodir_listing->post_id, 'vh_resource_id', true), $_COOKIE['C_CURRENCY'],vh_get_listing_price( $geodir_listing->post_id, get_post_type( $geodir_listing->post_id ) ));
+				
 					$output .= '<div class="map-listing-price">'.$values['sign'].''.$values['money'].'</div>';
 				} elseif ( get_option("vh_theme_version") != "SkyDirectory" && $post_type == 'gd_event' ) {
 					$output .= '<div class="map-listing-price">'.get_geodir_event_date( $geodir_listing->post_id ).'</div>';

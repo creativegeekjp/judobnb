@@ -2924,7 +2924,7 @@ function geodir_location_autofill_address($prefix = '') {
     if (isset($post->post_content) && has_shortcode( $post->post_content, 'gd_add_listing' ) ) {
         $add_google_places_api = true;
     }
-
+     
     if (((is_page() && get_query_var('page_id') == get_option('geodir_add_listing_page'))) || $add_google_places_api || (is_admin() && ($pagenow == 'post.php' || isset($_REQUEST['post_type'])))) {
         if (get_option('location_address_fill')) {
         } else {
@@ -2962,7 +2962,7 @@ function geodir_location_autofill_address($prefix = '') {
     function fillInAddress() {
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
-
+        
         //blank fields
         jQuery('#<?php echo $prefix.'country';?> option[value=""]').attr("selected",true);
         jQuery("#<?php echo $prefix.'country';?>").trigger("chosen:updated");

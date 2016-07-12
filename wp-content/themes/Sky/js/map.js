@@ -8,6 +8,7 @@ jQuery(window).load(function() {
 		jQuery.goMap.map.setCenter(center);
 		}, 500);
 	}
+	
 });
 
 function vh_getUrlParameter(sParam) {
@@ -52,6 +53,7 @@ function initMap(map_options){
 	var enable_map_direction = options.enable_map_direction;
 	var enable_cat_filters = options.enable_cat_filters ;
 	var enable_marker_cluster = options.enable_marker_cluster ;
+	
 	options.token = '68f48005e256696074e1da9bf9f67f06';
 	options.navigationControlOptions = { position:	'TOP_RIGHT', style:'SMALL'};
 	options.mapTypeControl = false;
@@ -105,11 +107,13 @@ function initMap(map_options){
 	google.maps.event.addListenerOnce(jQuery.goMap.map, 'tilesloaded', function(){
 		google.maps.event.trigger(jQuery.goMap.map, 'resize');
 		google.maps.event.trigger(jQuery.goMap.map, 'dragend');
+		
 	});
 
 	google.maps.event.addListener(gd_infowindow,'domready',function(){
 		if ( jQuery("#main_header_bg").length ) {
 			jQuery(".gm-style-iw").parent().css('top', parseInt(jQuery(".gm-style-iw").parent().css('top').replace('px', ''))+70);
+			
 		};
 	});
 
@@ -378,14 +382,15 @@ function parse_marker_jason(data, map_canvas_var) {
 		});
 
 		if ( jQuery("body").hasClass("geodir-category-search") ) {
-			
+		
 			jQuery.ajax({
 				type: 'POST',
 				url: my_ajax.ajaxurl,
 				data: {"action": "geodir_search_markers", listing_date: jQuery("#geodir-search-date").val(), listing_price: listing_price_val, listing_guests: listing_guests_val, listing_bedrooms: listing_bedrooms_val, listing_beds: listing_beds_val, search_type: 'category', search_category: jQuery("#geodir-search-cateogry").val(), post_type: jQuery('#geodir-search-post-type').val() },
 				success: function(response) {
+				
 					jsonData = jQuery.parseJSON(response);
-					
+				
 					if (jsonData[0] == undefined || jsonData[0].totalcount <= 0) {
 						document.getElementById( map_canvas_var+'_map_nofound').style.display = 'block';
 						var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
@@ -408,7 +413,8 @@ function parse_marker_jason(data, map_canvas_var) {
 
 						// Display posts
 						jQuery("#geodir-main-search").html(jsonData['all_markers']);
-						jQuery(".geodir_category_list_view").isotope({
+						
+						var y=jQuery(".geodir_category_list_view").isotope({
 							transformsEnabled: true,
 							getSortData: {
 								price: function ( elem ) {
@@ -432,6 +438,7 @@ function parse_marker_jason(data, map_canvas_var) {
 							},
 							animationEngine : "jquery"
 						});
+						
 						jQuery(".map-listing-carousel-container").jcarousel();
 						jQuery("#geodir-main-search").removeClass("loading");
 
@@ -479,7 +486,7 @@ function parse_marker_jason(data, map_canvas_var) {
 				data: ajaxData,
 				success: function(response) {
 					jsonData = jQuery.parseJSON(response);
-				
+			
 					if (jsonData[0] == undefined || jsonData[0].totalcount <= 0) {
 						document.getElementById( map_canvas_var+'_map_nofound').style.display = 'block';
 						var mapcenter = new google.maps.LatLng(eval(map_canvas_var).latitude,eval(map_canvas_var).longitude);
@@ -512,8 +519,10 @@ function parse_marker_jason(data, map_canvas_var) {
 
 						// Display posts
 						jQuery("#geodir-main-search").html(jsonData['all_markers']);
-						jQuery(".geodir_category_list_view").isotope({
+					
+						var y=jQuery(".geodir_category_list_view").isotope({
 							transformsEnabled: true,
+							itemSelector:'.gd-post-gd_place',
 							getSortData: {
 								price: function ( elem ) {
 									var element = jQuery(elem).find(".map-listing-price").html();
@@ -523,12 +532,13 @@ function parse_marker_jason(data, map_canvas_var) {
 									return parseFloat( element );
 								},
 								rating: function ( elem ) {
-									var element = jQuery(elem).find(".listing-item-star.text").html();
+									var element = jQuery(elem).find(".listing-item-star.text").text();
 									return parseFloat( element );
 								}
+								
 							},
-							sortBy: 'price',
-							sortAscending: true,
+							sortBy: "price",
+							sortAscending: false,
 							animationOptions: {
 								duration: 250,
 								easing: 'swing',
@@ -536,6 +546,9 @@ function parse_marker_jason(data, map_canvas_var) {
 							},
 							animationEngine : "jquery"
 						});
+					
+					
+						
 						jQuery(".map-listing-carousel-container").jcarousel();
 						if ( jQuery("body").hasClass("admin-bar") ) {
 							var height = jQuery(window).height()-70-46-32;
@@ -561,6 +574,7 @@ function parse_marker_jason(data, map_canvas_var) {
 						var center = bounds.getCenter();
 	
 						if ( jsonData[0].totalcount < 2 && jsonData[0].totalcount != 1 ) {
+							
 							geo_map_movement();
 							var newcenter = new google.maps.LatLng(lng,lat);
 							jQuery.goMap.map.setCenter(center);
@@ -570,6 +584,7 @@ function parse_marker_jason(data, map_canvas_var) {
 							jQuery.goMap.map.setCenter(center);
 						} else {
 							jQuery.goMap.map.fitBounds(bounds);
+						
 						}
 						
 						// Check if markers fit bounds
@@ -645,6 +660,7 @@ function parse_marker_jason(data, map_canvas_var) {
 			});
 		}
 	} else {
+	
 		jQuery.ajax({
 			type: 'POST',
 			url: my_ajax.ajaxurl,
@@ -913,7 +929,12 @@ function geo_map_movement() {
 	});
 
 	// Reorder items
-	jQuery(".geodir_category_list_view").isotope('layout');
+
+
+		jQuery(".geodir_category_list_view").isotope('layout');
+	
+	
+	
 
 	// Update propery count
 	jQuery('.geodir-map-listing-top .property-count').html(all_posts.length);

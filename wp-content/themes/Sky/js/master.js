@@ -554,19 +554,20 @@ jQuery(document).ready(function($) {
 		jQuery("#dd1").toggleClass("active");
 	});
 
-/*	jQuery(".geodir_category_list_view").isotope({
+jQuery(".geodir_category_list_view").isotope({
 		transformsEnabled: true,
 		getSortData: {
 			price: function(elem) {
-				var element = jQuery(elem).find(".map-listing-price").html();
-				if (element != undefined) {
-					element = element.replace(my_ajax.currency_symbol, "");
-				};
-				return parseFloat(element);
-			},
+						var element = jQuery(elem).find(".map-listing-price").text();
+						
+						element=element.replace(/[^0-9]/g, '')
+						
+						
+						return parseFloat(element);
+					},
 			rating: function(elem) {
 				if (element != undefined) {
-					var element = jQuery(elem).find(".listing-item-star.text").html();
+					var element = jQuery(elem).find(".listing-item-star.text").text();
 				}
 				return parseFloat(element);
 			
@@ -580,8 +581,8 @@ jQuery(document).ready(function($) {
 			queue: true
 		},
 		animationEngine: "jquery"
-	});*/
-
+	});
+   
 	jQuery("#dd1 a").live('click', function() {
 		jQuery("#dd1 a").removeClass("active");
 		jQuery(this).addClass("active");
@@ -590,17 +591,17 @@ jQuery(document).ready(function($) {
 		jQuery("#dd1").removeClass("active");
 
 		var sortValue = jQuery(this).attr('data-sort-value');
-		//var xy = document.getElementById("geodir_category_list_view_id");
+	
 	
 		if (sortValue == 'price') {
-		/*	$('#geodir_category_list_view_id').isotope({
+			var z=$('#geodir_category_list_view_id').isotope({
 				transformsEnabled: true,
 				getSortData: {
 					price: function(elem) {
-						var element = jQuery(elem).find(".map-listing-price").html();
-						if (element != undefined) {
-							element = element.replace(my_ajax.currency_symbol, "");
-						};
+						var element = jQuery(elem).find(".map-listing-price").text();
+						
+						element=element.replace(/[^0-9]/g, '')
+						
 						
 						return parseFloat(element);
 					},
@@ -612,7 +613,7 @@ jQuery(document).ready(function($) {
 						return parseFloat(element);
 					}
 				},
-				sortBy: sortValue,
+				sortBy: "price",
 				sortAscending: true,
 				animationOptions: {
 					duration: 250,
@@ -620,45 +621,64 @@ jQuery(document).ready(function($) {
 					queue: true
 				},
 				animationEngine: "jquery"
-			});*/
-		}
-		else {
-			var $x=$('#geodir_category_list_view_id').isotope({
-				transformsEnabled: true,
-				sortBy:sortValue,
-				sortAscending:false,
-				originTop:true,
-				getSortData: {
-				
-					rating:function(elem) {
-				      var weight = $(elem).find(".listing-item-star .text").text();
-				      return parseFloat(weight);
-					}
-					
-				},
-				animationOptions: {
-					duration: 250,
-					easing: 'swing',
-					queue: true
-				},
-				animationEngine: "jquery"
-				
-				
 			});
 			
+				z.isotope( 'on', 'layoutComplete',
+						  function( isoInstance, laidOutItems ) {
+						  console.log(laidOutItems);
+						  	jQuery.each(laidOutItems,function(key,val){
+						  	console.log(val);
+						  		jQuery(".geodir_category_list_view").append(val.element);
+						  	})
+						  }
+						);
+			
+		}else if(sortValue=="rating"){
+			var x=jQuery(".geodir_category_list_view").isotope({
+							transformsEnabled: true,
+							getSortData: {
+								price: function ( elem ) {
+									var element = jQuery(elem).find(".map-listing-price").html();
+									if ( element != undefined ) {
+										element = element.replace(my_ajax.currency_symbol, "");
+									};
+									return parseFloat( element );
+								},
+								rating: function ( elem ) {
+									var element = jQuery(elem).find(".listing-item-star.text").text();
+									return parseFloat( element );
+								}
+								
+							},
+							sortBy: "rating",
+							sortAscending: false,
+							animationOptions: {
+								duration: 250,
+								easing: 'swing',
+								queue: true
+							},
+							layoutMode: 'fitRows',
+							animationEngine : "jquery"
+						});
 			
 			
+				//	jQuery(".geodir_category_list_view").empty();
+					
+						x.isotope( 'on', 'layoutComplete',
+						  function( isoInstance, laidOutItems ) {
+						  console.log(laidOutItems);
+						  	jQuery.each(laidOutItems,function(key,val){
+						  	console.log(val);
+						  		jQuery(".geodir_category_list_view").append(val.element);
+						  	})
+						  }
+						);
 			
-			$x.isotope( 'on', 'layoutComplete',
-			  function( isoInstance, laidOutItems ) {
-			  	console.log(laidOutItems);
-			    //$("#geodir_category_list_view").append(laidOutItems);
-			    //var xy = document.getElementById("geodir_category_list_view_id");
-			    //xy.innerHTML = laidOutItems.join(',');
-			   //console.log(laidOutItems[0]);
-			  }
-			);
 			
+		}else if(sortValue=="low"){
+		   jQuery("#geodir_category_list_view_id li.gridview_onehalf").sort(sort_asc).appendTo('#geodir_category_list_view_id');
+		}else if(sortValue=="high"){
+			jQuery("#geodir_category_list_view_id li.gridview_onehalf").sort(sort_desc).appendTo('#geodir_category_list_view_id');
 		}
 
 		if (jQuery("body").hasClass("admin-bar")) {
@@ -680,6 +700,13 @@ jQuery(document).ready(function($) {
 			jQuery("body.geodir-main-search .geodir_category_list_view").css('height', height);
 		};
 	});
+	
+	function sort_asc(a, b){
+	    return (jQuery(b).data('position')) < (jQuery(a).data('position'))  ? 1 : -1;      
+	}
+	function sort_desc(a, b){
+		return (jQuery(b).data('position')) > (jQuery(a).data('position')) ? 1 : -1;  
+	}
 
 	jQuery(window).bind("debouncedresize", function() {
 		if (jQuery('body').hasClass('geodir-main-search')) {
@@ -3398,7 +3425,109 @@ jQuery(document).ready(function() {
 		el.preventDefault();
 		jQuery('.search.widget form').submit();
 	});
+	
+	jQuery('#geodir_email').change(function(e){
+		if(jQuery('#geodir_email').val() != ""){
+			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			
+		
+  			if(!regex.test(jQuery('#geodir_email').val())){
+  				jQuery(this).css({"border-color": "red", 
+	             "border-width":"1px", 
+	             "border-style":"solid"});
+  			
+  			if(jQuery(this).parent().find('.geodir_message_error').length == 0){
+  				jQuery(this).parent().append('<span class="geodir_message_error">Invalid email address</span>');
+  			}
+  				
+  				jQuery(this).parent().find('.geodir_message_error').show();
+  				
+  				return false;
+  			}else{
+  				jQuery(this).parent().find('.geodir_message_error').html('');
+	        	jQuery(this).parent().find('.geodir_message_error').remove();
+	    		jQuery(this).attr('style','');
+  			}
+		}
+	})
+	
+	jQuery('#geodir_contact').keypress(function(e){
+	
+			var regex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+			
+		
+  			if(!regex.test(jQuery('#geodir_contact').val())){
+  				jQuery(this).css({"border-color": "red", 
+	             "border-width":"1px", 
+	             "border-style":"solid"});
+  			
+  			if(jQuery(this).parent().find('.geodir_message_error').length == 0){
+  				jQuery(this).parent().append('<span class="geodir_message_error">Invalid phone number</span>');
+  			}
+  				
+  				jQuery(this).parent().find('.geodir_message_error').show();
+  				
+  				return false;
+  			}else{
+  				jQuery(this).parent().find('.geodir_message_error').html('');
+	        	jQuery(this).parent().find('.geodir_message_error').remove();
+	    		jQuery(this).attr('style','');
+  			}
+		
+	})
+	
+	
+	
+	
+	jQuery('#geodir_adult_count, #geodir_children_count, #geodir_listing_bedroom_count, #geodir_listing_bed_count').keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+       jQuery(this).css({"border-color": "red", 
+             "border-width":"1px", 
+             "border-style":"solid"});
+        
+        if(jQuery(this).parent().find('.geodir_message_error').length == 0)
+        	jQuery(this).parent().append('<span class="geodir_message_error">Input a number</span>');
+        else
+        	jQuery(this).parent().find('.geodir_message_error').html('');
+        	
+        	jQuery(this).parent().find('.geodir_message_error').show();
+               return false;
+    }else{
+        	jQuery(this).parent().find('.geodir_message_error').html('');
+        	jQuery(this).parent().find('.geodir_message_error').hide();
+    		jQuery(this).attr('style','');
+               
+    }
+   });
+   	jQuery('#geodir_adult_count, #geodir_children_count, #geodir_listing_bedroom_count, #geodir_listing_bed_count').blur(function (e) {
+     
+    		jQuery(this).attr('style','');
+    		jQuery(this).parent().find('.geodir_message_error').html('');
+        	jQuery(this).parent().find('.geodir_message_error').hide();
+
+   });
 	// !Seaarch widget
+	
+	jQuery('#geodir_adult_count, #geodir_children_count').on('change',function(){
+		
+		var children_count=0;
+		var adult_count=0;
+		var guest_count=0;
+		if(jQuery("#geodir_children_count").val() != "")
+			children_count=parseInt(jQuery("#geodir_children_count").val());
+		
+		if(jQuery("#geodir_adult_count").val() != "")
+			adult_count=parseInt(jQuery("#geodir_adult_count").val());
+		
+	
+			guest_count=adult_count + children_count;
+		
+		
+		jQuery("#geodir_listing_guest_count").val(guest_count);
+	});
+	
 
 	// Search widget
 	jQuery('.search-no-results .main-inner .sb-icon-search').click(function(el) {
@@ -3457,6 +3586,7 @@ jQuery(document).ready(function() {
 	jQuery("#geodir_listing_price").keyup(function(){
 			isNumber();
 	});
+	
 
 
 });
@@ -3487,29 +3617,73 @@ function isNumber() {
 	return true;
 }
 
-	
+jQuery("#geodir_listing_guest_count").attr('disabled', true);
+
+var hasClick = false;
+	jQuery("#submitplace").click(function() {
+	    hasClick = true;
+	})
+//jordan
 jQuery('#propertyform').on('submit', function(){
- 	if(jQuery("#post_images").val()==""){
-		alert("Please post at least 1 image of the room.");
-		return false;
-	}
-	else if(jQuery("#geodir_listing_start_date").val()=="")
-	{
-		alert("Listing start date is required!");
-		jQuery("#geodir_listing_start_date").focus();
-		return false;
-	}
-	else if(jQuery("#geodir_listing_end_date").val()=="")
-	{
-		alert("Listing end date is required!"); 
-		jQuery("#geodir_listing_end_date").focus();
-		return false;
-	}
 	
+	if(jQuery(this).find(".geodir_message_error:visible").length > 0){
+				jQuery(window).scrollTop(jQuery(this).find(".geodir_message_error:visible:first").offset().top);
+				hasClick = false;
+				return false;
+	}
+
+	
+	 	if(jQuery("#post_images").val()==""){
+	 		if(hasClick){
+				alert("Please Upload atleast 1 Image");
+				jQuery("#post_imagesdropbox").focus();
+				hasClick = false;
+				return false;
+	 		}
+		}
+		else if(jQuery("#geodir_listing_start_date").val()=="")
+		{
+			if(hasClick){
+				alert("Listing start date is required!");
+				jQuery("#geodir_listing_start_date").focus();
+				hasClick = false;
+				return false;
+			}
+		}
+		else if(jQuery("#geodir_listing_end_date").val()=="")
+		{
+			if(hasClick){
+				alert("Listing end date is required!"); 
+				jQuery("#geodir_listing_end_date").focus();
+				hasClick = false;
+				return false;
+			}
+		}else{
+			
+		}
+		
+		
+        
+		if(jQuery("#geodir_listing_bed_count").val() == '' || parseInt(jQuery("#geodir_listing_bed_count").val()) == 0)
+              jQuery("#geodir_listing_bed_count").val("1");
+        
+        if(jQuery("#geodir_listing_bedroom_count").val() == '' || parseInt(jQuery("#geodir_listing_bedroom_count").val()) == 0)
+              jQuery("#geodir_listing_bedroom_count").val("1");
+		
+	
+	hasClick = false;
 	
 });
 
-
+//Jordan 
+jQuery(function(){
+  jQuery('#signup_form').find('#field_329').each(function(){
+        jQuery(this).attr({
+            'pattern': '[+\\0-9]+[0-9\\-]',
+            'type': "text"
+        })
+    });
+});
 
 
 (function () {
@@ -3544,7 +3718,6 @@ jQuery('#propertyform').on('submit', function(){
 	jQuery.cookie('langss',  document.URL  , {path: '/'});
 }());
 
-
 /*
 function viewListing(){
 	jQuery(".geodir_publish_button").click();
@@ -3563,6 +3736,13 @@ function f(){
 		return false;
 	}
 }
-
-
-
+// Jordan
+jQuery("#commentform").on("submit", function(){
+	if (jQuery.trim(jQuery('#comment').val()).length < 1) {
+		jQuery( '<div style="background-color: red ;padding: 5px 20px; color: #fff; position: absolute; z-index:100;" class="blank-comment">Please leave a comment.</div>' ).insertBefore( ".comment-form-comment" ).fadeOut(3000);
+		jQuery("#comment").focus();
+	        return false;
+	}else{
+	    return true;
+	}
+});
