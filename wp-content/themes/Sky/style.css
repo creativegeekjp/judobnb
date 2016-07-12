@@ -1416,8 +1416,8 @@ iframe.twitter-share-button {
 	text-decoration: none;
 }
 .wrapper .single-listing-mail.icon-mail-alt{
-	left: 290px;
-	top: -24px;
+	left: -20px;
+	top: 3px;
 	padding-right: 0 ;
 }
 
@@ -15694,11 +15694,25 @@ label .btn-translate {
 	div.slide-item-mod {
 		top: 0 !important;
 	}
+	
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
 	body .wrapper .header .top-header {
 		height: 77px;
+	}
+	#twitter-widget-0,
+	#___plus_0 {
+		display: none !important;
+		float: right !important;
+		clear: both;
+	}
+
+	.fb_iframe_widget,
+	.fb_iframe_widget iframe {
+		display: none !important;
+		float: right;
+		clear: both;
 	}
 	
 	body.home .wrapper .top-header .logo {
@@ -15745,6 +15759,7 @@ label .btn-translate {
 #modal-info .content {
 	padding: 30px 15px;
 	color: #333;
+	font-size: 14px;
 }
 
 #modal-info .content .ok {
@@ -16001,5 +16016,3 @@ body.archive.author #main_header_bg {
 	bottom: 0px;
 	padding: 10px 15px;
 }
-
-
