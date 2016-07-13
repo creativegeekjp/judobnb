@@ -73,7 +73,7 @@ define('PRO_PHOTO_TEXT', __('Add Images : <small>(You can upload more than one i
 define('PHOTOES_BUTTON', __('Select Images', 'geodirectory'));
 
 define('PRO_VIDEO_TEXT', __('Video code', 'geodirectory'));
-define('HTML_VIDEO_TEXT', __('Add video code here, YouTube etc', 'geodirectory'));
+define('HTML_VIDEO_TEXT', __('Add video URL here, YouTube etc', 'geodirectory'));
 
 define('PRO_ADDFEATURE_TEXT', __('Add custom feature', 'geodirectory'));
 
@@ -542,5 +542,7 @@ __('Adult count','geodirectory');
 __('Children count','geodirectory');
 __('Rent','geodirectory');
 __('Bathroom count','geodirectory');
+__('Note: If left blank default is 1 bedroom','geodirectory');
+__('Note: If left blank, default is 1 bed','geodirectory');
 
 

@@ -3490,12 +3490,13 @@ jQuery(document).ready(function() {
         if(jQuery(this).parent().find('.geodir_message_error').length == 0)
         	jQuery(this).parent().append('<span class="geodir_message_error">Input a number</span>');
         else
-        	jQuery(this).parent().find('.geodir_message_error').html('');
+        	jQuery(this).parent().html('Input a number');
+        
         	
         	jQuery(this).parent().find('.geodir_message_error').show();
                return false;
     }else{
-        	jQuery(this).parent().find('.geodir_message_error').html('');
+        	
         	jQuery(this).parent().find('.geodir_message_error').hide();
     		jQuery(this).attr('style','');
                
@@ -3504,7 +3505,7 @@ jQuery(document).ready(function() {
    	jQuery('#geodir_adult_count, #geodir_children_count, #geodir_listing_bedroom_count, #geodir_listing_bed_count').blur(function (e) {
      
     		jQuery(this).attr('style','');
-    		jQuery(this).parent().find('.geodir_message_error').html('');
+    		
         	jQuery(this).parent().find('.geodir_message_error').hide();
 
    });
@@ -3586,24 +3587,44 @@ jQuery(document).ready(function() {
 	jQuery("#geodir_listing_price").keyup(function(){
 			isNumber();
 	});
-	
 
+   	jQuery("#geodir_listing_price").mouseleave(function(){
+			minimums();
+	});
 
 });
-
-function isNumber() {
-
-
-
+function minimums()
+{
+	
+	if(jQuery("#icl_c").val()=="USD")
+	{
+		if(parseInt(jQuery("#geodir_listing_price").val())  < 10)
+		{
+			
+				alert("Minimum is 10 dollars"); 
+				jQuery("#geodir_listing_price").val("");
+		}
+	}else if(jQuery("#icl_c").val()=="JPY")
+	{
+		if(parseInt(jQuery("#geodir_listing_price").val()) < 1000)
+		{
+			
+				alert("minimum is 1000 yen"); 
+				jQuery("#geodir_listing_price").val("");
+		}
+	}
+	
+	return true;
+}
+function isNumber(e) {
+	
 	var e = jQuery("#geodir_listing_price");
 	var n = e.val();
 	var result = parseInt(n);
 	var pattern = /^\d+$/;
-
-
+	
 	if (!pattern.test(n)) {
-
-		//alert('Invalid listing price');
+	
 		jQuery(function ($) {
 			$('#modal-info').modal();
 			
@@ -3613,6 +3634,8 @@ function isNumber() {
 		});
 		jQuery("#geodir_listing_price").val("");
 	}
+	
+
 
 	return true;
 }
@@ -3662,8 +3685,6 @@ jQuery('#propertyform').on('submit', function(){
 			
 		}
 		
-		
-        
 		if(jQuery("#geodir_listing_bed_count").val() == '' || parseInt(jQuery("#geodir_listing_bed_count").val()) == 0)
               jQuery("#geodir_listing_bed_count").val("1");
         
@@ -3746,3 +3767,5 @@ jQuery("#commentform").on("submit", function(){
 	    return true;
 	}
 });
+
+jQuery('<div class="img-note">For better results, make sure to upload an image that is larger than 1024px wide, and 480px tall.</div>').insertAfter('#upload-msg');

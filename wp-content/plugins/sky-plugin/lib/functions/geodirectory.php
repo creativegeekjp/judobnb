@@ -1219,6 +1219,8 @@ function vh_geodir_get_custom_fields_html($package_id = '', $default = 'custom',
 				?>
 				
 			<input  field_type="<?php echo esc_attr($type);?>" name="<?php echo esc_attr($name);?>"   id="<?php echo esc_attr($name);?>" value="<?php echo stripslashes($value);?>" placeholder="<?php echo _e($site_title,'geodirectory'); ?>" type="text" class="geodir_textfield" />
+			<!-- Determin currency code and validate minimum price-->
+			<input type="hidden" id="icl_c" class="icl_c" value="<?php echo $_COOKIE['C_CURRENCY'];?>" />
 			<span class="geodir_message_note"><?php echo _e($admin_desc,'geodirectory');?></span>
 			<?php if($is_required) {?>
 			<span class="geodir_message_error"><?php echo _e($required_msg,'geodirectory'); ?></span> 

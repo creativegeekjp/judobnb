@@ -1997,7 +1997,7 @@ if ( function_exists('geodir_admin_claim_listing_init') ) {
 				<?php do_action( 'geodir_after_claim_form_field', 'geodir_user_comments' ) ;?>
 				<div class="gmmodal-dialog-lower">
 					<input name="geodir_Send" type="submit" value="<?php echo CLAIM_SEND_TEXT; ?> " class="button wpb_button wpb_btn-primary wpb_btn-small" />
-					<a href="javascript:void(0)" class="gmmodal-close-dialog wpb_button wpb_btn-inverse wpb_btn-small">Cancel</a>
+					<a href="javascript:void(0)" class="gmmodal-close-dialog wpb_button wpb_btn-inverse wpb_btn-small"><?php echo _e('Cancel','vh'); ?></a>
 				</div>
 			</form>
 			<?php do_action('geodir_after_claim_form'); ?>
@@ -2711,7 +2711,7 @@ function vh_import_listings() {
 	('gd_place', 'VARCHAR', 'url', 'Website', 'You can enter your business or listing website.', 'Website', 'geodir_website', '', 5, '', 'Website', '1', '1', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
 	('gd_place', 'VARCHAR', 'url', 'Twitter', 'You can enter your business or listing twitter url.', 'Twitter', 'geodir_twitter', '', 6, '', 'Twitter', '1', '1', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
 	('gd_place', 'VARCHAR', 'url', 'Facebook', 'You can enter your business or listing facebook url.', 'Facebook', 'geodir_facebook', '', 7, '', 'Facebook', '1', '1', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
-	('gd_place', 'TEXT', 'textarea', 'Video', 'Add video code here, YouTube etc.', 'Video', 'geodir_video', '', 8, '', 'Video', '1', '0', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
+	('gd_place', 'TEXT', 'textarea', 'Video', 'Add video URL here, YouTube etc.', 'Video', 'geodir_video', '', 8, '', 'Video', '1', '0', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
 	('gd_place', 'TEXT', 'textarea', 'Special Offers', 'Note: List out any special offers (optional)', 'Special Offers', 'geodir_special_offers', '', 9, '', 'Special Offers', '1', '0', '1', '0', '', '', '', '', '', '1,2,', '', '', '', '', '', ''),
 	('gd_place', 'INT', 'text', 'Guest count', '', 'guests', 'geodir_listing_guest_count', '', 10, '', '', '1', '0', '0', '0', '', '1', '1', '0', '0', '1,2', '0', '', '', 'http://cohhe.com/demo/sky/sky-vacation/wp-content/themes/sky-directory/images/guest-new.png', '', ''),
 	('gd_place', 'INT', 'text', 'Bedroom count', '', 'bedrooms', 'geodir_listing_bedroom_count', '', 11, '', '', '1', '0', '0', '0', '', '1', '1', '0', '0', '1,2', '0', '', '', 'http://cohhe.com/demo/sky/sky-vacation/wp-content/themes/sky-directory/images/door-new.png', '', ''),

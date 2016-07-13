@@ -723,7 +723,7 @@ if (!function_exists('geodir_create_default_fields')) {
             'data_type' => 'TEXT',
             'field_type' => 'textarea',
             'admin_title' => __('Video', 'geodirectory'),
-            'admin_desc' => __('Add video code here, YouTube etc.', 'geodirectory'),
+            'admin_desc' => __('Add video URL, YouTube etc.', 'geodirectory'),
             'site_title' => __('Video', 'geodirectory'),
             'htmlvar_name' => 'video',
             'default_value' => '',

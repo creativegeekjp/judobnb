@@ -1934,7 +1934,7 @@ if ( function_exists('geodir_admin_claim_listing_init') ) {
 				<?php do_action( 'geodir_after_claim_form_field', 'geodir_user_comments' ) ;?>
 				<div class="gmmodal-dialog-lower">
 					<input name="geodir_Send" type="submit" value="<?php echo CLAIM_SEND_TEXT; ?> " class="button wpb_button wpb_btn-primary wpb_btn-small" />
-					<a href="javascript:void(0)" class="gmmodal-close-dialog wpb_button wpb_btn-inverse wpb_btn-small">Cancel</a>
+					<a href="javascript:void(0)" class="gmmodal-close-dialog wpb_button wpb_btn-inverse wpb_btn-small"><?php echo _e('Cancel','vh'); ?></a>
 				</div>
 			</form>
 			<?php do_action('geodir_after_claim_form'); ?>

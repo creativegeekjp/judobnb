@@ -16016,3 +16016,12 @@ body.archive.author #main_header_bg {
 	bottom: 0px;
 	padding: 10px 15px;
 }
+.img-note{
+	background-color: #ffd;
+    border: 1px solid #cb2;
+    color: #440;
+    display: block;
+    font-size: 90%;
+    margin: 1em 0;
+    padding: 10px 15px;
+}
