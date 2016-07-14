@@ -426,7 +426,7 @@ function dissaprove_reservation(){
             $payment_details=$wpdb->get_row($query);
            if(!is_null($payment_details)){
                
-               $arr2 = getpaypalamounts($payment_details->tid);
+              $arr2 = getpaypalamounts($payment_details->tid);
                 global $clientId,$secret,$adminClientID,$adminSecret;
                 $results = void_payment(create_access_token($adminClientID,$adminSecret),$arr2['txn']);
                 
@@ -456,18 +456,19 @@ function dissaprove_reservation(){
                        
                        
                     $guest_name=$guest_email->display_name;
-                    $email_to='test@yopmail.com';
+                    
+                    $email_to=$guest_email->user_email;
                     $query2="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$value->user."";
                         //echo $query
                         $email_lang_diss=$wpdb->get_row($query2);
                     
                     if($email_lang_diss->value == 'English'){
                          $body = file_get_contents('wp-includes/custom-emails/host-disapproved.html');
-                          $subject = mb_convert_encoding("JudoBnB Disapproval Email", "ISO-2022-JP","AUTO");
+                          $subject = "[JudoBnB] Disapproval Email";
                     }
                     if($email_lang_diss->value == 'Japanese'){
                          $body = file_get_contents('wp-includes/custom-emails/host-disapproved-ja.html');
-                          $subject = mb_convert_encoding("JudoBnB不承認メール", "ISO-2022-JP","AUTO");
+                          $subject = "[JudoBnB]不承認メール";
                     }
                    
                     $message = str_ireplace('[guest_display_name]',$guest_name, $body);
@@ -543,11 +544,11 @@ function hosts_disapproved()
                 
                 if($email_lang_diss->value == 'English'){
                      $body = file_get_contents('wp-includes/custom-emails/host-disapproved.html');
-                      $subject = mb_convert_encoding("JudoBnB Disapproval Email", "ISO-2022-JP","AUTO");
+                      $subject = mb_convert_encoding("[JudoBnB] Disapproval Email", "ISO-2022-JP","AUTO");
                 }
                 if($email_lang_diss->value == 'Japanese'){
                      $body = file_get_contents('wp-includes/custom-emails/host-disapproved-ja.html');
-                      $subject = mb_convert_encoding("JudoBnB不承認メール", "ISO-2022-JP","AUTO");
+                      $subject = mb_convert_encoding("[JudoBnB]不承認メール", "ISO-2022-JP","AUTO");
                 }
                
                 $message = str_ireplace('[guest_display_name]',$guest_name, $body);
@@ -638,12 +639,12 @@ function hosts_approved()
                     if($email_lang->value == 'English'){
                         
                          $body = file_get_contents('wp-includes/custom-emails/host-approved.html');
-                         $subject = mb_convert_encoding("JudoBnB Approval Email", "ISO-2022-JP","AUTO");
+                         $subject = mb_convert_encoding("[JudoBnB] Approval Email", "ISO-2022-JP","AUTO");
                          
                     }
                     if($email_lang->value == 'Japanese'){
                           $body = file_get_contents('wp-includes/custom-emails/host-approved-ja.html');
-                          $subject = mb_convert_encoding("JudoBnB承認メール", "ISO-2022-JP","AUTO");
+                          $subject = mb_convert_encoding("[JudoBnB]承認メール", "ISO-2022-JP","AUTO");
                           
                     }
                     
@@ -800,11 +801,11 @@ function successreservation_reservations()
 		    $guest_language=$wpdb->get_row($query_guest);
             if($guest_language->value == 'English'){
                 $guestemail_body = file_get_contents('wp-includes/custom-emails/guest-reservation.html');
-                $guest_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
+                $guest_subject = mb_convert_encoding("[JudoBnB] Reservation Email", "ISO-2022-JP","AUTO");
             }
             if($guest_language->value == 'Japanese'){
                 $guestemail_body = file_get_contents('wp-includes/custom-emails/guest-reservation-ja.html');
-                $guest_subject = mb_convert_encoding("JudoBnB予約メール", "ISO-2022-JP","AUTO");
+                $guest_subject = mb_convert_encoding("[JudoBnB]予約メール", "ISO-2022-JP","AUTO");
             }
             $guest_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $guestemail_body);
             $guest_email_message = str_ireplace('[post_title]',$author_id->post_title, $guest_email_message);
@@ -820,11 +821,11 @@ function successreservation_reservations()
 		    $host_language=$wpdb->get_row($query_host);
             if($host_language->value == 'English'){
                 $hostemail_body= file_get_contents('wp-includes/custom-emails/host-reservation.html');
-                $hostemail_subject = mb_convert_encoding("JudoBnB Reservation Email", "ISO-2022-JP","AUTO");
+                $hostemail_subject = mb_convert_encoding("[JudoBnB] Reservation Email", "ISO-2022-JP","AUTO");
             }
             if($host_language->value == 'Japanese'){
                  $hostemail_body= file_get_contents('wp-includes/custom-emails/host-reservation-ja.html');
-                 $hostemail_subject = mb_convert_encoding("JudoBnB予約メール", "ISO-2022-JP","AUTO");
+                 $hostemail_subject = mb_convert_encoding("[JudoBnB]予約メール", "ISO-2022-JP","AUTO");
             }
             $host_email_message = str_ireplace('[guest_display_name]',$guest_email->display_name, $hostemail_body);
             $host_email_message = str_ireplace('[post_title]',$author_id->post_title, $host_email_message);
@@ -861,6 +862,8 @@ function listings_message_confirmation()
 
 function listings_list()
 {
+    
+    
     global $wpdb;
     
     $id = get_current_user_id();
@@ -1205,8 +1208,9 @@ function chkMyLang()
 			    }
 		 if($code != $lang )
 		 {
-		     return true;
+		      //echo "Please update your language selection";
 		 }
+		
 			    
      }
  }

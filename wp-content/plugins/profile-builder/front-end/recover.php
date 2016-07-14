@@ -223,7 +223,7 @@ function wppb_front_end_password_recovery(){
                 add_filter('wp_mail_content_type',create_function('', 'return "text/html"; '));
                 //send mail to the user notifying him of the reset request
                 if (trim($recoveruserMailMessageTitle1) != ''){
-                    $sent = wp_mail($requestedUserEmail, $recoveruserMailMessageTitle1, $recoveruserMailMessage1);
+                    $sent = wp_mail($requestedUserEmail, __($recoveruserMailMessageTitle1,'profile-builder'), __($recoveruserMailMessage1,'profile-builder'));
                     if ($sent === false){
                         $message = '<b>'. __( 'ERROR', 'profile-builder' ) .': </b>' . sprintf( __( 'There was an error while trying to send the activation link to %1$s!', 'profile-builder' ), $postedData );
                         $message = apply_filters( 'wppb_recover_password_sent_message_error_sending', $message );

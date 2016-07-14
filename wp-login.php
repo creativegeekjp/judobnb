@@ -845,7 +845,7 @@ default:
 		elseif	( isset($_GET['registration']) && 'disabled' == $_GET['registration'] )
 			$errors->add('registerdisabled', __('User registration is currently not allowed.'));
 		elseif	( isset($_GET['checkemail']) && 'confirm' == $_GET['checkemail'] )
-			$errors->add('confirm', __('Check your email for the confirmation link.'), 'message');
+		     $errors->add('confirm', __('Check your email for the confirmation link.'), 'message');
 		elseif	( isset($_GET['checkemail']) && 'newpass' == $_GET['checkemail'] )
 			$errors->add('newpass', __('Check your email for your new password.'), 'message');
 		elseif	( isset($_GET['checkemail']) && 'registered' == $_GET['checkemail'] )

@@ -1,0 +1,84 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id 7F47692E4; Wed, 13 Jul 2016 12:12:11 +0900 (JST)
+Date: Wed, 13 Jul 2016 12:12:11 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="3DCDA9361.1468379531/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160713031211.7F47692E4@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--3DCDA9361.1468379531/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<daryljoycepalis@ymail.com>: host mta7.am0.yahoodns.net[98.138.112.35] said:
+    553 Mail from 103.225.138.70 not allowed - 5.7.1 [BL21] Connections not
+    accepted from IP addresses on Spamhaus PBL; see
+    http://postmaster.yahoo.com/errors/550-bl21.html [550] (in reply to MAIL
+    FROM command)
+
+--3DCDA9361.1468379531/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 3DCDA9361
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Wed, 13 Jul 2016 12:12:08 +0900 (JST)
+
+Final-Recipient: rfc822; daryljoycepalis@ymail.com
+Action: failed
+Status: 5.0.0
+Remote-MTA: dns; mta7.am0.yahoodns.net
+Diagnostic-Code: smtp; 553 Mail from 103.225.138.70 not allowed - 5.7.1 [BL21]
+    Connections not accepted from IP addresses on Spamhaus PBL; see
+    http://postmaster.yahoo.com/errors/550-bl21.html [550]
+
+--3DCDA9361.1468379531/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 3DCDA9361; Wed, 13 Jul 2016 12:12:08 +0900 (JST)
+To: daryljoycepalis@ymail.com
+Subject: =?ISO-2022-JP?B?SnVkb0JuQhskQiVhITwlayRyJVslOSVIGyhC?=
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Wed, 13 Jul 2016 12:12:08 +0900
+From: JudoBnB <info@judobnb.com>
+Message-ID: <a9899b44a90b6ca65ce4688160dc49c7@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+Reply-To: JudoBnB <info@judobnb.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=ISO-2022-JP
+Content-Transfer-Encoding: 8bit
+
+親愛な <span id="hostname" style="font-weight:bold">Rhea</span>,<br/><br/>
+<b>次の予約はあなたの承認/不承認を必要とします：</b><br/>
+
+<div><table style="border:1"><tr style="background-color:#d3d3d3"><td style="text-align:center">PLACE</td><td style="text-align:center">RESERVATIONS</td><tr><td>Casa Maguix</td><td><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>Rhea</i></p><p><b>Jul 08, 2016</b> to <b>Jul 09, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 08, 2016</b> to <b>Jul 09, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>Rhea</i></p><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>Rhea</i></p></td></tr></table></div>
+
+
+--3DCDA9361.1468379531/mail.judobnb.com--

@@ -89,84 +89,88 @@ function cronstarter_deactivate() {
 //register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
 function email_hosts(){
-    global $wpdb;
-    
-    $reserves=[];
-    $reservations=$wpdb->get_results("SELECT * FROM jd_reservations where approve NOT IN('yes','del','no')");
-        
-    foreach ($reservations as $value) {
-            $get_credentials =$wpdb->get_row("SELECT jd_users.ID,jd_users.display_name,jd_users.user_email,jd_users.ID,jd_posts.post_title FROM jd_users INNER JOIN jd_posts ON jd_posts.post_author=jd_users.ID INNER JOIN jd_postmeta ON jd_postmeta.post_id=jd_posts.ID WHERE jd_postmeta.meta_value='".$value->room."'  AND jd_users.user_email !=''");
+    $role=check_role();
+    if($role['administrator']){
+            global $wpdb;
             
-            $data=array(
-                'res_name'=>$value->name,
-                'res_arrival' => date('M d, Y',strtotime($value->arrival)),
-                'res_departure' => date('M d, Y',strtotime($value->departure))
-            );
-            
-                $reserves[$get_credentials->ID]['host_name']=$get_credentials->display_name;
-                $reserves[$get_credentials->ID]['host_email']=$get_credentials->user_email;
-                $reserves[$get_credentials->ID]['host_id']=$get_credentials->ID;
-            
-            
-                $reserves[$get_credentials->ID]['reservations'][$value->room]['room_title']=$get_credentials->post_title;
-            
-            $reserves[$get_credentials->ID]['reservations'][$value->room]['res'][]=$data;
-            
-    }
-    
-   
-    
-    foreach($reserves as $val){
-        $htm='';
-         $htm='<table style="border:1"><tr style="background-color:#d3d3d3"><td style="text-align:center">PLACE</td><td style="text-align:center">RESERVATIONS</td>';
-        foreach($val['reservations'] as $res){
-            $htm .='<tr><td>'.$res['room_title'].'</td>';
-            $htm .='<td>';
-            foreach($res['res'] as $x ){
-                $htm .='<p><b>'.$x['res_arrival'].'</b> to <b>'.$x['res_departure'].'</b> by <i>'.$x['res_name'].'</i></p>';
-            };
-                $htm .='</td></tr>';
-        };
-        $htm .='</table>';
-        
-                $from_name='JudoBnB';
-    		    $from_email="info@judobnb.com";
-    		    
-    		    //$headers  = "MIME-Version: 1.0 \n" ;
-                $headers = "From: " .$from_name." <".$from_email."> \n";
-                $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
+            $reserves=[];
+            $reservations=$wpdb->get_results("SELECT * FROM jd_reservations where approve NOT IN('yes','del','no')");
                 
+            foreach ($reservations as $value) {
+                    $get_credentials =$wpdb->get_row("SELECT jd_users.ID,jd_users.display_name,jd_users.user_email,jd_users.ID,jd_posts.post_title FROM jd_users INNER JOIN jd_posts ON jd_posts.post_author=jd_users.ID INNER JOIN jd_postmeta ON jd_postmeta.post_id=jd_posts.ID WHERE jd_postmeta.meta_value='".$value->room."'  AND jd_users.user_email !=''");
                     
-                $headers .= "Content-Type: text/html;charset=ISO-2022-JP \n";
+                    $data=array(
+                        'res_name'=>$value->name,
+                        'res_arrival' => date('M d, Y',strtotime($value->arrival)),
+                        'res_departure' => date('M d, Y',strtotime($value->departure))
+                    );
+                    
+                        $reserves[$get_credentials->ID]['host_name']=$get_credentials->display_name;
+                        $reserves[$get_credentials->ID]['host_email']=$get_credentials->user_email;
+                        $reserves[$get_credentials->ID]['host_id']=$get_credentials->ID;
+                    
+                    
+                        $reserves[$get_credentials->ID]['reservations'][$value->room]['room_title']=$get_credentials->post_title;
+                    
+                    $reserves[$get_credentials->ID]['reservations'][$value->room]['res'][]=$data;
+                    
+            }
             
+           
+            
+            foreach($reserves as $val){
+                $htm='';
+                 $htm='<table style="border:1"><tr style="background-color:#d3d3d3"><td style="text-align:center">'.__('PLACE','easyreservations').'</td><td style="text-align:center">'.__('RESERVATIONS','easyreservations').'</td>';
+                foreach($val['reservations'] as $res){
+                    $htm .='<tr><td>'.$res['room_title'].'</td>';
+                    $htm .='<td>';
+                    foreach($res['res'] as $x ){
+                        $htm .='<p><b>'.$x['res_arrival'].'</b> to <b>'.$x['res_departure'].'</b> by <i>'.$x['res_name'].'</i></p>';
+                    };
+                        $htm .='</td></tr>';
+                };
+                $htm .='</table>';
+                
+                        $from_name='JudoBnB';
+            		    $from_email="info@judobnb.com";
+            		    
+            		    //$headers  = "MIME-Version: 1.0 \n" ;
+                        $headers = "From: " .$from_name." <".$from_email."> \n";
+                        $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
+                        
+                            
+                        $headers .= "Content-Type: text/html;charset=ISO-2022-JP \n";
+                        echo $val['host_email'];
+                
+                       $email_to=$val['host_email'];
+                       
+                       
         
-               //$email_to=$val['host_email'];
-               $email_to='test@yopmail.com';
-               
-
-                 $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$val['host_id']."";
-                    //echo $query
-                $email_lang=$wpdb->get_row($query);
-                
-                if($email_lang->value == 'English'){
-                     $body = file_get_contents(includes_url() . 'custom-emails/host-emails.html');
-                      $subject = mb_convert_encoding("JudoBnB Hosts Email", "ISO-2022-JP","AUTO");
-                }
-                if($email_lang->value == 'Japanese'){
-                    $body = file_get_contents(includes_url() . 'custom-emails/host-emails-ja.html');
-                    $subject = mb_convert_encoding("JudoBnBメールをホスト", "ISO-2022-JP","AUTO");
-                }
-                
-                $message = str_ireplace('[host_display_name]',$val['host_name'], $body);
-                $message = str_ireplace('[reservation_list]',$htm, $message);
-               
-                $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
-                mb_language("ja");
-                $subject = mb_encode_mimeheader($subject);
-                
-                $stat=wp_mail($email_to,$subject,$email_body,$headers);
-                
-         
+                         $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$val['host_id']."";
+                            //echo $query
+                        $email_lang=$wpdb->get_row($query);
+                        
+                        if($email_lang->value == 'English'){
+                             $body = file_get_contents(includes_url() . 'custom-emails/host-emails.html');
+                              $subject = '[JudoBnB] Hosts Email';
+                        }else if($email_lang->value == 'Japanese'){
+                            $body = file_get_contents(includes_url() . 'custom-emails/host-emails-ja.html');
+                            $subject = '[JudoBnB]メールをホスト';
+                        }
+                        
+                        $message = str_ireplace('[host_display_name]',$val['host_name'], $body);
+                        $message = str_ireplace('[reservation_list]',$htm, $message);
+                       
+                        $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
+                        mb_language("ja");
+                        $subject = mb_encode_mimeheader($subject);
+                        
+                        $stat=wp_mail($email_to,$subject,$email_body,$headers);
+                        
+                 
+            }
+    }else{
+        echo 'You are not allowed to access this location.';
     }
     
    
@@ -305,6 +309,7 @@ function get_departures(){
         if( $wpdb->num_rows > 0 )
         {
             $data=[];
+           // var_dump($reservations);
             foreach($reservations as $reserve){
                 
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$reserve->room."'");
@@ -315,21 +320,21 @@ function get_departures(){
         	   
         	    
         	    $host=$authors;
-        	    
+        	   
         	    $tid=$reserve->tid;
         	    $id=$reserve->id;
         	    $paypal_acc =$wpdb->get_var("SELECT value from jd_bp_xprofile_data WHERE user_id=$host AND field_id=330");
         	    
-        	    date_default_timezone_set("Asia/Manila");
+        	    date_default_timezone_set("Asia/Tokyo");
         	    
         	    
         	      
         	              $time=new DateTime($reserve->departure);
-        	              $time->add(new DateInterval("PT24H"));
+        	              $time->add(new DateInterval("PT12H"));
         	              $endTime=$time->getTimestamp();
         	              $diff=time()-$endTime;
         	              
-        	              if($diff > 0 && $diff < 3601){
+        	              if($endTime < time()){
         	                 
         	                 $arr=getamounts($tid);
         	                 
@@ -348,7 +353,7 @@ function get_departures(){
                                 );
                             
                               $result=call_pay_api($data);
-        	              
+        	              var_dump($result);
         	                   if(isset($result) && $result=='ACK=Success'){
                         
                                      $query=$wpdb->query("UPDATE jd_reservations SET paid=1 WHERE id=$id");

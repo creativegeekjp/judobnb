@@ -1147,8 +1147,9 @@ jQuery(".geodir_category_list_view").isotope({
 		}
 	}
 
-	if (jQuery.cookie('vh_selected_people') == null) {//1
-		jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
+	if (jQuery.cookie('vh_selected_people') == null) {
+		
+	    jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
 		
 	}
@@ -2232,7 +2233,15 @@ jQuery(".geodir_category_list_view").isotope({
 
 		jQuery(".form-submit #submit").addClass("wpb_button wpb_btn-primary wpb_btn-small");
 		if (jQuery(".form-submit").find(".close-dialog").length == 0) {
-			jQuery(".form-submit").append("<a href=\"javascript:void(0)\" class=\"close-dialog wpb_button wpb_btn-inverse wpb_btn-small\">Cancel</a>");
+			var docURL = document.URL
+
+			if (docURL.indexOf("ja") == -1) {
+					jQuery(".form-submit").append("<a href=\"javascript:void(0)\" class=\"close-dialog wpb_button wpb_btn-inverse wpb_btn-small\">Cancel</a>");
+			}else{
+					jQuery(".form-submit").append("<a href=\"javascript:void(0)\" class=\"close-dialog wpb_button wpb_btn-inverse wpb_btn-small\">キャンセル</a>");
+			}
+			
+		
 		};
 	});
 
@@ -3437,7 +3446,13 @@ jQuery(document).ready(function() {
 	             "border-style":"solid"});
   			
   			if(jQuery(this).parent().find('.geodir_message_error').length == 0){
-  				jQuery(this).parent().append('<span class="geodir_message_error">Invalid email address</span>');
+  				var docURL = document.URL;
+  				if (docURL.indexOf("ja") == -1) {
+  						jQuery(this).parent().append('<span class="geodir_message_error">Invalid email address</span>');
+  				}else{
+  						jQuery(this).parent().append('<span class="geodir_message_error">無効なメールアドレス</span>');
+  				}
+  			
   			}
   				
   				jQuery(this).parent().find('.geodir_message_error').show();
@@ -3451,9 +3466,9 @@ jQuery(document).ready(function() {
 		}
 	})
 	
-	jQuery('#geodir_contact').keypress(function(e){
+	jQuery('#geodir_contact').change(function(e){
 	
-			var regex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+			var regex = /^[+\\0-9\\-]+$/; 
 			
 		
   			if(!regex.test(jQuery('#geodir_contact').val())){
@@ -3462,7 +3477,13 @@ jQuery(document).ready(function() {
 	             "border-style":"solid"});
   			
   			if(jQuery(this).parent().find('.geodir_message_error').length == 0){
-  				jQuery(this).parent().append('<span class="geodir_message_error">Invalid phone number</span>');
+  				var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+					jQuery(this).parent().append('<span class="geodir_message_error">Invalid phone number</span>');
+				}else{
+					jQuery(this).parent().append('<span class="geodir_message_error">無効な電話番号</span>');
+				}
+  				
   			}
   				
   				jQuery(this).parent().find('.geodir_message_error').show();
@@ -3478,7 +3499,6 @@ jQuery(document).ready(function() {
 	
 	
 	
-	
 	jQuery('#geodir_adult_count, #geodir_children_count, #geodir_listing_bedroom_count, #geodir_listing_bed_count').keypress(function (e) {
      //if the letter is not digit then display error and don't type anything
      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -3487,14 +3507,20 @@ jQuery(document).ready(function() {
              "border-width":"1px", 
              "border-style":"solid"});
         
-        if(jQuery(this).parent().find('.geodir_message_error').length == 0)
-        	jQuery(this).parent().append('<span class="geodir_message_error">Input a number</span>');
-        else
-        	jQuery(this).parent().html('Input a number');
-        
+        if(jQuery(this).parent().find('.geodir_message_error').length == 0){
+        	var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+        			jQuery(this).parent().append('<span class="geodir_message_error">Input a number</span>');
+				}
+        		else{
+        			jQuery(this).parent().append('<span class="geodir_message_error">数字の入力</span>');
+        		}
         	
+        }
+        else{
         	jQuery(this).parent().find('.geodir_message_error').show();
                return false;
+        }
     }else{
         	
         	jQuery(this).parent().find('.geodir_message_error').hide();
@@ -3591,31 +3617,110 @@ jQuery(document).ready(function() {
    	jQuery("#geodir_listing_price").mouseleave(function(){
 			minimums();
 	});
-
+	
+	//panclear ki search box sa home page
+    if( jQuery.cookie('switching_lang') == 1)
+    {
+    	jQuery('#header-people').click(function(){
+			jQuery(this).val("");
+			jQuery.cookie('switching_lang', '', {path: '/'});
+		});
+    }
+    //panset ki value pagnaclear su search box sa home page
+    jQuery('#header-submit').click(function(){
+		jQuery.cookie('vh_selected_people', jQuery("#header-people").val() , {path: '/'});
+	});
 });
 function minimums()
 {
 	
-	if(jQuery("#icl_c").val()=="USD")
-	{
-		if(parseInt(jQuery("#geodir_listing_price").val())  < 10)
-		{
-			
-				alert("Minimum is 10 dollars"); 
-				jQuery("#geodir_listing_price").val("");
-		}
-	}else if(jQuery("#icl_c").val()=="JPY")
-	{
-		if(parseInt(jQuery("#geodir_listing_price").val()) < 1000)
-		{
-			
-				alert("minimum is 1000 yen"); 
-				jQuery("#geodir_listing_price").val("");
-		}
-	}
+	var docURL = document.URL;
+		if (docURL.indexOf("ja") == -1) {
 	
+			if(jQuery("#icl_c").val()=="USD")
+			{
+				if(parseInt(jQuery("#geodir_listing_price").val())  < 10)
+				{
+					
+						alert("Minimum is 10 dollars"); 
+						jQuery("#geodir_listing_price").val("");
+				}
+			}else if(jQuery("#icl_c").val()=="JPY")
+			{
+				if(parseInt(jQuery("#geodir_listing_price").val()) < 1000)
+				{
+					
+						alert("Minimum is 1000 yen"); 
+						jQuery("#geodir_listing_price").val("");
+				}
+			}
+		}else{
+			
+			if(jQuery("#icl_c").val()=="USD")
+			{
+				if(parseInt(jQuery("#geodir_listing_price").val())  < 10)
+				{
+					
+						alert("10ドル以上で、部屋のご登録をしてください。"); 
+						jQuery("#geodir_listing_price").val("");
+				}
+			}else if(jQuery("#icl_c").val()=="JPY")
+			{
+				if(parseInt(jQuery("#geodir_listing_price").val()) < 1000)
+				{
+					
+						alert("1000円以上で、部屋のご登録をしてください。"); 
+						jQuery("#geodir_listing_price").val("");
+				}
+			}
+		}
+		
 	return true;
 }
+
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function validate() {
+ 
+  if (validateEmail( jQuery("#field_330").val() )) {
+      return true;
+  } else {
+      return false;
+  }
+  
+}
+
+flags = false; 
+
+jQuery( "#signup_form" ).submit(function() 
+{
+       if (jQuery("#field_330").val() > "") { 
+       		if(validate())
+       		{
+       			return true;
+       		}else{
+       			var docURL = document.URL
+
+				if (docURL.indexOf("ja") == -1) {
+						alert("Please enter valid email account for paypal");
+				}else{
+					alert("有効なペイパルアカウントのメールアドレスをご入力ください。");
+				}
+       		
+       			
+       			jQuery("#field_330").focus()
+       			
+       		  return false; 
+       		}
+            
+       }else { 
+       	 return true; 
+       }
+});
+
 function isNumber(e) {
 	
 	var e = jQuery("#geodir_listing_price");
@@ -3640,6 +3745,14 @@ function isNumber(e) {
 	return true;
 }
 
+jQuery('#gd_placecategory').change(function(e){
+if(jQuery("post_category_str").val()!=""){
+	jQuery('#gd_placecategory_row').find('.geodir_message_error').each(function(){
+		jQuery(this).css("display", "none");
+	})
+}
+});
+
 jQuery("#geodir_listing_guest_count").attr('disabled', true);
 
 var hasClick = false;
@@ -3658,7 +3771,12 @@ jQuery('#propertyform').on('submit', function(){
 	
 	 	if(jQuery("#post_images").val()==""){
 	 		if(hasClick){
-				alert("Please Upload atleast 1 Image");
+	 			var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+						alert("Please Upload atleast 1 Image");
+				}else{
+						alert("最低でも1イメージをアップロードお願いいたします。");
+				}
 				jQuery("#post_imagesdropbox").focus();
 				hasClick = false;
 				return false;
@@ -3705,7 +3823,6 @@ jQuery(function(){
         })
     });
 });
-
 
 (function () {
     var d = document,
@@ -3760,7 +3877,14 @@ function f(){
 // Jordan
 jQuery("#commentform").on("submit", function(){
 	if (jQuery.trim(jQuery('#comment').val()).length < 1) {
-		jQuery( '<div style="background-color: red ;padding: 5px 20px; color: #fff; position: absolute; z-index:100;" class="blank-comment">Please leave a comment.</div>' ).insertBefore( ".comment-form-comment" ).fadeOut(3000);
+		
+		var docURL = document.URL
+		if (docURL.indexOf("ja") == -1) {
+			jQuery( '<div style="background-color: red ;padding: 5px 20px; color: #fff; position: absolute; z-index:100;" class="blank-comment">Please leave a comment.</div>' ).insertBefore( ".comment-form-comment" ).fadeOut(3000);
+		}else{
+			jQuery( '<div style="background-color: red ;padding: 5px 20px; color: #fff; position: absolute; z-index:100;" class="blank-comment">コメントをお願いします。</div>' ).insertBefore( ".comment-form-comment" ).fadeOut(3000);
+		}
+		
 		jQuery("#comment").focus();
 	        return false;
 	}else{
@@ -3768,4 +3892,14 @@ jQuery("#commentform").on("submit", function(){
 	}
 });
 
-jQuery('<div class="img-note">For better results, make sure to upload an image that is larger than 1024px wide, and 480px tall.</div>').insertAfter('#upload-msg');
+var docURL = document.URL
+
+	if (docURL.indexOf("ja") == -1) {
+		
+		jQuery('<div class="img-note">For better results, make sure to upload an image that is larger than 1024px wide, and 480px tall.</div>').insertAfter('#upload-msg');
+		
+	}else{
+		
+		jQuery('<div class="img-note">幅1024px、高さ480pxの画像がベストなサイズになります。</div>').insertAfter('#upload-msg');
+	}
+

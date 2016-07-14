@@ -594,8 +594,17 @@ if (!class_exists('SimpleModalLogin')) {
                                 __('Log in', 'simplemodal-login')
                         );
 
+                        
+                         if(ICL_LANGUAGE_CODE=='en'){
+                                $red = site_url('register', 'login');
+                        }else if(ICL_LANGUAGE_CODE=='ja'){
+                                $red = site_url('ja/register', 'login');
+                        }
+
+                      
+                        
                         if ($this->users_can_register && $this->options['registration']) {
-                                $output .= sprintf('| <a class="simplemodal-register" href="%s">%s</a>', site_url('wp-login.php?action=register', 'login'), __('Register', 'simplemodal-login'));
+                                $output .= sprintf('| <a class="simplemodal-register" href="%s">%s</a>', $red , __('Register', 'simplemodal-login'));
                         }
 
                         $output .= '

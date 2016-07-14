@@ -96,7 +96,7 @@ if ( !function_exists('wp_new_user_notification') ) {
         $message .= sprintf( __('If you have any problems, please contact us at %s.'), get_option('admin_email') ) . "\r\n\r\n";
     $message .= __('Adios!') . "\r\n\r\n";
 
-    wp_mail($user->user_email, sprintf(__('[%s] Your username and password info'), $blogname), $message);
+    wp_mail($user->user_email, sprintf(__('[%s] Your username and password info'), __($blogname,'wordpress')), __($message,'wordpress'));
     }
 }
 // Declaration of the class

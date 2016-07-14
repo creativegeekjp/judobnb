@@ -5336,6 +5336,7 @@ body .wrapper .geodir_message_note {
 	font-size: 11px;
 	color: #999;
 	z-index: 2;
+	padding: 0px 5px;
 }
 
 body .wrapper .geodir_message_note.submit-note {

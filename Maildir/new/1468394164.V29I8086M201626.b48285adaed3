@@ -1,0 +1,92 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id 26E2F88E7; Wed, 13 Jul 2016 16:16:04 +0900 (JST)
+Date: Wed, 13 Jul 2016 16:16:04 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="5EC3F9339.1468394164/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160713071604.26E2F88E7@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--5EC3F9339.1468394164/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<sampletest1@mail.com>: host mx01.mail.com[74.208.5.22] refused to talk to me:
+    554-mail.com (mxgmxus006) Nemesis ESMTP Service not available 554-No SMTP
+    service 554-IP address is black listed. 554 For explanation visit
+    http://postmaster.gmx.com/en/error-messages?ip=103.225.138.70&c=bl
+
+--5EC3F9339.1468394164/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 5EC3F9339
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Fri,  8 Jul 2016 10:31:41 +0900 (JST)
+
+Final-Recipient: rfc822; sampletest1@mail.com
+Action: failed
+Status: 4.0.0
+Remote-MTA: dns; mx01.mail.com
+Diagnostic-Code: smtp; 554-mail.com (mxgmxus006) Nemesis ESMTP Service not
+    available 554-No SMTP service 554-IP address is black listed. 554 For
+    explanation visit
+    http://postmaster.gmx.com/en/error-messages?ip=103.225.138.70&c=bl
+
+--5EC3F9339.1468394164/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 5EC3F9339; Fri,  8 Jul 2016 10:31:41 +0900 (JST)
+To: sampletest1@mail.com
+Subject: Post Submitted Successfully
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Fri, 8 Jul 2016 10:31:41 +0900
+From: JudoBNB <accounts@www.judobnb.com>
+Message-ID: <9b8cff9c7371ce60c260bbd04b061fa6@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Reply-To: accounts@www.judobnb.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Dear sampletest1,
+
+You submitted the below listing information. This email is just for your information.
+
+<a href="http://www.judobnb.com/places/japan/tokyo/tokyo/12-7/"><b>12</b></a>
+
+&nbsp;
+
+Thank you for your contribution.
+
+JudoBNB
+
+
+--5EC3F9339.1468394164/mail.judobnb.com--
