@@ -1149,7 +1149,7 @@ jQuery(".geodir_category_list_view").isotope({
 
 	if (jQuery.cookie('vh_selected_people') == null) {
 		
-	    jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
+	    //jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
 		jQuery("#header-people, #listing-people").val(jQuery.cookie('vh_selected_people'));
 		
 	}
@@ -3619,17 +3619,17 @@ jQuery(document).ready(function() {
 	});
 	
 	//panclear ki search box sa home page
-    if( jQuery.cookie('switching_lang') == 1)
-    {
-    	jQuery('#header-people').click(function(){
-			jQuery(this).val("");
-			jQuery.cookie('switching_lang', '', {path: '/'});
-		});
-    }
-    //panset ki value pagnaclear su search box sa home page
-    jQuery('#header-submit').click(function(){
-		jQuery.cookie('vh_selected_people', jQuery("#header-people").val() , {path: '/'});
-	});
+ //   if( jQuery.cookie('switching_lang') == 1)
+ //   {
+ //   	jQuery('#header-people').click(function(){
+	// 		jQuery(this).val("");
+	// 		jQuery.cookie('switching_lang', '', {path: '/'});
+	// 	});
+ //   }
+ //   //panset ki value pagnaclear su search box sa home page
+ //   jQuery('#header-submit').click(function(){
+	// 	jQuery.cookie('vh_selected_people', jQuery("#header-people").val() , {path: '/'});
+	// });
 });
 function minimums()
 {
@@ -3696,6 +3696,32 @@ function validate() {
 flags = false; 
 
 jQuery( "#signup_form" ).submit(function() 
+{
+       if (jQuery("#field_330").val() > "") { 
+       		if(validate())
+       		{
+       			return true;
+       		}else{
+       			var docURL = document.URL
+
+				if (docURL.indexOf("ja") == -1) {
+						alert("Please enter valid email account for paypal");
+				}else{
+					alert("有効なペイパルアカウントのメールアドレスをご入力ください。");
+				}
+       		
+       			
+       			jQuery("#field_330").focus()
+       			
+       		  return false; 
+       		}
+            
+       }else { 
+       	 return true; 
+       }
+});
+
+jQuery( ".standard-form" ).submit(function() 
 {
        if (jQuery("#field_330").val() > "") { 
        		if(validate())
@@ -3817,6 +3843,14 @@ jQuery('#propertyform').on('submit', function(){
 //Jordan 
 jQuery(function(){
   jQuery('#signup_form').find('#field_329').each(function(){
+        jQuery(this).attr({
+            'pattern': '[+\\0-9]+[0-9\\-]',
+            'type': "text"
+        })
+    });
+});
+jQuery(function(){
+  jQuery('#profile-edit-form').find('#field_329').each(function(){
         jQuery(this).attr({
             'pattern': '[+\\0-9]+[0-9\\-]',
             'type': "text"

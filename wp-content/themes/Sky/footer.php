@@ -241,7 +241,15 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		     function ls(e)
 		     {
 				<?php update_user_language(); ?>
-				 jQuery.cookie('switching_lang', 1 , {path: '/'});
+					jQuery.cookie('switching_lang', 1 , {path: '/'});
+					 
+					var docURL = document.URL;
+					
+					if (docURL.indexOf("ja") == -1) {
+						  jQuery.cookie('vh_selected_people', '大人1/子供なし', {path: '/'});
+					}else{
+						  jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
+					}
 		     }
 	    </script>
 	    <?php 

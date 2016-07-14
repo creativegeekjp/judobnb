@@ -454,7 +454,8 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('guests','geodirectory'); ?>";
+				//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('guests','geodirectory'); ?>";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'guests';
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
 							jQuery(this).remove();
@@ -497,7 +498,8 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','vh'); ?>";
+				//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','vh'); ?>";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'bedrooms';
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("bedrooms") >= 0 ) {
 							jQuery(this).remove();
@@ -530,7 +532,8 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','vh'); ?>";
+					//var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','vh'); ?>";
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'beds';
 					jQuery("#geodir-filter-list li").each(function() {
 						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
 							jQuery(this).remove();
