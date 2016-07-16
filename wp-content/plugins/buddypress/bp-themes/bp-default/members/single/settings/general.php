@@ -55,7 +55,7 @@ get_header( 'buddypress' ); ?>
 					<?php if ( !is_super_admin() ) : ?>
 
 						<label for="pwd"><?php _e( 'Current Password <span>(required to update email or change current password)</span>', 'buddypress' ); ?></label>
-						<input type="password" name="pwd" id="pwd" size="16" value="" class="settings-input small" /> &nbsp;<a href="<?php echo wp_lostpassword_url(); ?>" title="<?php esc_attr_e( 'Password Lost and Found', 'buddypress' ); ?>"><?php _e( 'Lost your password?', 'buddypress' ); ?></a>
+						<input type="password" name="pwd" id="pwd" size="16" value="" class="settings-input small" /> &nbsp;<a  style="display:none;" href="<?php echo wp_lostpassword_url(); ?>" title="<?php esc_attr_e( 'Password Lost and Found', 'buddypress' ); ?>"><?php _e( 'Lost your password?', 'buddypress' ); ?></a>
 
 					<?php endif; ?>
 

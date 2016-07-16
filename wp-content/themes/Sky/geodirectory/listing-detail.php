@@ -186,7 +186,7 @@ do_action( 'geodir_wrapper_open', 'details-page', 'geodir-wrapper','');
 												if(get_userdata( get_post_field( 'post_author', $post->ID ) )->user_login !== $current_user->user_nicename){
 											
 											    ?> 
-													<a href="<?php bp_send_private_message_link('&unames='.get_userdata( get_post_field( 'post_author', $post->ID ) )->user_login); ?>" class="wpb_button single-listing-contact-author"> <?php echo _e('Send Message','geodirectory'); ?></a>
+													<a href="<?php bp_send_private_message_link('&unames='.get_userdata( get_post_field( 'post_author', $post->ID ) )->user_nicename); ?>" class="wpb_button single-listing-contact-author"> <?php echo _e('Send Message','geodirectory'); ?></a>
 												<?php
 												}
 											}

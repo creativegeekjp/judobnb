@@ -16026,3 +16026,9 @@ body.archive.author #main_header_bg {
     margin: 1em 0;
     padding: 10px 15px;
 }
+#ui-datepicker-div{
+	width: auto;
+}
+.single-listing-mail{
+	display: none !important;
+}

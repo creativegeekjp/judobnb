@@ -88,6 +88,28 @@ function cronstarter_deactivate() {
 } 
 //register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
+function check_email_domains(){
+    $role=check_role();
+    
+    if($role['administrator']){
+            global $wpdb;
+            $domains=[];
+    
+        $emails=$wpdb->get_results("SELECT user_email FROM jd_users");
+        
+        foreach ($emails as $value) {
+            $x=explode("@",$value->user_email);
+            array_push($domains,$x[1]);
+        }
+        
+        
+        echo json_encode(array_unique($domains));
+        
+    }else{
+        echo 'You are not allowed to access this location.';
+    }
+}
+
 function email_hosts(){
     $role=check_role();
     if($role['administrator']){
@@ -97,6 +119,10 @@ function email_hosts(){
             $reservations=$wpdb->get_results("SELECT * FROM jd_reservations where approve NOT IN('yes','del','no')");
                 
             foreach ($reservations as $value) {
+                $query="SELECT tid FROM jd_cg_captured_payments WHERE room_id=$value->id";
+                $payment_details=$wpdb->get_row($query);
+               if(!is_null($payment_details)){
+               
                     $get_credentials =$wpdb->get_row("SELECT jd_users.ID,jd_users.display_name,jd_users.user_email,jd_users.ID,jd_posts.post_title FROM jd_users INNER JOIN jd_posts ON jd_posts.post_author=jd_users.ID INNER JOIN jd_postmeta ON jd_postmeta.post_id=jd_posts.ID WHERE jd_postmeta.meta_value='".$value->room."'  AND jd_users.user_email !=''");
                     
                     $data=array(
@@ -113,6 +139,8 @@ function email_hosts(){
                         $reserves[$get_credentials->ID]['reservations'][$value->room]['room_title']=$get_credentials->post_title;
                     
                     $reserves[$get_credentials->ID]['reservations'][$value->room]['res'][]=$data;
+                
+               }
                     
             }
             
@@ -564,6 +592,12 @@ function email_for_hosts($content){
 }
 
 
+function get_email_domains($content){
+    add_shortcode('get_email_domains','check_email_domains');
+    return $content;
+}
+
+
 function pay($token,$data){
         
     
@@ -608,6 +642,6 @@ add_action( 'the_content', 'allreservations');
 add_action( 'the_content', 'confirmPayout');
 add_action( 'the_content', 'departures');
 add_action( 'the_content', 'email_for_hosts');
-
+add_action( 'the_content', 'get_email_domains');
 
 //register_deactivation_hook(__FILE__, 'cron_deactivation');

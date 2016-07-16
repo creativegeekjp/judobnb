@@ -457,7 +457,8 @@ function dissaprove_reservation(){
                        
                     $guest_name=$guest_email->display_name;
                     
-                    $email_to=$guest_email->user_email;
+                    //$email_to=$guest_email->user_email;
+                    $email_to='web-deCXht@mail-tester.com';
                     $query2="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$value->user."";
                         //echo $query
                         $email_lang_diss=$wpdb->get_row($query2);

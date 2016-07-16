@@ -2233,9 +2233,10 @@ jQuery(".geodir_category_list_view").isotope({
 
 		jQuery(".form-submit #submit").addClass("wpb_button wpb_btn-primary wpb_btn-small");
 		if (jQuery(".form-submit").find(".close-dialog").length == 0) {
+			
 			var docURL = document.URL
 
-			if (docURL.indexOf("ja") == -1) {
+			if (jQuery('html').attr('lang') != 'ja') {
 					jQuery(".form-submit").append("<a href=\"javascript:void(0)\" class=\"close-dialog wpb_button wpb_btn-inverse wpb_btn-small\">Cancel</a>");
 			}else{
 					jQuery(".form-submit").append("<a href=\"javascript:void(0)\" class=\"close-dialog wpb_button wpb_btn-inverse wpb_btn-small\">キャンセル</a>");
@@ -3695,7 +3696,7 @@ function validate() {
 
 flags = false; 
 
-jQuery( "#signup_form" ).submit(function() 
+jQuery( "#signup_submit" ).click(function() 
 {
        if (jQuery("#field_330").val() > "") { 
        		if(validate())
@@ -3721,7 +3722,7 @@ jQuery( "#signup_form" ).submit(function()
        }
 });
 
-jQuery( ".standard-form" ).submit(function() 
+jQuery( "#profile-group-edit-submit" ).click(function() 
 {
        if (jQuery("#field_330").val() > "") { 
        		if(validate())
@@ -3779,7 +3780,7 @@ if(jQuery("post_category_str").val()!=""){
 }
 });
 
-jQuery("#geodir_listing_guest_count").attr('disabled', true);
+jQuery("#geodir_listing_guest_count").attr('readonly', true);
 
 var hasClick = false;
 	jQuery("#submitplace").click(function() {
@@ -3898,8 +3899,9 @@ function viewListing(){
 
 function f(){
 	
-	arr = ["featured"]; 
+	arr = ["featured" , "popular"]; 
 	
+
 	if(jQuery.inArray( jQuery("#post_tags").val().toLowerCase(), arr ) !==-1 ){
 		alert("\'"+jQuery("#post_tags").val()+"\' is not available please select other tag.");
 		jQuery("#post_tags").val('');
@@ -3913,7 +3915,7 @@ jQuery("#commentform").on("submit", function(){
 	if (jQuery.trim(jQuery('#comment').val()).length < 1) {
 		
 		var docURL = document.URL
-		if (docURL.indexOf("ja") == -1) {
+		if (jQuery('html').attr('lang') != 'ja' ) {
 			jQuery( '<div style="background-color: red ;padding: 5px 20px; color: #fff; position: absolute; z-index:100;" class="blank-comment">Please leave a comment.</div>' ).insertBefore( ".comment-form-comment" ).fadeOut(3000);
 		}else{
 			jQuery( '<div style="background-color: red ;padding: 5px 20px; color: #fff; position: absolute; z-index:100;" class="blank-comment">コメントをお願いします。</div>' ).insertBefore( ".comment-form-comment" ).fadeOut(3000);
@@ -3937,3 +3939,6 @@ var docURL = document.URL
 		jQuery('<div class="img-note">幅1024px、高さ480pxの画像がベストなサイズになります。</div>').insertAfter('#upload-msg');
 	}
 
+jQuery('#post_set_address_button').click(function(){
+	jQuery("#post_address").focus();
+});
