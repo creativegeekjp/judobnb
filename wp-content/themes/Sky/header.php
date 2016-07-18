@@ -1,3 +1,13 @@
+<?php
+
+if(isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
+	$new_title = __('Edit Place &laquo; '.get_bloginfo('name'), 'vh');
+}else {
+	$new_title = __('Add Place &laquo; '.get_bloginfo('name'), 'vh');
+}
+
+?>
+
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -13,7 +23,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta name="viewport" content="width=device-width">
 		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>">
-		<title><?php wp_title('&laquo;', true, 'right'); ?></title>
+		<title><?php if ( function_exists('geodir_is_page') && geodir_is_page('add-listing') ) : echo __($new_title, 'vh');  else : wp_title('&laquo;', true, 'right'); endif; ?></title>
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 

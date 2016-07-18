@@ -740,7 +740,65 @@ function cancel_reservations()
                 	), 
                 	array( '%d' ) 
                 );
+                
+                    //daryl update for email 6/6
+                    $author_id=$wpdb->get_row("SELECT jd_posts.post_author,jd_posts.post_title,jd_reservations.user FROM jd_reservations INNER JOIN jd_postmeta ON jd_postmeta.meta_value=jd_reservations.room INNER JOIN jd_posts ON jd_posts.ID=jd_postmeta.post_id WHERE jd_reservations.id=$idr");
+            		
+            		$author=$author_id->post_author;
+            		$guest=$author_id->user;
+            		$post_title=$author_id->post_title;
+            		$guest_email=$wpdb->get_row("SELECT display_name FROM jd_users WHERE ID=$guest");
+            		$host_email=$wpdb->get_row("SELECT user_email,display_name FROM jd_users WHERE ID=$author");
+            		
+                    $from_name='JudoBnB';
+        		    $from_email="info@judobnb.com";
+        		    
+        		    //$headers  = "MIME-Version: 1.0 \n" ;
+                    $headers = "From: " .$from_name." <".$from_email."> \n";
+                    $headers .= "Reply-To: " .$from_name." <".$from_email."> \n";
+                    $headers .= 'Content-type: text/html; charset=ISO-2022-JP' . "\r\n";
+            
+                    $host_name=$host_email->display_name;
+                    $guest_name=$guest_email->display_name;
+                    $email_to=$host_email->user_email;
+                    //$query="SELECT * FROM jd_cg_email_language WHERE email='".$email_to."'";
+                    $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$author."";
+                    //echo $query
+                    $email_lang=$wpdb->get_row($query);
+                    
+                    if($email_lang->value == 'English'){
+                        
+                         $body = file_get_contents('wp-includes/custom-emails/host-cancelled.html');
+                         $subject = mb_convert_encoding("[JudoBnB] Cancellation Email", "ISO-2022-JP","AUTO");
+                         
+                    }
+                    if($email_lang->value == 'Japanese'){
+                          $body = file_get_contents('wp-includes/custom-emails/host-cancelled-ja.html');
+                          $subject = mb_convert_encoding("[JudoBnB]予約のキャンセル", "ISO-2022-JP","AUTO");
+                          
+                    }
+                    
+                       
+                    $message = str_ireplace('[host_display_name]',$host_name, $body);
+                    $message = str_ireplace('[guest_display_name]',$guest_name, $message);
+                    $message = str_ireplace('[post_title]',$post_title, $message);
+                    
+                    $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
+                    mb_language("ja");
+                    
+                    $subject = mb_encode_mimeheader($subject);
+                
+                    
+                    $stat=wp_mail($email_to,$subject,$email_body,$headers);
+                   
+               
+                    
+              //end
+                
+                
+               
         }
+
     }
 }
 

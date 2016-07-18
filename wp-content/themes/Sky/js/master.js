@@ -3619,6 +3619,20 @@ jQuery(document).ready(function() {
 			minimums();
 	});
 	
+    jQuery('#header-submit').click(function(){
+    		  if(	jQuery('#header-people').val().length == 0 ){
+				 	var docURL = document.URL;
+					if (docURL.indexOf("ja") == -1) {
+						//alert('Please specify how many people');
+						jQuery( '<div style="font-size:12px; white-space: nowrap; background-color: red ;padding: 5px 20px; color: #fff; position: absolute; top:-35px;" >Please specify how many people</div>' ).insertBefore( "#header-people" ).fadeOut(5000);
+						
+					}else{
+						//alert('人数を指定ください');
+						jQuery( '<div style="font-size:12px; white-space: nowrap; background-color: red ;padding: 5px 20px; color: #fff; position: absolute; top:-35px;" >人数を指定ください</div>' ).insertBefore( "#header-people" ).fadeOut(5000);
+					}
+    		  }
+	});
+    
 	//panclear ki search box sa home page
  //   if( jQuery.cookie('switching_lang') == 1)
  //   {
@@ -3816,7 +3830,7 @@ jQuery('#propertyform').on('submit', function(){
 				if (docURL.indexOf("ja") == -1) {
 						alert("Listing start date is required!");
 				}else{
-						alert("到着日は必須です");
+						alert("開始日");
 				}
 			
 				jQuery("#geodir_listing_start_date").focus();
@@ -3831,7 +3845,7 @@ jQuery('#propertyform').on('submit', function(){
 				if (docURL.indexOf("ja") == -1) {
 						alert("Listing end date is required!"); 
 				}else{
-						alert("リスティング終了日");
+						alert("終了日");
 				}
 			
 				jQuery("#geodir_listing_end_date").focus();
@@ -3954,3 +3968,4 @@ var docURL = document.URL
 jQuery('#post_set_address_button').click(function(){
 	jQuery("#post_address").focus();
 });
+
