@@ -3812,7 +3812,13 @@ jQuery('#propertyform').on('submit', function(){
 		else if(jQuery("#geodir_listing_start_date").val()=="")
 		{
 			if(hasClick){
-				alert("Listing start date is required!");
+				var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+						alert("Listing start date is required!");
+				}else{
+						alert("リスティング開始日");
+				}
+			
 				jQuery("#geodir_listing_start_date").focus();
 				hasClick = false;
 				return false;
@@ -3821,7 +3827,13 @@ jQuery('#propertyform').on('submit', function(){
 		else if(jQuery("#geodir_listing_end_date").val()=="")
 		{
 			if(hasClick){
-				alert("Listing end date is required!"); 
+				var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+						alert("Listing end date is required!"); 
+				}else{
+						alert("リスティング終了日");
+				}
+			
 				jQuery("#geodir_listing_end_date").focus();
 				hasClick = false;
 				return false;

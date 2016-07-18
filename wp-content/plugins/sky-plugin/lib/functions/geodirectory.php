@@ -368,7 +368,7 @@ global $cat_display,$post_cat, $current_user;
 		
 									<!-- end captcha code -->
 									
-							<a href="javascript:void(0);" id="submitplace" class="geodir_button wpb_button wpb_btn-warning wpb_regularsize" <?php echo $submit_button;?>><?php _e('Review & Add', 'vh'); ?></a>
+							<a href="javascript:void(0);" id="submitplace" class="geodir_button wpb_button wpb_btn-warning wpb_regularsize" <?php echo $submit_button;?>><?php _e('Save and Publish', 'vh'); ?></a>
 							
 							<span class="geodir_message_note icon-info submit-note" style="padding-left:0px;"> <?php _e('Note: You will be able to see a preview in the next page','vh');?></span>
 							<div class="clearfix"></div>

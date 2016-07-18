@@ -127,6 +127,7 @@ function reservation_host()
                         <thead>
                             <tr>
                                 <th width="7%">'.__('ROOM','easyReservations').'</th>
+                                 <th>'.__('MESSAGE','easyReservations').'</th>
                                 <th>'.__('ARRIVAL','easyReservations').'</th>
                                 <th>'.__('DEPARTURE','easyReservations').'</th>
                                 <th>'.__('NAME','easyReservations').'</th>
@@ -172,6 +173,16 @@ function reservation_host()
                 $childs = $list->childs;
                 $price = $list->price;
                 $reservated = $list->reservated;
+                $custom = $list->custom;
+                
+            $custom = unserialize($custom);
+
+               foreach($custom['4']as $key => $value ): //phone
+               	  
+               	   if($key=="value"){
+               	  	    $message =  $value;
+               	  	}
+               endforeach;
                
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
                 $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -211,6 +222,7 @@ function reservation_host()
      
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">".__('View','easyReservations')."</a></td>
+                        <td>".$message."</td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
@@ -281,6 +293,7 @@ function reservation_guest()
                         <thead>
                             <tr>
                                 <th width="7%">'.__('ROOM','easyReservations').'</th>
+                                 <th>'.__('MESSAGE','easyReservations').'</th>
                                 <th>'.__('ARRIVAL','easyReservations').'</th>
                                 <th>'.__('DEPARTURE','easyReservations').'</th>
                                 <th>'.__('NAME','easyReservations').'</th>
@@ -325,7 +338,16 @@ function reservation_guest()
                 $childs = $list->childs;
                 $price = $list->price;
                 $reservated = $list->reservated;
+                $custom = $list->custom;
                 
+            $custom = unserialize($custom);
+
+               foreach($custom['4']as $key => $value ): //phone
+               	  
+               	   if($key=="value"){
+               	  	    $message =  $value;
+               	  	}
+               endforeach;
                 
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
                 $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -364,6 +386,7 @@ function reservation_guest()
      
                 echo "<tr>
                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">".__('View','easyReservations')."</a></td> 
+                        <td>".$message."</td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
@@ -1187,6 +1210,18 @@ function my_initial() {
     
 }
 
+function add_listing_price_holder()//add listing price place holder geodir_listing_price
+{
+     	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))//default jpy if empty
+     	{
+     		 $site_title = "Listing Price (JPY)";
+     	}else{
+     	     $site_title = "Listing Price (". $_COOKIE['C_CURRENCY'].")";
+     	}
+     	
+     return $site_title;
+}
+
 function chkMyLang()
 {
 
@@ -1326,17 +1361,7 @@ function signage($currency_format)
     return array_search( $currency_format,array('#36'=>'USD', '#165' => 'JPY') ); //decimal value
 }
 
-function add_listing_price_holder()//add listing price place holder geodir_listing_price
-{
-     	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))//default jpy if empty
-     	{
-     		 $site_title = "Listing Price (JPY)";
-     	}else{
-     	     $site_title = "Listing Price (". $_COOKIE['C_CURRENCY'].")";
-     	}
-     	
-     return $site_title;
-}
+
 //converted ko
 function exchangerate($amount, $from, $to)
 {

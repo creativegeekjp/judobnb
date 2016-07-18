@@ -563,7 +563,7 @@ JAVASCRIPT;
                         'business' => $gateway_opt['owner'],
                         'cancel_return' => $gateway_opt['cancel_url'],
                         'currency_code' => $currency,
-                        'return' => $theReturnURL,
+                        'return' => site_url().''.langs()."/successfully-reserved/",//$theReturnURL,
                         'item_number' =>  $user_IDs,
                         'paymentaction' => 'authorization' //jino
                        

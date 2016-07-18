@@ -22,8 +22,8 @@ do_action( 'geodir_wrapper_open', 'add-listing-page', 'geodir-wrapper','');
 			
 					###### MAIN CONTENT ######
 					// this adds the page title
-					//do_action( 'geodir_add_listing_page_title');
-					?><h1 class="entry-title fn"><?php the_title(); ?></h1><?php
+					do_action( 'geodir_add_listing_page_title');
+					
 					// this adds the add listing form
 					do_action( 'geodir_add_listing_form_new');
 					
