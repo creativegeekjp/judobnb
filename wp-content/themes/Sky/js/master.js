@@ -3633,6 +3633,21 @@ jQuery(document).ready(function() {
     		  }
 	});
     
+    //redirect to home page those who has parameters in url
+    var docURLs = document.URL;
+	var locations;
+		
+	if (docURLs.indexOf("ja") == -1) {
+		locations = location.protocol + "//www.judobnb.com";
+	}else{
+		locations = location.protocol + "//www.judobnb.com/ja/";
+	}
+    if(window.location.href.indexOf('?') == -1){
+    	//do nothing lang
+	 }else{ 
+	 	jQuery("#lg").attr("href", locations );
+	 }
+    
 	//panclear ki search box sa home page
  //   if( jQuery.cookie('switching_lang') == 1)
  //   {
@@ -3646,11 +3661,14 @@ jQuery(document).ready(function() {
 	// 	jQuery.cookie('vh_selected_people', jQuery("#header-people").val() , {path: '/'});
 	// });
 });
+
+
 function minimums()
 {
 	
 	var docURL = document.URL;
-		if (docURL.indexOf("ja") == -1) {
+		//if (docURL.indexOf("ja") == -1) {
+		if (jQuery('html').attr('lang') != 'ja') {
 	
 			if(jQuery("#icl_c").val()=="USD")
 			{
@@ -3719,7 +3737,8 @@ jQuery( "#signup_submit" ).click(function()
        		}else{
        			var docURL = document.URL
 
-				if (docURL.indexOf("ja") == -1) {
+				//if (docURL.indexOf("ja") == -1) {
+				if (jQuery('html').attr('lang') != 'ja') {
 						alert("Please enter valid email account for paypal");
 				}else{
 					alert("有効なペイパルアカウントのメールアドレスをご入力ください。");
@@ -3745,7 +3764,8 @@ jQuery( "#profile-group-edit-submit" ).click(function()
        		}else{
        			var docURL = document.URL
 
-				if (docURL.indexOf("ja") == -1) {
+				// if (docURL.indexOf("ja") == -1) {
+				if (jQuery('html').attr('lang') != 'ja') {
 						alert("Please enter valid email account for paypal");
 				}else{
 					alert("有効なペイパルアカウントのメールアドレスをご入力ください。");
@@ -3813,7 +3833,8 @@ jQuery('#propertyform').on('submit', function(){
 	 	if(jQuery("#post_images").val()==""){
 	 		if(hasClick){
 	 			var docURL = document.URL;
-				if (docURL.indexOf("ja") == -1) {
+				// if (docURL.indexOf("ja") == -1) {
+				if (jQuery('html').attr('lang') != 'ja') {
 						alert("Please Upload atleast 1 Image");
 				}else{
 						alert("最低でも1イメージをアップロードお願いいたします。");
@@ -3827,7 +3848,8 @@ jQuery('#propertyform').on('submit', function(){
 		{
 			if(hasClick){
 				var docURL = document.URL;
-				if (docURL.indexOf("ja") == -1) {
+				// if (docURL.indexOf("ja") == -1) {
+				if (jQuery('html').attr('lang') != 'ja') {
 						alert("Listing start date is required!");
 				}else{
 						alert("開始日");
@@ -3842,7 +3864,8 @@ jQuery('#propertyform').on('submit', function(){
 		{
 			if(hasClick){
 				var docURL = document.URL;
-				if (docURL.indexOf("ja") == -1) {
+				// if (docURL.indexOf("ja") == -1) {
+				if (jQuery('html').attr('lang') != 'ja') {
 						alert("Listing end date is required!"); 
 				}else{
 						alert("終了日");
@@ -3896,7 +3919,8 @@ jQuery(function(){
            ,cando = valLen > 7 && valLen <= 20;
            
         	var docURL = document.URL;
-				if (docURL.indexOf("ja") == -1) {
+				// if (docURL.indexOf("ja") == -1) {
+				if (jQuery('html').attr('lang') != 'ja') {
 				
 					 d.querySelector('#pwdrow').setAttribute( 'data-lenchk', 
           					valLen < 1 ? '	'
@@ -3956,7 +3980,8 @@ jQuery("#commentform").on("submit", function(){
 
 var docURL = document.URL
 
-	if (docURL.indexOf("ja") == -1) {
+	// if (docURL.indexOf("ja") == -1) {
+	if (jQuery('html').attr('lang') != 'ja') {
 		
 		jQuery('<div class="img-note">For better results, make sure to upload an image that is larger than 1024px wide, and 480px tall.</div>').insertAfter('#upload-msg');
 		

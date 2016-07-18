@@ -103,7 +103,12 @@ function check_email_domains(){
         }
         
         
-        echo json_encode(array_unique($domains));
+        $unique=array_unique($domains);
+        
+        
+        foreach($unique as $v){
+             echo '<span id="curl_responses">domain:'.$v.'</span>';
+        }
         
     }else{
         echo 'You are not allowed to access this location.';

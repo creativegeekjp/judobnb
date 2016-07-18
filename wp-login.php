@@ -829,7 +829,15 @@ default:
 		wp_safe_redirect($redirect_to);
 		exit();
 	}
-
+    
+    $uriParts = explode('/',$_COOKIE['langss']);
+	
+	if( $uriParts[3]== 'ja' ) { 
+		$langs = " 確認用のリンクをメールで送信しましたので、ご確認ください。";
+	}else{
+		$langs = "Check your email for the confirmation link.";
+	}
+				
 	$errors = $user;
 	// Clear errors if loggedout is set.
 	if ( !empty($_GET['loggedout']) || $reauth )
@@ -845,7 +853,8 @@ default:
 		elseif	( isset($_GET['registration']) && 'disabled' == $_GET['registration'] )
 			$errors->add('registerdisabled', __('User registration is currently not allowed.'));
 		elseif	( isset($_GET['checkemail']) && 'confirm' == $_GET['checkemail'] )
-		     $errors->add('confirm', __('Check your email for the confirmation link.'), 'message');
+		     $errors->add('confirm', __($langs), 'message');
+		    
 		elseif	( isset($_GET['checkemail']) && 'newpass' == $_GET['checkemail'] )
 			$errors->add('newpass', __('Check your email for your new password.'), 'message');
 		elseif	( isset($_GET['checkemail']) && 'registered' == $_GET['checkemail'] )

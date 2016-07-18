@@ -2047,9 +2047,9 @@ function geodir_action_add_listing_page_title()
     if(geodir_is_page('add-listing')){
         $gd_page = 'add-listing';
         if(isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
-            $title = (get_option('geodir_page_title_edit-listing')) ? get_option('geodir_page_title_edit-listing') : $title;
+            $title = (get_option('geodir_page_title_edit-listing')) ? get_option('geodir_page_title_edit-listing') : __($title, 'geodirectory');
         }elseif(isset($listing_type)){
-            $title = (get_option('geodir_page_title_add-listing')) ? get_option('geodir_page_title_add-listing') : $title;
+            $title = (get_option('geodir_page_title_add-listing')) ? get_option('geodir_page_title_add-listing') : __($title, 'geodirectory');
         }
 
     }

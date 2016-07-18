@@ -303,7 +303,7 @@ function reservation_guest()
                                 <th width="7%">'.__('CHILDS','easyReservations').'</th>
                                 <th>'.__('PRICE','easyReservations').'</th>
                                 <th>'.__('RESERVATED','easyReservations').'</th>
-                                <th colspan=4>'.__('ACTION','easyReservations').'</th>
+                                <th>'.__('ACTION','easyReservations').'</th>
                             </tr>
                         </thead>';
             }
@@ -396,9 +396,9 @@ function reservation_guest()
                         <td>".$childs."</td>
                         <td>".$curr['symbol'].''.$curr['converted']."</td>
                         <td>".date('F d, Y h:i A', strtotime($reservated) )."</td>
-                         <td>".$edit_check."</td>
-                        <td>".$cancel_check."</td>
-                       <td> <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_nicename."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
+                         <td>$edit_check <br>
+                        $cancel_check
+                        <a style='color: #fff;font-weight: 300;font-size: 18px;text-decoration:none' href='".site_url().''.langs()."/members/".$current_user->user_nicename."/messages/compose/?unames=".$user_info->user_nicename."'><button  ".$x." class='lnk wpb_button ".$xclass." wpb_btn-small' >".__('Send Message','easyReservations')."</button></a></td>
                       </tr>";
             }
             echo "</tr></table></div>";
@@ -702,7 +702,7 @@ function cancels_confirm_reservations()
     $txn = isset($_GET['txn']) ? $_GET['txn'] : "" ;
  
     echo _e('Are you sure you want to cancel this reservation?<br><br>','easyReservations');
-    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guest/'>".__('No','easyReservations')."</a>";
+    echo "<a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/cancel-reservation/?idr=".$idr."&idt=".$idt."&txn=".$txn."'>".__('Yes','easyReservations')."</a>  <a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href='".site_url().''.langs()."/reservations-for-guests/'>".__('No','easyReservations')."</a>";
  
 }
 function cancel_reservations()
@@ -763,7 +763,7 @@ function cancel_reservations()
                     $email_to=$host_email->user_email;
                     //$query="SELECT * FROM jd_cg_email_language WHERE email='".$email_to."'";
                     $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$author."";
-                    //echo $query
+                    
                     $email_lang=$wpdb->get_row($query);
                     
                     if($email_lang->value == 'English'){
@@ -1254,7 +1254,7 @@ add_action( 'init', 'my_initial' );
 
 function my_initial() {
     if($_COOKIE['C_CURRENCY']==''){
-        setcookie('C_CURRENCY', 'JPY' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+        setcookie('C_CURRENCY', 'USD' , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     }
 
    /*if empty date*/
@@ -1264,7 +1264,7 @@ function my_initial() {
        setcookie('vh_endrange',  date('Y-m-d') , time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
    }
     
-    //setcookie('LANG', $_SERVER['REQUEST_URI'], time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
+    //setcookie('NO_PARAM', $_SERVER['REQUEST_URI'], time()+3600 * 24 * 365, COOKIEPATH, COOKIE_DOMAIN );
     
 }
 
@@ -1272,7 +1272,7 @@ function add_listing_price_holder()//add listing price place holder geodir_listi
 {
      	if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY']))//default jpy if empty
      	{
-     		 $site_title = "Listing Price (JPY)";
+     		 $site_title = "Listing Price (USD)";
      	}else{
      	     $site_title = "Listing Price (". $_COOKIE['C_CURRENCY'].")";
      	}
@@ -1549,16 +1549,17 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
 	Label the data
 	*/
 	table.gridtable td:nth-of-type(1):before { content: '".__('ROOM','easyReservations')."'; }
-	table.gridtable td:nth-of-type(2):before { content: '".__('ARRIVAL','easyReservations')."'; }
-	table.gridtable td:nth-of-type(3):before { content: '".__('DEPARTURE','easyReservations')."'; }
-	table.gridtable td:nth-of-type(4):before { content: '".__('NAME','easyReservations')."'; }
-	table.gridtable td:nth-of-type(5):before { content: '".__('EMAIL','easyReservations')."'; }
-	table.gridtable td:nth-of-type(6):before { content: '".__('APPROVE','easyReservations')."'; }
-	table.gridtable td:nth-of-type(7):before { content: '".__('ADULTS','easyReservations')."'; }
-	table.gridtable td:nth-of-type(8):before { content: '".__('CHILDS','easyReservations')."'; }
-	table.gridtable td:nth-of-type(9):before { content: '".__('PRICE','easyReservations')."'; }
-	table.gridtable td:nth-of-type(10):before { content: '".__('RESERVATED','easyReservations')."'; }
-	table.gridtable td:nth-of-type(11):before { content: '".__('ACTION(S)','easyReservations')."'; }
+	table.gridtable td:nth-of-type(2):before { content: '".__('MESSAGE','easyReservations')."'; }
+	table.gridtable td:nth-of-type(3):before { content: '".__('ARRIVAL','easyReservations')."'; }
+	table.gridtable td:nth-of-type(4):before { content: '".__('DEPARTURE','easyReservations')."'; }
+	table.gridtable td:nth-of-type(5):before { content: '".__('NAME','easyReservations')."'; }
+	table.gridtable td:nth-of-type(6):before { content: '".__('EMAIL','easyReservations')."'; }
+	table.gridtable td:nth-of-type(7):before { content: '".__('APPROVE','easyReservations')."'; }
+	table.gridtable td:nth-of-type(8):before { content: '".__('ADULTS','easyReservations')."'; }
+	table.gridtable td:nth-of-type(9):before { content: '".__('CHILDS','easyReservations')."'; }
+	table.gridtable td:nth-of-type(10):before { content: '".__('PRICE','easyReservations')."'; }
+	table.gridtable td:nth-of-type(11):before { content: '".__('RESERVATED','easyReservations')."'; }
+	table.gridtable td:nth-of-type(12):before { content: '".__('ACTION(S)','easyReservations')."'; }
 	
 	/*
 	Label the data in all reservations
@@ -1572,7 +1573,7 @@ a.lnk{ text-decoration: none; font-size: 12px; font-family: 'Helvetica'; padding
 	.page-id-2806 table.gridtable td:nth-of-type(6):before { content: 'COUNTRY'; }
 	.page-id-2806 table.gridtable td:nth-of-type(7):before { content: 'ROOMNUMBER'; }
 	.page-id-2806 table.gridtable td:nth-of-type(8):before { content: 'NUMBER'; }
-	.page-id-2806 table.gridtable td:nth-of-type(9):before { content: 'CHILDS'; }
+	.page-id-2806 table.gridtable td:nth-of-type(1):before { content: 'CHILDS'; }
 	.page-id-2806 table.gridtable td:nth-of-type(10):before { content: 'PRICE'; }
 	.page-id-2806 table.gridtable td:nth-of-type(11):before { content: 'RESERVATED'; }
 	.page-id-2806 table.gridtable td:nth-of-type(12):before { content: 'ACTION(S)'; }

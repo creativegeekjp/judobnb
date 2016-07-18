@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_COOKIE['C_CURRENCY']) || empty($_COOKIE['C_CURRENCY'])){
-  $curr = 'JPY';
+  $curr = 'USD';
 }else{
 	 $curr = $_COOKIE['C_CURRENCY'];
 }

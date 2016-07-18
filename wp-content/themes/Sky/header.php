@@ -209,7 +209,7 @@ if(isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
 									<div id="modal-info">
 										<div class="title-bar">&nbsp;</div>
 										<div class="content">
-										<p><?php echo __('You will view the image after you publish your post.', 'wordpress'); ?></p>
+										<p><?php echo _e('You will view the image after you publish your post.', 'vh'); ?></p>
 										<p><button  onclick="viewListing()" class="geodir_publish_button wpb_button ok">OK</button>
 										</p>
 										</div>

@@ -238,6 +238,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 	    }
 	    ?>
 	    <script>
+	   
 		     function ls(e)
 		     {
 				<?php update_user_language(); ?>
@@ -247,8 +248,11 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 					
 					if (docURL.indexOf("ja") == -1) {
 						  jQuery.cookie('vh_selected_people', '大人1/子供なし', {path: '/'});
+						  jQuery.cookie('C_CURRENCY', 'JPY', {path: '/'});
+						  
 					}else{
 						  jQuery.cookie('vh_selected_people', '1 Adult/No Children', {path: '/'});
+						  jQuery.cookie('C_CURRENCY', 'USD', {path: '/'});
 					}
 		     }
 	    </script>

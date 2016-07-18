@@ -1,0 +1,119 @@
+Return-Path: <>
+X-Original-To: www-data@judobnb.com
+Delivered-To: www-data@judobnb.com
+Received: by mail.judobnb.com (Postfix)
+	id 26B0CDD3F; Fri, 15 Jul 2016 10:50:08 +0900 (JST)
+Date: Fri, 15 Jul 2016 10:50:08 +0900 (JST)
+From: MAILER-DAEMON@judobnb.com (Mail Delivery System)
+Subject: Undelivered Mail Returned to Sender
+To: www-data@judobnb.com
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="8772DDD3D.1468547408/mail.judobnb.com"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20160715015008.26B0CDD3F@mail.judobnb.com>
+
+This is a MIME-encapsulated message.
+
+--8772DDD3D.1468547408/mail.judobnb.com
+Content-Description: Notification
+Content-Type: text/plain; charset=us-ascii
+
+This is the mail system at host mail.judobnb.com.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+For further assistance, please send mail to postmaster.
+
+If you do so, please include this problem report. You can
+delete your own text from the attached returned message.
+
+                   The mail system
+
+<geekhost01@gmail.com>: host gmail-smtp-in.l.google.com[173.194.72.26] said:
+    550-5.7.1 [103.225.138.70] The IP you're using to send mail is not
+    authorized to 550-5.7.1 send email directly to our servers. Please use the
+    SMTP relay at your 550-5.7.1 service provider instead. Learn more at 550
+    5.7.1  https://support.google.com/mail/answer/10336 a126si1130475itg.46 -
+    gsmtp (in reply to end of DATA command)
+
+--8772DDD3D.1468547408/mail.judobnb.com
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mail.judobnb.com
+X-Postfix-Queue-ID: 8772DDD3D
+X-Postfix-Sender: rfc822; www-data@judobnb.com
+Arrival-Date: Fri, 15 Jul 2016 10:50:04 +0900 (JST)
+
+Final-Recipient: rfc822; geekhost01@gmail.com
+Action: failed
+Status: 5.7.1
+Remote-MTA: dns; gmail-smtp-in.l.google.com
+Diagnostic-Code: smtp; 550-5.7.1 [103.225.138.70] The IP you're using to send
+    mail is not authorized to 550-5.7.1 send email directly to our servers.
+    Please use the SMTP relay at your 550-5.7.1 service provider instead. Learn
+    more at 550 5.7.1  https://support.google.com/mail/answer/10336
+    a126si1130475itg.46 - gsmtp
+
+--8772DDD3D.1468547408/mail.judobnb.com
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+
+Return-Path: <www-data@judobnb.com>
+Received: by mail.judobnb.com (Postfix, from userid 33)
+	id 8772DDD3D; Fri, 15 Jul 2016 10:50:04 +0900 (JST)
+To: geekhost01@gmail.com
+Subject: =?ISO-2022-JP?B?W0p1ZG9CbkJdGyRCJWEhPCVrJHIlWyU5JUgbKEI=?=
+X-PHP-Originating-Script: 33:class-phpmailer.php
+Date: Fri, 15 Jul 2016 10:50:03 +0900
+From: JudoBnB <info@judobnb.com>
+Message-ID: <cda76dc7a3e4f23375bc3cf850328e39@www.judobnb.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+Reply-To: JudoBnB <info@judobnb.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=ISO-2022-JP
+Content-Transfer-Encoding: 8bit
+
+<!--親愛な <span id="hostname" style="font-weight:bold">Geek Host</span>,<br/><br/>
+<b>次の予約はあなたの承認/不承認を必要とします：</b><br/>
+
+<div><table style="border:1"><tr style="background-color:#d3d3d3"><td style="text-align:center">PLACE</td><td style="text-align:center">RESERVATIONS</td><tr><td>Can walk to TOKYO Disney Resort</td><td><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 11, 2016</b> to <b>Jul 12, 2016</b> by <i>Rea Benitez</i></p><p><b>Jul 16, 2016</b> to <b>Jul 16, 2016</b> by <i>Cg Test 04</i></p></td></tr></table></div>-->
+<table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#F7F3F0" style="height:100%;border-collapse:collapse;" class="email_bg"><tbody><tr><td valign="top">
+	<center style="width:100%;">
+
+		
+		<div style="font-size:1px;line-height:1px;font-family:sans-serif;">
+			
+		</div>
+		
+
+		<div>
+			
+
+			
+			<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="border-top:7px solid #D84800;" bgcolor="#F7F3F0" class="header_bg"><tbody><tr><td style="text-align:center;padding:15px 0;font-family:sans-serif;font-weight:bold;color:#000000;font-size:30px;" class="header_text_color header_text_size">
+						JudoBNB</td>
+				</tr></tbody></table><table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#FFFFFF" width="100%" class="body_bg"><tbody><tr><td>
+						<table cellspacing="0" cellpadding="0" border="0" width="100%"><tbody><tr><td style="padding:20px;font-family:sans-serif;line-height:24px;color:#555555;font-size:15px;" class="body_text_color body_text_size">
+									<span style="font-weight:bold;font-size:20px;" class="welcome">Geek Host 様,</span>
+									<hr><br>
+
+                            下記予約は承認の可否が必要です:<br><div><table style="border:1"><tr style="background-color:#d3d3d3"><td style="text-align:center">PLACE</td><td style="text-align:center">RESERVATIONS</td><tr><td>Can walk to TOKYO Disney Resort</td><td><p><b>Jul 08, 2016</b> to <b>Jul 08, 2016</b> by <i>pogi pogi</i></p><p><b>Jul 11, 2016</b> to <b>Jul 12, 2016</b> by <i>Rea Benitez</i></p><p><b>Jul 16, 2016</b> to <b>Jul 16, 2016</b> by <i>Cg Test 04</i></p></td></tr></table></div>
+								</td>
+						  </tr></tbody></table></td>
+				</tr></tbody></table><br><table cellspacing="0" cellpadding="0" border="0" align="left" width="100%" bgcolor="#F7F3F0" class="footer_bg"><tbody><tr><td style="padding:20px;width:100%;font-size:12px;font-family:sans-serif;line-height:19px;text-align:left;color:#525252;" class="footer_text_color footer_text_size">
+						
+						<span class="footer_text">&copy; 2016 JudoBNB</span>
+						<br>
+
+											</td>
+				</tr></tbody></table></div>
+	</center>
+</td></tr></tbody></table>
+
+
+--8772DDD3D.1468547408/mail.judobnb.com--
