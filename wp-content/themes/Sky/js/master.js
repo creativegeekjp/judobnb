@@ -3816,7 +3816,7 @@ jQuery('#propertyform').on('submit', function(){
 				if (docURL.indexOf("ja") == -1) {
 						alert("Listing start date is required!");
 				}else{
-						alert("リスティング開始日");
+						alert("到着日は必須です");
 				}
 			
 				jQuery("#geodir_listing_start_date").focus();
