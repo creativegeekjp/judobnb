@@ -261,15 +261,15 @@ if ( isset($_GET['stype']) ) {
 					listing_price_val = jQuery(this).find(".tagit-label").html();
 					listing_price = listing_price_val.split("-");
 
-				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
+				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("<?php echo _e('guests','geodirectory'); ?>") >= 0 ) {
 					listing_guests_val = jQuery(this).find(".tagit-label").html();
-						console.log(">>>>>>>Guset"+  listing_guests_val);
-				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("bedrooms") >= 0 ) {
+						
+				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("<?php echo _e('bedrooms','vh'); ?>") >= 0 ) {
 					listing_bedrooms_val = jQuery(this).find(".tagit-label").html();
-						console.log(">>>>>>>Bedroom"+  listing_bedrooms_val);
-				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
+						
+				} else if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("<?php echo _e('beds','vh'); ?>") >= 0 ) {
 					listing_beds_val = jQuery(this).find(".tagit-label").html();
-					console.log(">>>>>>>Bed"+  listing_beds_val);
+				
 				} 
 			});
 
@@ -454,10 +454,10 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-				//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('guests','geodirectory'); ?>";
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'guests';
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('guests','geodirectory'); ?>";
+				//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'guests';
 					jQuery("#geodir-filter-list li").each(function() {
-						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("guests") >= 0 ) {
+						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("<?php echo _e('guests','geodirectory'); ?>") >= 0 ) {
 							jQuery(this).remove();
 						};
 					});
@@ -498,10 +498,10 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-				//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','vh'); ?>";
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'bedrooms';
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('bedrooms','vh'); ?>";
+				//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'bedrooms';
 					jQuery("#geodir-filter-list li").each(function() {
-						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("bedrooms") >= 0 ) {
+						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("<?php echo _e('bedrooms','vh'); ?>") >= 0 ) {
 							jQuery(this).remove();
 						};
 					});
@@ -532,13 +532,17 @@ if ( isset($_GET['stype']) ) {
 				stop: function( event, ui ) {
 					jQuery(this).parent().find(".ui-slider-range.ui-widget-header").removeClass("ui-active");
 
-					//var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','vh'); ?>";
-					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'beds';
-					jQuery("#geodir-filter-list li").each(function() {
-						if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf("beds") >= 0 ) {
-							jQuery(this).remove();
-						};
-					});
+					var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + " <?php echo _e('beds','vh'); ?>";
+					
+					
+					//	var tag = ui.values[ 0 ] + "-" + ui.values[ 1 ] + 'beds';
+						jQuery("#geodir-filter-list li").each(function() {
+							if ( jQuery(this).find(".tagit-label").html() != undefined && jQuery(this).find(".tagit-label").html().indexOf(" <?php echo _e('beds','vh'); ?>") >= 0 ) {
+								jQuery(this).remove();
+							};
+						});
+				
+					
 					jQuery("#geodir-filter-list").tagit("createTag", tag);
 
 					get_geomap_markers();

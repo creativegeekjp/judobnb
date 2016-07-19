@@ -3203,14 +3203,28 @@ jQuery(".geodir_category_list_view").isotope({
 			if (jQuery("body").hasClass("skydirectory")) {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude + "&sgeo_when=&sgeo_adults=1&sgeo_childrens=No";
 				window.location.href = my_ajax.blog_url + location;
+			
 			}
 			else if (jQuery("body").hasClass("skyvacation")) {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude;
-				window.location.href = my_ajax.blog_url + location;
+				
+				var docURL = document.URL;
+				if (docURL.indexOf("ja") == -1) {
+					//string not found
+					window.location.href = my_ajax.blog_url + location
+				}
+				else {
+					//string found
+					window.location.href = my_ajax.blog_url + "/ja/" + location;
+
+				}
+				
+				
 			}
 			else {
 				var location = "?geodir_search=1&stype=" + post_type + "&s=+&snear=" + address + "&sgeo_lat=" + latitude + "&sgeo_lon=" + longitude;
 				window.location.href = my_ajax.blog_url + location;
+			
 			}
 		
 		});
@@ -3648,18 +3662,20 @@ jQuery(document).ready(function() {
 	 	jQuery("#lg").attr("href", locations );
 	 }
     
-	//panclear ki search box sa home page
- //   if( jQuery.cookie('switching_lang') == 1)
- //   {
- //   	jQuery('#header-people').click(function(){
-	// 		jQuery(this).val("");
-	// 		jQuery.cookie('switching_lang', '', {path: '/'});
-	// 	});
- //   }
- //   //panset ki value pagnaclear su search box sa home page
- //   jQuery('#header-submit').click(function(){
-	// 	jQuery.cookie('vh_selected_people', jQuery("#header-people").val() , {path: '/'});
-	// });
+	/*panclear ki search box sa home page
+	   if( jQuery.cookie('switching_lang') == 1)
+	   {
+	   	jQuery('#header-people').click(function(){
+	 		jQuery(this).val("");
+	 		jQuery.cookie('switching_lang', '', {path: '/'});
+	 	});
+	   }
+	   //panset ki value pagnaclear su search box sa home page
+	   jQuery('#header-submit').click(function(){
+	 	jQuery.cookie('vh_selected_people', jQuery("#header-people").val() , {path: '/'});
+	 });
+	*/
+	
 });
 
 
