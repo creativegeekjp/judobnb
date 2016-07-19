@@ -1,0 +1,17 @@
+#!/bin/bash
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+curl -c /root/cookie4.txt -d "log=judan" -d "pwd=cgeek" --resolve 'www.judobnb.com:80:192.168.1.2' http://www.judobnb.com/wp-login.php
+curl -b /root/cookie4.txt --resolve 'www.judobnb.com:80:192.168.1.2'  http://www.judobnb.com/filter-domains/|grep -Po 'domain=.*(?=</span>)' > /root/domains.txt
+sed 's/\<domain\>//g' /root/domains.txt >/root/domain2.txt
+tr , ':' < /root/domain2.txt > /root/domain3.txt
+tr '=' '\n' < /root/domain3.txt > /root/domain.txt
+sort /root/domain.txt -o /root/domain.txt
+sort /root/old_domains.txt -o /root/old_domains.txt
+comm -23 /root/domain.txt /root/old_domains.txt >> /root/old_domains.txt
+
+cp /root/old_domains.txt /etc/postfix/transport
+sed -i '$ a *error:Recipient not whitelisted.' /etc/postfix/transport
+postmap /etc/postfix/transport
+/etc/init.d/postfix reload

@@ -105,10 +105,15 @@ function check_email_domains(){
         
         $unique=array_unique($domains);
         
-        
+        echo '<span id="curl_responses">';
+       
         foreach($unique as $v){
-             echo '<span id="curl_responses">domain:'.$v.'</span>';
+           
+             echo 'domain='.$v.' ,';
+             
+             
         }
+        echo '</span>';
         
     }else{
         echo 'You are not allowed to access this location.';
@@ -179,7 +184,7 @@ function email_hosts(){
                        
                        
         
-                         $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$val['host_id']."";
+                        $query="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$val['host_id']."";
                             //echo $query
                         $email_lang=$wpdb->get_row($query);
                         
@@ -197,7 +202,6 @@ function email_hosts(){
                         $email_body = mb_convert_encoding($message, "ISO-2022-JP","AUTO");
                         mb_language("ja");
                         $subject = mb_encode_mimeheader($subject);
-                        
                         $stat=wp_mail($email_to,$subject,$email_body,$headers);
                         
                  
