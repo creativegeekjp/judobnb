@@ -18,6 +18,9 @@ if($lang=="Japanese"){
       
  }
 
+setcookie('fb_users_href', '' , time()+3600 * 24 * 365);
+setcookie('fb_users', '' , time()+3600 * 24 * 365);
+
 $redirect_to = 'index.php';
 $redirect_to = isset($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : '';
 $location = str_replace('&amp;', '&', wp_logout_url($redirect_to."".$parts));

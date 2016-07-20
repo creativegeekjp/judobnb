@@ -270,7 +270,6 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 	   
 		     function ls(e)
 		     {
-				<?php //update_user_language(); ?>
 				
 					jQuery.cookie('switching_lang', 1 , {path: '/'});
 					 
@@ -291,29 +290,89 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 		     }
 	    </script>
 	    <?php 
-	    /*
-	    function update_user_language()
-	    {
-	    
-	    	    $user_ID = get_current_user_id();
-	    	  
-			   	$uriParts = explode('/',$_COOKIE['langss']);
-	
-				if( $uriParts[3]== 'ja' ) { 
-					$langs = "Japanese";
-				}else{
-					$langs = "English";
-				}
-			   
-			   global $wpdb;
-			   
-				if( is_user_logged_in() ) {
-						$wpdb->query( "UPDATE jd_bp_xprofile_data SET value='".$langs."' WHERE field_id='635' AND user_id=$user_ID " );
-				}
-	    }
-	    */
+			global $wpdb;
+			
+			$uid = get_current_user_id();
+			
+			if($wpdb->get_var("SELECT meta_value FROM jd_usermeta WHERE user_id =$uid AND meta_key= 'deuid'") > 0 )
+			{
+				
+					$lang = $wpdb->get_var("SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id = $uid");
+			
+					if( $wpdb->num_rows > 0 ) 
+		            {
+		            	 switch($lang)
+		            	 {
+		            	 	case 'Japanese' :
+		            	 		
+					            	?>
+					            	<script>
+					            	  jQuery(document ).ready(function() {
+					            	  	
+						            	  	if(  typeof(jQuery.cookie('fb_users_href')) == "undefined" && jQuery.cookie('fb_users_href') == null ){
+										   	
+										   		 if( confirm("Click ok to switch to Japanese Language") == true)
+												    {
+												    	jQuery.cookie('fb_users_href', '1' , {path: '/'});
+												    	
+												    	 window.location.href = location.protocol + "//www.judobnb.com/ja/"; 
+												    	 
+												    }
+										   }	 
+					            	  });
+					            	</script>
+					            	<?php
+					            	
+		            	 		break;
+		            	 		
+		            	 	case '' :
+		            	 			  //english already
+		            	 		break;
+		            	 }
+		            	 
+						
+		            }else{
+		            	
+		            	global $current_user;
+		            	
+		            	$edit_profiles = site_url().''.langs()."/members/".$current_user->user_nicename."/profile/edit/group/1/";
+		            	
+		            	 ?>
+							<script>
+							
+								   jQuery(document ).ready(function() {
+								   	  
+									   if(   typeof(jQuery.cookie('fb_users')) == "undefined" && jQuery.cookie('fb_users') == null  ){
+									   	
+									   		 if(confirm( "You are now logged in using Facebook Account. Click Ok to set your preferred language" ) == true)
+											    {
+											    	jQuery.cookie('fb_users', '1' , {path: '/'});
+											    	
+											    	window.location.href = '<?php echo $edit_profiles; ?>';
+											    }
+									   }
+									  
+								   });
+								   
+						    </script>
+						    
+						 <?php
+		            }
+			 
+			}   
 	    ?>
-	   
 	    
+			<script>
+					/*
+					jQuery(window).on('load', function(e){
+						if (window.location.hash == '#_=_') {
+							window.location.hash = ''; 
+							history.pushState('', document.title, window.location.pathname); 
+							window.location.href = location.protocol + "//www.judobnb.com/ja/"; 
+						}
+					})
+					*/
+			</script>
+	  
 	</body>
 </html>
