@@ -276,7 +276,7 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 					var docURL = document.URL;
 					
 					if (docURL.indexOf("ja") == -1) {
-						
+						  
 						  jQuery.cookie('vh_selected_people', '大人1/子供なし', {path: '/'});
 						  
 						  jQuery.cookie('C_CURRENCY', 'JPY', {path: '/'});
@@ -287,6 +287,9 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 						  
 						  jQuery.cookie('C_CURRENCY', 'USD', {path: '/'});
 					}
+					
+					
+					
 		     }
 	    </script>
 	    <?php 
@@ -361,6 +364,14 @@ $scroll_to_top = filter_var(get_option('vh_scroll_to_top'), FILTER_VALIDATE_BOOL
 			 
 			}   
 	    ?>
+	    
+	    
+	      <script>
+	      jQuery(function($){
+	      	jQuery.cookie('vh_viewer_location' , '' , {path: '/'});
+	      });
+	      </script>
+	     
 	    
 			<script>
 					/*

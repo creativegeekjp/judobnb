@@ -176,13 +176,13 @@ function reservation_host()
                 $custom = $list->custom;
                 
             $custom = unserialize($custom);
-
-               foreach($custom['4']as $key => $value ): //phone
+               
+              /* foreach($custom['4']as $key => $value ): 
                	  
                	   if($key=="value"){
-               	  	    $message =  $value;
+               	  	    $message =  isset($value) ? $value : "" ;
                	  	}
-               endforeach;
+               endforeach;*/
                
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
                 $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -222,7 +222,7 @@ function reservation_host()
      
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">".__('View','easyReservations')."</a></td>
-                        <td>".$message."</td>
+                        <td>".$custom[4]['value']."</td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
@@ -341,13 +341,13 @@ function reservation_guest()
                 $custom = $list->custom;
                 
             $custom = unserialize($custom);
-
+/* var_dump($custom[4]['value']);
                foreach($custom['4']as $key => $value ): //phone
                	  
                	   if($key=="value"){
-               	  	    $message =  $value;
+               	  	    $message =  isset($value) ? $value : "" ;
                	  	}
-               endforeach;
+               endforeach;*/
                 
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
                 $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -386,7 +386,7 @@ function reservation_guest()
      
                 echo "<tr>
                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">".__('View','easyReservations')."</a></td> 
-                        <td>".$message."</td>
+                        <td>".$custom[4]['value']."</td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
