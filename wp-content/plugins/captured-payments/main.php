@@ -149,6 +149,7 @@ function reservation_host()
                 
             foreach ($lists as $list) {
                 $x="";
+                $mess="";
                 //jd_cg_captured_payments
                 $idt = $list->tid;
                 $txn_id = $list->txn_id;
@@ -177,12 +178,12 @@ function reservation_host()
                 
             $custom = unserialize($custom);
                
-              /* foreach($custom['4']as $key => $value ): 
+               foreach($custom as $key => $value ): 
                	  
-               	   if($key=="value"){
-               	  	    $message =  isset($value) ? $value : "" ;
-               	  	}
-               endforeach;*/
+               	   if($value['title']=="Message")
+               	  	    $mess = $value['value'];
+               	  	
+               endforeach;
                
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
                 $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -222,7 +223,7 @@ function reservation_host()
      
                 echo "<tr>
                  <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small'  href=".get_permalink($pid).">".__('View','easyReservations')."</a></td>
-                        <td>".$custom[4]['value']."</td>
+                        <td>".$mess."</td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
@@ -266,7 +267,7 @@ function reservation_guest()
             
             $user_ID = get_current_user_id();
           
-            $lists =$wpdb->get_results("
+            /*$lists =$wpdb->get_results("
                     SELECT *
                     
                     FROM
@@ -285,10 +286,21 @@ function reservation_guest()
                     GROUP BY 
                     
                         b.txn_id;
+            ");*/
+            
+            $lists =$wpdb->get_results("
+                    SELECT *
+                    
+                    FROM
+                        jd_reservations 
+                    
+                    WHERE approve IN('','del') AND user=$user_ID
             ");
             
             if( $wpdb->num_rows > 0 ) 
             {
+                
+                
                 echo '<table class="gridtable">
                         <thead>
                             <tr>
@@ -313,7 +325,20 @@ function reservation_guest()
             }
             
             foreach ($lists as $list) {
+                $payment =$wpdb->get_results("
+                    SELECT *
+                    
+                    FROM
+                        jd_cg_captured_payments
+                    
+                    WHERE host_id = $user_ID AND room_id=$list->id GROUP BY txn_id
+                ");
                 
+                if(sizeof($payment) == 0 && $list->approve == ''){
+                    $list->approve="Pending";
+                }
+            
+                $mess="";
                 //jd_cg_captured_payments
                 $idt = $list->tid;
                 $txn_id = $list->txn_id;
@@ -341,13 +366,13 @@ function reservation_guest()
                 $custom = $list->custom;
                 
             $custom = unserialize($custom);
-/* var_dump($custom[4]['value']);
-               foreach($custom['4']as $key => $value ): //phone
+            
+             foreach($custom as $key => $value ): 
                	  
-               	   if($key=="value"){
-               	  	    $message =  isset($value) ? $value : "" ;
-               	  	}
-               endforeach;*/
+               	   if($value['title']=="Message")
+               	  	    $mess = $value['value'];
+               	  	
+               endforeach;
                 
                 $get_post_ids =$wpdb->get_var("SELECT post_id FROM jd_postmeta WHERE meta_value ='".$room."'");
                 $authors =$wpdb->get_var("SELECT post_author FROM jd_posts WHERE ID ='".$get_post_ids."'");
@@ -386,7 +411,7 @@ function reservation_guest()
      
                 echo "<tr>
                         <td><a class='lnk wpb_button wpb_btn-primary wpb_btn-small' href=".get_permalink($pid).">".__('View','easyReservations')."</a></td> 
-                        <td>".$custom[4]['value']."</td>
+                        <td>".$mess."</td>
                         <td>".date('F d, Y h:i A', strtotime($arrival) )."</td>
                         <td>".date('F d, Y h:i A', strtotime($departure) )."</td>
                         <td>".$name."</td>
@@ -480,8 +505,8 @@ function dissaprove_reservation(){
                        
                     $guest_name=$guest_email->display_name;
                     
-                    //$email_to=$guest_email->user_email;
-                    $email_to='web-deCXht@mail-tester.com';
+                    $email_to=$guest_email->user_email;
+                    //$email_to='web-deCXht@mail-tester.com';
                     $query2="SELECT value FROM `jd_bp_xprofile_data` WHERE field_id='635' AND user_id=".$value->user."";
                         //echo $query
                         $email_lang_diss=$wpdb->get_row($query2);

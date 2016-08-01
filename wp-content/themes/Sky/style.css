@@ -15596,7 +15596,7 @@ label .btn-translate {
 }
 
 #lang_sel_click {
-	z-index: 9;
+	z-index: 999;
 }
 #search-icon{
 	color: #fff;
@@ -16031,4 +16031,31 @@ body.archive.author #main_header_bg {
 }
 .single-listing-mail{
 	display: none !important;
+}
+
+#topbar {
+	padding: 10px;
+}
+
+#topbar .item-title-bg{
+	display: none !important;
+}
+
+#topbar .widget{
+	margin:0;
+}
+
+#topbar .widget,
+#topbar .c {
+	display: inline-block;
+	float: right;
+	margin-left: 10px;
+}
+
+#topbar .c {
+	height: 26px;
+}
+
+#topbar {
+	background:#444;
 }

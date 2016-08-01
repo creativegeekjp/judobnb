@@ -533,7 +533,8 @@ JAVASCRIPT;
         else $theReturnURL = $return_opt;
 
         if(!empty($price) && $price > 0){
-            $return = '<form onSubmit="easyReservationFSubmit = true" ';
+            $testLanguage="'".ICL_LANGUAGE_CODE."'";
+            $return = '<form onsubmit="return preventPaypalSubmit('.$testLanguage.')" ';
             if($type == 'paypal'){
                 if($gateway_opt['modus']=='on') $theModusURL = 'https://www.paypal.com/cgi-bin/webscr';
                 else $theModusURL = 'https://www.sandbox.paypal.com/cgi-bin/webscr';

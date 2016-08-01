@@ -139,7 +139,17 @@ if(isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
 					// }
 				?>
 				
+				<div class="vc_col-sm-12" id="topbar">
+						<?php dynamic_sidebar('sidebar-8'); ?>
+						
+						<select class="c" id='lang_sel_click' onchange="javascript:location.href = this.value;" style="border:0px grey; background-color:white; font-family: helvetica; font-size: 12px; color: black; width:150px;">
+						    <option value="/todollar.php" <?php if($_COOKIE['C_CURRENCY']=='USD') echo "selected=selected"; ?> >USD</option>
+						     <option value="/toyen.php" <?php if($_COOKIE['C_CURRENCY']=='JPY') echo "selected=selected";  ?> >JPY</option>
+						</select>
+					</div>
+				
 				<header class="header vc_row-fluid vc_col-sm-12">
+					
 					<div class="top-header vc_col-sm-12">
 						<div class="logo shadows vc_col-sm-3">
 							<a href="<?php echo home_url(); ?>"><img src="<?php echo site_url().$logo; ?>"<?php echo $logo_size_html ; ?> alt="<?php bloginfo('name'); ?>" /></a>
@@ -924,6 +934,7 @@ if(isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
 					if ( is_archive() || is_search() || is_404() || ( $post_type == 'tribe_events' && !is_single() ) ) {
 						$layout_type = 'full';
 					} else if ( is_home() ) {
+						
 
 						// Get the ID of your posts page
 						$id = get_option('page_for_posts');

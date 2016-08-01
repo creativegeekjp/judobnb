@@ -280,6 +280,23 @@ function easyEdit(i,dimm){
 	} else alert('Error #3243 - please report in forum.');
 }
 
+function preventPaypalSubmit(x){
+	
+		console.log('FFFFFFFFFFFF');
+		var loc='';
+	if(x=='ja'){
+	alert("恐れ入りますが、ベータサイトのため、ここから先へは進められません");
+	loc='/ja/';
+	}else{
+	alert("Payment is not available at this moment. This is a beta site.");
+	loc='/';
+	}
+	easyReservationFSubmit = false;
+	window.location =loc;
+	return false;
+	
+}
+
 function easyCancelSubmit(single,ele){
 	if(ele){
 		jQuery(ele).closest('tr').fadeOut("slow", function(){jQuery(ele).closest('tr').remove(); });	

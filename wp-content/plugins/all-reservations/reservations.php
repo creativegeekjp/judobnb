@@ -459,6 +459,9 @@ function confirm_payout(){
         if((int)$status->paid == 0 && $status != 'NULL'){
              // checkPaymentMessage(false,$hostname);
                 $arr=getamounts($tid);
+                $deduction=$arr['total']*0.15;
+                
+            $amtToPay=$arr['total']-$deduction;
                 
                 $data=array(
                     "USER"          => "daryljoycepalis-facilitator_api1.ymail.com",
@@ -469,7 +472,7 @@ function confirm_payout(){
                     "RECEIVERTYPE"  =>"EmailAddress",
                     "CURRENCYCODE"  =>$arr['currency'],
                     "L_EMAIL0"      =>$host_email,
-                    "L_AMT0"        =>$arr['total']
+                    "L_AMT0"        =>$amtToPay
                     );
                 
                   $result=call_pay_api($data);
@@ -477,7 +480,7 @@ function confirm_payout(){
                 if(isset($result) && $result=='ACK=Success'){
                     
                      $query=$wpdb->query("UPDATE jd_reservations SET paid=1 WHERE id=$res_id");
-                    checkPaymentMessage(true,$hostname,$arr['total'],$arr['currency']);
+                    checkPaymentMessage(true,$hostname,$amtToPay,$arr['currency']);
                     
                 }else{
                     checkPaymentMessage(false,$hostname);

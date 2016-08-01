@@ -139,6 +139,16 @@ function vh_register_widgets () {
 		'before_title'  => '<h4>',
 		'after_title'   => '</h4>'
 	) );
+	
+		register_sidebar( array(
+		'name'          => __( 'Top Bar', 'vh' ),
+		'id'            => 'sidebar-8',
+		'class'         => 'normal',
+		'before_widget' => '<div class="widget">',
+		'after_widget'  => '<div class="clearfix"></div></div>',
+		'before_title'  => '<h4>',
+		'after_title'   => '</h4>'
+	) );
 }
 add_action( 'widgets_init', 'vh_register_widgets' );
 
