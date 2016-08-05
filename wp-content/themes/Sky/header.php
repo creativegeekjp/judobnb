@@ -138,17 +138,19 @@ if(isset($_REQUEST['pid']) && $_REQUEST['pid'] != ''){
 					// 	$logo = str_replace( '.png', '_white.png', $logo );
 					// }
 				?>
-				
-				<div class="vc_col-sm-12" id="topbar">
-						<?php dynamic_sidebar('sidebar-8'); ?>
-						
-						<select class="c" id='lang_sel_click' onchange="javascript:location.href = this.value;" style="border:0px grey; background-color:white; font-family: helvetica; font-size: 12px; color: black; width:150px;">
+				<?php if ( is_active_sidebar( 'sidebar-8' )) { ?>
+				<div class="vc_col-sm-12 vc-col-xs-3" id="topbar" >
+						<select class="c" id='lang_sel_click' onchange="javascript:location.href = this.value;" style="border:0px grey; background-color:white; font-family: helvetica; font-size: 12px; color: black;">
 						    <option value="/todollar.php" <?php if($_COOKIE['C_CURRENCY']=='USD') echo "selected=selected"; ?> >USD</option>
 						     <option value="/toyen.php" <?php if($_COOKIE['C_CURRENCY']=='JPY') echo "selected=selected";  ?> >JPY</option>
 						</select>
-					</div>
+						
+							<?php dynamic_sidebar('sidebar-8'); ?>
+				</div>
+				<?php }; ?>
 				
 				<header class="header vc_row-fluid vc_col-sm-12">
+					
 					
 					<div class="top-header vc_col-sm-12">
 						<div class="logo shadows vc_col-sm-3">

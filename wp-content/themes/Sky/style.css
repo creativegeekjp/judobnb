@@ -15619,9 +15619,20 @@ label .btn-translate {
 		padding-right: 0;
 	}
 	
+	#topbar{
+		height:50px;
+		padding-right:0;
+	}
+	
+	#topbar .c{
+		width:120px;
+	}
+	
+	
 	.pushy .sub-menu a {
 		padding-left: 40px;
 	}
+	
 	
 	#simplemodal-login-container {
 		top: 5% !important;	
@@ -15640,6 +15651,10 @@ label .btn-translate {
 		position: relative;
 		height: 70px;
 	}
+	
+	
+	
+	
 	
 	body .wrapper .header .top-header a {
 		min-width: 165px;
@@ -15738,11 +15753,22 @@ label .btn-translate {
 	div.slide-item {
 		top: -150px !important;
 	}
+	
+	#topbar{
+		height:50px;
+	}
+	
+	#topbar .c{
+		 width:150px;
+	}
 }
 
 @media screen and (min-width: 768px){
 	#preview-msg {
 		display: none;
+	}
+	#topbar .c{
+		 width:150px;
 	}
 }
 
@@ -16033,8 +16059,12 @@ body.archive.author #main_header_bg {
 	display: none !important;
 }
 
+
+
+
 #topbar {
 	padding: 10px;
+	
 }
 
 #topbar .item-title-bg{
@@ -16050,6 +16080,7 @@ body.archive.author #main_header_bg {
 	display: inline-block;
 	float: right;
 	margin-left: 10px;
+
 }
 
 #topbar .c {
@@ -16059,3 +16090,6 @@ body.archive.author #main_header_bg {
 #topbar {
 	background:#444;
 }
+
+
+
